@@ -4,5 +4,13 @@
 }
 
 :root {
-  --primary-dark-blue: ;
+  --primary-dark-blue: rgb(42,54,71);
+  --secondary-dark-blue: rgb(9,25,49);
+  --hover-blue: rgb(41,171,226);
 }
+
+
+
+
+
+
