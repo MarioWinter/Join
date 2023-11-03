@@ -1,4 +1,46 @@
 nav {
   background-color: var(--primary-dark-blue);
   height: 100vh;
+  display: flex;
+  width: 23.2rem;
+  padding: 6.4rem 0rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.menu-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  color: var(--primary-grey-sidebar);
+}
+
+.menu-sidebar-button {
+  display: flex;
+  height: 4.6rem;
+  padding: 0.8rem 9.6rem;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.menu-sidebar-button:hover {
+  background-color: var(--secondary-dark-blue);
+}
+
+.privacy-sidebar {
+  display: flex;
+  padding: 24.3rem 0rem 0rem 5.2rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0.4rem;
+  align-self: stretch;
+  color: var(--secondary-grey-sidebar);
 }
