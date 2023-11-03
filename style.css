@@ -10,6 +10,8 @@
   --primary-grey-sidebar: rgb(205, 205, 205);
   --secondary-grey-sidebar: rgb(168, 168, 168);
   --hover-blue: rgb(41, 171, 226);
+  --sidebar-width: 23.2rem;
+  --header-height: 9.6rem;
 }
 
 html {
