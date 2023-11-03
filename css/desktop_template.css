@@ -1,3 +1,7 @@
+main {
+  display: flex;
+}
+
 nav {
   background-color: var(--primary-dark-blue);
   height: 100vh;
@@ -36,11 +40,35 @@ nav {
 
 .privacy-sidebar {
   display: flex;
-  padding: 24.3rem 0rem 0rem 5.2rem;
+  padding: 24.3rem 0rem 0rem 0rem;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.4rem;
   align-self: stretch;
   color: var(--secondary-grey-sidebar);
+}
+
+.menu-sidebar-privacy-button {
+  cursor: pointer;
+  display: flex;
+  width: 23.2rem;
+  padding: 0.8rem 6rem;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.menu-sidebar-privacy-button:hover {
+  background-color: var(--secondary-dark-blue);
+}
+
+header {
+  display: flex;
+  width: 100vw;
+  height: 9.6rem;
+  padding: 2rem 0rem 2rem 0rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0rem 0.4rem 0.4rem 0rem rgba(0, 0, 0, 0.1);
 }
