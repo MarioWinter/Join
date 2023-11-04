@@ -137,6 +137,12 @@ header {
   );
 }
 
+.header-help-button {
+  cursor: pointer;
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
 /* Submenu Section */
 
 .header-aside {
@@ -149,9 +155,15 @@ header {
   align-items: flex-start;
   border-radius: 2rem 0rem 2rem 2rem;
   background-color: var(--primary-dark-blue);
-
-  /* nuevo */
   box-shadow: 0rem 0rem 4rem 0rem rgba(0, 0, 0, 0.1);
+  transform: translateY(0rem);
+  z-index: 1;
+  transition: transform 125ms ease-in-out, z-index 125ms ease-in-out;
+}
+
+.hide-header-aside {
+  z-index: -999;
+  transform: translateY(-16rem);
 }
 
 .aside-button {
