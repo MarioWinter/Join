@@ -1,3 +1,5 @@
+/* Sidebar Section */
+
 .navbar {
   background-color: var(--primary-dark-blue);
   height: 100vh;
@@ -22,7 +24,6 @@
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  color: var(--primary-grey-sidebar);
 }
 
 .menu-sidebar-button {
@@ -33,6 +34,8 @@
   gap: 0.8rem;
   flex-shrink: 0;
   cursor: pointer;
+  color: var(--primary-grey-sidebar);
+  text-decoration: none;
 }
 
 .menu-sidebar-button img {
@@ -52,7 +55,6 @@
   align-items: center;
   gap: 0.4rem;
   align-self: stretch;
-  color: var(--secondary-grey-sidebar);
 }
 
 .menu-sidebar-privacy-button {
@@ -62,12 +64,15 @@
   padding: 0.8rem 6rem;
   align-items: center;
   gap: 0.8rem;
+  color: var(--secondary-grey-sidebar);
+  text-decoration: none;
 }
 
 .menu-sidebar-privacy-button:hover {
   background-color: var(--secondary-dark-blue);
 }
 
+/* Header Section */
 header {
   display: flex;
   font-size: 2rem;
@@ -106,9 +111,61 @@ header {
   justify-content: center;
   border: 0.3rem solid var(--primary-dark-blue);
   border-radius: 100%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 68%,
+    rgba(12, 46, 98, 0.12) 68%,
+    rgba(12, 46, 98, 0.12) 100%
+  );
   height: 5.6rem;
   width: 5.6rem;
   font-weight: 700;
-  line-height: 120%;
   color: var(--hover-blue);
+  cursor: pointer;
+}
+
+.header-user-icon:hover {
+  background: rgb(12, 46, 98);
+  background: radial-gradient(
+    circle,
+    rgba(12, 46, 98, 0.12) 0%,
+    rgba(12, 46, 98, 0.12) 68%,
+    rgba(255, 255, 255, 1) 68%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+/* Submenu Section */
+
+.header-aside {
+  display: inline-flex;
+  position: absolute;
+  top: 9.6rem;
+  right: 2rem;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 2rem 0rem 2rem 2rem;
+  background-color: var(--primary-dark-blue);
+
+  /* nuevo */
+  box-shadow: 0rem 0rem 4rem 0rem rgba(0, 0, 0, 0.1);
+}
+
+.aside-button {
+  text-decoration: none;
+  color: var(--primary-grey-sidebar);
+  display: flex;
+  width: 14rem;
+  height: 4.6rem;
+  padding: 0.8rem 1.6rem;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0.8rem;
+}
+
+.aside-button:hover {
+  background-color: rgb(42, 61, 89);
 }
