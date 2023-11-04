@@ -1,28 +1,31 @@
 <nav class="navbar">
     <img class="join-logo-sidebar" src="assets/img/join-logo.svg" alt="Join Logo">
     <section class="menu-sidebar">
-        <a class="menu-sidebar-button menu-link" href="#">
+        <a id='sidebar_button1' class="menu-sidebar-button sidebar-button-selected" href="#"
+            onclick='selectMenuButton("sidebar_button1")'>
             <img src="assets/img/summary-icon.svg" alt="Summary Icon">
             <div>Summary</div>
         </a>
 
-        <a class="menu-sidebar-button menu-link" href="#">
+        <a id='sidebar_button2' class="menu-sidebar-button" href="#" onclick='selectMenuButton("sidebar_button2")'>
             <img src="assets/img/add-task-icon.svg" alt="Add Task Icon">
             <div>Add Task</div>
         </a>
 
-        <a class="menu-sidebar-button menu-link" href="#">
+        <a id='sidebar_button3' class="menu-sidebar-button" href="#" onclick='selectMenuButton("sidebar_button3")'>
             <img src="assets/img/board-icon.svg" alt="Board Icon">
             <div>Board</div>
         </a>
 
-        <a class="menu-sidebar-button menu-link" href="#">
+        <a id='sidebar_button4' class="menu-sidebar-button" href="#" onclick='selectMenuButton("sidebar_button4")'>
             <img src="assets/img/contacts-icon.svg" alt="Contacts Icon">
             <div>Contacts</div>
         </a>
     </section>
     <section class="privacy-sidebar">
-        <a class="menu-sidebar-privacy-button" href="#">Privacy Policy</a>
-        <a class="menu-sidebar-privacy-button" href="#">Legal notice</a>
+        <a id='sidebar_button5' class="menu-sidebar-privacy-button" href="#"
+            onclick='selectPrivacyButton("sidebar_button5")'>Privacy Policy</a>
+        <a id='sidebar_button6' class="menu-sidebar-privacy-button" href="#"
+            onclick='selectPrivacyButton("sidebar_button6")'>Legal notice</a>
     </section>
 </nav>

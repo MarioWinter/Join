@@ -44,7 +44,11 @@
 }
 
 .menu-sidebar-button:hover {
-  background-color: var(--secondary-dark-blue);
+  background-color: rgb(42, 61, 89);
+}
+
+.sidebar-button-selected {
+  background-color: var(--secondary-dark-blue) !important;
 }
 
 .privacy-sidebar {
@@ -69,7 +73,12 @@
 }
 
 .menu-sidebar-privacy-button:hover {
+  color: var(--hover-blue);
+}
+
+.sidebar-privacy-button-selected {
   background-color: var(--secondary-dark-blue);
+  color: var(--secondary-grey-sidebar) !important;
 }
 
 /* Header Section */
