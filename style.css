@@ -2,16 +2,134 @@
   box-sizing: border-box;
   margin: 0px;
   font-family: 'Inter';
+  
+}
+
+*:focus {
+  outline: none;
+}
+
+html{
+  font-size: 0.625em;
+}
+
+body{
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-light-grey);
+  margin: 0;
 }
 
 :root {
   --primary-dark-blue: rgb(42,54,71);
   --secondary-dark-blue: rgb(9,25,49);
   --hover-blue: rgb(41,171,226);
+  --primary-light-grey: rgb(246,247,248);
 }
 
+.log-in-container{
+  width: 65.2rem;
+  height: 49.3rem;
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+  .log-in-container h1{
+    
+    font-size: 6.1rem;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+  }
 
 
+.log-in-underline{
+  background-color: var(--hover-blue);
+  height: 3px;
+  width: 15rem;
+  margin-bottom: 3rem;
+  
+}
+
+.log-in-input-container{
+  display: flex;
+  flex-direction: column;
+  width: 42.2rem;
+}
+
+.log-in-input-box{
+  width: 100%;
+  border-radius: 10px;
+  border: solid 2px ;
+  
+  border-color: #D1D1D1;
+  margin-top: 1rem;
+  gap: 8px;
+  height: 4.8rem;
+}
+
+.log-in-input-box input{
+  width: 80%;
+  border: none !important ;
+  height: 100%;
+  cursor: pointer;
+  border-color: white;
+  
+}
+
+.log-in-checkbox{
+  margin-top: 3rem;
+  margin-left: 4rem;
+  padding: 5px;
+  gap: 10px;
+}
+
+.btn-log-in-container{
+  width: 32.2rem;
+  height: 4.8rem;
+  gap: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.2rem;
+}
+
+.btn-log-in{
+  width: 11rem;
+  height: 4.8rem;
+  background-color: var(--primary-dark-blue);
+  font-size: 2.1rem;
+  font-weight: 700;
+  Padding: 15px, 24px, 15px, 24px;
+  border-radius: 8px;
+  color: #D1D1D1;
+}
+
+.main-logo{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  
+  
+  background-color: var(--primary-light-grey);
+  align-items: center;
+}
 
 
 
