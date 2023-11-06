@@ -2,18 +2,18 @@
   box-sizing: border-box;
   margin: 0px;
   font-family: 'Inter';
-  
+
 }
 
 *:focus {
   outline: none;
 }
 
-html{
+html {
   font-size: 0.625em;
 }
 
-body{
+body {
   font-size: 1.6rem;
   display: flex;
   align-items: center;
@@ -23,13 +23,18 @@ body{
 }
 
 :root {
-  --primary-dark-blue: rgb(42,54,71);
-  --secondary-dark-blue: rgb(9,25,49);
-  --hover-blue: rgb(41,171,226);
-  --primary-light-grey: rgb(246,247,248);
+  --primary-dark-blue: rgb(42, 54, 71);
+  --secondary-dark-blue: rgb(9, 25, 49);
+  --hover-blue: rgb(41, 171, 226);
+  --primary-light-grey: rgb(246, 247, 248);
+  --light-grey-placeholder: #D1D1D1;
 }
 
-.sing-up-container{
+.d-none {
+  display: none !important;
+}
+
+.sing-up-header {
   width: 25%;
   position: absolute;
   right: 0;
@@ -41,23 +46,27 @@ body{
 
 }
 
-.log-in-container{
+.log-container {
   width: 65.2rem;
   height: 49.3rem;
-  position: absolute; 
-  top: 50%; 
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
   margin-left: auto;
   margin-right: auto;
-  
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   background-color: white;
   border-radius: 30px;
+
+}
+
+.log-in-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   animation-name: log-in-animation;
-  animation-duration: 2s; 
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
@@ -70,64 +79,72 @@ body{
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-  .log-in-container h1{
-    
-    font-size: 6.1rem;
-    margin-bottom: 1.8rem;
-    font-weight: 700;
-  }
+.log-in-container h1 {
+  margin-top: 4.8rem;
+  font-size: 6.1rem;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+}
 
 
-.log-in-underline{
+.log-in-underline {
   background-color: var(--hover-blue);
   height: 3px;
   width: 15rem;
   margin-bottom: 3rem;
-  
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
-.log-in-input-container{
+.log-in-input-container {
   display: flex;
   flex-direction: column;
   width: 42.2rem;
 }
 
-.log-in-input-box{
+.log-in-input-box {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   border-radius: 10px;
-  border: solid 2px ;
+  border: solid 2px;
   padding: 1px;
-  border-color: #D1D1D1;
+  border-color: var(--light-grey-placeholder);
   margin-top: 1rem;
   gap: 8px;
   height: 4.8rem;
 }
 
-.log-in-input-box input{
+.log-in-input-box input {
   width: 80%;
-  border: none !important ;
+  border: none !important;
   height: 100%;
   cursor: pointer;
   border-color: white;
-  
+  font-size: 2rem;
+
 }
 
-.log-in-checkbox{
+.log-in-input-box input::placeholder{
+  color: var(--light-grey-placeholder);
+}
+
+.log-in-checkbox {
   margin-top: 3rem;
   margin-left: 4rem;
   padding: 5px;
   gap: 10px;
 }
 
-.btn-log-in-container{
+.btn-log-in-container {
   width: 32.2rem;
   height: 4.8rem;
   gap: 35px;
@@ -137,26 +154,27 @@ body{
   margin-left: auto;
   margin-right: auto;
   margin-top: 2.2rem;
+
 }
 
-.btn-log-in{
+.btn-log-in {
   width: 11rem;
   height: 4.8rem;
   background-color: var(--primary-dark-blue);
   font-size: 2.1rem;
   font-weight: 700;
-  
+
   border-radius: 8px;
   color: white;
 }
 
-.btn-log-in:hover{
+.btn-log-in:hover {
   cursor: pointer;
   background-color: var(--hover-blue);
   border-width: 0;
 }
 
-.btn-log-in-guest{
+.btn-log-in-guest {
   width: 17.7rem;
   height: 4.8rem;
   background-color: white;
@@ -166,7 +184,7 @@ body{
   color: var(--primary-dark-blue);
 }
 
-.btn-log-in-guest:hover{
+.btn-log-in-guest:hover {
   cursor: pointer;
   color: var(--hover-blue);
   border-color: var(--hover-blue);
@@ -178,10 +196,11 @@ body{
   display: flex;
   justify-content: center;
   z-index: 10;
-  
+
   align-items: center;
   animation-name: logoAnimation;
-  animation-duration: 1.5s; /* Ändere die Dauer nach Bedarf */
+  animation-duration: 1.5s;
+  /* Ändere die Dauer nach Bedarf */
   animation-timing-function: linear;
   animation-delay: 0s;
   animation-iteration-count: 1;
@@ -218,7 +237,7 @@ body{
   }
 } */
 
-@keyframes logoAnimation {
+/* @keyframes logoAnimation {
   0% {
     top: 50%;
     left: 50%;
@@ -236,7 +255,7 @@ body{
     margin-left: 10rem;
 }
   
-}
+} */
 
 
 /* @keyframes logoAnimation {
@@ -271,6 +290,37 @@ body{
     height: 12.1rem;
   }
 } */
+/* sing Up Container */
 
+.sing-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  width: 100%;
+  height: 100%;
+}
 
+.sing-up-container h1 {
+  font-size: 6.1rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 4.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.sing-up-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 70%;
+}
+
+.sing-up-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
