@@ -200,7 +200,6 @@ body {
   align-items: center;
   animation-name: logoAnimation;
   animation-duration: 1.5s;
-  /* Ändere die Dauer nach Bedarf */
   animation-timing-function: linear;
   animation-delay: 0s;
   animation-iteration-count: 1;
@@ -237,7 +236,7 @@ body {
   }
 } */
 
-/* @keyframes logoAnimation {
+@keyframes logoAnimation {
   0% {
     top: 50%;
     left: 50%;
@@ -255,7 +254,7 @@ body {
     margin-left: 10rem;
 }
   
-} */
+}
 
 
 /* @keyframes logoAnimation {
@@ -324,3 +323,17 @@ body {
   gap: 24px;
   width: 100%;
 }
+
+.left-arrow{
+  position: absolute;
+  top: 6rem;
+  left: 5rem;
+  width: 5.2rem;
+  height: 5.2rem;
+}
+
+.height-sing-up{
+  height: 63.4rem !important
+}
+
+
