@@ -39,7 +39,7 @@ function renderHtmlLogIn(){
     
 }
 
-function renderSingUpHTML(){
+function renderSignUpHTML(){
     return `
     <div class="sing-up-container">
         <div onclick="renderLogIn()"
@@ -56,7 +56,7 @@ function renderSingUpHTML(){
             fill="#29ABE2"
           />
         </svg></div>
-        <h1>Sing up</h1>
+        <h1>Sign up</h1>
         <div class="log-in-underline"></div>
         <div class="sing-up-content">
           <div class="sing-up-input-container">
@@ -185,7 +185,7 @@ function renderSingUpHTML(){
           </div>
         </div>
         <button style="margin-top: 3.2rem" class="btn-log-in" disabled>
-          Sing up
+          Sign up
         </button>
       </div>
     `
