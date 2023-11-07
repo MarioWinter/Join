@@ -37,8 +37,8 @@ body {
 .sing-up-header {
   width: 25%;
   position: absolute;
-  right: 0;
-  top: 2rem;
+  right: 2rem;
+  top: 6rem;
   display: flex;
   justify-content: center;
   align-items: center;
