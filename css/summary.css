@@ -1,0 +1,41 @@
+.summary-content {
+    width: 100%;
+    height: calc(100% - 9.6rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-header-container {
+    margin-top: 11rem;
+    margin-left: 9.6rem;
+    display: flex;
+    align-items: center;
+    width: 62.5rem;
+    height: 7.3rem;
+    
+}
+
+.summary-header-container h1{
+    font-size: 6.1rem;
+    font-style: normal;
+    font-weight: 700;
+    width: 26.4rem;
+    height: auto;
+}
+
+.summary-header-vert-line{
+    background-color: var(--hover-blue);
+    height: 5.9rem;
+    width: 3px;
+    border-radius: 15px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.summary-header-span{
+    
+}
+
+.summary-main-container {
+    display: flex;
+}
