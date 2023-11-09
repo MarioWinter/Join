@@ -20,7 +20,7 @@
     font-size: 6.8rem;
     font-style: normal;
     font-weight: 700;
-    width: 33.4rem;
+    width: 29.4rem;
     height: auto;
 }
 
@@ -52,6 +52,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 2.8rem;
 }
 
 .summary-to-do-done-container {
@@ -127,4 +128,79 @@
     font-size: 6.4rem;
     font-style: normal;
     font-weight: 600;
+}
+
+.summary-urgency {
+    display: flex;
+    width: 56rem;
+    height: 16.8rem;
+    padding: 2.8rem 4.8rem;
+    justify-content: center;
+    align-items: center;
+    gap: 6.1rem;
+}
+
+.urgent-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.urgent-icon-box {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.urgent-icon-bottom {
+    position: absolute;
+    z-index: 1;
+}
+
+.urgent-icon-top {
+    position: absolute;
+    z-index: 2;
+}
+
+.urgent-right-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-done-text {
+    font-size: 1.66rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.summary-urgent-vert-line {
+    width: 2px;
+    height: 10.2rem;
+    flex-shrink: 0;
+    background-color: #D1D1D1;
+}
+
+.summary-urgent-date {
+    color: var(--secondary-dark-blue);
+    font-size: 2.1rem;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.summary-urgent-right-box-context {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.3rem;
+}
+
+.summary-urgent-text {
+    font-size: 1.6;
+    font-style: normal;
+    font-weight: 400;
 }
