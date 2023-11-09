@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Join/">
+    <script src=""></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./css/add_task.css">
+</head>
+<body>
+<div class="add-task-main-container">
+
+    <div class="add-task-container">
+        <div class="add-task-font">Add Task</div>
+    </div>
+<div class="main-container-center">
+    <div class="add-task-container-left">
+      <div class="title-main">
+        <div class="title-field">Title</div>
+        <input class="input-field-left-top" type="text" placeholder="Enter a title" required>
+        <div class="required-input-bottom-field"></div>        
+      </div>
+      <div class="description-main">
+        <div class="description-field">Description</div>
+        <textarea class="enter-description-field" placeholder="Enter a Description"></textarea>
+        <div class="required-description-bottom-field"></div>
+      </div>
+      <div class="assigned-main">
+        <div class="assigned-field">Assigned to</div>
+        <select class="selected-contacts-field" placeholder="Select contacts to assign" required>          
+           <option value="" disabled selected>Select contacts to assign</option>
+           <option value="1">One</option>
+           <option value="2">Two</option>          
+        </select>
+      </div>
+    </div>
+
+    <div class="dividing-line"></div>
+
+    <div class="add-task-container-right">
+       <div class="date-container">
+         <div class="due-date">Due date</div>
+         <input placeholder="date" class="date-entry-container" type="date" required>
+         <div class="required-description-bottom-field"></div>
+       </div>      
+      <div class="prio-container">
+       <div class="prio-field">Prio</div>
+       <div class="status-container">
+         <div class="status-definition-container">Urgent <img class="prio-images" src="./img/urgent.svg">
+        </div>
+         <div class="status-definition-container">Medium <img class="prio-images" src="./img/medium.svg">
+        </div>
+         <div class="status-definition-container">Low <img class="prio-images" src="./img/low.svg">
+        </div>
+       </div>
+      </div>
+      <div class="category-container">
+       <div class="category-field">Category</div>
+       <select class="select-category" required>
+         <option value="" disabled selected>Select task category</option>
+         <option value="1">Technical Task</option>
+         <option value="2">User Story</option>  
+       </select>
+      </div>
+      <div class="subtask-container">
+       <div class="subtask-field">Subtask</div>
+       <select class="adding-new-subtask" placeholder="Add new subtask" required>
+        <option value="" disabled selected>Add new subtask</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+       </select>
+      </div>      
+    </div>
+  </div>
+
+ 
+  <div class="clear-and-create-task-container">
+   <div class="clear-container">Clear <img src="./img/cancel.svg"></div>
+   <div class="create-task-container">Create Task <img src="./img/check.svg"></div>
+  </div>
+
+    
+
+    </div>
+
+</div>
+
+</body>
+</html>

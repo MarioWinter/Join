@@ -17,6 +17,14 @@ body {
   font-size: 1.6rem;
 }
 
+html{
+  font-size: 0.625em;
+}
+
+body{
+  font-size: 1.6rem;
+}
+
 :root {
   --primary-dark-blue: rgb(42, 54, 71);
   --secondary-dark-blue: rgb(9, 25, 49);
@@ -272,5 +280,4 @@ body {
 .height-sing-up{
   height: 63.4rem !important
 }
-
 
