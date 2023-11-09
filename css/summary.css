@@ -10,20 +10,20 @@
     margin-left: 9.6rem;
     display: flex;
     align-items: center;
-    width: 62.5rem;
+    width: 73rem;
     height: 7.3rem;
-    
+
 }
 
-.summary-header-container h1{
-    font-size: 6.1rem;
+.summary-header-container h1 {
+    font-size: 6.8rem;
     font-style: normal;
     font-weight: 700;
-    width: 26.4rem;
+    width: 33.4rem;
     height: auto;
 }
 
-.summary-header-vert-line{
+.summary-header-vert-line {
     background-color: var(--hover-blue);
     height: 5.9rem;
     width: 3px;
@@ -32,8 +32,12 @@
     margin-right: 3rem;
 }
 
-.summary-header-span{
-    
+.summary-header-span {
+    font-size: 2.7rem;
+    font-style: normal;
+    font-weight: 400;
+    width: 32rem;
+    height: 3.2rem;
 }
 
 .summary-main-container {
