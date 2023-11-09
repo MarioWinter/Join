@@ -3,11 +3,12 @@
     height: calc(100% - 9.6rem);
     display: flex;
     flex-direction: column;
+    background-color: var(--primary-light-grey);
+    padding-left: 9.6rem;
 }
 
 .summary-header-container {
     margin-top: 11rem;
-    margin-left: 9.6rem;
     display: flex;
     align-items: center;
     width: 73rem;
@@ -42,4 +43,88 @@
 
 .summary-main-container {
     display: flex;
+    align-items: center;
+    margin-top: 5.6rem;
+}
+
+.summary-overview-container {
+    width: 56rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.summary-to-do-done-container {
+    display: flex;
+    width: 100%;
+    height: 16.8rem;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3.2rem;
+}
+
+.summary-to-do-container {
+    display: flex;
+    width: 26.4rem;
+    height: 16.8rem;
+    padding: 3.8rem 1.9rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.8rem;
+    flex-shrink: 0;
+
+}
+
+.summary-to-do-container img {
+    width: 6.9rem;
+    height: 6.9rem;
+}
+
+.br-radius30-box-sh {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    border-radius: 30px;
+    background-color: white;
+}
+
+.summary-to-do-right-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary-to-do-number {
+    text-align: center;
+    font-family: Inter;
+    font-size: 6.4rem;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.summary-to-do-text {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.summary-done-container {
+    display: flex;
+    width: 264px;
+    height: 168px;
+    padding: 38px 58px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+.summary-done-container img {
+    width: 6.9rem;
+    height: 6.9rem;
+}
+
+.summary-done-number {
+    text-align: center;
+    font-size: 6.4rem;
+    font-style: normal;
+    font-weight: 600;
 }
