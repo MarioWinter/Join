@@ -1,8 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0px;
-  font-family: 'Inter';
-
+  font-family: "Inter";
 }
 
 *:focus {
@@ -15,9 +14,8 @@ html {
 
 body {
   font-size: 1.6rem;
-  
+
   margin: 0;
-  
 }
 
 :root {
@@ -27,18 +25,16 @@ body {
   --secondary-grey-sidebar: rgb(168, 168, 168);
   --hover-blue: rgb(41, 171, 226);
   --primary-light-grey: rgb(246, 247, 248);
-  --light-grey-placeholder: #D1D1D1;
+  --light-grey-placeholder: rgb(209, 209, 209);
   --sidebar-width: 23.2rem;
   --header-height: 9.6rem;
 }
-
-
 
 .d-none {
   display: none !important;
 }
 
-.main-container-index{
+.main-container-index {
   display: flex;
   width: auto;
   height: 100vh;
@@ -56,7 +52,6 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-
 }
 
 .log-container {
@@ -70,7 +65,6 @@ body {
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   background-color: white;
   border-radius: 30px;
-
 }
 
 .log-in-container {
@@ -105,7 +99,6 @@ body {
   font-weight: 700;
 }
 
-
 .log-in-underline {
   background-color: var(--hover-blue);
   height: 3px;
@@ -113,7 +106,6 @@ body {
   margin-bottom: 3rem;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .log-in-input-container {
@@ -143,10 +135,9 @@ body {
   cursor: pointer;
   border-color: white;
   font-size: 2rem;
-
 }
 
-.log-in-input-box input::placeholder{
+.log-in-input-box input::placeholder {
   color: var(--light-grey-placeholder);
 }
 
@@ -167,7 +158,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 2.2rem;
-
 }
 
 .btn-log-in {
@@ -228,7 +218,6 @@ body {
     transform: translate(0, 0);
     width: 10rem;
     height: 12.1rem;
-    
   }
 }
 /* sing Up Container */
@@ -266,7 +255,7 @@ body {
   width: 100%;
 }
 
-.left-arrow{
+.left-arrow {
   position: absolute;
   top: 6rem;
   left: 5rem;
@@ -274,8 +263,6 @@ body {
   height: 5.2rem;
 }
 
-.height-sing-up{
-  height: 63.4rem !important
+.height-sing-up {
+  height: 63.4rem !important;
 }
-
-

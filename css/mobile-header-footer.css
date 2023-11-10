@@ -76,14 +76,6 @@
     text-decoration: none;
   }
 
-  .content {
-    flex: 1;
-  }
-
-  .main-container-mbl {
-    flex: 1;
-  }
-
   .aside-button {
     font-size: 1.4rem;
     text-decoration: none;
