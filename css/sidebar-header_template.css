@@ -82,7 +82,7 @@
 }
 
 /* Header Section */
-header {
+.header {
   display: flex;
   font-size: 2rem;
   width: calc(100vw - var(--sidebar-width));
@@ -172,7 +172,7 @@ header {
 
 .hide-header-aside {
   z-index: -999;
-  transform: translateY(-16rem);
+  transform: translateY(-20rem);
 }
 
 .aside-button {
