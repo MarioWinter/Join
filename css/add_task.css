@@ -1,349 +1,314 @@
+.add-task-content {
+  background-color: var(--primary-light-grey);
+  width: 100%;
+  height: calc(100% - 9.6rem);
+  display: flex;
+  padding-left: 9.6rem;
+}
+
 .add-task-main-container {
   display: flex;
   flex-direction: column;
-  width: 90rem;
-  height: 64rem;
-  background: #F6F7F8;
+  width: 144rem;
+  height: 102.4rem;
+  background: #f6f7f8;
+  padding-top: 11rem;
 }
 
 .add-task-container {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 17.325rem;
-  height: 4.5625rem;
-  gap: 0.0625rem;
+  width: 27.8rem;
+  height: 7.3rem;
 }
 
 .add-task-font {
-  font-size: 3.8125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 4.575rem;
+  font-size: 6.1rem;  
+  font-weight: 700;  
 }
 
 .main-container-center {
   display: flex;
-  width: 62.01556rem;
-  height: 26.5rem;
+  width: 97.7rem;
+  height: 42.4rem;
   flex-shrink: 0;
-  gap: 3.02rem;
+  gap: 4.825rem;
+  padding-top: 4.8rem;
 }
 
 .add-task-container-left {
   display: flex;
-  width: 27.5rem;
-  height: 23.5rem;
+  width: 44rem;
+  height: 37.6rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
-  flex-shrink: 0;  
+  gap: 1.6rem;
+  flex-shrink: 0;
 }
 
 .title-main {
   display: flex;
-  width: 27.5rem;
-  height: 6rem;
+  width: 44rem;
+  height: 9.6rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .title-field {
-  width: 27.5rem;
-  height: 1.5rem;
-  font-size: 1.25rem;
+  width: 44rem;
+  height: 2.4rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.5rem;
-  color: #2A3647;
+  line-height: 2.4rem;
+  color: #2a3647;
 }
 
 .input-field-left-top {
   display: flex;
-  padding: 0.75rem 1.3125rem;
+  padding: 1.2rem 2.1rem;
   align-items: center;
-  gap: 0.625rem;
+  gap: 1rem;
   align-self: stretch;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1rem solid #d1d1d1;
   background: #fff;
-}
-
-.required-input-bottom-field {
-  width: 7.4375rem;
-  height: 0.75rem;
+  font-size: 2rem;   
 }
 
 .description-main {
   display: flex;
-  width: 27.5rem;
-  height: 10.5rem;
+  width: 44rem;
+  height: 16.8rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .description-field {
-  font-size: 1.25rem;
-  font-style: normal;
+  width: 44rem;
+  height: 2.4rem;
+  font-size: 2rem;  
   font-weight: 400;
-  line-height: 1.5rem;
+  line-height: 2.4rem;
 }
 
 .enter-description-field {
   display: flex;
-  width: 27.5rem;
-  height: 7.5rem;
-  padding: 1.125rem 1rem;
+  width: 44rem;
+  height: 13.6rem;
+  padding: 1.8rem 1.6rem;
   align-items: flex-start;
-  gap: 0.625rem;
+  gap: 1rem;
   align-self: stretch;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1px solid #d1d1d1;
   background: #fff;
-}
-
-.required-description-bottom-field {
-  height: 0.75rem;
-  align-self: stretch;
+  font-size: 2rem;
 }
 
 .assigned-main {
   display: flex;
-  width: 27.5rem;
-  height: 5rem;
+  width: 44rem;
+  height: 8rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .assigned-field {
-  width: 7rem;
+  width: 11.2rem;
+  height: 2.4rem;
   font-family: Inter;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
+  font-size: 2rem;  
+  line-height: 2.4rem;
+  gap: 0.8rem;
 }
 
 .selected-contacts-field {
   display: flex;
-  width: 27.5rem;
-  padding: 0.75rem 1rem;
+  width: 44rem;  
+  padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1rem solid #d1d1d1;
   background: #fff;
+  font-size: 2rem;
 }
 
 .dividing-line {
   width: 1px;
-  height: 26.5rem;
-  background-color: #d1d1d1;  
+  height: 42.4rem;
+  background-color: #d1d1d1;
 }
 
-.add-task-container-right {
-  display: flex;
-  width: 27.5rem;
-  height: 26rem;
+.add-task-container-right {    
+  display: inline-flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;  
+  gap: 2.4rem;
 }
 
 .date-container {
   display: flex;
-  width: 27.5rem;
-  height: 6rem;
+  width: 44rem;  
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
-.due-date {
-  width: 6rem;
-  height: 1.5rem;
-  font-family: Inter;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
+.due-date {  
+  font-size: 2rem;  
 }
 
 .date-entry-container {
   display: flex;
-  padding: 0.75rem 1rem;
+  padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1rem solid #d1d1d1;
   background: #fff;
+  font-size: 2rem;
 }
 
-.required-description-bottom-field {
-  width: 7.4375rem;
-  height: 0.75rem;
-}
-
-.prio-container {
-  width: 27.5rem;
-  height: 5.5rem;
+.prio-container {  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
-.prio-field {
-  height: 1.5rem;
-  font-family: Inter;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
+.prio-field {  
+  font-size: 2rem;  
 }
 
 .status-container {
   display: flex;
-  width: 27.5rem;
-  height: 3.5rem;
+  width: 44rem;  
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.6rem;
 }
 
 .status-definition-container {
-  background-color: white;
-  width: 8.5rem;
-  height: 3.5rem;
   display: flex;
-  padding: 1rem 0.625rem;
+  padding: 1.6rem 1rem;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
   flex: 1 0 0;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
-  border-radius: 0.625rem;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 1rem;
+  background: #FFF;
+  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.10);
+  font-size: 2rem;
 }
 
 .prio-images {
-  width: 1.25rem;
-  height: 0.90681rem;
+  width: 2rem;
+  height: 1.45rem;
   cursor: pointer;
 }
 
 .category-container {
   display: flex;
-  width: 27.5rem;
-  height: 5rem;
+  width: 44rem;  
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
-.category-field {
-  width: 6.125rem;
-  height: 1.5rem;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
+.category-field {  
+  font-size: 2rem;  
 }
 
 .select-category {
   display: flex;
-  width: 27.5rem;
-  padding: 0.75rem 1rem;
+  width: 44rem;
+  padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1rem solid #d1d1d1;
   background: #fff;
+  font-size: 2rem;
 }
 
 .subtask-container {
   display: flex;
-  width: 27.5rem;
-  height: 5rem;
+  width: 44rem;  
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
-.subtask-field {
-  width: 5.5rem;
-  height: 1.5rem;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
+.subtask-field { 
+  font-size: 2rem;  
 }
 
 .adding-new-subtask {
   display: flex;
-  padding: 0.75rem 1rem;
+  padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  border-radius: 0.625rem;
-  border: 1px solid #d1d1d1;
+  border-radius: 1rem;
+  border: 0.1rem solid #d1d1d1;
   background: #fff;
+  font-size: 2rem;
 }
+
+
+
+
+
+
 
 .clear-and-create-task-container {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  top: 55.56rem;
-  right: 8.48rem;
-  bottom: 4.94rem;
-  left: 62.2rem;
+  gap: 1.6rem;
+  
+  
 }
+
+
 
 .clear-container {
   display: flex;
-  padding: 1rem;
+  padding: 1.6rem;
   justify-content: center;
   align-items: center;
-  width: 6.875rem;
-  height: 3.5rem;
-  gap: 0.25rem;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem;
-  border-radius: 0.625rem;
-  border: 1px solid #2a3647;
+  gap: 0.4rem;
+  font-size: 2rem;  
+  border-radius: 1rem;
+  border: 0.1rem solid #2a3647;
   background: #f6f7f8;
+  cursor: pointer;
 }
 
 .create-task-container {
   display: flex;
-  padding: 1rem;
+  padding: 1.6rem;
   justify-content: center;
   align-items: center;
-  width: 11.4375rem;
-  height: 3.5rem;
-  gap: 0.25rem;
-  font-size: 1.3125rem;  
-  font-weight: 700;
-  line-height: 1.575rem;
-  border-radius: 0.625rem;
+  gap: 0.4rem;
+  font-size: 2.1rem;
+  font-weight: 700;  
+  border-radius: 1rem;
   color: white;
   background-color: #2a3647;
+  cursor: pointer;
 }
 
 select:required:invalid {
-  color: gray;
+  color: gray;  
 }
+
 
