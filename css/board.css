@@ -79,6 +79,12 @@
   width: 3.2rem;
 }
 
+.search-button:hover {
+    border-radius: 50%;
+    background-color: var(--light-grey-placeholder);
+    cursor: pointer;
+}
+
 #no_task_found {
   display: none;
   position: absolute;
