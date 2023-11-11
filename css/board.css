@@ -1,3 +1,4 @@
+/* Board Header */
 .board-container {
   width: 100%;
   max-width: 120.8rem;
@@ -27,18 +28,18 @@
   font-weight: 700;
 }
 
-#search-task-container {
+#search_task_container {
   display: flex;
   align-items: center;
   gap: 2.4rem;
 }
 
-#search-no-task-container {
+#search_no-task_container {
   display: flex;
   flex-direction: column;
 }
 
-#input-section {
+#input_section {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,7 +50,7 @@
   border-radius: 1rem;
 }
 
-#find-task {
+#find_task {
   padding: 0 0.8rem 0 1.6rem;
   width: 100%;
   border: none;
@@ -78,7 +79,7 @@
   width: 3.2rem;
 }
 
-#no-task-found {
+#no_task_found {
   display: none;
   position: absolute;
   margin: 4.8rem 0 0 0.6rem;
@@ -86,7 +87,7 @@
   font-size: 1.4rem;
 }
 
-#add-task-button {
+#add_task_button {
   display: flex;
   align-items: center;
   font-size: 2.1rem;
@@ -98,13 +99,13 @@
   border-radius: 1rem;
 }
 
-#add-task-button:hover {
+#add_task_button:hover {
   cursor: pointer;
   background-color: var(--hover-blue);
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
 }
 
-#add-task-button div {
+#add_task_button div {
   padding: 0 1.6rem 0 1.6rem;
   width: 100%;
   display: flex;
@@ -112,3 +113,35 @@
   justify-content: space-between;
   gap: 0.4rem;
 }
+
+/* Tasks Columns Section */
+#board_content h3 {
+    color: var(--menu-navy-blue);
+}
+
+.column-section {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    overflow: hidden;
+}
+
+.column-head-area {
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.column-head-area svg:hover {
+    cursor: pointer;
+}
+
+.column-head-area svg:hover path{
+    stroke: var(--hover-blue);
+}
+
+.column-head-area svg:hover rect{
+    stroke: var(--hover-blue);
+}
+

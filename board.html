@@ -27,10 +27,10 @@
                 <!-- board Header -->
                 <div class="board-head">
                     <h1>Board</h1>
-                    <div id="search-task-container">
-                        <div id="search-no-task-container">
-                            <div id="input-section">
-                                <input id="find-task" type="text" placeholder="Find Task">
+                    <div id="search_task_container">
+                        <div id="search_no_task_container">
+                            <div id="input_section">
+                                <input id="find_task" type="text" placeholder="Find Task">
                                 <div class="task-search-field">
                                     <div class="seperator"></div>
                                     <div class="search-button">
@@ -43,9 +43,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="no-task-found">No tasks found!</div>
+                            <div id="no_task_found">No tasks found!</div>
                         </div>
-                        <div id="add-task-button" onclick="addTaskSlider('todo'); handleInputFocus();">
+                        <div id="add_task_button" onclick="addTaskSlider('todo'); handleInputFocus();">
                             <div>
                                 <span>Add task</span>
                                 <svg width="2.0rem" height="2.0rem" viewBox="0 0 20 20" fill="none"
@@ -59,13 +59,13 @@
                     </div>
 
                 </div>
-                <!-- board content -->
-                <div id="board-content">
-                    <div id="board-todo-section" class="divers-sections">
-                        <!-- Tasks-Board Header -->
-                        <div id="board-todo-section-head" class="divers-head-sections">
+                <!-- Board Content Colums-->
+                <div id="board_content">
+                    <div id="board_todo_section" class="column-section">
+                        <!-- Tasks Column Header -->
+                        <div id="board_todo_section_head" class="column-head-area">
                             <h3>To Do</h3>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('todo'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
@@ -74,7 +74,7 @@
                                 </rect>
                             </svg>
                         </div>
-                        <!-- To DO -->
+                        <!-- To Do Task Drop Zone-->
                         <div id="todo" class="specific-content" ondrop="moveTo('todo')"
                             ondragover="allowDrop(event), hoverDrag('todo')" ondragleave="stopDrag('todo')"
                             style="padding: 0px; height: 100%;">
