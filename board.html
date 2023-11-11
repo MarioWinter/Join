@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="./css/mobile-header-footer.css">
     <link rel="stylesheet" href="./css/sidebar-header_template.css">
     <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/mobile-header-footer.css">
     <link rel="stylesheet" href="./fonts.css">
     <script src="./script.js"></script>
     <script src="./js/sidebar-header.js"></script>
@@ -16,10 +16,15 @@
 
 <body onload="includeHTML()">
     <div class="w3include-container">
+        <!-- sidebar template -->
         <div w3-include-html="assets/templates/sidebar_template.html"></div>
+
         <main class="main-container-board">
+            <!-- header template -->
             <div w3-include-html="assets/templates/header_template.html"></div>
+            <!-- board container -->
             <div class="board-container">
+                <!-- board Header -->
                 <div class="board-head">
                     <h1>Board</h1>
                     <div id="search-task-container">
@@ -53,6 +58,58 @@
                         </div>
                     </div>
 
+                </div>
+                <!-- board content -->
+                <div id="board-content">
+                    <div id="board-todo-section" class="divers-sections">
+                        <!-- Tasks-Board Header -->
+                        <div id="board-todo-section-head" class="divers-head-sections">
+                            <h3>To Do</h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('todo'); handleInputFocus();">
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
+                                </rect>
+                            </svg>
+                        </div>
+                        <!-- To DO -->
+                        <div id="todo" class="specific-content" ondrop="moveTo('todo')"
+                            ondragover="allowDrop(event), hoverDrag('todo')" ondragleave="stopDrag('todo')"
+                            style="padding: 0px; height: 100%;">
+                            <div class="task-container" id="task-3" onclick="loadTask(3)" ondragstart="startDragging(3)"
+                                draggable="true">
+                                <div class="first-line-bucket">
+                                    <div class="category-technical-task">Technical Task</div>
+                                    <svg fill="#000000" width="16px" height="16px" viewBox="0 0 16 16"
+                                        xmlns="http://www.w3.org/2000/svg" class="switch-to-bucket"
+                                        onclick="switchToBucket(3, event)">
+                                        <path d="M4 14v2l-4-3 4-3v2h12v2H4zm8-12V0l4 3-4 3V4H0V2h12z"
+                                            fill-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="task-title-and-description">
+                                    <h4 class="task-title-container" title="HTML Base Template Creation">HTML Base
+                                        Template Creation</h4>
+                                    <div class="task-description-container">Create reusable HTML base templates</div>
+                                </div>
+                                <div id="subtasks-container-3" class="task-subtasks-container"></div>
+                                <div class="task-bottom-container">
+                                    <div id="task-assignment-container-3" class="task-assignments">
+                                        <div style="background-color: #6e33ee;" class="assignment-circle margin--4px">AR
+                                        </div>
+
+                                        <div style="background-color: #b493a1;" class="assignment-circle margin--4px">HL
+                                        </div>
+                                    </div>
+                                    <div id="task-prio-img-3">
+                                        <img src="./assets/img/subtask-prio-Low.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
