@@ -30,6 +30,7 @@ body {
   --sidebar-width: 23.2rem;
   --header-height: 9.6rem;
   --lable-turquoise:rgb(31, 215, 193);
+  --progress-bar-blue:rgb(69, 137, 255);
 }
 
 .d-none {
