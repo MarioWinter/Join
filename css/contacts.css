@@ -1,0 +1,87 @@
+.contacts-main {
+  background-color: var(--primary-light-grey);
+  width: 100%;
+  height: calc(100% - 9.6rem);
+  display: flex;
+}
+
+.add-new-contact-main {
+  width: 45.6rem;
+  height: 92.8rem;
+  flex-shrink: 0;
+  background: #fff;
+  box-shadow: 0.4rem 0 0.6rem 0 rgba(0, 0, 0, 0.08);
+}
+
+.contact-list {
+  display: inline-flex;
+  padding: 3.2rem 2.4rem;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+}
+
+.add-new-button {
+  display: flex;
+  width: 45.6rem;
+  padding: 2.25rem 5.2rem;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.primary-contact {
+  display: flex;
+  width: 35.2rem;
+  padding: 1.2rem 0;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  border: 0.1rem solid #2a3647;
+  background: #2a3647;
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 120%; /* 2.52rem */
+  cursor: pointer;
+}
+
+.primary-contact:hover {
+  background-color: #29abe2;
+  border: 0.1rem solid #29abe2;
+}
+
+
+
+
+.contacts-better-container {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;  
+  height: 7.3rem;
+  gap: 3rem;
+  padding-top: 11rem;
+  padding-left: 5.5rem;
+}
+
+.contacts-letter {
+  color: #000;  
+  font-size: 6.1rem;  
+  font-weight: 700;
+  line-height: 120%; /* 7.32rem */
+}
+
+.vector-line {
+  width: 0.3rem;
+  height: 5.9rem;  
+  background-color: #29ABE2;
+}
+
+.better-team {
+  color: #2A3647;
+  font-size: 2.7rem;  
+  font-weight: 400;
+  line-height: 120%; /* 32.4px */
+}
