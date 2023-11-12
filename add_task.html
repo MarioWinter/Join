@@ -34,15 +34,15 @@
     <div class="add-task-container-left">
       <div class="title-main">
         <div class="title-field">Title</div>
-        <input class="input-field-left-top" type="text" placeholder="Enter a title" required>               
+        <input id="enter_title_field" class="input-field-left-top" type="text" placeholder="Enter a title" required>               
       </div>
       <div class="description-main">
         <div class="description-field">Description</div>
-        <textarea class="enter-description-field" placeholder="Enter a Description"></textarea>        
+        <textarea id="enter-description_field" class="enter-description-field" placeholder="Enter a Description"></textarea>        
       </div>
       <div class="assigned-main">
         <div class="assigned-field">Assigned to</div>
-        <select class="selected-contacts-field" placeholder="Select contacts to assign" required>          
+        <select id="select_contacts_field" class="selected-contacts-field" required>         
            <option value="" disabled selected>Select contacts to assign</option>
            <option value="1">One</option>
            <option value="2">Two</option>          
@@ -55,7 +55,7 @@
     <div class="add-task-container-right">
        <div class="date-container">
          <div class="due-date">Due date</div>
-         <input placeholder="date" class="date-entry-container" type="date" required>         
+         <input id="date_field" class="date-entry-container" type="date" required>         
        </div>      
       <div class="prio-container">
        <div class="prio-field">Prio</div>
@@ -67,7 +67,7 @@
       </div>
       <div class="category-container">
        <div class="category-field">Category</div>
-       <select class="select-category" required>
+       <select id="select_category_field" class="select-category" required>
          <option value="" disabled selected>Select task category</option>
          <option value="1">Technical Task</option>
          <option value="2">User Story</option>  
@@ -75,7 +75,7 @@
       </div>
       <div class="subtask-container">
        <div class="subtask-field">Subtask</div>
-       <select class="adding-new-subtask" placeholder="Add new subtask" required>
+       <select id="add_new_subtask_field" class="adding-new-subtask" required>
         <option value="" disabled selected>Add new subtask</option>
          <option value="1">One</option>
          <option value="2">Two</option>
@@ -83,22 +83,17 @@
       </div>      
     </div>
   </div>
-
  
   <div class="clear-and-create-task-container">
-   <div class="clear-container">Clear <img src="./img/cancel.svg"></div>
-   <div class="create-task-container">Create Task <img src="./img/check.svg"></div>
-  </div>
-
-    
+   <div id="clear_button" class="clear-container" onclick="clearAllFields()">Clear <img src="./img/cancel.svg"></div>
+   <div id="create_task_button" class="create-task-container" onclick="">Create Task <img src="./img/check.svg"></div>
+  </div>  
 
     </div>
+  </div>
 
-</div>
-
-</div>
+ </div>
 </main>
-</div>
 
 </body>
 </html>
