@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <link rel="stylesheet" href="/Join/">
-    <script src=""></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./css/add_task.css">
-</head>
-<body>
-<div class="add-task-main-container">
+    <link rel="stylesheet" href="./css/sidebar-header_template.css">   
+    
+    
+    <script src="./script.js"></script>
+    <script src="./js/add_task.js"></script>        
+    <script src="./js/sidebar-header.js"></script>    
+    <script src="html.js"></script>
 
+    
+</head>
+<body onload="includeHTML()">
+  <div class="w3include-container">
+      <div w3-include-html="assets/templates/sidebar_template.html"></div>
+      <main>
+          <div w3-include-html="assets/templates/header_template.html"></div>
+          <div class="add-task-content">
+
+          <div class="add-task-main-container">
     <div class="add-task-container">
         <div class="add-task-font">Add Task</div>
     </div>
@@ -20,13 +34,11 @@
     <div class="add-task-container-left">
       <div class="title-main">
         <div class="title-field">Title</div>
-        <input class="input-field-left-top" type="text" placeholder="Enter a title" required>
-        <div class="required-input-bottom-field"></div>        
+        <input class="input-field-left-top" type="text" placeholder="Enter a title" required>               
       </div>
       <div class="description-main">
         <div class="description-field">Description</div>
-        <textarea class="enter-description-field" placeholder="Enter a Description"></textarea>
-        <div class="required-description-bottom-field"></div>
+        <textarea class="enter-description-field" placeholder="Enter a Description"></textarea>        
       </div>
       <div class="assigned-main">
         <div class="assigned-field">Assigned to</div>
@@ -34,7 +46,7 @@
            <option value="" disabled selected>Select contacts to assign</option>
            <option value="1">One</option>
            <option value="2">Two</option>          
-        </select>
+        </select>      
       </div>
     </div>
 
@@ -43,18 +55,14 @@
     <div class="add-task-container-right">
        <div class="date-container">
          <div class="due-date">Due date</div>
-         <input placeholder="date" class="date-entry-container" type="date" required>
-         <div class="required-description-bottom-field"></div>
+         <input placeholder="date" class="date-entry-container" type="date" required>         
        </div>      
       <div class="prio-container">
        <div class="prio-field">Prio</div>
        <div class="status-container">
-         <div class="status-definition-container">Urgent <img class="prio-images" src="./img/urgent.svg">
-        </div>
-         <div class="status-definition-container">Medium <img class="prio-images" src="./img/medium.svg">
-        </div>
-         <div class="status-definition-container">Low <img class="prio-images" src="./img/low.svg">
-        </div>
+         <div id="urgent_container" onclick="changePrioColor('urgent')" class="status-definition-container">Urgent <img id="urgent_img" class="prio-images" src="./img/urgent.svg"></div>
+         <div id="medium_container" onclick="changePrioColor('medium')" class="status-definition-container">Medium <img id="medium_img" class="prio-images" src="./img/medium.svg"></div>
+         <div id="low_container" onclick="changePrioColor('low')" class="status-definition-container">Low <img id="low_img" class="prio-images" src="./img/low.svg"></div>
        </div>
       </div>
       <div class="category-container">
@@ -86,6 +94,10 @@
 
     </div>
 
+</div>
+
+</div>
+</main>
 </div>
 
 </body>
