@@ -203,3 +203,51 @@
   border-radius: 8px;
   color: white;
 }
+
+.mobile-move-card {
+  padding: 0.8rem;
+  margin: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: var(--primary-dark-blue);
+  fill: white;
+  border-radius: 0.8rem;
+}
+
+.mobile-move-card:active {
+  background-color: var(--secondary-dark-blue);
+}
+
+.task-title-and-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.task-title {
+  color: var(--primary-dark-blue);
+  font-weight: 700;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  -moz-box-lines: multiple;
+  -moz-box-orient: vertical;
+}
+
+.task-description {
+  color: var(--secondary-grey-sidebar);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  -moz-box-lines: multiple;
+  -moz-box-orient: vertical;
+}
