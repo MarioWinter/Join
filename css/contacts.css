@@ -53,13 +53,10 @@
   border: 0.1rem solid #29abe2;
 }
 
-
-
-
 .contacts-better-container {
   display: inline-flex;
   justify-content: flex-end;
-  align-items: center;  
+  align-items: center;
   height: 7.3rem;
   gap: 3rem;
   padding-top: 11rem;
@@ -67,21 +64,204 @@
 }
 
 .contacts-letter {
-  color: #000;  
-  font-size: 6.1rem;  
+  color: #000;
+  font-size: 6.1rem;
   font-weight: 700;
   line-height: 120%; /* 7.32rem */
 }
 
 .vector-line {
   width: 0.3rem;
-  height: 5.9rem;  
-  background-color: #29ABE2;
+  height: 5.9rem;
+  background-color: #29abe2;
 }
 
 .better-team {
-  color: #2A3647;
-  font-size: 2.7rem;  
+  color: #2a3647;
+  font-size: 2.7rem;
   font-weight: 400;
   line-height: 120%; /* 32.4px */
+}
+
+/*overlay-add-contact*/
+.overlay-add-contact {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+  display: flex;
+  flex-direction: row;
+  width: 121.2rem;
+  height: 59.2rem;
+  background: #fff;
+  border-radius: 3rem;
+}
+
+.overlay-container-left {
+  display: inline-flex;
+  width: 46.7rem;
+  height: 59.4rem;
+  padding: 6.6rem 4.8rem !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.2rem;
+  flex-shrink: 0;
+  background: #2a3647;
+  border-bottom-left-radius: 3rem;
+  border-top-left-radius: 3rem;
+}
+
+.add-contact-overlay-icon {
+  width: 5.56rem;
+  height: 6.6483rem;
+  /*position: absolute;*/
+  left: 4.6904rem;
+  top: 15.4rem;
+}
+
+.overlay-letter-add-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: #fff;
+  font-size: 6.1rem;
+  font-weight: 700;
+  line-height: 120%; /* 7.32rem */
+}
+
+.overlay-letters-better {
+  color: #fff;
+  font-size: 2.7rem;
+  font-weight: 400;
+  line-height: 120%; /* 3.24rem */
+}
+
+.overlay-vectorline-horizontal {
+  width: 9rem;
+  height: 0.3rem;
+  background-color: #29abe2;
+}
+
+.overlay-container-right {
+  display: inline-flex;
+  flex-direction: column;
+  width: 74.5rem;
+  border-top-right-radius: 3rem;
+  border-bottom-right-radius: 3rem;  
+}
+
+.overlay-add-contact-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.2rem;
+  padding-top: 13.7rem;
+  padding-left: 27.5rem;
+}
+
+.overlay-close {
+  display: flex;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 5.6rem;
+  padding-left: 66.5rem;
+  padding-top: 4.8rem;  
+}
+
+.oyerlay-close-img {
+  cursor: pointer;
+}
+
+.overlay-input-data {
+  display: flex;
+  width: 42.2rem;
+  padding: 1.3rem 2.1rem;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  font-size: 2rem;
+  line-height: 120%; /* 2.4rem */
+}
+
+.overlay-contact-icons {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  color: #a8a8a8;
+}
+
+.cancel-and-create-container {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.4rem;
+  padding-top: 4.8rem;
+  padding-left: 27.5rem;
+}
+
+.overlay-cancel-button {
+  display: flex;
+  padding: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #2a3647;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 120%; /* 2.4rem */
+  cursor: pointer;
+}
+
+.overlay-cancel-button:hover {
+  background-color: #29abe2;
+}
+
+.overlay-create-contact-button {
+  display: flex;
+  padding: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 1rem;
+  background: #2a3647;
+  color: #fff;  
+  font-size: 2.1rem;  
+  font-weight: 700;
+  line-height: 120%; /* 2.52rem */
+}
+
+.overlay-create-contact-button:hover {
+  background-color: #29abe2;
+}
+
+.overlay-contact-circle {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 27.5rem;
+  height: 59.2rem;
+}
+
+.contact-gray {
+  border-radius: 7rem;
+  border: 0.3rem solid #fff;
+  background: #fff;
+  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.contact-person-white {
+  width: 6.4rem;
+  height: 6.4rem;
+  position: absolute;
 }
