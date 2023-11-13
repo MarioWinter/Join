@@ -24,14 +24,13 @@
 }
 
 .add-task-font {
-  font-size: 6.1rem;  
-  font-weight: 700;  
+  font-size: 6.1rem;
+  font-weight: 700;
 }
 
 .main-container-center {
   display: flex;
   width: 97.7rem;
-  height: 42.4rem;
   flex-shrink: 0;
   gap: 4.825rem;
   padding-top: 4.8rem;
@@ -76,7 +75,7 @@
   border-radius: 1rem;
   border: 0.1rem solid #d1d1d1;
   background: #fff;
-  font-size: 2rem;   
+  font-size: 2rem;
 }
 
 .description-main {
@@ -91,7 +90,7 @@
 .description-field {
   width: 44rem;
   height: 2.4rem;
-  font-size: 2rem;  
+  font-size: 2rem;
   font-weight: 400;
   line-height: 2.4rem;
 }
@@ -123,14 +122,14 @@
   width: 11.2rem;
   height: 2.4rem;
   font-family: Inter;
-  font-size: 2rem;  
+  font-size: 2rem;
   line-height: 2.4rem;
   gap: 0.8rem;
 }
 
 .selected-contacts-field {
   display: flex;
-  width: 44rem;  
+  width: 44rem;
   padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
@@ -138,6 +137,7 @@
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .dividing-line {
@@ -146,7 +146,7 @@
   background-color: #d1d1d1;
 }
 
-.add-task-container-right {    
+.add-task-container-right {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -155,14 +155,14 @@
 
 .date-container {
   display: flex;
-  width: 44rem;  
+  width: 44rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
 }
 
-.due-date {  
-  font-size: 2rem;  
+.due-date {
+  font-size: 2rem;
 }
 
 .date-entry-container {
@@ -175,22 +175,24 @@
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
+  color: gray;
+  cursor: pointer;
 }
 
-.prio-container {  
+.prio-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
 }
 
-.prio-field {  
-  font-size: 2rem;  
+.prio-field {
+  font-size: 2rem;
 }
 
 .status-container {
   display: flex;
-  width: 44rem;  
+  width: 44rem;
   justify-content: center;
   align-items: center;
   gap: 1.6rem;
@@ -204,27 +206,27 @@
   gap: 0.8rem;
   flex: 1 0 0;
   border-radius: 1rem;
-  background: #FFF;
-  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.10);
+  background: #fff;
+  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.1);
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .prio-images {
   width: 2rem;
   height: 1.45rem;
-  cursor: pointer;
 }
 
 .category-container {
   display: flex;
-  width: 44rem;  
+  width: 44rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
 }
 
-.category-field {  
-  font-size: 2rem;  
+.category-field {
+  font-size: 2rem;
 }
 
 .select-category {
@@ -237,18 +239,19 @@
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .subtask-container {
   display: flex;
-  width: 44rem;  
+  width: 44rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
 }
 
-.subtask-field { 
-  font-size: 2rem;  
+.subtask-field {
+  font-size: 2rem;
 }
 
 .adding-new-subtask {
@@ -261,24 +264,17 @@
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
+  cursor: pointer;
 }
-
-
-
-
-
-
 
 .clear-and-create-task-container {
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 1.6rem;
-  
-  
+  width: 97.7rem;
+  padding-top: 13.8rem;
 }
-
-
 
 .clear-container {
   display: flex;
@@ -286,7 +282,7 @@
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
-  font-size: 2rem;  
+  font-size: 2rem;
   border-radius: 1rem;
   border: 0.1rem solid #2a3647;
   background: #f6f7f8;
@@ -300,7 +296,7 @@
   align-items: center;
   gap: 0.4rem;
   font-size: 2.1rem;
-  font-weight: 700;  
+  font-weight: 700;
   border-radius: 1rem;
   color: white;
   background-color: #2a3647;
@@ -308,7 +304,5 @@
 }
 
 select:required:invalid {
-  color: gray;  
+  color: gray;
 }
-
-
