@@ -73,13 +73,24 @@
     align-items: center;
     gap: 1.8rem;
     flex-shrink: 0;
-
 }
 
-.summary-to-do-container img {
-    width: 6.9rem;
-    height: 6.9rem;
+.summary-to-do-container:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark-blue);
+    color: white;
+    scale: 1.1;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
+
+.summary-to-do-container:hover circle {
+    fill: white;
+}
+
+.summary-to-do-container:hover path {
+    fill: var(--primary-dark-blue);
+}
+
 
 .br-radius30-box-sh {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
@@ -118,9 +129,20 @@
     flex-shrink: 0;
 }
 
-.summary-done-container img {
-    width: 6.9rem;
-    height: 6.9rem;
+.summary-done-container:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark-blue);
+    color: white;
+    scale: 1.1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.summary-done-container:hover circle {
+    fill: white;
+}
+
+.summary-done-container:hover path {
+    stroke: var(--primary-dark-blue);
 }
 
 .summary-done-number {
@@ -138,6 +160,14 @@
     justify-content: center;
     align-items: center;
     gap: 6.1rem;
+}
+
+.summary-urgency:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark-blue);
+    color: white !important;
+    scale: 1.1;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .urgent-box {
@@ -186,7 +216,6 @@
 }
 
 .summary-urgent-date {
-    color: var(--secondary-dark-blue);
     font-size: 2.1rem;
     font-style: normal;
     font-weight: 700;
@@ -215,6 +244,14 @@
     gap: 2.8rem;
 }
 
+.summ-overlay-box:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark-blue);
+    color: white !important;
+    scale: 1.1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .summ-overlay-box {
     display: flex;
     width: 16.8rem;
@@ -233,4 +270,28 @@
     font-size: 6.4rem;
     font-style: normal;
     font-weight: 600;
+}
+
+.greet-container {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding-left: 8rem;
+
+}
+
+.greet-box {
+
+    font-size: 4.7rem;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.user-name {
+    color: var(--hover-blue);
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
 }
