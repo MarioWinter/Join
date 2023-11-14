@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="/Join/">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./fonts.css">
+    <link rel="stylesheet" href="./css/add_task.css">
+    <link rel="stylesheet" href="./css/sidebar-header_template.css">   
+    
+    
+    <script src="./script.js"></script>
+    <script src="./js/add_task.js"></script>        
+    <script src="./js/sidebar-header.js"></script>    
+    <script src="html.js"></script>
+
+    
+</head>
+<body onload="includeHTML()">
+  <div class="w3include-container">
+      <div w3-include-html="assets/templates/sidebar_template.html"></div>
+      <main>
+          <div w3-include-html="assets/templates/header_template.html"></div>
+          <div class="add-task-content">
+
+          <div class="add-task-main-container">
+    <div class="add-task-container">
+        <div class="add-task-font">Add Task</div>
+    </div>
+<div class="main-container-center">
+    <div class="add-task-container-left">
+      <div class="title-main">
+        <div class="title-field">Title</div>
+        <input id="enter_title_field" class="input-field-left-top" type="text" placeholder="Enter a title" required>               
+      </div>
+      <div class="description-main">
+        <div class="description-field">Description</div>
+        <textarea id="enter-description_field" class="enter-description-field" placeholder="Enter a Description"></textarea>        
+      </div>
+      <div class="assigned-main">
+        <div class="assigned-field">Assigned to</div>
+        <select id="select_contacts_field" class="selected-contacts-field" required>         
+           <option value="" disabled selected>Select contacts to assign</option>
+           <option value="1">One</option>
+           <option value="2">Two</option>          
+        </select>      
+      </div>
+    </div>
+
+    <div class="dividing-line"></div>
+
+    <div class="add-task-container-right">
+       <div class="date-container">
+         <div class="due-date">Due date</div>
+         <input id="date_field" class="date-entry-container" type="date" required>         
+       </div>      
+      <div class="prio-container">
+       <div class="prio-field">Prio</div>
+       <div class="status-container">
+         <div id="urgent_container" onclick="changePrioColor('urgent')" class="status-definition-container">Urgent <img id="urgent_img" class="prio-images" src="./img/urgent.svg"></div>
+         <div id="medium_container" onclick="changePrioColor('medium')" class="status-definition-container">Medium <img id="medium_img" class="prio-images" src="./img/medium.svg"></div>
+         <div id="low_container" onclick="changePrioColor('low')" class="status-definition-container">Low <img id="low_img" class="prio-images" src="./img/low.svg"></div>
+       </div>
+      </div>
+      <div class="category-container">
+       <div class="category-field">Category</div>
+       <select id="select_category_field" class="select-category" required>
+         <option value="" disabled selected>Select task category</option>
+         <option value="1">Technical Task</option>
+         <option value="2">User Story</option>  
+       </select>
+      </div>
+      <div class="subtask-container">
+       <div class="subtask-field">Subtask</div>
+       <select id="add_new_subtask_field" class="adding-new-subtask" required>
+        <option value="" disabled selected>Add new subtask</option>
+         <option value="1">One</option>
+         <option value="2">Two</option>
+       </select>
+      </div>      
+    </div>
+  </div>
+ 
+  <div class="clear-and-create-task-container">
+   <div id="clear_button" class="clear-container" onclick="clearAllFields()">Clear <img src="./img/cancel.svg"></div>
+   <div id="create_task_button" class="create-task-container" onclick="">Create Task <img src="./img/check.svg"></div>
+  </div>  
+
+    </div>
+  </div>
+
+ </div>
+</main>
+
+</body>
+</html>
