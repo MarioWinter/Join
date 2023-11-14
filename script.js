@@ -15,20 +15,58 @@ async function includeHTML() {
   }
 }
 
+let users = [];
 
 
 
-function renderLogIn(){
-    let log_container = document.getElementById('log_container');
-    log_container.innerHTML = '';
-    log_container.classList.remove('height-sing-up');
-    log_container.innerHTML += renderHtmlLogIn();
+/**
+ * 
+ * This Function render login window
+ *
+ */
+function renderLogIn() {
+  let log_container = document.getElementById('log_container');
+  log_container.innerHTML = '';
+  log_container.classList.remove('height-sing-up');
+  log_container.innerHTML += renderHtmlLogIn();
+}
+/**
+ * Function for render the Sign Up window
+ */
+function renderSignUp() {
+  let log_container = document.getElementById('log_container');
+  log_container.innerHTML = '';
+  log_container.classList.add('height-sing-up');
+  log_container.innerHTML +=
+    renderSignUpHTML();
 }
 
-function renderSignUp(){
-    let log_container = document.getElementById('log_container');
-    log_container.innerHTML = '';
-    log_container.classList.add('height-sing-up');
-    log_container.innerHTML += 
-    renderSignUpHTML();S
-} 
+/**
+ * function for save user data in remoteStorage
+ */
+async function registerUser() {
+  
+  users.push({
+    name: sign_name.value,
+    email: sign_email.value,
+    password: sign_password.value,
+  })
+  resetForm();
+}
+
+function check_pass() {
+  if (document.getElementById('sign_password').value ==
+          document.getElementById('sign_password_confirm').value) {
+      document.getElementById('register_btn').disabled = false;
+  } else {
+      document.getElementById('register_btn').disabled = true;
+  }
+}
+
+function resetForm(){
+  sign_name.value = '';
+  sign_email.value = '';
+  sign_password.value = '';
+  sign_password_confirm.value = '';
+
+}

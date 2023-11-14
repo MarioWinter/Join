@@ -1,10 +1,11 @@
-function renderHtmlLogIn(){
-    return `
+function renderHtmlLogIn() {
+  return `
     <div id="log_in_conatiner" class="log-in-container">
         <h1>Log in</h1>
         <div class="log-in-underline"></div>
         <div class="log-in-input-container">
-          <div class="log-in-input-box">
+         
+        <div class="log-in-input-box">
             <input type="email" /><img
               src="./assets/img/mail.png"
               alt=""
@@ -36,11 +37,11 @@ function renderHtmlLogIn(){
         </div>
       </div>
     `
-    
+
 }
 
-function renderSignUpHTML(){
-    return `
+function renderSignUpHTML() {
+  return `
     <div class="sing-up-container">
         <div onclick="renderLogIn()"
         class="left-arrow"><svg 
@@ -58,10 +59,12 @@ function renderSignUpHTML(){
         </svg></div>
         <h1>Sign up</h1>
         <div class="log-in-underline"></div>
-        <div class="sing-up-content">
+        <form clas="sing-up-content" onsubmit="registerUser(); return false"> 
+        
           <div class="sing-up-input-container">
+          
             <div class="log-in-input-box">
-              <input type="text" placeholder="Name" /><svg
+              <input id="sign_name" required type="text" placeholder="Name" /><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -88,7 +91,7 @@ function renderSignUpHTML(){
               </svg>
             </div>
             <div class="log-in-input-box">
-              <input type="email" placeholder="Email" />
+              <input id="sign_email" required type="email"  placeholder="Email" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -116,7 +119,7 @@ function renderSignUpHTML(){
               </svg>
             </div>
             <div class="log-in-input-box">
-              <input type="password" placeholder="Password" />
+              <input id="sign_password" onchange='check_pass();' required minlength="4" type="password" placeholder="Password" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -144,7 +147,7 @@ function renderSignUpHTML(){
               </svg>
             </div>
             <div class="log-in-input-box">
-              <input type="password" placeholder="Confirm Password" />
+              <input id="sign_password_confirm" onchange='check_pass();' required minlength="4"  type="password" placeholder="Confirm Password" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -182,11 +185,13 @@ function renderSignUpHTML(){
             /><label style="font-size: 2rem" for="sing-up-check"
               >i accept the <a href="#">Privacy policy</a></label
             >
-          </div>
-        </div>
-        <button style="margin-top: 3.2rem" class="btn-log-in" disabled>
+            </div>
+            
+        
+       <div class="sign-up-btn-container"> <button id="register_btn" class="btn-sign-up">
           Sign up
-        </button>
+        </button></div>
+      </form>
       </div>
     `
 }

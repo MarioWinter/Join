@@ -234,7 +234,7 @@ body{
     
   }
 }
-/* sing Up Container */
+/* sign Up Container */
 
 .sing-up-container {
   display: flex;
@@ -281,3 +281,33 @@ body{
   height: 63.4rem !important
 }
 
+
+.sign-up-btn-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
+.sing-up-check-box{
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+  justify-content: center;
+
+}
+
+.btn-sign-up{
+  width: 11rem;
+  height: 4.8rem;
+  background-color: var(--primary-dark-blue);
+  font-size: 2.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  color: white;
+ 
+}
