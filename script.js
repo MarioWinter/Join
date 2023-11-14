@@ -17,7 +17,10 @@ async function includeHTML() {
 
 let users = [];
 
-
+async function init(){
+  loadUsers();
+  renderLogIn();
+}
 
 /**
  * 
@@ -42,7 +45,8 @@ function renderSignUp() {
 }
 
 /**
- * function for save user data in remoteStorage
+ * function for save user data in remoteStorage, first we push infos from register inputs in array "users",
+ * then we send that to remoteStorage 
  */
 async function registerUser() {
   
@@ -50,10 +54,25 @@ async function registerUser() {
     name: sign_name.value,
     email: sign_email.value,
     password: sign_password.value,
-  })
+  });
+  await setItem('users', JSON.stringify(users));
   resetForm();
 }
 
+/**
+ * This function load the users from remoteStorage to local array
+ */
+async function loadUsers(){
+  try {
+      users = JSON.parse(await getItem('users'));
+  } catch(e){
+      console.error('Loading error:', e);
+  }
+}
+
+/**
+ * function to check out if password and confirm password are the same, if yes change button status to clickable.
+ */
 function check_pass() {
   if (document.getElementById('sign_password').value ==
           document.getElementById('sign_password_confirm').value) {
@@ -63,10 +82,12 @@ function check_pass() {
   }
 }
 
+/**
+ * This function reseted the inputs fields from form
+ */
 function resetForm(){
   sign_name.value = '';
   sign_email.value = '';
   sign_password.value = '';
   sign_password_confirm.value = '';
-
 }

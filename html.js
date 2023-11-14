@@ -147,7 +147,7 @@ function renderSignUpHTML() {
               </svg>
             </div>
             <div class="log-in-input-box">
-              <input id="sign_password_confirm" onchange='check_pass();' required minlength="4"  type="password" placeholder="Confirm Password" />
+              <input id=" " onchange='check_pass();' required minlength="4"  type="password" placeholder="Confirm Password" />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
