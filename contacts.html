@@ -23,20 +23,20 @@
       <div w3-include-html="assets/templates/sidebar_template.html"></div>
       <main>
         <div w3-include-html="assets/templates/header_template.html"></div>
-        <div class="contacts-main">
-          
+        <div class="contacts-main">         
 
 
-          <div class="add-new-contact-main">            
+          <div class="add-new-contact-main">              
             
-            <div class="add-new-button">
-              <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./img/primary-contact-icon.svg"/>
-              </div>   
-            </div>    
-
             <div class="contact-list">
+              <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./img/primary-contact-icon.svg"/>
+              </div>  
               <div class="alphabet">A</div>
               <div class="alphabet-vector-line"></div>
+              <div class="contact-container">
+                <div class="contact-circle"></div>
+                <div class="contact-name"></div>
+              </div>
            </div>
            <div class="bar">
               <img class="bar-sign" src="./img/bar-top.svg">

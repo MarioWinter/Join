@@ -6,76 +6,14 @@
 }
 
 .add-new-contact-main {
-  position: relative; 
+  display: flex;
+  justify-content: center;
+  position: relative;
   width: 45.6rem;
   height: 92.8rem;
   flex-shrink: 0;
   background: #fff;
-  box-shadow: 0.4rem 0 0.6rem 0 rgba(0, 0, 0, 0.08);  
-}
-
-.contact-list {
-  position: relative; 
-  display: inline-flex;
-  width: 40rem;
-  padding: 3.2rem 2.4rem;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  padding-left: 2.8rem;
-}
-
-.bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2.4rem;
-  height: 100%;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;  
-}
-
-.bar-sign {  
-  width: 1rem;
-  height: 0.4rem;
-}
-
-.alphabet {
-  display: flex;
-  padding: 1.7rem 3.6rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.8rem;
-  align-self: stretch;
-  color: #000;
-  font-size: 2rem;
-  line-height: 120%; /* 2.4rem */
-}
-
-.alphabet-vector-line {
-  display: flex;
-  padding: 0.8rem 0;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  align-self: stretch;
-  height: 0.2;
-  align-self: stretch;
-  stroke-width: 0.1rem;
-  stroke: #d1d1d1;
-}
-
-.add-new-button {
-  display: flex;
-  width: 45.6rem;
-  padding: 2.25rem 5.2rem;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
+  box-shadow: 0.4rem 0 0.6rem 0 rgba(0, 0, 0, 0.08);
 }
 
 .primary-contact {
@@ -99,6 +37,83 @@
 .primary-contact:hover {
   background-color: #29abe2;
   border: 0.1rem solid #29abe2;
+}
+
+.contact-list {
+  position: relative;
+  display: inline-flex;
+  width: 40rem;
+  padding: 3.2rem 2.4rem;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding-left: 2.8rem;
+}
+
+.alphabet {
+  display: flex;
+  padding: 1.7rem 3.6rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.8rem;
+  align-self: stretch;
+  color: #000;
+  font-size: 2rem;
+  line-height: 120%; /* 2.4rem */
+}
+
+.alphabet-vector-line {
+  display: flex;
+  padding: 0.8rem 0rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+}
+
+.alphabet-vector-line::before {
+  content: "";
+  height: 0.1rem;
+  background-color: #d1d1d1;
+  width: 100%;
+}
+
+.contact-container {
+  display: flex;
+  width: 35.2rem;
+  padding: 1.5rem 2.4rem;
+  align-items: flex-start;
+  gap: 3.5rem;
+}
+
+.contact-circle {
+  width: 4.2rem;
+  height: 4.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 4.5rem;
+  background: #fff;
+}
+
+.bar {
+  position: absolute;
+  width: 2.4rem;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  right: 0;
+}
+
+.bar-sign {
+  width: 1rem;
+  height: 0.4rem;
 }
 
 .contacts-better-container {
