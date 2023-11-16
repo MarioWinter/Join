@@ -54,38 +54,38 @@
     align-items: center;
 }
 
-.at-slider-left-side {
+.slider-left-side {
     display: flex;
     flex-direction: column;
     width: 44rem;
     gap: 1.6rem;
 }
 
-.at-slider-right-side {
+.slider-right-side {
     display: flex;
     flex-direction: column;
     width: 44rem;
     gap: 1.6rem;
 }
 
-.at-slider-title-content {
+.slider-title-content {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
 }
 
-.at-slider-span-style {
+.slider-span-style {
     color: var(--primary-dark-blue);
 }
 
-.at-slider-required-star {
+.slider-required-star {
     color: red;
 }
 
-#at_slider_title_input,
-#at_slider_assignedTo,
-#at_slider_date_input,
-#at_slider_subtask-input {
+#slider_title_input,
+#slider_assignedTo,
+#slider_date_input,
+#slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
     border-radius: 1rem;
     padding: 0 1.6rem;
@@ -95,10 +95,49 @@
     cursor: pointer;
 }
 
-#at_slider_edit-title:focus,
-#at_slider_title-input:focus,
-#at_slider_assignedTo:focus,
-#at_slider_date-input:focus {
+#slider_edit-title:focus,
+#slider_title-input:focus,
+#slider_assignedTo:focus,
+#slider_date-input:focus {
     border: 0.1rem solid var(--hover-blue);
     outline: none;
+}
+
+.slider-error-message {
+    color: red;
+    font-size: 1.2rem;
+    margin-top: 0.4rem;
+}
+
+.slider-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+#description_textarea {
+    padding: 1.2rem 1.6rem 1.2rem 1.6rem;
+    border: 0.1rem solid var(--light-grey-placeholder);
+    border-radius: 1rem;
+    height: 12rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.slider-assigned {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+#slider-assigned_to {
+    background-image: url(/assets/img/arrow-assign-down.svg);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 95%;
+    cursor: pointer;
+}
+
+#slider-assigned_to:hover {
+    border: 0.1rem solid var(--secondary-grey-sidebar);
 }

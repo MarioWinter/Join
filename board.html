@@ -160,25 +160,25 @@
                         </div>
                         <!-- Add Task Content -->
                         <form class="add-task-container" novalidate="">
-                            <div class="at-slider-left-side">
-                                <div class="at-slider-title-content">
-                                    <div class="at-slider-span-style">Title <span
-                                            class="at-slider-required-star">*</span></div>
+                            <div class="slider-left-side">
+                                <div class="slider-title-content">
+                                    <div class="slider-span-style">Title <span class="slider-required-star">*</span>
+                                    </div>
 
-                                    <input required="" placeholder="Enter a title" id="at_slider_title_input"
-                                        type="text" autocomplete="off">
-                                    <div class="at-slider-error-message" id="at_slider_title_error"></div>
+                                    <input required="" placeholder="Enter a title" id="slider_title_input" type="text"
+                                        autocomplete="off">
+                                    <div class="slider-error-message" id="slider_title_error"></div>
                                 </div>
 
-                                <div class="description">
-                                    <span class="span-style">Description</span>
+                                <div class="slider-description">
+                                    <span class="slider-span-style">Description</span>
                                     <textarea required="" placeholder="Enter a Description" name=""
-                                        id="description-textarea" cols="20" rows="10"></textarea>
+                                        id="description_textarea" cols="20" rows="10"></textarea>
                                     <div></div>
                                 </div>
 
                                 <div class="assigned">
-                                    <span class="span-style">Assigned to</span>
+                                    <span class="slider-span-style">Assigned to</span>
                                     <input onclick="openContactOverlay()" id="assignedTo" type="text"
                                         placeholder="Select contacts to assign" autocomplete="off">
                                     <div class="p-relative">
@@ -202,24 +202,24 @@
                                     </div>
                                 </div>
 
-                                <div id="required-info" class="required-info">
-                                    <span><span class="required-star">*</span>This field is required</span>
+                                <div id="required_info" class="required_info">
+                                    <span><span class="slider-required-star">*</span>This field is required</span>
                                 </div>
 
                             </div>
 
-                            <div class="at-slider-right-side">
+                            <div class="slider-right-side">
 
-                                <div class="at-slider-date-container">
-                                    <div class="at-slider-span-style">Due date
-                                        <span class="at-slider-required-star">*</span>
+                                <div class="slider-date-container">
+                                    <div class="slider-span-style">Due date
+                                        <span class="slider-required-star">*</span>
                                     </div>
                                     <input type="date" id="date-input">
-                                    <div class="at-slider-error-message" id="at_slider_date_error"></div>
+                                    <div class="slider-error-message" id="slider_date_error"></div>
                                 </div>
 
                                 <div class="prio">
-                                    <span class="at-slider-span-style">Prio</span>
+                                    <span class="slider-span-style">Prio</span>
                                     <div class="prio-buttons">
                                         <button value="Urgent" onclick=" ChangeButtonColor('urgent-btn', 'urgent-img')"
                                             type="button" id="urgent-btn">Urgent
@@ -238,8 +238,7 @@
                                 </div>
 
                                 <div class="category-container">
-                                    <span class="at-slider-span-style">Category <span
-                                            class="required-star">*</span></span>
+                                    <span class="slider-span-style">Category <span class="required-star">*</span></span>
                                     <select name="Select contacts to assign" id="select-category">
                                         <option value="" disabled="" selected="" hidden="">Select task category
                                         </option>
@@ -250,7 +249,7 @@
                                 </div>
 
                                 <div id="subtask-container" class="subtask-container">
-                                    <span class="at-slider-span-style">Subtasks</span>
+                                    <span class="slider-span-style">Subtasks</span>
                                     <div class="subtask-input-btn">
                                         <input onkeydown="handleEnterKeyPress(event , 'subtask-input')"
                                             id="subtask-input" placeholder="Add new subtask" type="text"
