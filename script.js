@@ -17,7 +17,7 @@ async function includeHTML() {
 
 let users = [];
 
-async function init(){
+async function init() {
   loadUsers();
   renderLogIn();
 }
@@ -49,24 +49,54 @@ function renderSignUp() {
  * then we send that to remoteStorage 
  */
 async function registerUser() {
-  
+  resetForm();
+  let email = document.getElementById('sign_email').value;
+  if (isEmailExists(email)) {
+    emailExist();
+  }
+  else {
+    userToRemoteStorage();
+  }
+  successfulRegistration()
+  }
+
+async function userToRemoteStorage(){
   users.push({
     name: sign_name.value,
     email: sign_email.value,
     password: sign_password.value,
   });
   await setItem('users', JSON.stringify(users));
-  resetForm();
+}
+
+function successfulRegistration(){
+  const sing_up_container = document.getElementById('sing_up_container');
+  sing_up_container.innerHTML = '<span class="register-succesful">Registration successful</span>';
+  
+  // Verzögerung von 2 Sekunden für die Anzeige der Nachricht
+  setTimeout(() => {
+    renderLogIn();
+  }, 1000);
+}
+
+function isEmailExists(email) {
+  return users.some(user => user.email === email);
+}
+
+function emailExist() {
+  let messageElement = document.getElementById('message');
+  messageElement.innerText = 'Die E-Mail ist bereits vorhanden.';
+  messageElement.style.color = 'red';
 }
 
 /**
  * This function load the users from remoteStorage to local array
  */
-async function loadUsers(){
+async function loadUsers() {
   try {
-      users = JSON.parse(await getItem('users'));
-  } catch(e){
-      console.error('Loading error:', e);
+    users = JSON.parse(await getItem('users'));
+  } catch (e) {
+    console.error('Loading error:', e);
   }
 }
 
@@ -75,19 +105,24 @@ async function loadUsers(){
  */
 function check_pass() {
   if (document.getElementById('sign_password').value ==
-          document.getElementById('sign_password_confirm').value) {
-      document.getElementById('register_btn').disabled = false;
+    document.getElementById('sign_password_confirm').value) {
+    document.getElementById('register_btn').disabled = false;
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
   } else {
-      document.getElementById('register_btn').disabled = true;
+    document.getElementById('register_btn').disabled = true;
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
   }
+
 }
 
 /**
- * This function reseted the inputs fields from form
+ * This function reset  inputs fields from form
  */
-function resetForm(){
-  sign_name.value = '';
-  sign_email.value = '';
-  sign_password.value = '';
-  sign_password_confirm.value = '';
+function resetForm() {
+  document.getElementById('sign_name').value = '';
+  document.getElementById('sign_email').value = '';
+  document.getElementById('sign_password').value = '';
+  document.getElementById('sign_password_confirm').value = '';
 }

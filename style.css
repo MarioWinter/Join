@@ -17,11 +17,11 @@ body {
   font-size: 1.6rem;
 }
 
-html{
+html {
   font-size: 0.625em;
 }
 
-body{
+body {
   font-size: 1.6rem;
 }
 
@@ -43,7 +43,7 @@ body{
   display: none !important;
 }
 
-.main-container-index{
+.main-container-index {
   display: flex;
   width: auto;
   height: 100vh;
@@ -61,13 +61,13 @@ body{
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  
+
 }
 
 .log-container {
   width: 65.2rem;
   height: 49.3rem;
-  
+
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   background-color: white;
   border-radius: 30px;
@@ -147,7 +147,7 @@ body{
 
 }
 
-.log-in-input-box input::placeholder{
+.log-in-input-box input::placeholder {
   color: var(--light-grey-placeholder);
 }
 
@@ -220,7 +220,7 @@ body{
   0% {
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) ;
+    transform: translate(-50%, -50%);
     width: 31.3rem;
     height: 40.4rem;
   }
@@ -231,16 +231,17 @@ body{
     transform: translate(0, 0);
     width: 10rem;
     height: 12.1rem;
-    
+
   }
 }
+
 /* sign Up Container */
 
 .sing-up-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -269,7 +270,7 @@ body{
   width: 100%;
 }
 
-.left-arrow{
+.left-arrow {
   position: absolute;
   top: 6rem;
   left: 5rem;
@@ -277,23 +278,27 @@ body{
   height: 5.2rem;
 }
 
-.height-sing-up{
-  height: 63.4rem !important
+.height-sing-up {
+  height: 68.4rem !important
 }
 
 
-.sign-up-btn-container{
+.sign-up-btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 3.2rem;
   margin-left: auto;
   margin-right: auto;
-  
+
+}
+
+#message {
+  margin-inline: auto;
 }
 
 
-.sing-up-check-box{
+.sing-up-check-box {
   display: flex;
   align-items: center;
   margin-top: 1.6rem;
@@ -301,7 +306,7 @@ body{
 
 }
 
-.btn-sign-up{
+.btn-sign-up {
   width: 11rem;
   height: 4.8rem;
   background-color: var(--primary-dark-blue);
@@ -309,5 +314,17 @@ body{
   font-weight: 700;
   border-radius: 8px;
   color: white;
- 
+
+}
+
+.register-succesful {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: var(--hover-blue);
 }
