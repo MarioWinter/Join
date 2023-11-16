@@ -83,7 +83,7 @@
 }
 
 #slider_title_input,
-#slider_assignedTo,
+#slider_assigned_to,
 #slider_date_input,
 #slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
@@ -97,7 +97,7 @@
 
 #slider_edit-title:focus,
 #slider_title-input:focus,
-#slider_assignedTo:focus,
+#slider_assigned_to:focus,
 #slider_date-input:focus {
     border: 0.1rem solid var(--hover-blue);
     outline: none;
@@ -130,14 +130,106 @@
     gap: 0.8rem;
 }
 
-#slider-assigned_to {
-    background-image: url(/assets/img/arrow-assign-down.svg);
+#slider_assigned_to {
+    background-image: url(../assets/img/arrow_drop_down.svg);
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: 95%;
     cursor: pointer;
 }
 
-#slider-assigned_to:hover {
+#slider_assigned_to:hover {
     border: 0.1rem solid var(--secondary-grey-sidebar);
+}
+
+.p-relative {
+    position: relative;
+}
+
+#slider_contact_overlay {
+    position: absolute;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+    background-color: white;
+    max-height: 18rem;
+    overflow-y: auto;
+    border-radius: 1rem;
+}
+
+.slider-contact-label {
+    border-radius: 1rem;
+}
+
+.current-contact-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5.6rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    padding-inline: 0.8rem;
+    cursor: pointer;
+}
+
+.current-contact-slider:hover {
+    background-color: var(--light-grey-placeholder);
+}
+
+.contact-badge {
+    display: flex;
+    border: 0.2rem solid white;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 4.2rem;
+    width: 4.2rem;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.contact-badge:hover {
+    background: rgba(12, 46, 98, 0.12);
+}
+
+.checkbox-container {
+    font-size: 2.4rem;
+    cursor: pointer;
+    caret-color: transparent;
+    display: block;
+    display: flex;
+    align-items: center;
+}
+
+.img-checked {
+    width: 2.4rem;
+    height: 2.4rem;
+    padding-left: 0.15rem;
+    margin-bottom: 0.15rem;
+}
+
+.img-unchecked {
+    padding-right: 0rem;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.img-checked {
+    display: none;
+}
+
+.checkbox-container input:checked ~ .img-checked {
+    display: inline;
+}
+
+.checkbox-container input:checked ~ .img-unchecked {
+    display: none;
+}
+
+.d-flex {
+    display: flex !important;
 }
