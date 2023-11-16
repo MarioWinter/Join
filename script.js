@@ -49,15 +49,16 @@ function renderSignUp() {
  * then we send that to remoteStorage 
  */
 async function registerUser() {
-  resetForm();
+  
   let email = document.getElementById('sign_email').value;
   if (isEmailExists(email)) {
     emailExist();
   }
   else {
     userToRemoteStorage();
+    successfulRegistration();
   }
-  successfulRegistration()
+  
   }
 
 async function userToRemoteStorage(){

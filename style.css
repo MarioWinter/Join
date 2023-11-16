@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0px;
   font-family: 'Inter';
-
+  border: unset;
 }
 
 *:focus {
@@ -66,7 +66,7 @@ body {
 
 .log-container {
   width: 65.2rem;
-  height: 49.3rem;
+  height: 53.3rem;
 
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   background-color: white;
@@ -121,6 +121,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 42.2rem;
+  gap: 3.2rem
 }
 
 .log-in-input-box {
@@ -135,6 +136,7 @@ body {
   margin-top: 1rem;
   gap: 8px;
   height: 4.8rem;
+
 }
 
 .log-in-input-box input {
@@ -145,6 +147,7 @@ body {
   border-color: white;
   font-size: 2rem;
 
+
 }
 
 .log-in-input-box input::placeholder {
@@ -152,7 +155,7 @@ body {
 }
 
 .log-in-checkbox {
-  margin-top: 3rem;
+
   margin-left: 4rem;
   padding: 5px;
   gap: 10px;
@@ -167,7 +170,7 @@ body {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2.2rem;
+  margin-bottom: 4.8rem;
 
 }
 
@@ -186,6 +189,9 @@ body {
   cursor: pointer;
   background-color: var(--hover-blue);
   border-width: 0;
+  box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
 }
 
 .btn-log-in-guest {
@@ -196,12 +202,17 @@ body {
   font-weight: 700;
   border-radius: 8px;
   color: var(--primary-dark-blue);
+  border: 1px solid;
+  border-color: var(--primary-dark-blue);
 }
 
 .btn-log-in-guest:hover {
   cursor: pointer;
   color: var(--hover-blue);
   border-color: var(--hover-blue);
+  box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
 }
 
 .main-logo {
@@ -258,8 +269,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  width: 70%;
+  gap: 1.6rem;
+  width: 42.2rem;
+
 }
 
 .sing-up-input-container {
@@ -315,6 +327,15 @@ body {
   border-radius: 8px;
   color: white;
 
+}
+
+.btn-sign-up:hover {
+  cursor: pointer;
+  background-color: var(--hover-blue);
+  border-width: 0;
+  box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
 }
 
 .register-succesful {
