@@ -2,7 +2,6 @@
 function changePrioColor(prio) {
   let container = document.getElementById(prio + '_container');
   let img = document.getElementById(prio + '_img');
-
   if (container.classList.contains('selected')) {
     settingPrioBackground(container, img, prio, false);
     container.classList.remove('selected');
@@ -59,9 +58,4 @@ function clearAllFields() {
   document.getElementById('select_category_field').selectedIndex = 0;
   document.getElementById('add_new_subtask_field').selectedIndex = 0;
 }
-
-
-
-
-  
 

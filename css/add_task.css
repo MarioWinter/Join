@@ -212,6 +212,10 @@
   cursor: pointer;
 }
 
+.status-definition-container:hover {
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+}
+
 .prio-images {
   width: 2rem;
   height: 1.45rem;
@@ -319,4 +323,14 @@
 
 select:required:invalid {
   color: gray;
+}
+
+.main-container-center input:focus,
+.main-container-center textarea:focus,
+.main-container-center select:focus {
+  border: 0.2rem solid #29abe2;
+}
+
+.empty-field {
+  border: 0.1rem solid #FF8190;  
 }
