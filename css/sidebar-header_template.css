@@ -97,8 +97,6 @@ header {
 
 .w3include-container {
     display: flex;
-    height: 100vh;
-    background-color: var(--primary-light-grey);
 }
 
 .header-title {
