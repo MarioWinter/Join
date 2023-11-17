@@ -1,6 +1,7 @@
 /* Board Header */
 .board-container {
     width: 100%;
+    margin-left: var(--sidebar-width);
     max-width: 120.8rem;
     margin-top: 0.5rem;
     height: auto;
