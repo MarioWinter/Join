@@ -96,7 +96,7 @@
     outline: none;
 }
 
-.slider-error-message {
+.error-message-slider {
     color: red;
     font-size: 1.2rem;
     margin-top: 0.4rem;
@@ -233,6 +233,13 @@
     gap: 0.8rem;
 }
 
+.separator {
+    width: 0.5px;
+    height: 416px;
+    background-color: #d1d1d1;
+    margin: 0 40px;
+}
+
 /* right side */
 
 .right-side-slider {
@@ -253,4 +260,33 @@
     height: 4.8rem;
     border: 0.1rem solid var(--secondary-grey-sidebar);
     border-radius: 1rem;
+}
+
+.prio-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.prio-buttons-container {
+    display: flex;
+    gap: 16px;
+}
+
+.prio-buttons-container button {
+    display: flex;
+    padding: 1.6rem 1.6rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1 0 0;
+    border-radius: 1rem;
+    border: none;
+    background-color: white;
+    box-shadow: 0rem 0rem 0.4rem 0rem rgba(0, 0, 0, 0.1);
+}
+
+.prio-buttons-container button:hover {
+    cursor: pointer;
+    box-shadow: 0rem 0.4rem 0.4rem 0rem rgba(0, 0, 0, 0.251);
 }
