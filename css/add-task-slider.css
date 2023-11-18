@@ -92,8 +92,7 @@
     cursor: pointer;
 }
 
-#slider_edit-title:focus,
-#slider_title-input:focus,
+#title_input_slider:focus,
 #slider_assigned_to:focus,
 #date_input_slider:focus,
 #description_textarea:focus {
