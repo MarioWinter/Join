@@ -359,11 +359,6 @@
     border-radius: 1rem;
     border: 0.1rem solid var(--light-grey-placeholder);
     background-color: white;
-    cursor: pointer;
-    /* background-image: url(../assets/img/add-plus-icon.svg);
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center; */
 }
 
 .subtask-input-slider:focus {
@@ -410,4 +405,52 @@
     padding: 0.6rem 1.6rem;
     justify-content: space-between;
     align-items: center;
+}
+
+.subtask-list-item-slider:hover {
+    background-color: var(--light-grey-placeholder);
+    border-radius: 1rem;
+}
+
+.subtask-icon-container {
+    opacity: 0;
+    margin-right: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.subtask-list-item-slider:hover .subtask-icon-container {
+    opacity: 1;
+}
+
+.subtask-list-item-slider li {
+    font-size: 1.6rem;
+}
+
+.subtask-icon-container img {
+    cursor: pointer;
+}
+
+.subtask-edit-input-container {
+    display: flex;
+    width: 44rem;
+    padding: 0.4rem 1.6rem;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid var(--hover-blue);
+    background-color: white;
+}
+
+.subtask-edit-input {
+    border: none;
+    font-size: 1.6rem;
+}
+
+.subtask-edit-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.4rem;
 }
