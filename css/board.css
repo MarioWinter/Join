@@ -81,7 +81,7 @@
 }
 
 .search-button:hover {
-    border-radius: 50%;
+    border-radius: 100%;
     background-color: var(--light-grey-placeholder);
     cursor: pointer;
 }
