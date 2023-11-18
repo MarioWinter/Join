@@ -14,6 +14,8 @@
 
 .slider-frame {
     width: 111.6rem;
+    display: flex;
+    flex-direction: column;
     padding: 6.4rem 4rem 6.4rem 7.4rem;
     height: 87rem;
     border-radius: 3rem;
@@ -51,8 +53,10 @@
 .add-task-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 3.2rem;
 }
+
 /* left side */
 .left-side-slider {
     display: flex;
@@ -91,7 +95,8 @@
 #slider_edit-title:focus,
 #slider_title-input:focus,
 #slider_assigned_to:focus,
-#date_input_slider:focus {
+#date_input_slider:focus,
+#description_textarea:focus {
     border: 0.1rem solid var(--hover-blue);
     outline: none;
 }
@@ -113,8 +118,15 @@
     border: 0.1rem solid var(--light-grey-placeholder);
     border-radius: 1rem;
     height: 12rem;
+    max-width: 44rem;
+    max-height: 29.3rem;
+    min-height: 5rem;
+    min-width: 44rem;
     font-size: 2rem;
     cursor: pointer;
+    background-image: url(../assets/img/subtask-description-resize.svg);
+    background-repeat: no-repeat;
+    background-position: right 2px bottom 2px;
 }
 
 .slider-assigned {
@@ -235,9 +247,8 @@
 
 .separator {
     width: 0.05rem;
-    height: 41.6rem;
+    height: 42.4rem;
     background-color: var(--light-grey-placeholder);
-    margin: 0 4rem;
 }
 
 /* right side */
@@ -245,6 +256,7 @@
 .right-side-slider {
     display: flex;
     flex-direction: column;
+    margin-right: 2.5rem;
     width: 44rem;
     gap: 1.6rem;
 }
@@ -453,4 +465,62 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.4rem;
+}
+/* footer */
+.footer-subtask-slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 2.5rem;
+    flex: 1;
+}
+
+.clear-create-subtask-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+#clear_btn {
+    display: flex;
+    padding: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    background-color: white;
+    border: 0.1rem solid var(--primary-dark-blue);
+}
+
+#clear_btn:hover {
+    color: var(--hover-blue);
+    border: 0.1rem solid var(--hover-blue);
+    cursor: pointer;
+    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+}
+
+#clear_btn:hover svg path {
+    stroke: var(--hover-blue);
+}
+
+#create_btn {
+    display: flex;
+    padding: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 1rem;
+    background-color: var(--primary-dark-blue);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: white;
+    border: 0.1rem solid var(--primary-dark-blue);
+}
+#create_btn:hover {
+    cursor: pointer;
+    background-color: var(--hover-blue);
+    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+    border: 0.1rem solid var(--hover-blue);
 }
