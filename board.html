@@ -168,7 +168,7 @@
 
                                     <input required="" placeholder="Enter a title" id="title_input_slider" type="text"
                                         autocomplete="off">
-                                    <div class="slider-error-message" id="slider_title_error"></div>
+                                    <div class="error-message-slider" id="title_error_slider"></div>
                                 </div>
 
                                 <div class="slider-description">
@@ -418,17 +418,18 @@
                                 </div>
 
                                 <div class="category-container">
-                                    <span class="span-style-slider">Category <span class="required-star">*</span></span>
-                                    <select name="Select contacts to assign" id="select-category">
+                                    <div class="span-style-slider">Category <span class="required-star-slider">*</span>
+                                    </div>
+                                    <select name="Select contacts to assign" id="select_category">
                                         <option value="" disabled="" selected="" hidden="">Select task category
                                         </option>
                                         <option value="1">Technical Task</option>
                                         <option value="2">User Story</option>
                                     </select>
-                                    <div class="error-message" id="category-error"></div>
+                                    <div class="error-message-slider" id="category_error_slider"></div>
                                 </div>
 
-                                <div id="subtask-container" class="subtask-container">
+                                <div id="subtask_container_slider" class="subtask-container-slider">
                                     <span class="span-style-slider">Subtasks</span>
                                     <div class="subtask-input-btn">
                                         <input onkeydown="handleEnterKeyPress(event , 'subtask-input')"
