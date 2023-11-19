@@ -1,4 +1,4 @@
-.edit-board-slider-frame {
+.ed-task-overlay-frame {
     display: flex;
     width: 52.5rem;
     height: auto;
@@ -38,4 +38,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 5.6rem;
+}
+
+.task-title-overlay-ed {
+    align-self: stretch;
+    font-size: 6.1rem;
+    font-weight: 700;
 }
