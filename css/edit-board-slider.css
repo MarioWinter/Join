@@ -1,0 +1,41 @@
+.edit-board-slider-frame {
+    display: flex;
+    width: 52.5rem;
+    height: auto;
+    padding: 4.8rem 4rem;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2.4rem;
+    border-radius: 3rem;
+    background-color: white;
+    box-shadow: 0rem 0rem 0.4rem 0rem rgba(0, 0, 0, 0.16);
+}
+
+.category-container-ed-brd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.category-tag-ed-brd {
+    display: flex;
+    color: white;
+    padding: 0.4rem 2.4rem;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    background-color: #1fd7c1;
+    font-family: Open Sans;
+    font-size: 2.3rem;
+}
+
+.close-btn-ed-brd {
+    display: flex;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5.6rem;
+}
