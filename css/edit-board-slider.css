@@ -42,11 +42,80 @@
 }
 
 .subheader-task-open {
-    font-size: 2rem;
-    color: var(--primary-dark-blue);
+    display: flex;
+    align-items: center;
     gap: 2.5rem;
+    align-self: stretch;
+    font-size: 2rem;
 }
 
-.span-style-task-open {
-    color: black;
+.label-task-open {
+    color: var(--primary-dark-blue);
+    font-size: 2rem;
+}
+
+.prio-container-style-task-open {
+    display: flex;
+    padding: 0.4rem 1.8rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1rem;
+}
+
+.column-frame-container-task-open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    align-self: stretch;
+}
+
+#assigned_to_contacts_task_open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    align-self: stretch;
+}
+
+.assigned-to-contact-task-open {
+    display: flex;
+    padding: 0.7rem 1.6rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+    gap: 1.6rem;
+}
+
+.contact-badge-task-open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 4.2rem;
+    width: 4.2rem;
+    border-radius: 100%;
+    font-size: 1.2rem;
+}
+
+.contact-name-task-open {
+    font-family: Open Sans;
+    font-size: 19px;
+}
+
+#subtasks_contacts_task_open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    align-self: stretch;
+}
+
+.subtask-task-open {
+    display: flex;
+    height: 3.2rem;
+    padding: 0.6rem 1.6rem;
+    align-items: center;
+    gap: 1.6rem;
 }
