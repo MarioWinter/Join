@@ -119,3 +119,26 @@
     align-items: center;
     gap: 1.6rem;
 }
+
+.delete-edit-container-task-open {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: stretch;
+    gap: 0.8rem;
+}
+
+.del-ed-btn-task-open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.del-ed-btn-task-open:hover {
+    color: var(--hover-blue);
+}
+.del-ed-btn-task-open:hover svg path {
+    fill: var(--hover-blue);
+}
