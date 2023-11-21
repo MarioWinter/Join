@@ -44,6 +44,8 @@ function renderSignUp() {
     renderSignUpHTML();
 }
 
+// sign up //
+
 /**
  * function for save user data in remoteStorage, first we push infos from register inputs in array "users",
  * then we send that to remoteStorage 
@@ -74,7 +76,7 @@ function successfulRegistration(){
   const sing_up_container = document.getElementById('sing_up_container');
   sing_up_container.innerHTML = '<span class="register-succesful">Registration successful</span>';
   
-  // Verzögerung von 2 Sekunden für die Anzeige der Nachricht
+
   setTimeout(() => {
     renderLogIn();
   }, 1000);
@@ -126,4 +128,18 @@ function resetForm() {
   document.getElementById('sign_email').value = '';
   document.getElementById('sign_password').value = '';
   document.getElementById('sign_password_confirm').value = '';
+}
+
+
+// Log in //
+
+function logIn(){
+  let email = document.getElementById('log_in_email');
+  let password = document.getElementById('log_in_password');
+  let user = users.find(u => u.email == email.value && u.password == password.value);
+  console.log(user);
+  if(user) {
+    console.log('User Gefunden')
+  }
+
 }

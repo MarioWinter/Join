@@ -6,14 +6,14 @@ function renderHtmlLogIn() {
   <div class="log-in-input-container">
    
   <div class="log-in-input-box">
-      <input required type="email"  placeholder="Email" /><img
+      <input id="log_in_email" required type="email"  placeholder="Email" /><img
         src="./assets/img/mail.png"
         alt=""
         srcset=""
       />
     </div>
     <div class="log-in-input-box">
-      <input required placeholder="Password"  type="password" /><img
+      <input id="log_in_password" required placeholder="Password"  type="password" /><img
         src="./assets/img/lock.png"
         alt=""
         srcset=""
@@ -31,7 +31,7 @@ function renderHtmlLogIn() {
       >
     </div>
     <div class="btn-log-in-container">
-      <button class="btn-log-in">Log in</button>
+      <button class="btn-log-in" onclick="logIn()">Log in</button>
       <button class="btn-log-in-guest">Guest Log in</button>
     </div>
   </div>
