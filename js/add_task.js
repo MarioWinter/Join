@@ -56,6 +56,6 @@ function clearAllFields() {
   document.getElementById('date_field').value = '';  
   resetContainers();  
   document.getElementById('select_category_field').selectedIndex = 0;
-  document.getElementById('add_new_subtask_field').selectedIndex = 0;
+  document.getElementById('add_new_subtask_field').value = '';
 }
 
