@@ -83,6 +83,7 @@
 }
 
 /* Header Section */
+
 .header {
     display: flex;
     margin-left: var(--sidebar-width);
@@ -154,11 +155,12 @@
     width: 3.2rem;
 }
 
-.header-help-button {
+
+
+.header-help-button:hover {
     height: 3.5rem;
     width: 3.5rem;
 }
-
 /* Submenu Section */
 
 .header-aside {

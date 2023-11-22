@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0px;
     font-family: "Inter";
+    border: unset;
 }
 
 *:focus {
@@ -13,7 +14,6 @@ html {
 }
 
 body {
-
     font-size: 1.6rem;
     background-color: var(--primary-light-grey);
     margin: 0;
@@ -48,38 +48,38 @@ body {
 }
 
 .sing-up-header {
-  width: 25%;
-  position: absolute;
-  right: 2rem;
-  top: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;  
+
+    width: 25%;
+    position: absolute;
+    right: 2rem;
+    top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 }
 
 .log-container {
-  width: 65.2rem;
-  height: 49.3rem;
-  
-  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-  background-color: white;
-  border-radius: 30px;
+    width: 65.2rem;
+    height: 53.3rem;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    background-color: white;
+    border-radius: 30px;
 }
 
 .log-in-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  animation-name: log-in-animation;
-  animation-duration: 1.5s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation-name: log-in-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    opacity: 0;
 }
 
 @keyframes log-in-animation {
@@ -112,6 +112,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 42.2rem;
+    gap: 3.2rem;
 }
 
 .log-in-input-box {
@@ -142,7 +143,6 @@ body {
 }
 
 .log-in-checkbox {
-    margin-top: 3rem;
     margin-left: 4rem;
     padding: 5px;
     gap: 10px;
@@ -157,7 +157,7 @@ body {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2.2rem;
+    margin-bottom: 4.8rem;
 }
 
 .btn-log-in {
@@ -175,6 +175,9 @@ body {
     cursor: pointer;
     background-color: var(--hover-blue);
     border-width: 0;
+    box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
 }
 
 .btn-log-in-guest {
@@ -185,51 +188,56 @@ body {
     font-weight: 700;
     border-radius: 8px;
     color: var(--primary-dark-blue);
+    border: 1px solid;
+    border-color: var(--primary-dark-blue);
 }
 
 .btn-log-in-guest:hover {
     cursor: pointer;
     color: var(--hover-blue);
     border-color: var(--hover-blue);
+    box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
 }
 
 .main-logo {
-  width: 31.3rem;
-  height: 40.4rem;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: moveAndResize 1s ease-in-out forwards;
-  animation-delay: 250ms;
+    width: 31.3rem;
+    height: 40.4rem;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moveAndResize 1s ease-in-out forwards;
+    animation-delay: 250ms;
 }
 
 @keyframes moveAndResize {
-  0% {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) ;
-    width: 31.3rem;
-    height: 40.4rem;
-  }
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 31.3rem;
+        height: 40.4rem;
+    }
 
-  100% {
-    top: 6rem;
-    left: 7rem;
-    transform: translate(0, 0);
-    width: 10rem;
-    height: 12.1rem;
-    
-  }
+    100% {
+        top: 6rem;
+        left: 7rem;
+        transform: translate(0, 0);
+        width: 10rem;
+        height: 12.1rem;
+    }
 }
-/* sing Up Container */
+
+/* sign Up Container */
 
 .sing-up-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -246,8 +254,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    width: 70%;
+    gap: 1.6rem;
+    width: 42.2rem;
 }
 
 .sing-up-input-container {
@@ -267,5 +275,57 @@ body {
 }
 
 .height-sing-up {
-    height: 63.4rem !important;
+    height: 68.4rem !important;
 }
+
+.sign-up-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#message {
+    margin-inline: auto;
+}
+
+.sing-up-check-box {
+    display: flex;
+    align-items: center;
+    margin-top: 1.6rem;
+    justify-content: center;
+}
+
+.btn-sign-up {
+    width: 11rem;
+    height: 4.8rem;
+    background-color: var(--primary-dark-blue);
+    font-size: 2.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    color: white;
+}
+
+.btn-sign-up:hover {
+    cursor: pointer;
+    background-color: var(--hover-blue);
+    border-width: 0;
+    box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+}
+
+.register-succesful {
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: var(--hover-blue);
+}
+
