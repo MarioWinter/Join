@@ -212,6 +212,10 @@
   cursor: pointer;
 }
 
+.status-definition-container:hover {
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+}
+
 .prio-images {
   width: 2rem;
   height: 1.45rem;
@@ -232,14 +236,14 @@
 .select-category {
   display: flex;
   width: 44rem;
-  padding: 1.2rem 1.6rem;
+  padding: 1.2rem 1.6rem !important;
   justify-content: space-between;
   align-items: center;
   border-radius: 1rem;
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
-  cursor: pointer;
+  cursor: pointer;  
 }
 
 .subtask-container {
@@ -263,8 +267,12 @@
   border-radius: 1rem;
   border: 0.1rem solid #d1d1d1;
   background: #fff;
-  font-size: 2rem;
   cursor: pointer;
+}
+
+.subtask-entry-field {
+  border: none !important;
+  font-size: 2rem;  
 }
 
 .clear-and-create-task-container {
@@ -289,6 +297,16 @@
   cursor: pointer;
 }
 
+.clear-container:hover {
+  color: #29abe2;
+  border: 0.2rem solid #29abe2;
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.clear-container:hover path {
+  fill: #29abe2;
+}
+
 .create-task-container {
   display: flex;
   padding: 1.6rem;
@@ -303,6 +321,17 @@
   cursor: pointer;
 }
 
+.create-task-container:hover {
+  background-color: #29abe2;
+}
+
 select:required:invalid {
   color: gray;
+}
+
+.main-container-center input:focus,
+.main-container-center textarea:focus,
+.main-container-center select:focus,
+.adding-new-subtask:focus-within {
+  border: 0.2rem solid #29abe2;
 }

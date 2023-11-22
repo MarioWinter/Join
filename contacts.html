@@ -17,20 +17,36 @@
     <script src="./js/sidebar-header.js"></script>
     <script src="html.js"></script>
     <script src="./js/contacts.js"></script>
+    <script src="./storage.js"></script>
   </head>
   <body onload="includeHTML()">
     <div class="w3include-container">
       <div w3-include-html="assets/templates/sidebar_template.html"></div>
       <main>
         <div w3-include-html="assets/templates/header_template.html"></div>
-        <div class="contacts-main">
-          <div class="add-new-contact-main">
-            <div class="add-new-button">
+        <div class="contacts-main">         
+
+
+          <div class="add-new-contact-main">              
+            
+            <div class="contact-list">
               <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./img/primary-contact-icon.svg"/>
+              </div>  
+              <div class="alphabet">A</div>
+              <div class="alphabet-vector-line"></div>
+              <div class="contact-container">
+                <div class="contact-circle"></div>
+                <div class="contact-name"></div>
               </div>
-            </div>
-            <div class="contact-list"></div>
-          </div>
+           </div>
+           <div class="bar">
+              <img class="bar-sign" src="./img/bar-top.svg">
+              <img class="bar-status" src="./img/bar-vertikal-line.svg">
+              <img class="bar-sign" src="./img/bar-bottom.svg">
+           </div>
+        </div>
+
+        
 
           <div class="contacts-better-container">
             <div class="contacts-letter">Contacts</div>
@@ -51,12 +67,15 @@
             <div class="overlay-close" id="cancel_overlay"><img class="oyerlay-close-img" src="./img/overlay-close.svg" onclick="cancelOverlay()"/>
             </div>
             <div class="overlay-add-contact-container">
-              <input class="overlay-input-data" type="text" placeholder="Name" img class="overlay-contact-icons" src="./img/overlay-person.svg" required />
-              <input class="overlay-input-data" type="email" placeholder="Email" img class="overlay-contact-icons" src="./img/overlay-mail.svg" required />
-              <input class="overlay-input-data" type="tel" placeholder="Phone" img class="overlay-contact-icons" src="./img/overlay-call.svg" required />
+              <div class="overlay-input-data"><input type="text" id="contact_Name" placeholder="Name" required />
+                <img class="overlay-contact-icons" src="./img/overlay-person.svg"></div>
+              <div class="overlay-input-data"><input type="email" id="contact-Email" placeholder="Email" required />
+                <img class="overlay-contact-icons" src="./img/overlay-mail.svg"></div>
+              <div class="overlay-input-data"><input type="tel" id="contact-Phone" placeholder="Phone" pattern="[0-9]*" inputmode="numeric" required />
+                <img class="overlay-contact-icons" src="./img/overlay-call.svg"></div>            
             </div>
             <div class="cancel-and-create-container">
-              <div class="overlay-cancel-button" onclick="cancelEntry()">Cancel <img src="./img/cancel.svg" />
+              <div class="overlay-cancel-button" onclick="clearEntrys()">Cancel <img src="./img/cancel.svg" />
               </div>
               <div class="overlay-create-contact-button">Create contact <img src="./img/overlay-ok.svg" />
               </div>
@@ -72,4 +91,4 @@
       </main>
     </div>
   </body>
-</html>
+</html> 

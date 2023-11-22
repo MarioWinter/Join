@@ -26,9 +26,12 @@ body {
     --secondary-grey-sidebar: rgb(168, 168, 168);
     --hover-blue: rgb(41, 171, 226);
     --primary-light-grey: rgb(246, 247, 248);
-    --light-grey-placeholder: #d1d1d1;
+    --light-grey-placeholder: rgba(209, 209, 209, 0.5);
+    --menu-navy-blue: rgb(67, 83, 112);
     --sidebar-width: 23.2rem;
     --header-height: 9.6rem;
+    --lable-turquoise: rgb(31, 215, 193);
+    --progress-bar-blue: rgb(69, 137, 255);
 }
 
 .d-none {
@@ -45,6 +48,7 @@ body {
 }
 
 .sing-up-header {
+
     width: 25%;
     position: absolute;
     right: 2rem;
@@ -58,7 +62,6 @@ body {
 .log-container {
     width: 65.2rem;
     height: 53.3rem;
-
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     background-color: white;
     border-radius: 30px;
@@ -325,3 +328,4 @@ body {
     font-size: 4rem;
     color: var(--hover-blue);
 }
+
