@@ -1,5 +1,5 @@
 function renderHtmlLogIn() {
-  return `
+  return /*html*/ `
   <div id="log_in_conatiner" class="log-in-container">
   <h1>Log in</h1>
   <div class="log-in-underline"></div>
@@ -21,12 +21,9 @@ function renderHtmlLogIn() {
     </div>
     <div class="log-in-checkbox">
       <input
-        style="margin-right: 10px; color: black"
-        type="checkbox"
-        id="log-in-check"
-        name="log-in-check"
+      id="confirm" type="checkbox"
         checked
-      /><label style="font-size: 2rem" for="log-in-check"
+      /><label  for="confirm"
         >Remember me</label
       >
     </div>
@@ -41,7 +38,7 @@ function renderHtmlLogIn() {
 }
 
 function renderSignUpHTML() {
-  return `
+  return /*html*/ `
   <div id="sing_up_container" class="sing-up-container">
   <div onclick="renderLogIn()"
   class="left-arrow"><svg 
@@ -119,7 +116,7 @@ function renderSignUpHTML() {
         </svg>
       </div>
       <div class="log-in-input-box">
-        <input id="sign_password" onkeyup='check_pass();' required minlength="4" type="password" placeholder="Password" />
+        <input id="sign_password" onkeyup='checkPass();' required minlength="4" type="password" placeholder="Password" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -148,7 +145,7 @@ function renderSignUpHTML() {
       </div>
       
       <div class="log-in-input-box">
-        <input id="sign_password_confirm" onkeyup='check_pass();' required minlength="4"  type="password" placeholder="Confirm Password" />
+        <input id="sign_password_confirm" onkeyup='checkPass();' required minlength="4"  type="password" placeholder="Confirm Password" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

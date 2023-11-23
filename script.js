@@ -106,7 +106,7 @@ async function loadUsers() {
 /**
  * function to check out if password and confirm password are the same, if yes change button status to clickable.
  */
-function check_pass() {
+function checkPass() {
   if (document.getElementById('sign_password').value ==
     document.getElementById('sign_password_confirm').value) {
     document.getElementById('register_btn').disabled = false;
@@ -140,6 +140,7 @@ function logIn(){
   console.log(user);
   if(user) {
     console.log('User Gefunden')
+    window.location = 'summary.html';
   }
 
 }
