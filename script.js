@@ -17,6 +17,7 @@ async function includeHTML() {
 
 let users = [];
 
+
 async function init() {
   loadUsers();
   renderLogIn();
@@ -51,7 +52,7 @@ function renderSignUp() {
  * then we send that to remoteStorage 
  */
 async function registerUser() {
-  
+
   let email = document.getElementById('sign_email').value;
   if (isEmailExists(email)) {
     emailExist();
@@ -60,10 +61,10 @@ async function registerUser() {
     userToRemoteStorage();
     successfulRegistration();
   }
-  
-  }
 
-async function userToRemoteStorage(){
+}
+
+async function userToRemoteStorage() {
   users.push({
     name: sign_name.value,
     email: sign_email.value,
@@ -72,10 +73,10 @@ async function userToRemoteStorage(){
   await setItem('users', JSON.stringify(users));
 }
 
-function successfulRegistration(){
+function successfulRegistration() {
   const sing_up_container = document.getElementById('sing_up_container');
   sing_up_container.innerHTML = '<span class="register-succesful">Registration successful</span>';
-  
+
 
   setTimeout(() => {
     renderLogIn();
@@ -106,7 +107,7 @@ async function loadUsers() {
 /**
  * function to check out if password and confirm password are the same, if yes change button status to clickable.
  */
-function check_pass() {
+function checkPass() {
   if (document.getElementById('sign_password').value ==
     document.getElementById('sign_password_confirm').value) {
     document.getElementById('register_btn').disabled = false;
@@ -133,13 +134,45 @@ function resetForm() {
 
 // Log in //
 
-function logIn(){
-  let email = document.getElementById('log_in_email');
-  let password = document.getElementById('log_in_password');
-  let user = users.find(u => u.email == email.value && u.password == password.value);
-  console.log(user);
-  if(user) {
-    console.log('User Gefunden')
+  function logIn() {
+    let email = document.getElementById('log_in_email');
+    let password = document.getElementById('log_in_password');
+    let user = users.find(u => u.email == email.value && u.password == password.value);
+    console.log(user);
+    if (user) {
+      let currentUser = null;
+      let userIndex = users.findIndex(user => user.email === email);
+      currentUser = users[userIndex];
+      console.log('User Gefunden');
+      document.getElementById('log_message').innerText = "Log in successful"
+      window.location = 'summary.html';
+    }
+    else {
+      document.getElementById('log_message').innerText = 'User not found';
+    }
+
   }
 
-}
+function logIn() {
+  let email = document.getElementById('log_in_email').value;
+  let password = document.getElementById('log_in_password').value;
+
+
+  if (!user) {
+    document.getElementById('log_message').innerText = 'Benutzer nicht gefunden!';
+    return; // Stoppt die Funktion an dieser Stelle
+  }
+
+//   // Überprüfung des Passworts
+//   if (user.password === password) {
+//     // Wenn E-Mail und Passwort übereinstimmen
+//     alert('Login erfolgreich');
+//     setTimeout(() => {
+//       // Weiterleitung zur summary.html nach 2 Sekunden
+//       window.location.href = 'summary.html';
+//     }, 2000);
+//   } else {
+//     // Wenn das Passwort nicht übereinstimmt
+//     alert('Falsches Passwort');
+//   }
+// }

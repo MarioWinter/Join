@@ -142,11 +142,31 @@ body {
     color: var(--light-grey-placeholder);
 }
 
-.log-in-checkbox {
+[type="checkbox"] + label {
+    position: absolute;
     margin-left: 4rem;
-    padding: 5px;
-    gap: 10px;
-}
+  }
+  [type="checkbox"] {
+    position: relative;
+    left: 15px;
+    top: -4px;
+    z-index: 0;
+    -webkit-appearance: none;
+  }
+  [type="checkbox"] + label::before {
+    width: 22px;
+    height: 18px;
+    background-image: url("./assets/img/unchecked.png");
+    display: block;
+    content: "";
+    float: left;
+    margin-right: 5px;
+    z-index: 5;
+    position: relative;
+  }
+  [type="checkbox"]:checked+label::before {
+    background-image: url("./assets/img/checked.png");
+  }
 
 .btn-log-in-container {
     width: 32.2rem;
