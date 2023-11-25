@@ -48,7 +48,6 @@ body {
 }
 
 .sing-up-header {
-
     width: 25%;
     position: absolute;
     right: 2rem;
@@ -142,18 +141,20 @@ body {
     color: var(--light-grey-placeholder);
 }
 
-[type="checkbox"] + label {
+input[type="checkbox"] + label {
     position: absolute;
     margin-left: 4rem;
-  }
-  [type="checkbox"] {
+}
+
+input[type="checkbox"] {
     position: relative;
     left: 15px;
     top: -4px;
     z-index: 0;
-    -webkit-appearance: none;
-  }
-  [type="checkbox"] + label::before {
+    appearance: none;
+}
+
+input[type="checkbox"] + label::before {
     width: 22px;
     height: 18px;
     background-image: url("./assets/img/unchecked.png");
@@ -163,10 +164,11 @@ body {
     margin-right: 5px;
     z-index: 5;
     position: relative;
-  }
-  [type="checkbox"]:checked+label::before {
+}
+
+input[type="checkbox"]:checked + label::before {
     background-image: url("./assets/img/checked.png");
-  }
+}
 
 .btn-log-in-container {
     width: 32.2rem;
@@ -348,4 +350,3 @@ body {
     font-size: 4rem;
     color: var(--hover-blue);
 }
-
