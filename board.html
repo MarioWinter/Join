@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
+    <script src="./js/board.js"></script>
     <script src="./js/sidebar-header.js"></script>
     <script src='./js/add-task-slider.js'></script>
 </head>
@@ -136,6 +137,28 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div id="board_in_progress_section" class="column-section">
+                        <!-- Tasks Column Header -->
+                        <div id="board_in_porogress_section_head" class="column-title-area">
+                            <h3>In progress</h3>
+                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('todo'); handleInputFocus();">
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
+                                </rect>
+                            </svg>
+                        </div>
+                        <!-- To Do Task Drop Zone-->
+                        <div id="in_progress" class="column-drop-zone" ondrop="moveTo('in_progress')"
+                            ondragover="allowDrop(event), hoverDrag('in_progress')"
+                            ondragleave="stopDrag('in_progress')" style="padding: 0px; height: 100%;">
+                            <!-- Task Card -->
+
                         </div>
                     </div>
 
