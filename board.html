@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
+    <script src="./js/render-board.js"></script>
+    <script src="./js/task-move-to.js"></script>
     <script src="./js/board.js"></script>
     <script src="./js/sidebar-header.js"></script>
     <script src='./js/add-task-slider.js'></script>
@@ -78,6 +80,7 @@
                                 </rect>
                             </svg>
                         </div>
+
                         <!-- To Do Task Drop Zone-->
                         <div id="todo" class="column-drop-zone" ondrop="moveTo('todo')"
                             ondragover="allowDrop(event), highlight('todo')" ondragleave="removeHighlight('todo')"
@@ -137,6 +140,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -146,7 +150,7 @@
                             <h3>In progress</h3>
                             <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
-                                onclick="addTaskSlider('in_progress'); handleInputFocus();">
+                                onclick="addTaskSlider('in-progress'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
                                     stroke-linecap="round"></path>
@@ -155,9 +159,9 @@
                             </svg>
                         </div>
                         <!-- To Do Task Drop Zone-->
-                        <div id="in_progress" class="column-drop-zone" ondrop="moveTo('in_progress')"
-                            ondragover="allowDrop(event), highlight('in_progress')"
-                            ondragleave="removeHighlight('in_progress')" style="padding: 0px; height: 100%;">
+                        <div id="in-progress" class="column-drop-zone" ondrop="moveTo('in-progress')"
+                            ondragover="allowDrop(event), highlight('in-progress')"
+                            ondragleave="removeHighlight('in-progress')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
                         </div>
@@ -169,7 +173,7 @@
                             <h3>Await feedback</h3>
                             <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
-                                onclick="addTaskSlider('await_feedback'); handleInputFocus();">
+                                onclick="addTaskSlider('await-feedback'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
                                     stroke-linecap="round"></path>
@@ -178,9 +182,9 @@
                             </svg>
                         </div>
                         <!-- To Do Task Drop Zone-->
-                        <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('await_feedback')"
-                            ondragover="allowDrop(event), highlight('await_feedback')"
-                            ondragleave="removeHighlight('await_feedback')" style="padding: 0px; height: 100%;">
+                        <div id="await-feedback" class="column-drop-zone" ondrop="moveTo('await-feedback')"
+                            ondragover="allowDrop(event), highlight('await-feedback')"
+                            ondragleave="removeHighlight('await-feedback')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
                         </div>
