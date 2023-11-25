@@ -80,7 +80,7 @@
                         </div>
                         <!-- To Do Task Drop Zone-->
                         <div id="todo" class="column-drop-zone" ondrop="moveTo('todo')"
-                            ondragover="allowDrop(event), hoverDrag('todo')" ondragleave="stopDrag('todo')"
+                            ondragover="allowDrop(event), highlight('todo')" ondragleave="removeHighlight('todo')"
                             style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
                             <div class="task-card" id="task-3" onclick="loadTask(3)" ondragstart="startDragging(3)"
@@ -156,8 +156,8 @@
                         </div>
                         <!-- To Do Task Drop Zone-->
                         <div id="in_progress" class="column-drop-zone" ondrop="moveTo('in_progress')"
-                            ondragover="allowDrop(event), hoverDrag('in_progress')"
-                            ondragleave="stopDrag('in_progress')" style="padding: 0px; height: 100%;">
+                            ondragover="allowDrop(event), highlight('in_progress')"
+                            ondragleave="removeHighlight('in_progress')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
                         </div>
@@ -179,8 +179,8 @@
                         </div>
                         <!-- To Do Task Drop Zone-->
                         <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('await_feedback')"
-                            ondragover="allowDrop(event), hoverDrag('await_feedback')"
-                            ondragleave="stopDrag('await_feedback')" style="padding: 0px; height: 100%;">
+                            ondragover="allowDrop(event), highlight('await_feedback')"
+                            ondragleave="removeHighlight('await_feedback')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
                         </div>
@@ -201,7 +201,7 @@
                         </div>
                         <!-- To Do Task Drop Zone-->
                         <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('done')"
-                            ondragover="allowDrop(event), hoverDrag('done')" ondragleave="stopDrag('done')"
+                            ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')"
                             style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
