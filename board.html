@@ -145,7 +145,8 @@
                         <div id="board_in_porogress_section_head" class="column-title-area">
                             <h3>In progress</h3>
                             <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('todo'); handleInputFocus();">
+                                xmlns="http://www.w3.org/2000/svg"
+                                onclick="addTaskSlider('in_progress'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
                                     stroke-linecap="round"></path>
@@ -157,6 +158,51 @@
                         <div id="in_progress" class="column-drop-zone" ondrop="moveTo('in_progress')"
                             ondragover="allowDrop(event), hoverDrag('in_progress')"
                             ondragleave="stopDrag('in_progress')" style="padding: 0px; height: 100%;">
+                            <!-- Task Card -->
+
+                        </div>
+                    </div>
+
+                    <div id="board_await_feedback_section" class="column-section">
+                        <!-- Tasks Column Header -->
+                        <div id="board_await_feedback_section_head" class="column-title-area">
+                            <h3>Await feedback</h3>
+                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                onclick="addTaskSlider('await_feedback'); handleInputFocus();">
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
+                                </rect>
+                            </svg>
+                        </div>
+                        <!-- To Do Task Drop Zone-->
+                        <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('await_feedback')"
+                            ondragover="allowDrop(event), hoverDrag('await_feedback')"
+                            ondragleave="stopDrag('await_feedback')" style="padding: 0px; height: 100%;">
+                            <!-- Task Card -->
+
+                        </div>
+                    </div>
+
+                    <div id="board_done_section" class="column-section">
+                        <!-- Tasks Column Header -->
+                        <div id="board_done_section_head" class="column-title-area">
+                            <h3>Done</h3>
+                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('done'); handleInputFocus();">
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
+                                </rect>
+                            </svg>
+                        </div>
+                        <!-- To Do Task Drop Zone-->
+                        <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('done')"
+                            ondragover="allowDrop(event), hoverDrag('done')" ondragleave="stopDrag('done')"
+                            style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
 
                         </div>
