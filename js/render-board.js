@@ -1,3 +1,6 @@
+let buckets = ['todo', 'in-progress','await-feedback', 'done'];
+let columnHeader = ['To Do', 'In progress', 'Await feedback', 'Done'];
+
 function generateTaskHTML(id, bucket, title, description, duedate, prio, category) {
     return `
             <div class="task-card" id="task${id}" onclick="loadTask(${id})" ondragstart="startDragging(${id})"
@@ -23,6 +26,10 @@ function generateTaskHTML(id, bucket, title, description, duedate, prio, categor
         </div>
     
     `;
+}
+
+function generateNoTaskHTML(bucket) {
+    return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
 
 
