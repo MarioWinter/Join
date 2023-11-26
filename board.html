@@ -20,7 +20,7 @@
     <script src='./js/add-task-slider.js'></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), initBoard()">
     <div class="w3include-container">
         <!-- sidebar template -->
         <div w3-include-html="assets/templates/sidebar_template.html"></div>
@@ -204,7 +204,7 @@
                             </svg>
                         </div>
                         <!-- To Do Task Drop Zone-->
-                        <div id="await_feedback" class="column-drop-zone" ondrop="moveTo('done')"
+                        <div id="done" class="column-drop-zone" ondrop="moveTo('done')"
                             ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')"
                             style="padding: 0px; height: 100%;">
                             <!-- Task Card -->

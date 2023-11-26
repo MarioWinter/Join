@@ -30,7 +30,7 @@ function generateTaskHTML(id, bucket, title, description, duedate, prio, categor
 
 //Template Jason
 addedTasks = [{
-    "id": 1,
+    "id": 0,
     "bucket": "in-progress",
     "title": "Kochwelt Page & Recipe Recommender",
     "description": "Build start page with recipe recommendation.",
@@ -50,7 +50,7 @@ addedTasks = [{
     ]
 },
 {
-    "id": 2,
+    "id": 1,
     "bucket": "done",
     "title": "CSS Architecture Planning",
     "description": "Define CSS naming conventions and structure.",
@@ -71,8 +71,8 @@ addedTasks = [{
     ]
 },
 {
-    "id": 3,
-    "bucket": "await-feedback",
+    "id": 2,
+    "bucket": "todo",
     "title": "HTML Base Template Creation",
     "description": "Create reusable HTML base templates",
     "assigned": ["Alexander Riedel", "Heike Lüdemann"],
@@ -82,7 +82,7 @@ addedTasks = [{
     "subtask": []
 },
 {
-    "id": 4,
+    "id": 3,
     "bucket": "await-feedback",
     "title": "Daily Kochwelt Receipe",
     "description": "Implement daily receipe and portion calculator in JavaScript and HTML",
