@@ -82,7 +82,7 @@
                         </div>
 
                         <!-- To Do Task Drop Zone-->
-                        <div id="todo" class="column-drop-zone" ondrop="moveTo('todo')"
+                        <div id="todo" class="column-drop-zone" ondrop="moveTo('todo'); removeHighlight('todo')"
                             ondragover="allowDrop(event), highlight('todo')" ondragleave="removeHighlight('todo')"
                             style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
@@ -158,8 +158,9 @@
                                 </rect>
                             </svg>
                         </div>
-                        <!-- To Do Task Drop Zone-->
-                        <div id="in-progress" class="column-drop-zone" ondrop="moveTo('in-progress')"
+                        <!-- In Progress Task Drop Zone-->
+                        <div id="in-progress" class="column-drop-zone"
+                            ondrop="moveTo('in-progress'); removeHighlight('in-progress')"
                             ondragover="allowDrop(event), highlight('in-progress')"
                             ondragleave="removeHighlight('in-progress')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
@@ -181,8 +182,9 @@
                                 </rect>
                             </svg>
                         </div>
-                        <!-- To Do Task Drop Zone-->
-                        <div id="await-feedback" class="column-drop-zone" ondrop="moveTo('await-feedback')"
+                        <!-- Await Feedback Task Drop Zone-->
+                        <div id="await-feedback" class="column-drop-zone"
+                            ondrop="moveTo('await-feedback'); removeHighlight('await-feedback')"
                             ondragover="allowDrop(event), highlight('await-feedback')"
                             ondragleave="removeHighlight('await-feedback')" style="padding: 0px; height: 100%;">
                             <!-- Task Card -->
@@ -203,8 +205,8 @@
                                 </rect>
                             </svg>
                         </div>
-                        <!-- To Do Task Drop Zone-->
-                        <div id="done" class="column-drop-zone" ondrop="moveTo('done')"
+                        <!-- Done Task Drop Zone-->
+                        <div id="done" class="column-drop-zone" ondrop="moveTo('done'); removeHighlight('done')"
                             ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')"
                             style="padding: 0px; height: 100%;">
                             <!-- Task Card -->

@@ -86,6 +86,7 @@ function allowDrop(ev) {
 function moveTo(bucket) {
     addedTasks[currentDraggedElement]["bucket"] = bucket;
     updateBoard(bucket);
+    loadBoard();
 }
 
 function highlight(id) {
