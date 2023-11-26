@@ -1,5 +1,43 @@
+let buckets = ['todo', 'in-progress','await-feedback', 'done'];
+let columnHeader = ['To Do', 'In progress', 'Await feedback', 'Done'];
+
+function generateTaskHTML(id, bucket, title, description, duedate, prio, category) {
+    return `
+            <div class="task-card" id="task${id}" onclick="loadTask(${id})" ondragstart="startDragging(${id})"
+            draggable="true">
+            <div class="category-move-card-container">
+                <div class="technical-task">${category}</div>
+                <svg fill="#000000" width="1.6rem" height="1.6rem" viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg" class="mobile-move-card d-none"
+                    onclick="switchToBucket(3, event)">
+                    <path d="M4 14v2l-4-3 4-3v2h12v2H4zm8-12V0l4 3-4 3V4H0V2h12z"
+                        fill-rule="evenodd"></path>
+                </svg>
+            </div>
+            <!-- Title and Description -->
+            <div class="task-title-and-description">
+                <h4 class="task-title" title="${title}">${title}</h4>
+                <div class="task-description">${description}</div>
+            </div>
+            <!-- Subtasks -->
+            
+            <!-- Assignment -->
+            
+        </div>
+    
+    `;
+}
+
+function generateNoTaskHTML(bucket) {
+    return `<div class="no-tasks">No tasks ${bucket}</div>`;
+}
+
+
+
+
+//Template Jason
 addedTasks = [{
-    "id": 1,
+    "id": 0,
     "bucket": "in-progress",
     "title": "Kochwelt Page & Recipe Recommender",
     "description": "Build start page with recipe recommendation.",
@@ -19,7 +57,7 @@ addedTasks = [{
     ]
 },
 {
-    "id": 2,
+    "id": 1,
     "bucket": "done",
     "title": "CSS Architecture Planning",
     "description": "Define CSS naming conventions and structure.",
@@ -40,8 +78,8 @@ addedTasks = [{
     ]
 },
 {
-    "id": 3,
-    "bucket": "await-feedback",
+    "id": 2,
+    "bucket": "todo",
     "title": "HTML Base Template Creation",
     "description": "Create reusable HTML base templates",
     "assigned": ["Alexander Riedel", "Heike Lüdemann"],
@@ -51,7 +89,7 @@ addedTasks = [{
     "subtask": []
 },
 {
-    "id": 4,
+    "id": 3,
     "bucket": "await-feedback",
     "title": "Daily Kochwelt Receipe",
     "description": "Implement daily receipe and portion calculator in JavaScript and HTML",
@@ -73,9 +111,9 @@ addedTasks = [{
 },
 ];
 
-users = [{
-    
-    "usertoken" : ""
-},
 
+users = [
+    {
+        usertoken: "",
+    },
 ];

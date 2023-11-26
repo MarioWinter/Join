@@ -2,166 +2,162 @@
 Include HTML Templates (header/footer)
 --------------------------------------*/
 async function includeHTML() {
-  let includeElements = document.querySelectorAll("[w3-include-html]");
-  for (let i = 0; i < includeElements.length; i++) {
-    const element = includeElements[i];
-    file = element.getAttribute("w3-include-html"); // "includes/header.html"
-    let resp = await fetch(file);
-    if (resp.ok) {
-      element.innerHTML = await resp.text();
-    } else {
-      element.innerHTML = "Page not found";
+    let includeElements = document.querySelectorAll("[w3-include-html]");
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        file = element.getAttribute("w3-include-html"); // "includes/header.html"
+        let resp = await fetch(file);
+        if (resp.ok) {
+            element.innerHTML = await resp.text();
+        } else {
+            element.innerHTML = "Page not found";
+        }
     }
-  }
 }
 
 let users = [];
 
-
 async function init() {
-  loadUsers();
-  renderLogIn();
+    loadUsers();
+    renderLogIn();
 }
 
 /**
- * 
+ *
  * This Function render login window
  *
  */
 function renderLogIn() {
-  let log_container = document.getElementById('log_container');
-  log_container.innerHTML = '';
-  log_container.classList.remove('height-sing-up');
-  log_container.innerHTML += renderHtmlLogIn();
+    let log_container = document.getElementById("log_container");
+    log_container.innerHTML = "";
+    log_container.classList.remove("height-sing-up");
+    log_container.innerHTML += renderHtmlLogIn();
 }
 /**
  * Function for render the Sign Up window
  */
 function renderSignUp() {
-  let log_container = document.getElementById('log_container');
-  log_container.innerHTML = '';
-  log_container.classList.add('height-sing-up');
-  log_container.innerHTML +=
-    renderSignUpHTML();
+    let log_container = document.getElementById("log_container");
+    log_container.innerHTML = "";
+    log_container.classList.add("height-sing-up");
+    log_container.innerHTML += renderSignUpHTML();
 }
 
 // sign up //
 
 /**
  * function for save user data in remoteStorage, first we push infos from register inputs in array "users",
- * then we send that to remoteStorage 
+ * then we send that to remoteStorage
  */
 async function registerUser() {
-
-  let email = document.getElementById('sign_email').value;
-  if (isEmailExists(email)) {
-    emailExist();
-  }
-  else {
-    userToRemoteStorage();
-    successfulRegistration();
-  }
-
+    let email = document.getElementById("sign_email").value;
+    if (isEmailExists(email)) {
+        emailExist();
+    } else {
+        userToRemoteStorage();
+        successfulRegistration();
+    }
 }
 
 async function userToRemoteStorage() {
-  users.push({
-    name: sign_name.value,
-    email: sign_email.value,
-    password: sign_password.value,
-  });
-  await setItem('users', JSON.stringify(users));
+    users.push({
+        name: sign_name.value,
+        email: sign_email.value,
+        password: sign_password.value,
+    });
+    await setItem("users", JSON.stringify(users));
 }
 
 function successfulRegistration() {
-  const sing_up_container = document.getElementById('sing_up_container');
-  sing_up_container.innerHTML = '<span class="register-succesful">Registration successful</span>';
+    const sing_up_container = document.getElementById("sing_up_container");
+    sing_up_container.innerHTML =
+        '<span class="register-succesful">Registration successful</span>';
 
-
-  setTimeout(() => {
-    renderLogIn();
-  }, 1000);
+    setTimeout(() => {
+        renderLogIn();
+    }, 1000);
 }
 
 function isEmailExists(email) {
-  return users.some(user => user.email === email);
+    return users.some((user) => user.email === email);
 }
 
 function emailExist() {
-  let messageElement = document.getElementById('message');
-  messageElement.innerText = 'Die E-Mail ist bereits vorhanden.';
-  messageElement.style.color = 'red';
+    let messageElement = document.getElementById("message");
+    messageElement.innerText = "Die E-Mail ist bereits vorhanden.";
+    messageElement.style.color = "red";
 }
 
 /**
  * This function load the users from remoteStorage to local array
  */
 async function loadUsers() {
-  try {
-    users = JSON.parse(await getItem('users'));
-  } catch (e) {
-    console.error('Loading error:', e);
-  }
+    try {
+        users = JSON.parse(await getItem("users"));
+    } catch (e) {
+        console.error("Loading error:", e);
+    }
 }
 
 /**
  * function to check out if password and confirm password are the same, if yes change button status to clickable.
  */
 function checkPass() {
-  if (document.getElementById('sign_password').value ==
-    document.getElementById('sign_password_confirm').value) {
-    document.getElementById('register_btn').disabled = false;
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
-  } else {
-    document.getElementById('register_btn').disabled = true;
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
-  }
-
+    if (
+        document.getElementById("sign_password").value ==
+        document.getElementById("sign_password_confirm").value
+    ) {
+        document.getElementById("register_btn").disabled = false;
+        document.getElementById("message").style.color = "green";
+        document.getElementById("message").innerHTML = "matching";
+    } else {
+        document.getElementById("register_btn").disabled = true;
+        document.getElementById("message").style.color = "red";
+        document.getElementById("message").innerHTML = "not matching";
+    }
 }
 
 /**
  * This function reset  inputs fields from form
  */
 function resetForm() {
-  document.getElementById('sign_name').value = '';
-  document.getElementById('sign_email').value = '';
-  document.getElementById('sign_password').value = '';
-  document.getElementById('sign_password_confirm').value = '';
+    document.getElementById("sign_name").value = "";
+    document.getElementById("sign_email").value = "";
+    document.getElementById("sign_password").value = "";
+    document.getElementById("sign_password_confirm").value = "";
 }
-
 
 // Log in //
 
-  function logIn() {
-    let email = document.getElementById('log_in_email');
-    let password = document.getElementById('log_in_password');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
+function logIn() {
+    let email = document.getElementById("log_in_email");
+    let password = document.getElementById("log_in_password");
+    let user = users.find(
+        (u) => u.email == email.value && u.password == password.value
+    );
     console.log(user);
     if (user) {
-      let currentUser = null;
-      let userIndex = users.findIndex(user => user.email === email);
-      currentUser = users[userIndex];
-      console.log('User Gefunden');
-      document.getElementById('log_message').innerText = "Log in successful"
-      window.location = 'summary.html';
+        let currentUser = null;
+        let userIndex = users.findIndex((user) => user.email === email);
+        currentUser = users[userIndex];
+        console.log("User Gefunden");
+        document.getElementById("log_message").innerText = "Log in successful";
+        window.location = "summary.html";
+    } else {
+        document.getElementById("log_message").innerText = "User not found";
     }
-    else {
-      document.getElementById('log_message').innerText = 'User not found';
-    }
-
-  }
+}
 
 function logIn() {
-  let email = document.getElementById('log_in_email').value;
-  let password = document.getElementById('log_in_password').value;
+    let email = document.getElementById("log_in_email").value;
+    let password = document.getElementById("log_in_password").value;
 
-
-  if (!user) {
-    document.getElementById('log_message').innerText = 'Benutzer nicht gefunden!';
-    return; // Stoppt die Funktion an dieser Stelle
-  }
+    if (!user) {
+        document.getElementById("log_message").innerText =
+            "Benutzer nicht gefunden!";
+        return; // Stoppt die Funktion an dieser Stelle
+    }
+}
 
 //   // Überprüfung des Passworts
 //   if (user.password === password) {
