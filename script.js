@@ -16,7 +16,12 @@ async function includeHTML() {
 }
 
 let users = [];
+let currentUser;
 
+async function summaryInit(){
+  await includeHTML();
+  loadCurrentUser();
+}
 
 async function init() {
   loadUsers();
@@ -134,45 +139,41 @@ function resetForm() {
 
 // Log in //
 
-  function logIn() {
-    let email = document.getElementById('log_in_email');
-    let password = document.getElementById('log_in_password');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-    console.log(user);
-    if (user) {
-      let currentUser = null;
-      let userIndex = users.findIndex(user => user.email === email);
-      currentUser = users[userIndex];
-      console.log('User Gefunden');
-      document.getElementById('log_message').innerText = "Log in successful"
-      window.location = 'summary.html';
-    }
-    else {
-      document.getElementById('log_message').innerText = 'User not found';
-    }
-
-  }
-
 function logIn() {
   let email = document.getElementById('log_in_email').value;
   let password = document.getElementById('log_in_password').value;
-
-
-  if (!user) {
-    document.getElementById('log_message').innerText = 'Benutzer nicht gefunden!';
-    return; // Stoppt die Funktion an dieser Stelle
+  let user = logInValidation(email, password);
+  console.log(user);
+  if (user) {
+    indexOfUser(email);
+    console.log('User Gefunden');
+    logInSuccedMsg();
   }
+  else {
+    document.getElementById('log_message').innerText = 'User not found';
+  }
+}
 
-//   // Überprüfung des Passworts
-//   if (user.password === password) {
-//     // Wenn E-Mail und Passwort übereinstimmen
-//     alert('Login erfolgreich');
-//     setTimeout(() => {
-//       // Weiterleitung zur summary.html nach 2 Sekunden
-//       window.location.href = 'summary.html';
-//     }, 2000);
-//   } else {
-//     // Wenn das Passwort nicht übereinstimmt
-//     alert('Falsches Passwort');
-//   }
-// }
+function indexOfUser(email){
+  let userIndex = users.findIndex(user => user.email === email);
+  localStorage.setItem('currentUserIndex', userIndex);
+}
+
+function logInValidation(email, password){
+ let user = users.find(u => u.email == email && u.password == password);
+  return user;
+}
+
+function logInSuccedMsg(){
+  document.getElementById('log_message').innerText = "Log in successful";
+  setTimeout(() => {
+      window.location.href = 'summary.html';
+    }, 2000);
+}
+
+function loadCurrentUser(){
+  let currentUserIndex = localStorage.getItem('currentUserIndex');
+if (currentUserIndex !== null) {
+  currentUser = users[parseInt(currentUserIndex)];
+}
+}
