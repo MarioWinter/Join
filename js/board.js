@@ -1,4 +1,6 @@
+
 function initBoard() {
+    loadBoardHeader();
     loadBoard();
 }
 
@@ -18,3 +20,4 @@ function loadNoTasksLabel(bucket) {
         taskColumn.innerHTML = generateNoTaskHTML(bucket);
     }
 }
+
