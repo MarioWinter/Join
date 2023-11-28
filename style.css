@@ -68,6 +68,7 @@ body {
 }
 
 .log-in-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,18 +143,20 @@ body {
     color: var(--light-grey-placeholder);
 }
 
-[type="checkbox"] + label {
+[type="checkbox"]+label {
     position: absolute;
     margin-left: 4rem;
-  }
-  [type="checkbox"] {
+}
+
+[type="checkbox"] {
     position: relative;
     left: 15px;
     top: -4px;
     z-index: 0;
     -webkit-appearance: none;
-  }
-  [type="checkbox"] + label::before {
+}
+
+[type="checkbox"]+label::before {
     width: 22px;
     height: 18px;
     background-image: url("./assets/img/unchecked.png");
@@ -163,10 +166,11 @@ body {
     margin-right: 5px;
     z-index: 5;
     position: relative;
-  }
-  [type="checkbox"]:checked+label::before {
+}
+
+[type="checkbox"]:checked+label::before {
     background-image: url("./assets/img/checked.png");
-  }
+}
 
 .btn-log-in-container {
     width: 32.2rem;
@@ -219,6 +223,13 @@ body {
     box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
     -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
     -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+}
+
+.log-in-msg {
+    position: absolute;
+    top: 24.2rem;
+    left: 22rem;
+
 }
 
 .main-logo {
@@ -348,4 +359,3 @@ body {
     font-size: 4rem;
     color: var(--hover-blue);
 }
-

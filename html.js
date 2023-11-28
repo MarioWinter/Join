@@ -12,6 +12,7 @@ function renderHtmlLogIn() {
         srcset=""
       />
     </div>
+    <div class="log-in-msg" id="log_message"></div>
     <div class="log-in-input-box">
       <input id="log_in_password" required placeholder="Password"  type="password" /><img
         src="./assets/img/lock.png"

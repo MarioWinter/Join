@@ -19,8 +19,10 @@ let users = [];
 let currentUser;
 
 async function summaryInit(){
-  await includeHTML();
+  await loadUsers();
+  includeHTML();
   loadCurrentUser();
+  greetUser();
 }
 
 async function init() {
@@ -150,7 +152,8 @@ function logIn() {
     logInSuccedMsg();
   }
   else {
-    document.getElementById('log_message').innerText = 'User not found';
+    document.getElementById('log_message').innerText = 'Email or password not found';
+    document.getElementById('log_message').style = 'color: red'
   }
 }
 
@@ -168,12 +171,15 @@ function logInSuccedMsg(){
   document.getElementById('log_message').innerText = "Log in successful";
   setTimeout(() => {
       window.location.href = 'summary.html';
-    }, 2000);
+    }, 1000);
 }
 
 function loadCurrentUser(){
-  let currentUserIndex = localStorage.getItem('currentUserIndex');
-if (currentUserIndex !== null) {
-  currentUser = users[parseInt(currentUserIndex)];
+  currentUser = localStorage.getItem('currentUserIndex');
 }
-}
+
+function greetUser(){
+  let greet = document.getElementById('user_name');
+  i = currentUser;
+  greet.innerHTML = `${users[i]['name']}`;
+} 
