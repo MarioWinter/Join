@@ -1,4 +1,4 @@
-let buckets = ['todo', 'in-progress','await-feedback', 'done'];
+let buckets = ['to-do', 'in-progress','await-feedback', 'done'];
 
 
 /**
