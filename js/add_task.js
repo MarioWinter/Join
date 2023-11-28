@@ -1,3 +1,5 @@
+let tasks = [];
+
 // function for prio area
 function changePrioColor(prio) {
   let container = document.getElementById(prio + '_container');
@@ -57,5 +59,41 @@ function clearAllFields() {
   resetContainers();  
   document.getElementById('select_category_field').selectedIndex = 0;
   document.getElementById('add_new_subtask_field').value = '';
+  document.getElementById('select_contacts_field').value = '';
+}
+
+async function taskToRemoteStorage(){
+  users.push({
+    title: id.value,
+    description: id.value,
+    password: sign_password.value,
+  });
+  await setItem('tasks', JSON.stringify(users));
+}
+
+// function for display date today and future
+function getDateToday(){
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("date_field").setAttribute('min', today);
+}
+
+// function to change select contacts area arrow svg-img
+function rotateArrow() {
+  let arrowIcon = document.getElementById('arrow_icon');
+  if (arrowIcon.classList.contains('rotate')) {
+      arrowIcon.classList.remove('rotate');
+  } else {
+      arrowIcon.classList.add('rotate'); 
+  }
+}
+
+// 
+function rotateCategoryArrow() {
+  let categoryArrowIcon = document.getElementById('category_arrow_icon');
+  if (categoryArrowIcon.classList.contains('rotate')) {
+    categoryArrowIcon.classList.remove('rotate');
+  } else {
+    categoryArrowIcon.classList.add('rotate');
+  }
 }
 

@@ -17,10 +17,9 @@
     <script src="./js/sidebar-header.js"></script>    
     <script src="html.js"></script>
     <script src="./storage.js"></script>
-
     
 </head>
-<body onload="includeHTML()">
+<body onload="includeHTML(); getDateToday()">
   <div class="w3include-container">
       <div w3-include-html="assets/templates/sidebar_template.html"></div>
       <main>
@@ -31,11 +30,11 @@
     <div class="add-task-container">
         <div class="add-task-font">Add Task</div>
     </div>
-    <form id="myForm" onsubmit="">
+    <form id="myForm" onsubmit=" ; return false;">
 <div class="main-container-center">
     <div class="add-task-container-left">
       <div class="title-main">
-        <div class="title-field">Title</div>        
+        <div class="title-field">Title*</div>            
         <input id="enter_title_field" class="input-field-left-top" type="text" placeholder="Enter a title" required>               
       </div>
       <div class="description-main">
@@ -44,11 +43,11 @@
       </div>
       <div class="assigned-main">
         <div class="assigned-field">Assigned to</div>
-        <select id="select_contacts_field" class="selected-contacts-field" required>         
-           <option value="" disabled selected>Select contacts to assign</option>
-           <option value="1">One</option>
-           <option value="2">Two</option>          
-        </select>      
+        <div class="selected-contacts-container">
+        <input id="select_contacts_field" class="selected-contacts-field" placeholder="Select contacts to assign" required>
+        <img id="arrow_icon" src="./img/arrow-down.svg" onclick="rotateArrow()" />
+ 
+      </div>        
       </div>
     </div>
 
@@ -56,9 +55,9 @@
 
     <div class="add-task-container-right">
        <div class="date-container">
-         <div class="due-date">Due date</div>
-         <input id="date_field" class="date-entry-container" type="date" required>         
-       </div>      
+         <div class="due-date">Due date*</div>
+         <input id="date_field" class="date-entry-container" type="date" required>
+        </div>      
       <div class="prio-container">
        <div class="prio-field">Prio</div>
        <div class="status-container">
@@ -68,12 +67,29 @@
        </div>
       </div>
       <div class="category-container">
-       <div class="category-field">Category</div>
-       <select id="select_category_field" class="select-category" required>
-         <option value="" disabled selected>Select task category</option>
-         <option value="1">Technical Task</option>
-         <option value="2">User Story</option>  
-       </select>
+       <div class="category-field">Category*</div>
+      
+        
+        <select class="minimal select-category" id="select_category_field" required>
+          <option>Select task category</option>
+          <option>Technical Task</option>
+          <option>User Story</option>
+        </select>
+        
+        
+        
+        <!--<select >
+          <option value="">Select task category</option>
+          <option value="1">Technical Task</option>
+          <option value="2">User Story</option>  
+        </select>
+        
+
+        <img id="category_arrow_icon" src="./img/arrow-down.svg" onclick="rotateCategoryArrow(); showSelectedOptions();"/>
+      -->
+      
+      
+      
       </div>
       <div class="subtask-container">
        <div class="subtask-field">Subtask</div>
@@ -95,7 +111,8 @@
           </g>
            </svg>
    </div>     
-   <div id="create_task_button" class="create-task-container" type="button" onclick="">Create Task <img src="./img/check.svg"></div>   
+   <div id="create_task_button" class="create-task-container" type="button">Create Task <img src="./img/check.svg"></div>   
+  </form> 
   </div>
     </div>
   </div>
