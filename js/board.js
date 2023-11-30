@@ -1,6 +1,7 @@
 
 function initBoard() {
     loadBoard();
+    setTodayDateForCalendar();
 }
 
 

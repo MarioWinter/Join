@@ -239,3 +239,13 @@
     display: flex;
     flex-direction: column;
 }
+
+#calendar_edit_task {
+    border: 0.1rem solid var(--light-grey-placeholder);
+    border-radius: 1rem;
+    padding: 0 1.6rem;
+    height: 4.8rem;
+    font-size: 2rem;
+    font-family: Inter;
+    cursor: pointer;
+}
