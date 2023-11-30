@@ -13,6 +13,7 @@ async function includeHTML() {
             element.innerHTML = "Page not found";
         }
     }
+    loadIdMenuBtn();
 }
 
 let users = [];
