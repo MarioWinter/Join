@@ -1,49 +1,31 @@
-let isSubMenu = false;
-let idMenuBtn;
 
-function showSubmenu() {
-  let subMenu = document.getElementById('sub_menu');
-  if (isSubMenu) {
-    subMenu.classList.add('hide-header-aside');
-    isSubMenu = false;
-  } else {
-    subMenu.classList.remove('hide-header-aside');
-    isSubMenu = true;
+/**
+ * Checks the current path and activates the corresponding menu link if it matches specific page URLs.
+ */
+function checkPath() {
+  let currentPath = window.location.pathname;
+
+  if (currentPath === '/10_Join/Join/summary.html' || currentPath === '/10_Join/Join/add_task.html' || currentPath === '/10_Join/Join/board.html' || currentPath === '/10_Join/Join/contacts.html') {
+      activeMenuLink();
   }
-}
-
-function selectMenuButton(ID) {
-  saveIdMenuBtn(ID);
-  removeButtonSelection();
-  loadIdMenuBtn();
-  let button = document.getElementById(ID);
-  button.classList.add('sidebar-button-selected');
-}
-
-function selectPrivacyButton(ID) {
-  saveIdMenuBtn(ID);
-  removeButtonSelection();
-  loadIdMenuBtn();
-  let button = document.getElementById(ID);
-  button.classList.add('sidebar-privacy-button-selected');
-}
-
-function removeButtonSelection() {
-  for (let i = 1; i <= 6; i++) {
-    let button = document.getElementById(`sidebar_button${i}`);
-    button.classList.remove('sidebar-button-selected');
-    button.classList.remove('sidebar-privacy-button-selected');
+  if (currentPath === '/10_Join/Join/privacy_policy.html' || currentPath === '/10_Join/Join/leagal_notice.html') {
+    activeInfoLink();
   }
+
 }
 
-function saveIdMenuBtn(ID) {
-  idMenuBtn = ID;
-  localStorage.setItem('selected-btn', ID);
+/**
+ * Activates the menu link that corresponds to the current page.
+ */
+function activeMenuLink() {
+  let urlAsId = window.location.pathname.split('/').pop().split('.html')[0] + '_link';
+  document.getElementById(urlAsId).classList.add('sidebar-button-selected');
 }
 
-function loadIdMenuBtn() {
-  idMenuBtn = localStorage.getItem('selected-btn');
-  removeButtonSelection();
-  let button = document.getElementById(idMenuBtn);
-  button.classList.add('sidebar-button-selected');
+/**
+ * Activates the menu link that corresponds to the current page.
+ */
+function activeInfoLink() {
+  let urlAsId = window.location.pathname.split('/').pop().split('.html')[0] + '_link';
+  document.getElementById(urlAsId).classList.add('sidebar-privacy-button-selected');
 }
