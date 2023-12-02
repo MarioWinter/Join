@@ -53,17 +53,19 @@ function changeColorClasses(button, prio) {
 }
 
 function clearPrioButtonColor() {
-    resetBgColor();
-    resetSVGColor();
+    resetBgColorAddTask();
+    resetSVGColorAddTask();
+    resetBgColorEdit();
+    resetSVGColorEdit();
 }
 
-function resetBgColor() {
+function resetBgColorAddTask() {
     document.getElementById("urgent-btn").classList.remove("urgent-btn");
     document.getElementById("medium-btn").classList.remove("medium-btn");
     document.getElementById("low-btn").classList.remove("low-btn");
 }
 
-function resetSVGColor() {
+function resetSVGColorAddTask() {
     document.getElementById("low-btn-svg1").setAttribute("fill", "#7AE229");
     document.getElementById("low-btn-svg2").setAttribute("fill", "#7AE229");
     document.getElementById("medium-btn-svg1").setAttribute("fill", "#FFA800");
@@ -72,10 +74,35 @@ function resetSVGColor() {
     document.getElementById("urgent-btn-svg2").setAttribute("fill", "#FF3D00");
 }
 
+function resetBgColorEdit() {
+    document.getElementById("urgent-btn-edit").classList.remove("urgent-btn-edit");
+    document.getElementById("medium-btn-edit").classList.remove("medium-btn-edit");
+    document.getElementById("low-btn-edit").classList.remove("low-btn-edit");
+}
+
+function resetSVGColorEdit() {
+    document.getElementById("low-btn-edit-svg1").setAttribute("fill", "#7AE229");
+    document.getElementById("low-btn-edit-svg2").setAttribute("fill", "#7AE229");
+    document.getElementById("medium-btn-edit-svg1").setAttribute("fill", "#FFA800");
+    document.getElementById("medium-btn-edit-svg2").setAttribute("fill", "#FFA800");
+    document.getElementById("urgent-btn-edit-svg1").setAttribute("fill", "#FF3D00");
+    document.getElementById("urgent-btn-edit-svg2").setAttribute("fill", "#FF3D00");
+}
+
+
+
 function isClickedCheck() {
     if (isClicked) {
         isClicked = false;
     } else {
         isClicked = true;
     }
+}
+
+
+function setTodayDateForCalendar() {
+let today = new Date().toISOString().split('T')[0];
+document.getElementById('calendar_add_task_slider').setAttribute('min', today);
+document.getElementById('calendar_edit_task').setAttribute('min', today);
+
 }

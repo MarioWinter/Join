@@ -1,6 +1,17 @@
-let buckets = ['todo', 'in-progress','await-feedback', 'done'];
-let columnHeader = ['To Do', 'In progress', 'Await feedback', 'Done'];
+let buckets = ['to-do', 'in-progress','await-feedback', 'done'];
 
+
+/**
+ * this function generates the HTML for the map in the board view
+ * @param {int} id - number of the id for the drag and drop function
+ * @param {string} bucket - Board ID as column name 
+ * @param {string} title - Card title
+ * @param {string} description - Card description
+ * @param {string} duedate - Card duedate
+ * @param {string} prio - Card prio
+ * @param {string} category - Task category
+ * @returns - returns the html text
+ */
 function generateTaskHTML(id, bucket, title, description, duedate, prio, category) {
     return `
             <div class="task-card" id="task${id}" onclick="loadTask(${id})" ondragstart="startDragging(${id})"
@@ -28,6 +39,11 @@ function generateTaskHTML(id, bucket, title, description, duedate, prio, categor
     `;
 }
 
+/**
+ * Generates the To Task HTML label if there are no cards on the column
+ * @param {string} bucket - Board ID as column name 
+ * @returns 
+ */
 function generateNoTaskHTML(bucket) {
     return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
