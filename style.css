@@ -17,6 +17,7 @@ body {
     font-size: 1.6rem;
     background-color: var(--primary-light-grey);
     margin: 0;
+    
 }
 
 :root {
@@ -67,6 +68,7 @@ body {
 }
 
 .log-in-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,20 +143,22 @@ body {
     color: var(--light-grey-placeholder);
 }
 
-input[type="checkbox"] + label {
+
+[type="checkbox"]+label {
     position: absolute;
     margin-left: 4rem;
 }
 
-input[type="checkbox"] {
+
+[type="checkbox"] {
     position: relative;
     left: 15px;
     top: -4px;
     z-index: 0;
-    appearance: none;
+    -webkit-appearance: none;
 }
 
-input[type="checkbox"] + label::before {
+[type="checkbox"]+label::before {
     width: 22px;
     height: 18px;
     background-image: url("./assets/img/unchecked.png");
@@ -166,7 +170,8 @@ input[type="checkbox"] + label::before {
     position: relative;
 }
 
-input[type="checkbox"]:checked + label::before {
+
+[type="checkbox"]:checked+label::before {
     background-image: url("./assets/img/checked.png");
 }
 
@@ -221,6 +226,13 @@ input[type="checkbox"]:checked + label::before {
     box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
     -webkit-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
     -moz-box-shadow: 0px 6px 15px -4px rgba(0, 0, 0, 0.58);
+}
+
+.log-in-msg {
+    position: absolute;
+    top: 24.2rem;
+    left: 22rem;
+
 }
 
 .main-logo {
@@ -350,3 +362,35 @@ input[type="checkbox"]:checked + label::before {
     font-size: 4rem;
     color: var(--hover-blue);
 }
+
+
+.footer-text-container{
+    width: 100%;
+    height: 3.5rem;
+    position: absolute;
+    bottom: 4rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.footer-text{
+    padding: 0.8rem;
+    color: #A8A8A8;
+    text-decoration: none;
+}
+
+.footer-text:hover{
+    color: var(--hover-blue);
+    font-weight: 900;
+}
+
+.sign-up-link{
+    text-decoration: none;
+    color: var(--hover-blue);
+}
+
+.sign-up-link:hover{
+    text-decoration: underline;
+}
+
