@@ -183,7 +183,7 @@ function renderSignUpHTML() {
         name="sing-up-check"
         checked
       /><label style="font-size: 2rem" for="sing-up-check"
-        >i accept the <a href="#">Privacy policy</a></label
+        >i accept the <a class="sign-up-link" href="privacy_policy.html">Privacy policy</a></label
       >
       </div>
       

@@ -17,6 +17,7 @@ body {
     font-size: 1.6rem;
     background-color: var(--primary-light-grey);
     margin: 0;
+    
 }
 
 :root {
@@ -358,4 +359,34 @@ body {
     align-items: center;
     font-size: 4rem;
     color: var(--hover-blue);
+}
+
+.footer-text-container{
+    width: 100%;
+    height: 3.5rem;
+    position: absolute;
+    bottom: 4rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.footer-text{
+    padding: 0.8rem;
+    color: #A8A8A8;
+    text-decoration: none;
+}
+
+.footer-text:hover{
+    color: var(--hover-blue);
+    font-weight: 900;
+}
+
+.sign-up-link{
+    text-decoration: none;
+    color: var(--hover-blue);
+}
+
+.sign-up-link:hover{
+    text-decoration: underline;
 }
