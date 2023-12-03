@@ -30,7 +30,7 @@ function renderHtmlLogIn() {
     </div>
     <div class="btn-log-in-container">
       <button class="btn-log-in" onclick="logIn()">Log in</button>
-      <button class="btn-log-in-guest">Guest Log in</button>
+      <button class="btn-log-in-guest" onclick="logInGuest()">Guest Log in</button>
     </div>
   </div>
 </div>
