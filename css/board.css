@@ -14,6 +14,7 @@
 .main-container-board {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .board-head {
@@ -168,6 +169,18 @@
     border: 0.1rem solid rgba(7, 15, 23, 0);
 }
 
+.no-tasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.8rem;
+    border-radius: 1rem;
+    height: 4.8rem;
+    background-color: var(--primary-light-grey);
+    border: 0.1rem dotted var(--secondary-grey-sidebar);
+    color: var(--secondary-grey-sidebar);
+}
+
 /* Task Card */
 .task-card {
     margin: 1rem;
@@ -301,4 +314,10 @@
     border-radius: 100%;
     color: white;
     font-size: 1.2rem;
+}
+
+.drag-area-highlight {
+    border: 0.1rem dotted var(--secondary-grey-sidebar);
+    border-radius: 3rem;
+    background-color: rgba(168, 168, 168, 0.082);
 }

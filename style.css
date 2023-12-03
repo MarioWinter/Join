@@ -49,7 +49,6 @@ body {
 }
 
 .sing-up-header {
-
     width: 25%;
     position: absolute;
     right: 2rem;
@@ -144,10 +143,12 @@ body {
     color: var(--light-grey-placeholder);
 }
 
+
 [type="checkbox"]+label {
     position: absolute;
     margin-left: 4rem;
 }
+
 
 [type="checkbox"] {
     position: relative;
@@ -168,6 +169,7 @@ body {
     z-index: 5;
     position: relative;
 }
+
 
 [type="checkbox"]:checked+label::before {
     background-image: url("./assets/img/checked.png");
@@ -361,6 +363,7 @@ body {
     color: var(--hover-blue);
 }
 
+
 .footer-text-container{
     width: 100%;
     height: 3.5rem;
@@ -390,3 +393,4 @@ body {
 .sign-up-link:hover{
     text-decoration: underline;
 }
+
