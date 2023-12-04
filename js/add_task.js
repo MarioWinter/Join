@@ -1,4 +1,11 @@
 let tasks = [];
+let subtaskOptions = 0;
+let text = ['Contact Form', 'Write Legal Imprint'];
+let selectedSubtasks = [];
+let firstSubtaskContainerId = 'subtask_display_first';
+let secondSubtaskContainerId = 'subtask_display_second';
+let isFirstContainerFilled = false;
+
 
 // function for prio area
 function changePrioColor(prio) {
@@ -60,6 +67,8 @@ function clearAllFields() {
   document.getElementById('select_category_field').selectedIndex = 0;
   document.getElementById('add_new_subtask_field').value = '';
   document.getElementById('select_contacts_field').value = '';
+  closeSubtaskIcons();
+  document.getElementById('subtask_display_container').innerHTML = '';
 }
 
 async function taskToRemoteStorage(){
@@ -77,23 +86,70 @@ function getDateToday(){
     document.getElementById("date_field").setAttribute('min', today);
 }
 
-// function to change select contacts area arrow svg-img
-function rotateArrow() {
-  let arrowIcon = document.getElementById('arrow_icon');
-  if (arrowIcon.classList.contains('rotate')) {
-      arrowIcon.classList.remove('rotate');
-  } else {
-      arrowIcon.classList.add('rotate'); 
+// function for switsching the two words 
+function handleSubtaskActions() {
+  let input = document.getElementById('add_new_subtask_field');
+  input.value = text[subtaskOptions % text.length];
+  subtaskOptions++;
+  if (subtaskOptions === text.length) {
+    subtaskOptions;
   }
+  if (subtaskOptions) {
+    changingSubtaskIcons();    
+  } else {
+    insertSubtaskContainer('subtask_display_first');
+    insertSubtaskContainer('subtask_display_second');
+    closeSubtaskIcons();
+    input.value = '';
+  }    
 }
 
-// 
-function rotateCategoryArrow() {
-  let categoryArrowIcon = document.getElementById('category_arrow_icon');
-  if (categoryArrowIcon.classList.contains('rotate')) {
-    categoryArrowIcon.classList.remove('rotate');
-  } else {
-    categoryArrowIcon.classList.add('rotate');
+// function to change the subtask icons for adding 
+function changingSubtaskIcons() {
+  document.getElementById('normal_subtask_icon').classList.add('d-none');
+  document.getElementById('three_subtask_icons').classList.remove('d-none');
+}
+
+// function to close the adding icons and back to normal 
+function closeSubtaskIcons() {
+  document.getElementById('normal_subtask_icon').classList.remove('d-none');
+  document.getElementById('three_subtask_icons').classList.add('d-none');  
+  let input = document.getElementById('add_new_subtask_field');
+  input.value = '';
+}
+
+// function for add the selected word
+function addSubtaskToList() {  
+  let input = document.getElementById('add_new_subtask_field');
+  let subtask = input.value.trim();
+  if (subtask !== '') {
+    selectedSubtasks.push(subtask);    
+    input.value = '';
   }
+  closeSubtaskIcons(); 
+}
+
+// function for creating containers for selected words
+function insertSubtaskContainer() {
+  let input = document.getElementById('add_new_subtask_field');
+  let subtask = input.value.trim();
+  if (subtask !== '') {
+    let containerId = isFirstContainerFilled ? 'subtask_display_second' : 'subtask_display_first';
+    let container = document.getElementById(containerId);
+    if (container) {
+      container.classList.remove('d-none');
+      container.innerHTML += `<div>• ${subtask}</div>`; 
+      isFirstContainerFilled = !isFirstContainerFilled; 
+    } else {
+      console.log("Container not found!");
+    }
+  }
+  closeSubtaskIcons();
+}
+
+// function for creating containers for selected words
+function addSubtaskToContainer(subtask, container) {
+  container.classList.remove('d-none');
+  container.innerHTML += `<div>${subtask}</div>`;
 }
 

@@ -9,18 +9,7 @@
 .add-task-main-container {
   display: flex;
   flex-direction: column;
-  width: 144rem;
-  height: 102.4rem;
-  background: #f6f7f8;
   padding-top: 11rem;
-}
-
-.add-task-container {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 27.8rem;
-  height: 7.3rem;
 }
 
 .add-task-font {
@@ -30,7 +19,6 @@
 
 .main-container-center {
   display: flex;
-  width: 97.7rem;
   flex-shrink: 0;
   gap: 4.825rem;
   padding-top: 4.8rem;
@@ -38,7 +26,6 @@
 
 .add-task-container-left {
   display: flex;
-  width: 44rem;
   height: 37.6rem;
   flex-direction: column;
   justify-content: center;
@@ -57,12 +44,7 @@
 }
 
 .title-field {
-  width: 44rem;
-  height: 2.4rem;
   font-size: 2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.4rem;
   color: #2a3647;
 }
 
@@ -78,20 +60,19 @@
   font-size: 2rem;
 }
 
+.input-field-left-top::placeholder {
+  color: #d1d1d1;
+}
+
 .description-main {
   display: flex;
-  width: 44rem;
-  height: 16.8rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
 }
 
 .description-field {
-  width: 44rem;
-  height: 2.4rem;
   font-size: 2rem;
-  font-weight: 400;
   line-height: 2.4rem;
 }
 
@@ -101,7 +82,6 @@
   height: 13.6rem;
   padding: 1.8rem 1.6rem;
   align-items: flex-start;
-  gap: 1rem;
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1px solid #d1d1d1;
@@ -109,9 +89,12 @@
   font-size: 2rem;
 }
 
+.enter-description-field::placeholder {
+  color: #d1d1d1;
+}
+
 .assigned-main {
   display: flex;
-  width: 44rem;
   height: 8rem;
   flex-direction: column;
   align-items: flex-start;
@@ -119,10 +102,8 @@
 }
 
 .assigned-field {
-  width: 11.2rem;
-  height: 2.4rem;  
   font-size: 2rem;
-  line-height: 2.4rem;  
+  line-height: 2.4rem;
 }
 
 .selected-contacts-container {
@@ -143,6 +124,10 @@
   font-size: 2rem;
 }
 
+.selected-contacts-field::placeholder {
+  color: #000;
+}
+
 .dividing-line {
   width: 1px;
   height: 42.4rem;
@@ -154,6 +139,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 2.4rem;
+  flex-shrink: 0;
 }
 
 .date-container {
@@ -171,18 +157,16 @@
 .date-entry-container {
   display: flex;
   padding: 1.2rem 1.6rem;
-  justify-content: space-between;
-  align-items: center;
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1rem solid #d1d1d1;
   background: #fff;
   font-size: 2rem;
-  color: gray;
   cursor: pointer;
 }
 
-.prio-container {
+.prio-container,
+.category-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -224,66 +208,36 @@
   height: 1.45rem;
 }
 
-.category-container {
-  display: flex;
-  width: 44rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.8rem;
-}
-
 .category-field {
   font-size: 2rem;
 }
 
-.select-category {
-  display: flex;
+.select-category { 
   width: 44rem;
-  padding: 1.2rem 1.6rem !important;
-  justify-content: space-between;  
-  border-radius: 1rem;
-  border: 0.1rem solid #d1d1d1;
-  background: #fff;
-  font-size: 2rem;
-  cursor: pointer;  
+  padding: 1.2rem 1.6rem !important;   
+  font-size: 2rem;  
 }
 
-
-
-
-
-select.minimal {  
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%),
+select.minimal {
+  background-image: linear-gradient(45deg, transparent 50%, #2a3647 50%),
+    linear-gradient(135deg, #2a3647 50%, transparent 50%),
     linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 20px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat; 
-  font-size: 2rem;  
+  background-position: calc(100% - 25px) calc(1em + 2px),
+    calc(100% - 20px) calc(1em + 2px), calc(0% - 1.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  font-size: 2rem;
   -webkit-appearance: none;
   appearance: none;
 }
 
 select.minimal:focus {
-  background-image:
-    linear-gradient(45deg, green 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, green 50%),
+  background-image: linear-gradient(45deg, #2a3647 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, #2a3647 50%),
     linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 15px) 1em,
-    calc(100% - 20px) 1em,
-    calc(100% - 2.5em) 0.5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
+  background-position: calc(100% - 20px) 1em, calc(100% - 25px) 1em,
+    calc(0% - 1.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
   background-repeat: no-repeat;
   border-color: #29abe2;
   outline: 0;
@@ -294,38 +248,9 @@ select:-moz-focusring {
   text-shadow: 0 0 0 #000;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-select {
-  font-size: 2rem;
-  border: none;
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
+select.minimal .placeholder {
+  display: none;
 }
-
-.select-category select:focus {
-  width: 100%;    
-}
-
-.select-category select:focus option[value=""] {
-  display: none;  
-}
-
-select:required:invalid {
-  color: gray;
-}*/
 
 .subtask-container {
   display: flex;
@@ -339,11 +264,15 @@ select:required:invalid {
   font-size: 2rem;
 }
 
-.adding-new-subtask {
+.adding-new-subtask {  
+  padding: 1.2rem 1.6rem;  
+  align-items: center;    
+}
+
+.adding-new-subtask,
+.select-category {
   display: flex;
-  padding: 1.2rem 1.6rem;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; 
   align-self: stretch;
   border-radius: 1rem;
   border: 0.1rem solid #d1d1d1;
@@ -353,7 +282,45 @@ select:required:invalid {
 
 .subtask-entry-field {
   border: none !important;
-  font-size: 2rem;  
+  font-size: 2rem;
+}
+
+.subtask-entry-field::placeholder {
+  color: #d1d1d1;
+}
+
+.subtask-display {  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+  flex-direction: row-reverse; 
+  align-self: stretch;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.6rem;  
+  overflow-y: auto;  
+}
+
+.icons-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.subtask-icons:hover {
+  background-color: rgb(233, 233, 233);
+  border-radius: 50%;
+}
+.subtask-icon-size {
+  height: 22px;
+  cursor: pointer;
+}
+
+
+.required-advise {
+  font-size: 2rem;
+  padding-right: 44.8rem;
+  padding-top: 3rem;
 }
 
 .clear-and-create-task-container {
@@ -380,19 +347,13 @@ select:required:invalid {
 
 .clear-container:hover {
   color: #29abe2;
-  border: 0.2rem solid #29abe2;
+  border: 1px solid #29abe2;
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
-}
-
-.clear-container:hover path {
-  fill: #29abe2;
 }
 
 .create-task-container {
   display: flex;
   padding: 1.6rem;
-  justify-content: center;
-  align-items: center;
   gap: 0.4rem;
   font-size: 2.1rem;
   font-weight: 700;
@@ -404,6 +365,7 @@ select:required:invalid {
 
 .create-task-container:hover {
   background-color: #29abe2;
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .main-container-center input:focus,
@@ -418,7 +380,18 @@ select:required:invalid {
 }
 
 .rotate {
-  transform: rotate(180deg); 
-  transition: transform 0.3s ease; 
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.star {
+  color: #ff8190;
+}
+
+.normal-subtask-icon:hover,
+.clear-container:hover path {
+  background-color: rgb(233, 233, 233);
+  border-radius: 50%;
+  fill: #29abe2;
 }
 
