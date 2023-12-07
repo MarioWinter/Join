@@ -75,9 +75,20 @@ async function userToRemoteStorage() {
         name: sign_name.value,
         email: sign_email.value,
         password: sign_password.value,
+        bgcolor: getRandomColor(),
     });
     await setItem("users", JSON.stringify(users));
 }
+
+function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 /**
  * Information that registration was successful and we will be redirected
  */
