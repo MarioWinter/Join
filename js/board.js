@@ -82,11 +82,11 @@ function loadCategoryColor(category) {
 
 function showFrame(id) {
     document.getElementById(id).classList.add('slider-bg');
+    document.getElementById(id).classList.remove('slider-center');
     document.getElementById(id).classList.remove('d-none');
 }
 
 function closeFrame(id) {
-    document.getElementById(id).classList.remove('slider-bg');
     document.getElementById(id).classList.add('d-none');
 }
 
@@ -123,4 +123,9 @@ function generateUserBadge(fullName) {
     let firstNameInitial = nameParts[0] ? nameParts[0].charAt(0).toUpperCase() : '';
     let lastNameInitial = nameParts[1] ? nameParts[1].charAt(0).toUpperCase() : '';
     return firstNameInitial + lastNameInitial;
+}
+
+function formatDueDate(dueDate) {
+    let duedate = dueDate.replace('-', '/');
+    return duedate;
 }
