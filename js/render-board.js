@@ -167,13 +167,9 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
 
                         <!-- task overlay subtasks-->
                         <div class="column-frame-container-task-open">
-                            <div class="label-task-open">Subtasks</div>
+                            <div id="label_task_open_subtask" class="label-task-open">Subtasks</div>
                             <div id="task_overlay_subtasks_container">
                                 <!-- substasks -->
-                                <div class="log-in-checkbox">
-                                    <input id="confirm" type="checkbox" />
-                                    <label class="checkbox-hover" for="confirm">Remember me</label>
-                                </div>
 
                             </div>
                         </div>
@@ -228,6 +224,16 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
         </div>
     
     `;
+}
+
+function generateSubtasksHTML(subtitle, i, ID){
+    return `
+    <div class="log-in-checkbox">
+        <input id="${ID}_confirm_subtask${i}" type="checkbox" onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})"/>
+        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
+    </div>
+    `;
+
 }
 
 
