@@ -25,6 +25,7 @@ function loadTask(id, title, description, prio, category, subtasks, assigneds, d
     document.getElementById('task_overlay_bg').innerHTML = 
     generateTaskOverlayHTML(id, title, description, category, categoryColor, subtasks, assigneds, duedate);
     loadTaskOpenPrio(prio, 'task_open_prio');
+    loadAssignedsOpenTask(assigneds, id);
 }
 
 function loadTaskOpenPrio(prio, id) {
@@ -36,4 +37,15 @@ function loadTaskOpenPrio(prio, id) {
     } else if (prio === "Low") {
         taskPrioIcon.innerHTML = `<div>${prio}</div> ${generateLowPrioIcon()}`;
     }
+}
+
+function loadAssignedsOpenTask(assigneds, id) {
+    document.getElementById('assigned_to_contacts_task_open').innerHTML = "";
+    for (let i = 0; i < assigneds.length; i++) {
+        let badgeColor = getRandomColor();
+        let assignedUserName = assigneds[i];
+        let userBadge = generateUserBadge(assignedUserName);
+        document.getElementById('assigned_to_contacts_task_open').innerHTML +=
+        generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id);
+    };
 }

@@ -117,6 +117,7 @@ function generateUrgentPrioIcon() {
 }
 
 
+
 function generateTaskOverlayHTML(id, title, description, category, categoryColor, subtasks, assigneds, duedate) {
     return `
     <div id="ed_task_overlay_frame" class="task-overlay-frame-open">
@@ -160,18 +161,7 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
                         <div class="column-frame-container-task-open">
                             <div class="label-task-open">Assigned To:</div>
                             <div id="assigned_to_contacts_task_open">
-
-                                <div class="assigned-to-contact-task-open">
-                                    <div id="contect_badge0" class="contact-badge-task-open"
-                                        style="background-color: rgb(180, 147, 161);">HL</div>
-                                    <div class="contact-name-task-open">Heike Lüdemann </div>
-                                </div>
-                                <div class="assigned-to-contact-task-open">
-                                    <div id="contect_badge0" class="contact-badge-task-open"
-                                        style="background-color: rgb(180, 147, 161);">HL</div>
-                                    <div class="contact-name-task-open">Heike Lüdemann </div>
-                                </div>
-
+                                
                             </div>
                         </div>
 
@@ -229,7 +219,16 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
     `;
 }
 
-
+function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
+    return `
+        <div class="assigned-to-contact-task-open">
+            <div id="contect_badge${id}" class="contact-badge-task-open"
+                style="background-color: ${badgeColor};">${userBadge}</div>
+            <div class="contact-name-task-open">${assignedUserName}</div>
+        </div>
+    
+    `;
+}
 
 
 //Template Jason
