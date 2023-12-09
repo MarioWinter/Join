@@ -125,7 +125,13 @@ function generateUserBadge(fullName) {
     return firstNameInitial + lastNameInitial;
 }
 
+/**
+ * Converts the date to the correct format
+ * @param {string} dueDate - Contains the date from the DueDate specification
+ * @returns 
+ */
 function formatDueDate(dueDate) {
-    let duedate = dueDate.replace('-', '/');
+    let dateParts = dueDate.split('-');
+    let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
     return duedate;
 }

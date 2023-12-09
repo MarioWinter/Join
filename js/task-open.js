@@ -8,7 +8,7 @@ function loadTaskOpen(id) {
         let title = task['title'];
         let description = task['description'];
         let prio = task['prio'];
-        let duedate = task['duedate'];
+        let duedate = formatDueDate(task['duedate']);
         let category = task['category'];
         let subtasks = task['subtask'];
         let assigneds = task['assigned'];
