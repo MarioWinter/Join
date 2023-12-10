@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -10,7 +12,7 @@
     <link rel="stylesheet" href="./fonts.css">
     <link rel="stylesheet" href="./css/add_task.css">
     <link rel="stylesheet" href="./css/sidebar-header_template.css">   
-    
+    <link rel="stylesheet" href="./css/mobile-header-footer.css">
     
     <script src="./script.js"></script>
     <script src="./js/add_task.js"></script>        
@@ -20,11 +22,13 @@
     
 </head>
 <body onload="includeHTML(); getDateToday()">
+
   <div class="w3include-container">
-      <div w3-include-html="assets/templates/sidebar_template.html"></div>
-      <main>
-          <div w3-include-html="assets/templates/header_template.html"></div>
-          <div class="add-task-content">
+    <div w3-include-html="assets/templates/sidebar_template.html"></div>
+    <main>
+      <div w3-include-html="assets/templates/header_template.html"></div>
+      <div class="add-task-content">
+
 
           <div class="add-task-main-container">
     <div class="add-task-container">
@@ -51,7 +55,9 @@
       </div>
     </div>
 
-    <div class="dividing-line"></div>
+
+              <div class="dividing-line"></div>
+
 
     <div class="add-task-container-right">
        <div class="date-container">
@@ -112,5 +118,7 @@
   </div>
  </div>
 </main>
+
 </body>
+
 </html>
