@@ -80,27 +80,15 @@
         <input onclick="handleSubtaskActions()" class="subtask-entry-field" id="add_new_subtask_field" placeholder="Add new subtask" required>
        <img id="normal_subtask_icon" class="normal-subtask-icon" onclick="changingSubtaskIcons(), handleSubtaskActions()" src="./img/add-task-plus.svg">
         <div id="three_subtask_icons" class="three-subtask-icons d-none">
-         <img id="adding_subtask_icon-c" class="subtask-icons subtask-icon-size" src="./img/cancel.svg" onclick="closeSubtaskIcons()">
-         <img class="subtask-icon-size" src="./img/vector-line.svg">
-         <img id="adding_subtask_icon-ok" class="subtask-icons subtask-icon-size" onclick="insertSubtaskContainer()" src="./img/check-dark.svg">
+         <img id="adding_subtask_icon-c" class="subtask-icons" src="./img/cancel.svg" onclick="closeSubtaskIcons()">
+         <img src="./img/vector-line.svg">
+         <img id="adding_subtask_icon-ok" class="subtask-icons" onclick="displaySubtasks()" src="./img/check-dark.svg">
         </div> 
-      </div>     
-      
-      <div id="subtask_display_first" class="subtask-display d-none">
-        <div id="subtask_first_container" class="subtask-first-container">
-          <img class="subtask-icons subtask-icon-size" src="./img/pencil-icon.svg">
-          <img src="./img/vector-line.svg">
-          <img class="subtask-icons subtask-icon-size" src="./img/delete-icon.svg">    
-        </div>
-      </div>
-      <div id="subtask_display_second" class="subtask-display d-none">
-        <div id="subtask_second_container" class="subtask-second-container">
-          <img class="subtask-icons subtask-icon-size" src="./img/pencil-icon.svg">
-          <img src="./img/vector-line.svg">
-          <img class="subtask-icons subtask-icon-size" src="./img/delete-icon.svg">    
-        </div>
-      </div>
-      </div>      
+      </div> 
+        
+        <div id="subtask_display_container" class="subtask-display d-none">        
+        </div>  
+      </div>  
     </div>
   </div>
 </form>
