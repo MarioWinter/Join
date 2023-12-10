@@ -52,16 +52,15 @@ function loadAssignedsOpenTask(assigneds, id) {
     };
 }
 
-function loadSubtasks(subtasks, id, ID) {
-    let subtasksContainer = document.getElementById(id);
+function loadSubtasks(subtasks, elementID, index) {
+    let subtasksContainer = document.getElementById(elementID);
     subtasksContainer.innerHTML = "";
     if(subtasks.length > 0) {
         for (let i = 0; i < subtasks.length; i++) {
             let subtask = subtasks[i];
             let subdone = subtask['subdone'];
             let subtitle = subtask['subtitle'];
-            subtasksContainer.innerHTML += generateSubtasksHTML(subtitle, i, ID);
-            checkSubtask(subdone, `${ID}_confirm_subtask${i}`);
+            subtasksContainer.innerHTML += checkSubtask(subdone, subtitle, i, index);
         }
     } else
     {
@@ -71,10 +70,12 @@ function loadSubtasks(subtasks, id, ID) {
 
 
 
-function checkSubtask(subdone, id) {
+function checkSubtask(subdone, subtitle, i, index) {
     if (subdone) {
-        let confirmCheckbox = document.getElementById(id);
-        confirmCheckbox.checked = true;
+        return generateSubtasksCheckedHTML(subtitle, i, index);
+    } else
+    {
+        return generateSubtasksHTML(subtitle, i, index);
     }
 }
 
@@ -91,7 +92,5 @@ function changeSubtaskConfirmation(id, i, j) {
     {
         subtask['subdone'] = false;
     }
-    let subtasks = addedTasks[j]['subtask'];
-    loadSubtasks(subtasks, 'task_overlay_subtasks_container', i);
-    // loadTaskOpen(j);
+  
 }

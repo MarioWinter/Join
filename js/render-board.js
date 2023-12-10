@@ -229,12 +229,22 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
 function generateSubtasksHTML(subtitle, i, ID){
     return `
     <div class="log-in-checkbox">
-        <input id="${ID}_confirm_subtask${i}" type="checkbox" onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})"/>
+        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
         <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
     </div>
     `;
-
 }
+
+
+function generateSubtasksCheckedHTML(subtitle, i, ID){
+    return `
+    <div class="log-in-checkbox">
+        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" checked/>
+        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
+    </div>
+    `;
+}
+
 
 
 //Template Jason
