@@ -22,4 +22,5 @@ function hideTaskOpen(id) {
     frameSlideOut(id);
     hideOverlayBg('task_overlay_bg');
     setTimeout(function(){closeFrame('task_overlay_bg');}, 400);
+    loadBoard();
 }

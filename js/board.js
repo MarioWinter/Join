@@ -90,6 +90,13 @@ function closeFrame(id) {
     document.getElementById(id).classList.add('d-none');
 }
 
+function deleteTask(TaskID) {
+    let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
+    addedTasks = updatedAddedTasks;
+    hideTaskOpen('ed_task_overlay_frame');
+    loadBoard();
+}
+
 //Generator & calculator
 
 function getRandomColor() {
@@ -125,7 +132,13 @@ function generateUserBadge(fullName) {
     return firstNameInitial + lastNameInitial;
 }
 
+/**
+ * Converts the date to the correct format
+ * @param {string} dueDate - Contains the date from the DueDate specification
+ * @returns 
+ */
 function formatDueDate(dueDate) {
-    let duedate = dueDate.replace('-', '/');
+    let dateParts = dueDate.split('-');
+    let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
     return duedate;
 }

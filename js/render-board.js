@@ -116,8 +116,7 @@ function generateUrgentPrioIcon() {
     `;
 }
 
-
-function generateTaskOverlayHTML(id, title, description, category, categoryColor, subtasks, assigneds, duedate) {
+function generateTaskOverlayHTML(id, title, description, category, categoryColor, duedate) {
     return `
     <div id="ed_task_overlay_frame" class="task-overlay-frame-open">
                         <!-- tesk overlay tag -->
@@ -160,35 +159,20 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
                         <div class="column-frame-container-task-open">
                             <div class="label-task-open">Assigned To:</div>
                             <div id="assigned_to_contacts_task_open">
-
-                                <div class="assigned-to-contact-task-open">
-                                    <div id="contect_badge0" class="contact-badge-task-open"
-                                        style="background-color: rgb(180, 147, 161);">HL</div>
-                                    <div class="contact-name-task-open">Heike Lüdemann </div>
-                                </div>
-                                <div class="assigned-to-contact-task-open">
-                                    <div id="contect_badge0" class="contact-badge-task-open"
-                                        style="background-color: rgb(180, 147, 161);">HL</div>
-                                    <div class="contact-name-task-open">Heike Lüdemann </div>
-                                </div>
-
+                                
                             </div>
                         </div>
 
                         <!-- task overlay subtasks-->
                         <div class="column-frame-container-task-open">
-                            <div class="label-task-open">Subtasks</div>
+                            <div id="label_task_open_subtask" class="label-task-open">Subtasks</div>
                             <div id="task_overlay_subtasks_container">
                                 <!-- substasks -->
-                                <div class="log-in-checkbox">
-                                    <input id="confirm" type="checkbox" />
-                                    <label class="checkbox-hover" for="confirm">Remember me</label>
-                                </div>
 
                             </div>
                         </div>
                         <div class="delete-edit-container-task-open">
-                            <div id="delete_btn_task_open" class="del-ed-btn-task-open">
+                            <div id="delete_btn_task_open" class="del-ed-btn-task-open" onclick="deleteTask(${id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <mask id="mask0_99408_2217" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -229,8 +213,34 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
     `;
 }
 
+function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
+    return `
+        <div class="assigned-to-contact-task-open">
+            <div id="contect_badge${id}" class="contact-badge-task-open"
+                style="background-color: ${badgeColor};">${userBadge}</div>
+            <div class="contact-name-task-open">${assignedUserName}</div>
+        </div>
+    
+    `;
+}
 
+function generateSubtasksHTML(subtitle, i, ID){
+    return `
+    <div class="log-in-checkbox">
+        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
+        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
+    </div>
+    `;
+}
 
+function generateSubtasksCheckedHTML(subtitle, i, ID){
+    return `
+    <div class="log-in-checkbox">
+        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" checked/>
+        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
+    </div>
+    `;
+}
 
 //Template Jason
 addedTasks = [{
