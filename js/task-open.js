@@ -23,7 +23,7 @@ function loadTaskOpen(id) {
 function loadTask(id, title, description, prio, category, subtasks, assigneds, duedate) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById('task_overlay_bg').innerHTML = 
-    generateTaskOverlayHTML(id, title, description, category, categoryColor, subtasks, assigneds, duedate);
+    generateTaskOverlayHTML(id, title, description, category, categoryColor, duedate);
     loadTaskOpenPrio(prio, 'task_open_prio');
     loadAssignedsOpenTask(assigneds, id);
     loadSubtasks(subtasks, 'task_overlay_subtasks_container', id);
@@ -68,8 +68,6 @@ function loadSubtasks(subtasks, elementID, index) {
     }
 }
 
-
-
 function checkSubtask(subdone, subtitle, i, index) {
     if (subdone) {
         return generateSubtasksCheckedHTML(subtitle, i, index);
@@ -92,5 +90,4 @@ function changeSubtaskConfirmation(id, i, j) {
     {
         subtask['subdone'] = false;
     }
-  
 }

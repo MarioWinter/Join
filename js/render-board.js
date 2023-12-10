@@ -116,9 +116,7 @@ function generateUrgentPrioIcon() {
     `;
 }
 
-
-
-function generateTaskOverlayHTML(id, title, description, category, categoryColor, subtasks, assigneds, duedate) {
+function generateTaskOverlayHTML(id, title, description, category, categoryColor, duedate) {
     return `
     <div id="ed_task_overlay_frame" class="task-overlay-frame-open">
                         <!-- tesk overlay tag -->
@@ -174,7 +172,7 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
                             </div>
                         </div>
                         <div class="delete-edit-container-task-open">
-                            <div id="delete_btn_task_open" class="del-ed-btn-task-open">
+                            <div id="delete_btn_task_open" class="del-ed-btn-task-open" onclick="deleteTask(${id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <mask id="mask0_99408_2217" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -235,7 +233,6 @@ function generateSubtasksHTML(subtitle, i, ID){
     `;
 }
 
-
 function generateSubtasksCheckedHTML(subtitle, i, ID){
     return `
     <div class="log-in-checkbox">
@@ -244,8 +241,6 @@ function generateSubtasksCheckedHTML(subtitle, i, ID){
     </div>
     `;
 }
-
-
 
 //Template Jason
 addedTasks = [{
