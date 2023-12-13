@@ -97,7 +97,7 @@ function showFrame(id) {
 function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
     addedTasks = updatedAddedTasks;
-    hideTaskOpen('ed_task_overlay_frame');
+    hideTaskOpen('task_open_overlay_frame');
     loadBoard();
 }
 

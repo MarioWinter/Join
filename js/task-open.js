@@ -15,7 +15,7 @@ function loadTaskOpen(id) {
         showFrame('task_overlay_bg');
         addOverlayBg('task_overlay_bg');
         loadTask(id, title, description, prio, category, subtasks, assigneds, duedate);
-        frameSlideIn('ed_task_overlay_frame');
+        frameSlideIn('task_open_overlay_frame');
     }
 }
 
@@ -94,7 +94,32 @@ function changeSubtaskConfirmation(id, i, j) {
 
 // Edit Task Section
 
-function showEditTask(editTaskID, openTaskID) {
-    hide(openTaskID);
-    show(editTaskID);
+function loadTaskEdit(id) {
+    let tasks = addedTasks.filter((t) => t["id"] === id);
+    document.getElementById('task_overlay_bg').innerHTML = "";
+    for (let index = 0; index < tasks.length; index++) {
+        let task = tasks[index];
+        // let id = task['id'];
+        // let bucket = task['bucket'];
+        let title = task['title'];
+        let description = task['description'];
+        let prio = task['prio'];
+        let duedate = formatDueDate(task['duedate']);
+        let category = task['category'];
+        let subtasks = task['subtask'];
+        let assigneds = task['assigned'];
+        initEditTask(id, title, description, prio, category, subtasks, assigneds, duedate);
+    }
+}
+
+
+
+function initEditTask(id, title, description, prio, category, subtasks, assigneds, duedate) {
+    let categoryColor = loadCategoryColor(category);
+    document.getElementById('task_overlay_bg').innerHTML = 
+    generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
+    setTodayDateForCalendar();
+    // loadTaskOpenPrio(prio, 'task_open_prio');
+    // loadAssignedsOpenTask(assigneds, id);
+    // loadSubtasks(subtasks, 'task_overlay_subtasks_container', id);
 }
