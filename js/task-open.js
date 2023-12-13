@@ -104,7 +104,7 @@ function loadTaskEdit(id) {
         let title = task['title'];
         let description = task['description'];
         let prio = task['prio'];
-        let duedate = formatDueDate(task['duedate']);
+        let duedate = task['duedate'];
         let category = task['category'];
         let subtasks = task['subtask'];
         let assigneds = task['assigned'];
