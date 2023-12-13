@@ -80,15 +80,19 @@ function loadCategoryColor(category) {
     }
 }
 
-function showFrame(id) {
-    document.getElementById(id).classList.add('slider-bg');
-    document.getElementById(id).classList.remove('slider-center');
+function show(id) {
     document.getElementById(id).classList.remove('d-none');
 }
 
-function closeFrame(id) {
+function hide(id) {
     document.getElementById(id).classList.add('d-none');
 }
+
+function showFrame(id) {
+    addOverlayBg(id);
+    show(id);
+}
+
 
 function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);

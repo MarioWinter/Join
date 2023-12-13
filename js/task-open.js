@@ -13,7 +13,7 @@ function loadTaskOpen(id) {
         let subtasks = task['subtask'];
         let assigneds = task['assigned'];
         showFrame('task_overlay_bg');
-        showOverlayBg('task_overlay_bg');
+        addOverlayBg('task_overlay_bg');
         loadTask(id, title, description, prio, category, subtasks, assigneds, duedate);
         frameSlideIn('ed_task_overlay_frame');
     }
@@ -23,7 +23,7 @@ function loadTaskOpen(id) {
 function loadTask(id, title, description, prio, category, subtasks, assigneds, duedate) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById('task_overlay_bg').innerHTML = 
-    generateTaskOverlayHTML(id, title, description, category, categoryColor, duedate);
+    generateOpenTaskHTML(id, title, description, category, categoryColor, duedate);
     loadTaskOpenPrio(prio, 'task_open_prio');
     loadAssignedsOpenTask(assigneds, id);
     loadSubtasks(subtasks, 'task_overlay_subtasks_container', id);
@@ -90,4 +90,11 @@ function changeSubtaskConfirmation(id, i, j) {
     {
         subtask['subdone'] = false;
     }
+}
+
+// Edit Task Section
+
+function showEditTask(editTaskID, openTaskID) {
+    hide(openTaskID);
+    show(editTaskID);
 }

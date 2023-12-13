@@ -44,10 +44,18 @@ function changeSVGPathColor(path) {
 
 function changeColorClasses(button, prio) {
     if (isClicked || fillColor !== "white") {
-        button.classList.add(prio);
+        button.style.color = "#ffffff"
+        if(prio.includes('low')) {
+            button.style.backgroundColor = "#7AE229";
+        } else if(prio.includes('medium')) {
+            button.style.backgroundColor = "#FFA800";
+        } else if (prio.includes('urgent')) {
+            button.style.backgroundColor = "#FF3D00";
+        }
         isActive = true;
     } else {
-        button.classList.remove(prio);
+        button.style.backgroundColor = "#fffff";
+        button.style.color = "#000000"
         isActive = false;
     }
 }
@@ -60,9 +68,13 @@ function clearPrioButtonColor() {
 }
 
 function resetBgColorAddTask() {
-    document.getElementById("urgent-btn").classList.remove("urgent-btn");
-    document.getElementById("medium-btn").classList.remove("medium-btn");
-    document.getElementById("low-btn").classList.remove("low-btn");
+    document.getElementById("urgent-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("urgent-btn").style.color = "#000000";
+    document.getElementById("medium-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("medium-btn").style.color = "#000000";
+    document.getElementById("low-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("low-btn").style.color = "#000000";
+
 }
 
 function resetSVGColorAddTask() {
@@ -75,9 +87,12 @@ function resetSVGColorAddTask() {
 }
 
 function resetBgColorEdit() {
-    document.getElementById("urgent-btn-edit").classList.remove("urgent-btn-edit");
-    document.getElementById("medium-btn-edit").classList.remove("medium-btn-edit");
-    document.getElementById("low-btn-edit").classList.remove("low-btn-edit");
+    document.getElementById("urgent-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("urgent-btn-edit").style.color = "#000000";
+    document.getElementById("medium-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("medium-btn-edit").style.color = "#000000";
+    document.getElementById("low-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("low-btn-edit").style.color = "#000000";
 }
 
 function resetSVGColorEdit() {
