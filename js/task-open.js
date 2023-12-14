@@ -112,14 +112,24 @@ function loadTaskEdit(id) {
     }
 }
 
-
-
 function initEditTask(id, title, description, prio, category, subtasks, assigneds, duedate) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById('task_overlay_bg').innerHTML = 
     generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
     setTodayDateForCalendar();
+    setPrioOnEditTask(prio);
     // loadTaskOpenPrio(prio, 'task_open_prio');
     // loadAssignedsOpenTask(assigneds, id);
     // loadSubtasks(subtasks, 'task_overlay_subtasks_container', id);
+}
+
+function setPrioOnEditTask(prio) {
+    if (prio === "Urgent") {
+        changePrioBtnColor('urgent-btn-edit');
+    } else if (prio === "Medium") {
+        changePrioBtnColor('medium-btn-edit');
+    } else if (prio === "Low") {
+        changePrioBtnColor('low-btn-edit');
+    }
+
 }
