@@ -92,7 +92,7 @@ function changeSubtaskConfirmation(id, i, j) {
     }
 }
 
-// Edit Task Section
+// Load Edit Task Section
 
 function loadTaskEdit(id) {
     let tasks = addedTasks.filter((t) => t["id"] === id);
@@ -117,13 +117,11 @@ function initEditTask(id, title, description, prio, category, subtasks, assigned
     document.getElementById('task_overlay_bg').innerHTML = 
     generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
     setTodayDateForCalendar();
-    setPrioOnEditTask(prio);
-    // loadTaskOpenPrio(prio, 'task_open_prio');
-    // loadAssignedsOpenTask(assigneds, id);
-    // loadSubtasks(subtasks, 'task_overlay_subtasks_container', id);
+    loadPrioOnEditTask(prio);
+
 }
 
-function setPrioOnEditTask(prio) {
+function loadPrioOnEditTask(prio) {
     if (prio === "Urgent") {
         changePrioBtnColor('urgent-btn-edit');
     } else if (prio === "Medium") {
@@ -131,5 +129,15 @@ function setPrioOnEditTask(prio) {
     } else if (prio === "Low") {
         changePrioBtnColor('low-btn-edit');
     }
+}
 
+let isCantactOpen = true
+function openContactOverlay() {
+    if(isCantactOpen) {
+        show('contact_overlay');
+        isCantactOpen = false;
+    } else {
+        hide('contact_overlay');
+        isCantactOpen = true;
+    }
 }
