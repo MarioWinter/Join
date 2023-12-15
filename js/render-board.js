@@ -224,6 +224,16 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
+function generateEditTaskAssigmentHTML(i, ID){
+    return`
+    <div class="log-in-checkbox">
+        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
+        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}"></label>
+    </div>
+    
+    `;
+}
+
 function generateSubtasksHTML(subtitle, i, ID){
     return `
     <div class="log-in-checkbox">
@@ -353,7 +363,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                         <input onclick="openContactOverlay()" class="assigned-to-ed-task" type="text"
                             placeholder="Select contacts to assign" autocomplete="off">
                         <div class="p-relative">
-                            <div class="contact-overlay d-none" id="contact_overlay">
+                            <div class="contact-overlay" id="contact_overlay">
                                 <!-- Contact for render -->
                                 <label class="slider-contact-label" for="check-contact0">
                                     <div class="current-contact-slider">
@@ -362,8 +372,10 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                             <span>HL</span>
                                         </div>
                                         <span>Heike Lüdemann </span>
-                                        <img id="checkbox_icon0" class="checkbox-icon"
-                                            src="./assets/img/chechbox.svg" alt="Checkbox Icon">
+                                        <div class="log-in-checkbox">
+                                            <input onclick="changeSubtaskConfirmation('25_confirm_subtask0', 0, 0)" id="25_confirm_subtask0" type="checkbox" />
+                                            <label class="checkbox-edit-task" for="25_confirm_subtask0"></label>
+                                        </div>
                                     </div>
                                 </label>
                             </div>

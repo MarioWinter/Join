@@ -259,3 +259,7 @@
     font-family: Inter;
     cursor: pointer;
 }
+
+.checkbox-edit-task {
+    width: auto !important;
+}
