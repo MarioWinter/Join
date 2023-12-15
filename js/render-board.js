@@ -40,7 +40,6 @@ function generateCardHTML(id, title, description, category, categoryColor) {
             </div>
             
         </div>
-    
     `;
 }
 
@@ -239,7 +238,6 @@ function generateEditTaskAssigmentContactsHTML(badgeColor, assignedUserName, i, 
             </div>
         </div>
     </label>
-    
     `;
 }
 

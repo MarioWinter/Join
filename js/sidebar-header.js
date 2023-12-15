@@ -29,3 +29,16 @@ function activeInfoLink() {
   let urlAsId = window.location.pathname.split('/').pop().split('.html')[0] + '_link';
   document.getElementById(urlAsId).classList.add('sidebar-privacy-button-selected');
 }
+
+let isSubMenu = false;
+
+function showSubmenu() {
+  let subMenu = document.getElementById('sub_menu');
+  if (isSubMenu) {
+    subMenu.classList.add('hide-header-aside');
+    isSubMenu = false;
+  } else {
+    subMenu.classList.remove('hide-header-aside');
+    isSubMenu = true;
+  }
+}
