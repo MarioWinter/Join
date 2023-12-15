@@ -224,12 +224,21 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
-function generateEditTaskAssigmentHTML(i, ID){
+function generateEditTaskAssigmentContactsHTML(badgeColor, assignedUserName, i, ID) {
     return`
-    <div class="log-in-checkbox">
-        <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
-        <label class="checkbox-hover" for="${ID}_confirm_subtask${i}"></label>
-    </div>
+    <label class="slider-contact-label" for="check-contact${i}">
+        <div class="current-contact-slider">
+            <div id="contect_badge${i}" class="contact-badge"
+                style="background-color: ${badgeColor};">
+                <span>${userBadge}</span>
+            </div>
+            <span>${assignedUserName} </span>
+            <div class="log-in-checkbox">
+                <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" />
+                <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+            </div>
+        </div>
+    </label>
     
     `;
 }
