@@ -145,7 +145,7 @@ function openContactOverlay(containerID) {
 
 function loadAllUsersForContactOnAssignedTo(containerID, ID) {
     let contactsContainer = document.getElementById(containerID);
-    contactsContainer = "";
+    
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
         let userBadge = generateUserBadge(userName);
