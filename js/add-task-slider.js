@@ -115,9 +115,10 @@ function isClickedCheck() {
 }
 
 
-function setTodayDateForCalendar() {
-let today = new Date().toISOString().split('T')[0];
-document.getElementById('calendar_add_task_slider').setAttribute('min', today);
-document.getElementById('calendar_edit_task').setAttribute('min', today);
 
-}
+function setTodayDateForCalendar(id) {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById(id).setAttribute('min', today);
+    
+    
+    }

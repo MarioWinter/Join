@@ -2,7 +2,8 @@
 async function initBoard() {
     await loadUsers();
     loadBoard();
-    setTodayDateForCalendar();
+    loadCurrentUser();
+    
 }
 
 

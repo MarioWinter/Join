@@ -223,12 +223,12 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
-function generateEditTaskAssigmentContactsHTML(badgeColor, assignedUserName, i, ID) {
+function generateEditTaskAssigmentContactsHTML(userBadge, assignedUserName, i, ID) {
     return`
     <label class="slider-contact-label" for="check-contact${i}">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
-                style="background-color: ${badgeColor};">
+                style="background-color: #ffffff;">
                 <span>${userBadge}</span>
             </div>
             <span>${assignedUserName} </span>
@@ -367,24 +367,12 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                     <!-- Assigned To Edit Task -->
                     <div class="subhead-container-ed-task">
                         <div class="subhead-ed-task">Assigned to</div>
-                        <input onclick="openContactOverlay()" class="assigned-to-ed-task" type="text"
+                        <input onclick="openContactOverlay('et_contact_overlay')" class="assigned-to-ed-task" type="text"
                             placeholder="Select contacts to assign" autocomplete="off">
                         <div class="p-relative">
-                            <div class="contact-overlay" id="contact_overlay">
+                            <div class="contact-overlay" id="et_contact_overlay">
                                 <!-- Contact for render -->
-                                <label class="slider-contact-label" for="check-contact0">
-                                    <div class="current-contact-slider">
-                                        <div id="contect_badge0" class="contact-badge"
-                                            style="background-color: rgb(180, 147, 161);">
-                                            <span>HL</span>
-                                        </div>
-                                        <span>Heike Lüdemann </span>
-                                        <div class="log-in-checkbox">
-                                            <input onclick="changeSubtaskConfirmation('25_confirm_subtask0', 0, 0)" id="25_confirm_subtask0" type="checkbox" />
-                                            <label class="checkbox-edit-task" for="25_confirm_subtask0"></label>
-                                        </div>
-                                    </div>
-                                </label>
+                                
                             </div>
                             <div id="selected_contacts">
                                 <!-- select contact -->
@@ -558,11 +546,4 @@ addedTasks = [{
         }
     ]
 },
-];
-
-
-users = [
-    {
-        usertoken: "",
-    },
 ];

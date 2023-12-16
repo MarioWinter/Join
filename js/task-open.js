@@ -116,7 +116,8 @@ function initEditTask(id, title, description, prio, category, subtasks, assigned
     let categoryColor = loadCategoryColor(category);
     document.getElementById('task_overlay_bg').innerHTML = 
     generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
-    setTodayDateForCalendar();
+    loadAllUsersForContactOnAssignedTo('et_contact_overlay', id);
+    setTodayDateForCalendar('calendar_edit_task');
     loadPrioOnEditTask(prio);
 
 }
@@ -132,12 +133,24 @@ function loadPrioOnEditTask(prio) {
 }
 
 let isCantactOpen = true
-function openContactOverlay() {
+function openContactOverlay(containerID) {
     if(isCantactOpen) {
-        show('contact_overlay');
+        show(containerID);
         isCantactOpen = false;
     } else {
-        hide('contact_overlay');
+        hide(containerID);
         isCantactOpen = true;
     }
+}
+
+function loadAllUsersForContactOnAssignedTo(containerID, ID) {
+    let contactsContainer = document.getElementById(containerID);
+    contactsContainer = "";
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]['name'];
+        let userBadge = generateUserBadge(userName);
+        // let badgeColor = users[i]['bgcolor'];
+        contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(userBadge, userName, i, ID);
+    }
+
 }

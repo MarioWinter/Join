@@ -222,7 +222,7 @@ function logInGuest(){
   window.location.href = 'summary.html';
   userIndex = -1;
   localStorage.setItem('currentUserIndex', userIndex);
-  document.getElementById('user_name') = 'Sophia Müller';
+  document.getElementById('user_name') = 'Guest User';
 }
 /**
  * This function determines the time and depending on what hour it is, a greeting is displayed accordingly
