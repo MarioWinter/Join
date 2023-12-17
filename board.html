@@ -214,9 +214,13 @@
 
                                 <div class="slider-assigned">
                                     <span class="span-style-slider">Assigned to</span>
-                                    <input onclick="openContactOverlay()" class="assigned-to-slider"
-                                        id="slider_assigned_to" type="text" placeholder="Select contacts to assign"
-                                        autocomplete="off">
+                                    <div class="assigned-to-input-slider">
+                                        <input onclick="openContactOverlay()" class="assigned-to-slider"
+                                            id="slider_assigned_to" type="text" placeholder="Select contacts to assign"
+                                            autocomplete="off">
+                                        <img class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
+                                            alt="Select Contacts Button">
+                                    </div>
                                     <div class="p-relative">
                                         <div class="d-none contact-overlay" id="add_task_contact_overlay">
                                             <!-- Contact for render -->
