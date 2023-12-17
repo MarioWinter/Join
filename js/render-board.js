@@ -66,6 +66,10 @@ function generateAssigmentBadgeHTML(userBadge, badgeColor) {
     return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
 }
 
+function generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i) {
+    return `<div id="initials${i}" class="contact-badge" style="background-color: ${badgeColor};">${userBadge}</div>`;
+}
+
 function generateMediumPrioIcon() {
     return `
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="8" viewBox="0 0 18 8" fill="none">
@@ -374,21 +378,9 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                 <!-- Contact for render -->
                                 
                             </div>
-                            <div id="selected_contacts">
+                            <div id="et_selected_contacts" class="selected-contacts">
                                 <!-- select contact -->
-                                <div id="initials0" class="contact-badge"
-                                    style="background-color: rgb(180, 147, 161);">
-                                    <span>HL</span>
-                                </div>
-                                <div id="initials1" class="contact-badge"
-                                    style="background-color: rgb(180, 147, 161);">
-                                    <span>HL</span>
-                                </div>
-                                <div id="initials2" class="contact-badge"
-                                    style="background-color: rgb(180, 147, 161);">
-                                    <span>HL</span>
-                                </div>
-                                <!-- select contact -->
+
                             </div>
                         </div>
                     </div>
@@ -474,7 +466,7 @@ addedTasks = [{
     "bucket": "in-progress",
     "title": "Kochwelt Page & Recipe Recommender",
     "description": "Build start page with recipe recommendation.",
-    "assigned": ["Jad El Nader", "Jonas Lambelet", "Heike Lüdemann"],
+    "assigned": ["Mario Winter", "Heike Lüdemann", "Jan El Nader"],
     "duedate": "2024-05-10",
     "prio": "Medium",
     "category": "User Story",
@@ -530,7 +522,7 @@ addedTasks = [{
     "bucket": "await-feedback",
     "title": "Daily Kochwelt Receipe",
     "description": "Implement daily receipe and portion calculator in JavaScript and HTML",
-    "assigned": ["Alexander Riedel", "Jad El Nader", "Jonas Lambelet", "Heike Lüdemann"],
+    "assigned": ["Alexander Riedel", "Jan El Nader", "Jonas Lambelet", "Heike Lüdemann"],
     "duedate": "2023-09-02",
     "prio": "Urgent",
     "category": "Technical Task",

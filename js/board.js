@@ -148,3 +148,8 @@ function formatDueDate(dueDate) {
     let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
     return duedate;
 }
+
+async function clearRemoteStorage() {
+    users = [];
+    await setItem("users", JSON.stringify(users));
+}

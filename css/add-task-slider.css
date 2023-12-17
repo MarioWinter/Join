@@ -251,7 +251,7 @@
     display: flex !important;
 }
 
-#selected_contacts {
+.selected-contacts {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;

@@ -117,6 +117,7 @@ function initEditTask(id, title, description, prio, category, subtasks, assigned
     document.getElementById('task_overlay_bg').innerHTML = 
     generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
     loadAllUsersForContactOnAssignedTo('et_contact_overlay', id);
+    loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');
     loadPrioOnEditTask(prio);
 
@@ -152,5 +153,28 @@ function loadAllUsersForContactOnAssignedTo(containerID, ID) {
         // let badgeColor = users[i]['bgcolor'];
         contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(userBadge, userName, i, ID);
     }
+}
 
+function addContactAsAssigned(id, i, j) {
+    let checkAssigned = document.getElementById(id);
+    let assigned = addedTasks[j]['assigned'];
+    let userName = users[i]['name'];
+    let deleteName = assigned.indexOf(userName);
+    if(checkAssigned.checked) {
+        assigned.push(userName);
+    } else if (!checkAssigned.checked)
+    {
+        assigned.splice(deleteName,1);
+    }
+}
+
+function loadAssignedOnEditTask(assigneds, containerID) {
+    let selectetContactsContainer = document.getElementById(containerID);
+    for (let i = 0; i < assigneds.length; i++) {
+        let assignedName = assigneds[i];
+        let user = users.filter((t) => t["name"] === assignedName);
+        let badgeColor = user[0]['bgcolor'];
+        let userBadge = generateUserBadge(assignedName);
+        selectetContactsContainer.innerHTML += generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i);
+    }
 }
