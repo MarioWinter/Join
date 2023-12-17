@@ -195,32 +195,6 @@
     outline: none;
 }
 
-.assigned-to-ed-task:hover {
-    border: 0.1rem solid var(--secondary-grey-sidebar);
-}
-
-.assigned-to-ed-task:focus {
-    border: 0.1rem solid var(--hover-blue);
-    background-image: url(../assets/img/arrow_drop_up.svg);
-    outline: none;
-}
-
-.assigned-to-ed-task {
-    border: 0.1rem solid var(--light-grey-placeholder);
-    display: flex;
-    align-self: stretch;
-    border-radius: 1rem;
-    padding: 0 1.6rem;
-    height: 4.8rem;
-    font-size: 2rem;
-    font-family: Inter;
-    background-image: url(../assets/img/arrow_drop_down.svg);
-    background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: 95%;
-    cursor: pointer;
-}
-
 .ok-ed-task-btn:hover {
     cursor: pointer;
     background-color: var(--hover-blue);
