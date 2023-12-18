@@ -374,8 +374,11 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                         <div class="assigned-to-input-slider" onclick="openContactOverlay('et_contact_overlay')">
                             <input class="assigned-to-slider" type="text"
                                 placeholder="Select contacts to assign" autocomplete="off">
-                            <img class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
+                            <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
                             alt="Select Contacts Button">
+                            <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
+                            alt="Select Contacts Button">
+
                         </div>
                         <div class="p-relative">
                             <div class="contact-overlay" id="et_contact_overlay">

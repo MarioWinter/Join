@@ -137,9 +137,15 @@ let isCantactOpen = true
 function openContactOverlay(containerID) {
     if(isCantactOpen) {
         show(containerID);
+        hide('select-contacts_up');
+        show('select-contacts_down');
+
+        
         isCantactOpen = false;
     } else {
         hide(containerID);
+        show('select-contacts_up');
+        hide('select-contacts_down');
         isCantactOpen = true;
     }
 }
