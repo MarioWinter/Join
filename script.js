@@ -244,3 +244,9 @@ function displayGreeting() {
   greetBox.textContent = greeting;
 }
 
+function noUserView() {
+  document.getElementsByClassName('menu-sidebar')[0].classList.add('d-none');
+}
+
+setTimeout(noUserView, 500);
+
