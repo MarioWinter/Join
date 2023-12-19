@@ -196,3 +196,31 @@ function loadAssignedOnEditTask(assigneds, containerID) {
         selectetContactsContainer.innerHTML += generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i);
     }
 }
+
+function filterUserOnAssignedTo(inputID, searchContainerID, id) {
+    let searchTerm = document.getElementById(inputID).value;
+    let assigneds = addedTasks[id]['assigned'];
+    searchTerm = searchTerm.toLowerCase();
+    let contactsContainer = document.getElementById(searchContainerID);
+    contactsContainer.innerHTML = "";
+    if (searchTerm == "") {
+        loadAllUsersForContactOnAssignedTo(assigneds, searchContainerID, id);
+    } else {
+        getContect(assigneds, searchTerm ,id, contactsContainer);
+    }
+}
+
+function getContect(assigneds, searchTerm ,id, contactsContainer) {
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]['name'];
+        if(userName.toLowerCase().includes(searchTerm)) {
+            let userBadge = generateUserBadge(userName);
+            let badgeColor = users[i]['bgcolor'];
+            if (assigneds.includes(userName)) {
+                contactsContainer.innerHTML += generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, userName, i, id);
+            } else {
+                contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, userName, i, id);
+            }
+        }
+    }
+}

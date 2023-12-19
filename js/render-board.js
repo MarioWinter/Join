@@ -389,13 +389,13 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                     <!-- Assigned To Edit Task -->
                     <div class="subhead-container-ed-task">
                         <div class="subhead-ed-task">Assigned to</div>
-                        <div class="assigned-to-input-slider" onclick="openContactOverlay('et_contact_overlay')">
-                            <input class="assigned-to-slider" type="text"
-                                placeholder="Select contacts to assign" autocomplete="off">
+                        <div class="assigned-to-input-slider">
+                            <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
+                                placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', ${id})">
                             <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
-                            alt="Select Contacts Button">
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay')">
                             <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
-                            alt="Select Contacts Button">
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay')">
 
                         </div>
                         <div class="p-relative">
