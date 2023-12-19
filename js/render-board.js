@@ -227,12 +227,12 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
-function generateEditTaskAssigmentContactsHTML(userBadge, assignedUserName, i, ID) {
+function generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, assignedUserName, i, ID) {
     return`
     <label class="slider-contact-label" for="check-contact${i}">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
-                style="background-color: #ffffff;">
+                style="background-color: ${badgeColor};">
                 <span>${userBadge}</span>
             </div>
             <span>${assignedUserName} </span>
@@ -245,7 +245,25 @@ function generateEditTaskAssigmentContactsHTML(userBadge, assignedUserName, i, I
     `;
 }
 
-function generateSubtasksHTML(subtitle, i, ID){
+function generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, assignedUserName, i, ID) {
+    return`
+    <label class="slider-contact-label" for="check-contact${i}">
+        <div class="current-contact-slider">
+            <div id="contect_badge${i}" class="contact-badge"
+                style="background-color: ${badgeColor};">
+                <span>${userBadge}</span>
+            </div>
+            <span>${assignedUserName} </span>
+            <div class="log-in-checkbox">
+                <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" checked/>
+                <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+            </div>
+        </div>
+    </label>
+    `;
+}
+
+function generateSubtasksHTML(subtitle, i, ID) {
     return `
     <div class="log-in-checkbox">
         <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
@@ -381,7 +399,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
 
                         </div>
                         <div class="p-relative">
-                            <div class="contact-overlay" id="et_contact_overlay">
+                            <div class="contact-overlay d-none" id="et_contact_overlay">
                                 <!-- Contact for render -->
                                 
                             </div>
@@ -394,7 +412,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                     <!-- Subtask Edit Task -->
                     <div id="subtask_container_slider" class="subtask-container-slider">
                         <div class="subhead-ed-task">Subtasks</div>
-                        <div class="subtask-input-container">
+                        <div class="subtask-input-container d-none">
                             <input class="subtask-input-slider" type="text" placeholder="Add new subtask"
                                 autocomplete="">
                             <img class="add-subtask-slider d-none" src="./assets/img/add-plus-icon.svg"
@@ -414,7 +432,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                         </div>
 
                         <div id="subtask_lists">
-                            <div class="subtask-list-item-slider">
+                            <div class="subtask-list-item-slider d-none">
                                 <ul>
                                     <li>Contact Form</li>
                                 </ul>
@@ -473,7 +491,7 @@ addedTasks = [{
     "bucket": "in-progress",
     "title": "Kochwelt Page & Recipe Recommender",
     "description": "Build start page with recipe recommendation.",
-    "assigned": ["Mario Winter", "Heike Lüdemann", "Jan El Nader"],
+    "assigned": [],
     "duedate": "2024-05-10",
     "prio": "Medium",
     "category": "User Story",
@@ -497,7 +515,7 @@ addedTasks = [{
     "bucket": "done",
     "title": "CSS Architecture Planning",
     "description": "Define CSS naming conventions and structure.",
-    "assigned": ["Alexander Riedel"],
+    "assigned": [],
     "duedate": "2023-09-02",
     "prio": "Low",
     "category": "Technical Task",
@@ -518,7 +536,7 @@ addedTasks = [{
     "bucket": "to-do",
     "title": "HTML Base Template Creation",
     "description": "Create reusable HTML base templates",
-    "assigned": ["Alexander Riedel", "Heike Lüdemann"],
+    "assigned": [],
     "duedate": "2024-10-03",
     "prio": "Low",
     "category": "Technical Task",
@@ -529,7 +547,7 @@ addedTasks = [{
     "bucket": "await-feedback",
     "title": "Daily Kochwelt Receipe",
     "description": "Implement daily receipe and portion calculator in JavaScript and HTML",
-    "assigned": ["Alexander Riedel", "Jan El Nader", "Jonas Lambelet", "Heike Lüdemann"],
+    "assigned": [],
     "duedate": "2023-09-02",
     "prio": "Urgent",
     "category": "Technical Task",

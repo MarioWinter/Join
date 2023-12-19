@@ -3,7 +3,7 @@
 .task-overlay-frame-open {
     display: flex;
     width: 52.5rem;
-    overflow-x: auto;
+    overflow-x: hidden;
     height: auto;
     padding: 4.8rem 4rem;
     flex-direction: column;
