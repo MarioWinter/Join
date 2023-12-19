@@ -263,7 +263,10 @@ function hideSignUpBtn() {
 }
 
 function showSignUpBtn(){
+  let width = document.documentElement.clientWidth;
+  if (width < 500) {
   document.getElementById('sing_up_mobile').classList.remove('d-none');
+}
 }
 
 function noUserView() {
