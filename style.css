@@ -49,14 +49,15 @@ body {
 }
 
 .sing-up-header {
-    width: 25%;
+    width: 62%;
     position: absolute;
     right: 2rem;
     top: 6rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 2rem;
+    padding-right: 30px;
 }
 
 .log-container {

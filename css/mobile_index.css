@@ -50,7 +50,15 @@
     }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 700px) {
+    .log-container {
+        margin-top: 4rem;
+        width: 50.2rem;
+        height: 66.3rem;
+    }
+}
+
+@media(max-width: 569px) {
 
     html {
         font-size: 0.360em;
@@ -99,7 +107,7 @@
     }
 
     .log-container {
-        margin-top: 12rem;
+        margin-top: 4rem;
         width: 58.2rem;
         height: 66.3rem;
     }
@@ -139,4 +147,21 @@
     .footer-text-container {
         font-size: 2rem;
     }
+
+    .height-sing-up {
+        height: 76.4rem !important;
+    }
+
+    .sing-up-input-container {
+        gap: 12px;
+    }
+
+    .sing-up-content {
+        width: 52.2rem;
+    }
+
+    .sign-up-btn-container {
+        margin-top: 2.2rem;
+    }
+
 }
