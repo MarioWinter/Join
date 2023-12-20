@@ -281,6 +281,24 @@ function generateSubtasksCheckedHTML(subtitle, i, ID){
     `;
 }
 
+function generateSubtaskListItemHTML(subtitle, i, ID) {
+    return `
+        <div id="${ID}subtask_listitem_${i}"class="subtask-list-item-slider">
+            <ul>
+                <li>${subtitle}</li>
+            </ul>
+            <div class="subtask-icon-container">
+                <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
+                    viewBox="0 0 2 24" fill="none">
+                    <path d="M1.14453 0V24" stroke="#A8A8A8" />
+                </svg>
+                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask">
+            </div>
+        </div>
+    `;
+}
+
 function generateEditTaskHTML(id, title, description, category, categoryColor, duedate) {
     return `
             <div id="task_open_overlay_frame" class="task-overlay-frame-open">
@@ -409,17 +427,19 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                             </div>
                         </div>
                     </div>
+
                     <!-- Subtask Edit Task -->
                     <div id="subtask_container_slider" class="subtask-container-slider">
                         <div class="subhead-ed-task">Subtasks</div>
-                        <div class="subtask-input-container d-none">
-                            <input class="subtask-input-slider" type="text" placeholder="Add new subtask"
+                        <div class="subtask-input-container">
+                            <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask"
                                 autocomplete="">
-                            <img class="add-subtask-slider d-none" src="./assets/img/add-plus-icon.svg"
-                                alt="Add Subtasks">
-                            <div id="check_subtask_icons" class="check-subtask-icons">
+                            <img id="add_subtask" class="add-subtask-slider" src="./assets/img/add-plus-icon.svg"
+                                alt="Add Subtasks" onclick="showSubtaskInput('add_subtask', 'check_subtask_icons')">
+
+                            <div id="check_subtask_icons" class="check-subtask-icons d-none">
                                 <img class="subtask-button-slider" src="./assets/img/add-cancel-icon.svg"
-                                    alt="Cancel Subtask">
+                                    alt="Cancel Subtask" onclick="cancelAddSubtask('add_subtask', 'check_subtask_icons')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 2 24"
                                     fill="none">
                                     <path d="M1.14453 0V24" stroke="#D1D1D1" />
@@ -428,24 +448,13 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                     alt="Check Substask">
 
                             </div>
-
                         </div>
 
                         <div id="subtask_lists">
-                            <div class="subtask-list-item-slider d-none">
-                                <ul>
-                                    <li>Contact Form</li>
-                                </ul>
-                                <div class="subtask-icon-container">
-                                    <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
-                                        viewBox="0 0 2 24" fill="none">
-                                        <path d="M1.14453 0V24" stroke="#A8A8A8" />
-                                    </svg>
-                                    <img src="./assets/img/delete-icon.svg" alt="Delete Subtask">
-                                </div>
-                            </div>
+                            <!-- Subtask List Item -->
+                            
 
+                            <!-- Subtask Edit input -->
                             <div class="subtask-edit-input-container">
                                 <input id="subtask_edit_input1" class="subtask-edit-input" type="text"
                                     value="Contact Form">
@@ -462,6 +471,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="delete-edit-container-task-open">
                     <button type="submit" class="ok-ed-task-btn" id="ok_ed-task-btn">

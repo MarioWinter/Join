@@ -127,6 +127,7 @@ function initEditTask(id, title, description, prio, category, subtasks, assigned
     loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');
     loadPrioOnEditTask(prio);
+    loadSubtasksEditTask(subtasks, 'subtask_lists', id);
 
 }
 
@@ -222,5 +223,26 @@ function getContect(assigneds, searchTerm ,id, contactsContainer) {
                 contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, userName, i, id);
             }
         }
+    }
+}
+
+function showSubtaskInput(addSubtaskID, checkSubtaskID) {
+    hide(addSubtaskID);
+    show(checkSubtaskID);
+}
+
+function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
+    show(addSubtaskID);
+    hide(checkSubtaskID);
+    document.getElementById('subtask_input').value = "";
+}
+
+function loadSubtasksEditTask(subtask, subtaskListItemID, ID) {
+    let subtaskContainer = document.getElementById(subtaskListItemID);
+    subtaskContainer.innerHTML = "";
+    for (let i = 0; i < subtask.length; i++) {
+        let subtitle = subtask[i]['subtitle'];
+        subtaskContainer.innerHTML += generateSubtaskListItemHTML(subtitle, i, ID);
+        
     }
 }
