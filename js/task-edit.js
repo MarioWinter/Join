@@ -154,7 +154,6 @@ function loadSubtasksEditTask(subtaskListItemID, ID) {
     }
 }
 
-
 function addSubtask(taskID, subtaskListItemID) {
     let subTask = loadSubtask(taskID);
     subTask.push({
@@ -162,5 +161,11 @@ function addSubtask(taskID, subtaskListItemID) {
         subtitle: subtask_input.value,
     });
     cancelAddSubtask('add_subtask', 'check_subtask_icons');
+    loadSubtasksEditTask(subtaskListItemID, taskID);
+}
+
+function deleteSubtask(taskID, subTaskID, subtaskListItemID) {
+    let subTask = loadSubtask(taskID);
+    subTask.splice(subTaskID,1);
     loadSubtasksEditTask(subtaskListItemID, taskID);
 }

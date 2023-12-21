@@ -293,7 +293,7 @@ function generateSubtaskListItemHTML(subtitle, i, ID) {
                     viewBox="0 0 2 24" fill="none">
                     <path d="M1.14453 0V24" stroke="#A8A8A8" />
                 </svg>
-                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask">
+                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask" onclick="deleteSubtask(${ID}, ${i}, 'subtask_lists')">
             </div>
         </div>
     `;
