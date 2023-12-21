@@ -445,7 +445,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                     <path d="M1.14453 0V24" stroke="#D1D1D1" />
                                 </svg>
                                 <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
-                                    alt="Check Substask">
+                                    alt="Check Substask" onclick="addSubtask(${id}, 'subtask_lists')">
 
                             </div>
                         </div>
