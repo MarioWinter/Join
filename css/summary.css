@@ -77,7 +77,6 @@
     justify-content: center;
     align-items: center;
     gap: 1.8rem;
-    flex-shrink: 0;
 }
 
 .summary-to-do-container:hover {
@@ -124,13 +123,13 @@
 
 .summary-done-container {
     display: flex;
-    width: 264px;
-    height: 168px;
-    padding: 38px 58px;
+    width: 26.4rem;
+    height: 16.8rem;
+    padding: 3.8rem 5.8rem;
     justify-content: center;
     align-items: center;
     gap: 18px;
-    flex-shrink: 0;
+    
 }
 
 .summary-done-container:hover {

@@ -19,12 +19,14 @@ async function includeHTML() {
 let users = [];
 let currentUser;
 
+let today = new Date();
+let hour = today.getHours();
+
 async function summaryInit() {
   await loadUsers();
   includeHTML();
   loadCurrentUser();
-  greetUser();
-  displayGreeting();
+  greetUser();  
 }
 
 
@@ -220,6 +222,7 @@ function loadCurrentUser() {
  * The function uses the value of index to transfer from the array Users which user should be welcomed.
  */
 function greetUser() {
+  displayGreeting();
   let greet = document.getElementById('user_name');
   i = currentUser;
   if (i >= 0) {
@@ -239,16 +242,13 @@ function logInGuest() {
  * This function determines the time and depending on what hour it is, a greeting is displayed accordingly
  */
 function displayGreeting() {
-  let today = new Date();
-  let hour = today.getHours();
-
   let greeting;
   if (hour >= 4 && hour < 12) {
-    greeting = 'Good morning,';
+    greeting = 'Good morning';
   } else if (hour >= 12 && hour < 18) {
-    greeting = 'Good afternoon,';
+    greeting = 'Good afternoon';
   } else {
-    greeting = 'Good evening,';
+    greeting = 'Good evening';
   }
 
   let greetBox = document.getElementById('greet_box');
@@ -269,9 +269,8 @@ function showSignUpBtn(){
 }
 }
 
-function noUserView() {
-  document.getElementsByClassName('menu-sidebar')[0].classList.add('d-none');
-}
 
-setTimeout(noUserView, 500);
+
+
+
 
