@@ -169,3 +169,11 @@ function deleteSubtask(taskID, subTaskID, subtaskListItemID) {
     subTask.splice(subTaskID,1);
     loadSubtasksEditTask(subtaskListItemID, taskID);
 }
+
+function showSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
+    hide(subtaskListItemID);
+    show(subtaskEditFrameID);
+}
+
+
+// function editSubtask()

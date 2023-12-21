@@ -474,6 +474,7 @@
 .subtask-edit-input {
     border: none;
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .subtask-edit-container {
