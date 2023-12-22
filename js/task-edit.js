@@ -128,6 +128,7 @@ function showSubtaskInput(addSubtaskID, checkSubtaskID) {
     show(checkSubtaskID);
 }
 
+
 function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
     show(addSubtaskID);
     hide(checkSubtaskID);
@@ -143,20 +144,20 @@ function loadSubtask(taskID) {
     }
 }
 
-function loadSubtasksEditTask(subtaskListItemID, ID) {
-    let subtaskContainer = document.getElementById(subtaskListItemID);
+function loadSubtasksEditTask(subtaskListID, ID) {
+    let subtaskContainer = document.getElementById(subtaskListID);
     subtaskContainer.innerHTML = "";
-    let subTask = loadSubtask(ID);
-    for (let i = 0; i < subTask.length; i++) {
-        let subtitle = subTask[i]['subtitle'];
-        subtaskContainer.innerHTML += generateSubtaskListItemHTML(subtitle, i, ID);
+    let subtask = loadSubtask(ID);
+    for (let i = 0; i < subtask.length; i++) {
+        let subtitle = subtask[i]['subtitle'];
+        subtaskContainer.innerHTML += generateSubtaskListItemHTML(subtitle, i, ID, 'subtask_listitem_', 'subtask_edit_container', 'subtask_edit_input', 'subtask_lists');
         
     }
 }
 
 function addSubtask(taskID, subtaskListItemID) {
-    let subTask = loadSubtask(taskID);
-    subTask.push({
+    let subtask = loadSubtask(taskID);
+    subtask.push({
         subdone: false,
         subtitle: subtask_input.value,
     });
@@ -175,5 +176,17 @@ function showSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
     show(subtaskEditFrameID);
 }
 
+function closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
+    hide(subtaskEditFrameID);
+    show(subtaskListItemID);
+}
 
-// function editSubtask()
+function updateSubtask(taskID, subtaskListItemID, subtaskEditInputID, subtaskID, subtaskEditFrameID, subtaskList) {
+    let subtask = loadSubtask(taskID);
+    let subtaskEditInput = document.getElementById(subtaskEditInputID).value;
+    subtask[subtaskID]['subtitle'] = subtaskEditInput;
+    subtask[subtaskID]['subdone'] = false;
+    closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID);
+    loadSubtasksEditTask(subtaskList, taskID);
+}
+

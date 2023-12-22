@@ -281,37 +281,41 @@ function generateSubtasksCheckedHTML(subtitle, i, ID){
     `;
 }
 
-function generateSubtaskListItemHTML(subtitle, i, ID) {
+function generateSubtaskListItemHTML(subtitle, i, ID, subtaskListItemID, subtaskEditContainerID, subtaskEditInputID, subtaskList) {
+    let subtaskListItem = `${ID}${subtaskListItemID}${i}`;
+    let subtaskEditContainer = `${ID}${subtaskEditContainerID}${i}`;
+    let subtaskEditInput = `${ID}${subtaskEditInputID}${i}`;
+
     return `
         <!-- Subtask List Item -->
-        <div id="${ID}subtask_listitem_${i}" class="subtask-list-item-slider">
+        <div id="${subtaskListItem}" class="subtask-list-item-slider">
             <ul>
                 <li>${subtitle}</li>
             </ul>
             <div class="subtask-icon-container">
-                <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask" onclick="showSubtaskEditInputFrame('${ID}subtask_listitem_${i}', '${ID}subtask_edit_container${i}')">
+                <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask" onclick="showSubtaskEditInputFrame('${subtaskListItem}', '${subtaskEditContainer}')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
                     viewBox="0 0 2 24" fill="none">
                     <path d="M1.14453 0V24" stroke="#A8A8A8" />
                 </svg>
-                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask" onclick="deleteSubtask(${ID}, ${i}, 'subtask_lists')">
+                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask" onclick="deleteSubtask(${ID}, ${i}, '${subtaskList}')">
             </div>
         </div>
 
         <!-- Subtask Edit List Item -->
 
-        <div id="${ID}subtask_edit_container${i}" class="subtask-edit-input-container d-none">
-            <input id="${ID}subtask_edit_input${i}" class="subtask-edit-input" type="text"
+        <div id="${subtaskEditContainer}" class="subtask-edit-input-container d-none">
+            <input id="${subtaskEditInput}" class="subtask-edit-input" type="text"
                 value="${subtitle}">
             <div class="subtask-edit-container">
                 <img class="subtask-button-slider" src="./assets/img/delete-icon.svg"
-                    alt="delete subtask" onclick="deleteSubtask(${ID}, ${i}, 'subtask_lists')">
+                    alt="delete subtask" onclick="deleteSubtask(${ID}, ${i}, '${subtaskList}')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
                     viewBox="0 0 2 24" fill="none">
                     <path d="M1.14453 0V24" stroke="#A8A8A8" />
                 </svg>
                 <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
-                    alt="check subtask">
+                    alt="check subtask" onclick="updateSubtask(${ID}, '${subtaskListItem}', '${subtaskEditInput}', ${i}, '${subtaskEditContainer}', '${subtaskList}')">
             </div>
         </div>
     `;
