@@ -28,6 +28,8 @@ function initEditTask(id, title, description, prio, category, assigneds, duedate
 
 function updateOpenTask(taskID) {
     updateOpenTaskTitle(taskID);
+    updateOpenTaskDesc(taskID);
+    updateOpenTaskDueDate(taskID);
     renderOpenTask(taskID);
 }
 
@@ -35,6 +37,16 @@ function updateOpenTask(taskID) {
 function updateOpenTaskTitle(taskID) {
     let titleValue = document.getElementById('title_input_ed_task').value;
     addedTasks[taskID]['title'] = titleValue;
+}
+
+function updateOpenTaskDesc(taskID) {
+    let descValue = document.getElementById('description_ed_task').value;
+    addedTasks[taskID]['description'] = descValue;
+}
+
+function updateOpenTaskDueDate(taskID) {
+    let dueDateValue = document.getElementById('calendar_edit_task').value;
+    addedTasks[taskID]['duedate'] = dueDateValue;
 }
 
 function loadPrioOnEditTask(prio) {
