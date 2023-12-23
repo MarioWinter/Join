@@ -4,8 +4,6 @@ function loadTaskEdit(id) {
     document.getElementById('task_overlay_bg').innerHTML = "";
     for (let index = 0; index < tasks.length; index++) {
         let task = tasks[index];
-        // let id = task['id'];
-        // let bucket = task['bucket'];
         let title = task['title'];
         let description = task['description'];
         let prio = task['prio'];
@@ -28,6 +26,17 @@ function initEditTask(id, title, description, prio, category, assigneds, duedate
 
 }
 
+function updateOpenTask(taskID) {
+    updateOpenTaskTitle(taskID);
+    renderOpenTask(taskID);
+}
+
+
+function updateOpenTaskTitle(taskID) {
+    let titleValue = document.getElementById('title_input_ed_task').value;
+    addedTasks[taskID]['title'] = titleValue;
+}
+
 function loadPrioOnEditTask(prio) {
     if (prio === "Urgent") {
         changePrioBtnColor('urgent-btn-edit');
@@ -39,9 +48,10 @@ function loadPrioOnEditTask(prio) {
 }
 
 let isCantactOpen = true
-function openContactOverlay(containerID) {
+function openContactOverlay(containerID, selectedContactsID) {
     if(isCantactOpen) {
         show(containerID);
+        hide(selectedContactsID);
         hide('select-contacts_down');
         show('select-contacts_up');
 
@@ -49,6 +59,7 @@ function openContactOverlay(containerID) {
         isCantactOpen = false;
     } else {
         hide(containerID);
+        show(selectedContactsID);
         show('select-contacts_down');
         hide('select-contacts_up');
         isCantactOpen = true;

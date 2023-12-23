@@ -433,9 +433,9 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                             <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
                                 placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', ${id})">
                             <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
-                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay')">
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
                             <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
-                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay')">
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
 
                         </div>
                         <div class="p-relative">
@@ -443,7 +443,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                 <!-- Contact for render -->
                                 
                             </div>
-                            <div id="et_selected_contacts" class="selected-contacts">
+                            <div id="et_selected_contacts" class="selected-contacts d-none">
                                 <!-- select contact -->
 
                             </div>
@@ -480,7 +480,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
 
                 </div>
                 <div class="delete-edit-container-task-open">
-                    <button type="submit" class="ok-ed-task-btn" id="ok_ed-task-btn">
+                    <button type="submit" class="ok-ed-task-btn" id="ok_ed-task-btn" onclick="updateOpenTask(${id})">
                         <span>Ok</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
                             fill="none">
