@@ -17,7 +17,7 @@ function loadTaskEdit(id) {
 function initEditTask(id, title, description, prio, category, assigneds, duedate) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById('task_overlay_bg').innerHTML = 
-    generateEditTaskHTML(id, title, description, category, categoryColor, duedate);
+    generateEditTaskHTML(id, title, description, category, categoryColor, duedate, prio);
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', id);
     loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');
@@ -27,6 +27,7 @@ function initEditTask(id, title, description, prio, category, assigneds, duedate
 }
 
 function updateOpenTask(taskID) {
+    debugger
     updateOpenTaskTitle(taskID);
     updateOpenTaskDesc(taskID);
     updateOpenTaskDueDate(taskID);
@@ -50,12 +51,16 @@ function updateOpenTaskDueDate(taskID) {
 }
 
 function loadPrioOnEditTask(prio) {
+    debugger
     if (prio === "Urgent") {
-        changePrioBtnColor('urgent-btn-edit');
+        isActive = true;
+        changePrioBtnColor('urgent-btn-edit', false, prio);
     } else if (prio === "Medium") {
-        changePrioBtnColor('medium-btn-edit');
+        isActive = true;
+        changePrioBtnColor('medium-btn-edit', false, prio);
     } else if (prio === "Low") {
-        changePrioBtnColor('low-btn-edit');
+        isActive = true;
+        changePrioBtnColor('low-btn-edit', false, prio);
     }
 }
 

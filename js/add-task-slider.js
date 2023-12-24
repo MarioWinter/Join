@@ -3,27 +3,40 @@ let fillColor = "";
 let isActive = false;
 let globalPrio = "";
 
-function changePrioBtnColor(prio) {
-    setGlobalPrio(prio);
-    if (isActive && prio == globalPrio) {
-        clearPrioButtonColor();
-        isActive = false;
-        isClicked = false;
-        globalPrio = "";
+function changePrioBtnColor(prioButtonID, isClicked, prio) {
+    debugger
+    if(!isClicked) {
+        setButtonColor(prioButtonID);
     } else {
-        clearPrioButtonColor();
-        let proSVG1 = prio + "-svg1";
-        let proSVG2 = prio + "-svg2";
+        setGlobalPrio(prioButtonID);
+        if (isActive && prioButtonID == globalPrio) {
+        resetButtonColor();
+        } else {
+        setButtonColor(prioButtonID);
+        }
+    globalPrio = prioButtonID;
+    }
+}
+
+function resetButtonColor() {
+    clearPrioButtonColor();
+    isActive = false;
+    isClicked = false;
+    globalPrio = "";
+}
+
+function setButtonColor(prioButtonID) {
+    clearPrioButtonColor();
+        let proSVG1 = prioButtonID + "-svg1";
+        let proSVG2 = prioButtonID + "-svg2";
         let path1 = document.getElementById(proSVG1);
         fillColor = path1.getAttribute("fill");
         let path2 = document.getElementById(proSVG2);
-        let button = document.getElementById(prio);
+        let button = document.getElementById(prioButtonID);
         changeSVGPathColor(path1);
         changeSVGPathColor(path2);
-        changeColorClasses(button, prio);
-        isClickedCheck();
-    }
-    globalPrio = prio;
+        changeColorClasses(button, prioButtonID);
+        // isClickedCheck(prioButtonID);
 }
 
 function setGlobalPrio(prio) {
@@ -106,11 +119,13 @@ function resetSVGColorEdit() {
 
 
 
-function isClickedCheck() {
-    if (isClicked) {
-        isClicked = false;
-    } else {
+function isClickedCheck(prioButtonID) {
+    let prioButton = document.getElementById(prioButtonID);
+    let colorStyle = window.getComputedStyle(prioButton).color;
+    if (colorStyle === 'rgba(255, 255, 255)') {
         isClicked = true;
+    } else {
+        isClicked = false;
     }
 }
 
