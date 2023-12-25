@@ -371,7 +371,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                         <div class="subhead-ed-task">Prio</div>
 
                         <div class="prio-buttons-container">
-                            <button value="Urgent" onclick=" changePrioBtnColor('urgent-btn-edit', true, '${prio}')"
+                            <button value="Urgent" onclick=" changePrioBtnColor('urgent-btn-edit', true, '${id}', 'Urgent')"
                                 type="button" id="urgent-btn-edit">Urgent
 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16"
@@ -393,7 +393,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                 </svg>
 
                             </button>
-                            <button value="Medium" onclick=" changePrioBtnColor('medium-btn-edit', true, '${prio}')"
+                            <button value="Medium" onclick=" changePrioBtnColor('medium-btn-edit', true, '${id}', 'Medium')"
                                 type="button" id="medium-btn-edit">Medium
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8"
                                     fill="none">
@@ -413,7 +413,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                     </defs>
                                 </svg>
                             </button>
-                            <button value="Low" onclick=" changePrioBtnColor('low-btn-edit', true, '${prio}')" type="button"
+                            <button value="Low" onclick=" changePrioBtnColor('low-btn-edit', true, '${id}', 'Low')" type="button"
                                 id="low-btn-edit">Low
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16"
                                     viewBox="0 0 21 16" fill="none">

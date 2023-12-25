@@ -1,20 +1,23 @@
 let isClicked = false;
 let fillColor = "";
 let isActive = false;
-let globalPrio = "";
+let globalPrioButtonID = "";
 
-function changePrioBtnColor(prioButtonID, isClicked, prio) {
-    debugger
+function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
     if(!isClicked) {
         setButtonColor(prioButtonID);
+        setNewTaskPriority(taskID, prio);
+        globalPrioButtonID = prioButtonID;
     } else {
-        setGlobalPrio(prioButtonID);
-        if (isActive && prioButtonID == globalPrio) {
+        setGlobalPrioButtonID(prioButtonID);
+        if (isActive && prioButtonID == globalPrioButtonID) {
         resetButtonColor();
+        setNewTaskPriority(taskID, '');
         } else {
         setButtonColor(prioButtonID);
+        setNewTaskPriority(taskID, prio);
+        globalPrioButtonID = prioButtonID;
         }
-    globalPrio = prioButtonID;
     }
 }
 
@@ -22,7 +25,7 @@ function resetButtonColor() {
     clearPrioButtonColor();
     isActive = false;
     isClicked = false;
-    globalPrio = "";
+    globalPrioButtonID = "";
 }
 
 function setButtonColor(prioButtonID) {
@@ -36,12 +39,11 @@ function setButtonColor(prioButtonID) {
         changeSVGPathColor(path1);
         changeSVGPathColor(path2);
         changeColorClasses(button, prioButtonID);
-        // isClickedCheck(prioButtonID);
 }
 
-function setGlobalPrio(prio) {
-    if (globalPrio == "") {
-        globalPrio = prio;
+function setGlobalPrioButtonID(prioButtonID) {
+    if (globalPrioButtonID == "") {
+        globalPrioButtonID = prioButtonID;
     }
 }
 
@@ -55,14 +57,14 @@ function changeSVGPathColor(path) {
     }
 }
 
-function changeColorClasses(button, prio) {
+function changeColorClasses(button, prioButtonID) {
     if (isClicked || fillColor !== "white") {
         button.style.color = "#ffffff"
-        if(prio.includes('low')) {
+        if(prioButtonID.includes('low')) {
             button.style.backgroundColor = "#7AE229";
-        } else if(prio.includes('medium')) {
+        } else if(prioButtonID.includes('medium')) {
             button.style.backgroundColor = "#FFA800";
-        } else if (prio.includes('urgent')) {
+        } else if (prioButtonID.includes('urgent')) {
             button.style.backgroundColor = "#FF3D00";
         }
         isActive = true;
@@ -117,23 +119,13 @@ function resetSVGColorEdit() {
     document.getElementById("urgent-btn-edit-svg2").setAttribute("fill", "#FF3D00");
 }
 
-
-
-function isClickedCheck(prioButtonID) {
-    let prioButton = document.getElementById(prioButtonID);
-    let colorStyle = window.getComputedStyle(prioButton).color;
-    if (colorStyle === 'rgba(255, 255, 255)') {
-        isClicked = true;
-    } else {
-        isClicked = false;
-    }
-}
-
-
-
 function setTodayDateForCalendar(id) {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById(id).setAttribute('min', today);
     
     
-    }
+}
+
+function setNewTaskPriority(taskID, prio) {
+    addedTasks[taskID]['prio'] = prio;
+}

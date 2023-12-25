@@ -21,13 +21,12 @@ function initEditTask(id, title, description, prio, category, assigneds, duedate
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', id);
     loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');
-    loadPrioOnEditTask(prio);
+    loadPrioOnEditTask(prio, id);
     loadSubtasksEditTask('subtask_lists', id);
 
 }
 
 function updateOpenTask(taskID) {
-    debugger
     updateOpenTaskTitle(taskID);
     updateOpenTaskDesc(taskID);
     updateOpenTaskDueDate(taskID);
@@ -50,17 +49,16 @@ function updateOpenTaskDueDate(taskID) {
     addedTasks[taskID]['duedate'] = dueDateValue;
 }
 
-function loadPrioOnEditTask(prio) {
-    debugger
+function loadPrioOnEditTask(prio, taskID) {
     if (prio === "Urgent") {
         isActive = true;
-        changePrioBtnColor('urgent-btn-edit', false, prio);
+        changePrioBtnColor('urgent-btn-edit', false, taskID, prio);
     } else if (prio === "Medium") {
         isActive = true;
-        changePrioBtnColor('medium-btn-edit', false, prio);
+        changePrioBtnColor('medium-btn-edit', false, taskID, prio);
     } else if (prio === "Low") {
         isActive = true;
-        changePrioBtnColor('low-btn-edit', false, prio);
+        changePrioBtnColor('low-btn-edit', false, taskID, prio);
     }
 }
 
