@@ -199,7 +199,7 @@
     cursor: pointer;
     background-color: var(--hover-blue);
     border: 0.1rem solid var(--hover-blue);
-    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
 .ok-ed-task-btn {
     display: flex;
@@ -236,4 +236,29 @@
 
 .checkbox-edit-task {
     width: auto !important;
+}
+
+.add-new-contact-assignedto-btn {
+    display: flex;
+    padding: 1.2rem 1.6rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    width: 100%;
+    align-self: stretch;
+    border-radius: 1rem;
+    margin-bottom: 0.6rem;
+    border: 0.1rem solid var(--primary-dark-blue);
+    background: var(--primary-dark-blue);
+    cursor: pointer;
+    color: white;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.add-new-contact-assignedto-btn:hover {
+    background-color: var(--hover-blue);
+    border: 0.1rem solid var(--hover-blue);
+    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
