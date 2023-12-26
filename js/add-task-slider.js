@@ -1,34 +1,49 @@
 let isClicked = false;
 let fillColor = "";
 let isActive = false;
-let globalPrio = "";
+let globalPrioButtonID = "";
 
-function changePrioBtnColor(prio) {
-    setGlobalPrio(prio);
-    if (isActive && prio == globalPrio) {
-        clearPrioButtonColor();
-        isActive = false;
-        isClicked = false;
-        globalPrio = "";
+function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
+    if(!isClicked) {
+        setButtonColor(prioButtonID);
+        setNewTaskPriority(taskID, prio);
+        globalPrioButtonID = prioButtonID;
     } else {
-        clearPrioButtonColor();
-        let proSVG1 = prio + "-svg1";
-        let proSVG2 = prio + "-svg2";
+        setGlobalPrioButtonID(prioButtonID);
+        if (isActive && prioButtonID == globalPrioButtonID) {
+        resetButtonColor();
+        setNewTaskPriority(taskID, '');
+        } else {
+        setButtonColor(prioButtonID);
+        setNewTaskPriority(taskID, prio);
+        globalPrioButtonID = prioButtonID;
+        }
+    }
+}
+
+function resetButtonColor() {
+    clearPrioButtonColor();
+    isActive = false;
+    isClicked = false;
+    globalPrioButtonID = "";
+}
+
+function setButtonColor(prioButtonID) {
+    clearPrioButtonColor();
+        let proSVG1 = prioButtonID + "-svg1";
+        let proSVG2 = prioButtonID + "-svg2";
         let path1 = document.getElementById(proSVG1);
         fillColor = path1.getAttribute("fill");
         let path2 = document.getElementById(proSVG2);
-        let button = document.getElementById(prio);
+        let button = document.getElementById(prioButtonID);
         changeSVGPathColor(path1);
         changeSVGPathColor(path2);
-        changeColorClasses(button, prio);
-        isClickedCheck();
-    }
-    globalPrio = prio;
+        changeColorClasses(button, prioButtonID);
 }
 
-function setGlobalPrio(prio) {
-    if (globalPrio == "") {
-        globalPrio = prio;
+function setGlobalPrioButtonID(prioButtonID) {
+    if (globalPrioButtonID == "") {
+        globalPrioButtonID = prioButtonID;
     }
 }
 
@@ -42,12 +57,20 @@ function changeSVGPathColor(path) {
     }
 }
 
-function changeColorClasses(button, prio) {
+function changeColorClasses(button, prioButtonID) {
     if (isClicked || fillColor !== "white") {
-        button.classList.add(prio);
+        button.style.color = "#ffffff"
+        if(prioButtonID.includes('low')) {
+            button.style.backgroundColor = "#7AE229";
+        } else if(prioButtonID.includes('medium')) {
+            button.style.backgroundColor = "#FFA800";
+        } else if (prioButtonID.includes('urgent')) {
+            button.style.backgroundColor = "#FF3D00";
+        }
         isActive = true;
     } else {
-        button.classList.remove(prio);
+        button.style.backgroundColor = "#fffff";
+        button.style.color = "#000000"
         isActive = false;
     }
 }
@@ -60,9 +83,13 @@ function clearPrioButtonColor() {
 }
 
 function resetBgColorAddTask() {
-    document.getElementById("urgent-btn").classList.remove("urgent-btn");
-    document.getElementById("medium-btn").classList.remove("medium-btn");
-    document.getElementById("low-btn").classList.remove("low-btn");
+    document.getElementById("urgent-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("urgent-btn").style.color = "#000000";
+    document.getElementById("medium-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("medium-btn").style.color = "#000000";
+    document.getElementById("low-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("low-btn").style.color = "#000000";
+
 }
 
 function resetSVGColorAddTask() {
@@ -75,9 +102,12 @@ function resetSVGColorAddTask() {
 }
 
 function resetBgColorEdit() {
-    document.getElementById("urgent-btn-edit").classList.remove("urgent-btn-edit");
-    document.getElementById("medium-btn-edit").classList.remove("medium-btn-edit");
-    document.getElementById("low-btn-edit").classList.remove("low-btn-edit");
+    document.getElementById("urgent-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("urgent-btn-edit").style.color = "#000000";
+    document.getElementById("medium-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("medium-btn-edit").style.color = "#000000";
+    document.getElementById("low-btn-edit").style.backgroundColor = "#ffffff";
+    document.getElementById("low-btn-edit").style.color = "#000000";
 }
 
 function resetSVGColorEdit() {
@@ -89,20 +119,13 @@ function resetSVGColorEdit() {
     document.getElementById("urgent-btn-edit-svg2").setAttribute("fill", "#FF3D00");
 }
 
-
-
-function isClickedCheck() {
-    if (isClicked) {
-        isClicked = false;
-    } else {
-        isClicked = true;
-    }
+function setTodayDateForCalendar(id) {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById(id).setAttribute('min', today);
+    
+    
 }
 
-
-function setTodayDateForCalendar() {
-let today = new Date().toISOString().split('T')[0];
-document.getElementById('calendar_add_task_slider').setAttribute('min', today);
-document.getElementById('calendar_edit_task').setAttribute('min', today);
-
+function setNewTaskPriority(taskID, prio) {
+    addedTasks[taskID]['prio'] = prio;
 }

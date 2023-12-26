@@ -1,7 +1,9 @@
 
-function initBoard() {
+async function initBoard() {
+    await loadUsers();
     loadBoard();
-    setTodayDateForCalendar();
+    loadCurrentUser();
+    
 }
 
 
@@ -41,7 +43,7 @@ function loadSubtaskprogress(subtasks, id) {
 
 function loadAssigneds(assigneds, id) {
     for (let i = 0; i < assigneds.length; i++) {
-        let badgeColor = getRandomColor();
+        let badgeColor = getUserColor(assigneds, i);
         let assignedUserName = assigneds[i];
         let userBadge = generateUserBadge(assignedUserName);
         document.getElementById(`task_assignment_container_${id}`).innerHTML +=
@@ -80,20 +82,24 @@ function loadCategoryColor(category) {
     }
 }
 
-function showFrame(id) {
-    document.getElementById(id).classList.add('slider-bg');
-    document.getElementById(id).classList.remove('slider-center');
+function show(id) {
     document.getElementById(id).classList.remove('d-none');
 }
 
-function closeFrame(id) {
+function hide(id) {
     document.getElementById(id).classList.add('d-none');
 }
+
+function showFrame(id) {
+    addOverlayBg(id);
+    show(id);
+}
+
 
 function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
     addedTasks = updatedAddedTasks;
-    hideTaskOpen('ed_task_overlay_frame');
+    hideTaskOpen('task_open_overlay_frame');
     loadBoard();
 }
 
@@ -141,4 +147,9 @@ function formatDueDate(dueDate) {
     let dateParts = dueDate.split('-');
     let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
     return duedate;
+}
+
+async function clearRemoteStorage() {
+    users = [];
+    await setItem("users", JSON.stringify(users));
 }

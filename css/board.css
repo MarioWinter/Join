@@ -110,7 +110,7 @@
 #add_task_button:hover {
     cursor: pointer;
     background-color: var(--hover-blue);
-    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
 
 #add_task_button div {

@@ -40,9 +40,9 @@ function generateCardHTML(id, title, description, category, categoryColor) {
             </div>
             
         </div>
-    
     `;
 }
+
 
 /**
  * Generates the To Task HTML label if there are no cards on the column
@@ -52,6 +52,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
 function generateNoTaskHTML(bucket) {
     return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
+
 
 function generateSubtaskProgressHTML(allSubtask, done){
     let percentInWidth = generatePercentInWidth(allSubtask, done);
@@ -65,6 +66,10 @@ function generateSubtaskProgressHTML(allSubtask, done){
 
 function generateAssigmentBadgeHTML(userBadge, badgeColor) {
     return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
+}
+
+function generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i) {
+    return `<div id="initials${i}" class="contact-badge" style="background-color: ${badgeColor};">${userBadge}</div>`;
 }
 
 function generateMediumPrioIcon() {
@@ -116,13 +121,14 @@ function generateUrgentPrioIcon() {
     `;
 }
 
-function generateTaskOverlayHTML(id, title, description, category, categoryColor, duedate) {
+
+function generateOpenTaskHTML(id, title, description, category, categoryColor, duedate) {
     return `
-    <div id="ed_task_overlay_frame" class="task-overlay-frame-open">
+                <div id="task_open_overlay_frame" class="task-overlay-frame-open">
                         <!-- tesk overlay tag -->
                         <div class="category-container-task-open">
                             <div class="category-tag-task-open"style="background-color: ${categoryColor};">${category}</div>
-                            <div class="close-button" onclick="hideTaskOpen('ed_task_overlay_frame')">
+                            <div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <mask id="mask0_99379_7049" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -191,7 +197,7 @@ function generateTaskOverlayHTML(id, title, description, category, categoryColor
                                 fill="none">
                                 <path d="M1 0V24" stroke="#D1D1D1" />
                             </svg>
-                            <div id="edit_btn_task_open" class="del-ed-btn-task-open">
+                            <div id="edit_btn_task_open" class="del-ed-btn-task-open" onclick="loadTaskEdit(${id})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none">
                                     <mask id="mask0_99408_2223" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
@@ -224,7 +230,43 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
-function generateSubtasksHTML(subtitle, i, ID){
+function generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, assignedUserName, i, ID) {
+    return`
+    <label class="slider-contact-label" for="check-contact${i}">
+        <div class="current-contact-slider">
+            <div id="contect_badge${i}" class="contact-badge"
+                style="background-color: ${badgeColor};">
+                <span>${userBadge}</span>
+            </div>
+            <span>${assignedUserName} </span>
+            <div class="log-in-checkbox">
+                <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" />
+                <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+            </div>
+        </div>
+    </label>
+    `;
+}
+
+function generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, assignedUserName, i, ID) {
+    return`
+    <label class="slider-contact-label" for="check-contact${i}">
+        <div class="current-contact-slider">
+            <div id="contect_badge${i}" class="contact-badge"
+                style="background-color: ${badgeColor};">
+                <span>${userBadge}</span>
+            </div>
+            <span>${assignedUserName} </span>
+            <div class="log-in-checkbox">
+                <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" checked/>
+                <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+            </div>
+        </div>
+    </label>
+    `;
+}
+
+function generateSubtasksHTML(subtitle, i, ID) {
     return `
     <div class="log-in-checkbox">
         <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
@@ -242,13 +284,254 @@ function generateSubtasksCheckedHTML(subtitle, i, ID){
     `;
 }
 
+function generateSubtaskListItemHTML(subtitle, i, ID, subtaskListItemID, subtaskEditContainerID, subtaskEditInputID, subtaskList) {
+    let subtaskListItem = `${ID}${subtaskListItemID}${i}`;
+    let subtaskEditContainer = `${ID}${subtaskEditContainerID}${i}`;
+    let subtaskEditInput = `${ID}${subtaskEditInputID}${i}`;
+
+    return `
+        <!-- Subtask List Item -->
+        <div id="${subtaskListItem}" class="subtask-list-item-slider">
+            <ul>
+                <li>${subtitle}</li>
+            </ul>
+            <div class="subtask-icon-container">
+                <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask" onclick="showSubtaskEditInputFrame('${subtaskListItem}', '${subtaskEditContainer}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
+                    viewBox="0 0 2 24" fill="none">
+                    <path d="M1.14453 0V24" stroke="#A8A8A8" />
+                </svg>
+                <img src="./assets/img/delete-icon.svg" alt="Delete Subtask" onclick="deleteSubtask(${ID}, ${i}, '${subtaskList}')">
+            </div>
+        </div>
+
+        <!-- Subtask Edit List Item -->
+
+        <div id="${subtaskEditContainer}" class="subtask-edit-input-container d-none">
+            <input id="${subtaskEditInput}" class="subtask-edit-input" type="text"
+                value="${subtitle}">
+            <div class="subtask-edit-container">
+                <img class="subtask-button-slider" src="./assets/img/delete-icon.svg"
+                    alt="delete subtask" onclick="deleteSubtask(${ID}, ${i}, '${subtaskList}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
+                    viewBox="0 0 2 24" fill="none">
+                    <path d="M1.14453 0V24" stroke="#A8A8A8" />
+                </svg>
+                <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
+                    alt="check subtask" onclick="updateSubtask(${ID}, '${subtaskListItem}', '${subtaskEditInput}', ${i}, '${subtaskEditContainer}', '${subtaskList}')">
+            </div>
+        </div>
+    `;
+}
+
+function generateAddContactAssignedToBtnHTML() {
+    return`
+        <button class="add-new-contact-assignedto-btn">
+            <div>Add new contact</div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32"
+                viewBox="0 0 33 32" fill="none">
+                <mask id="mask0_99517_6729" style="mask-type:alpha"
+                    maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
+                    <rect x="0.5" width="32" height="32" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_99517_6729)">
+                    <path
+                        d="M25.8291 18.6667C25.5132 18.6667 25.2497 18.5602 25.0386 18.3472C24.8275 18.1342 24.7219 17.8704 24.7219 17.5556V14.4444H21.6108C21.296 14.4444 21.0321 14.3376 20.8191 14.1239C20.6062 13.9101 20.4997 13.6453 20.4997 13.3294C20.4997 13.0135 20.6062 12.75 20.8191 12.5389C21.0321 12.3278 21.296 12.2222 21.6108 12.2222H24.7219V9.11109C24.7219 8.79629 24.8288 8.5324 25.0425 8.31942C25.2562 8.10647 25.521 7.99999 25.8369 7.99999C26.1528 7.99999 26.4163 8.10647 26.6274 8.31942C26.8386 8.5324 26.9441 8.79629 26.9441 9.11109V12.2222H30.0552C30.37 12.2222 30.6339 12.3291 30.8469 12.5428C31.0599 12.7565 31.1663 13.0213 31.1663 13.3372C31.1663 13.6531 31.0599 13.9166 30.8469 14.1278C30.6339 14.3389 30.37 14.4444 30.0552 14.4444H26.9441V17.5556C26.9441 17.8704 26.8373 18.1342 26.6235 18.3472C26.4098 18.5602 26.145 18.6667 25.8291 18.6667ZM12.4997 15.9778C11.033 15.9778 9.81449 15.4926 8.84411 14.5222C7.87375 13.5518 7.38858 12.3333 7.38858 10.8667C7.38858 9.39999 7.87375 8.18148 8.84411 7.21112C9.81449 6.24074 11.033 5.75555 12.4997 5.75555C13.9663 5.75555 15.1849 6.24074 16.1552 7.21112C17.1256 8.18148 17.6108 9.39999 17.6108 10.8667C17.6108 12.3333 17.1256 13.5518 16.1552 14.5222C15.1849 15.4926 13.9663 15.9778 12.4997 15.9778ZM2.94411 26.6667C2.62931 26.6667 2.36542 26.5602 2.15244 26.3472C1.93949 26.1342 1.83301 25.8704 1.83301 25.5556V23.3333C1.83301 22.563 2.03115 21.8611 2.42744 21.2278C2.82375 20.5945 3.36635 20.1185 4.05524 19.8C5.62562 19.0815 7.07998 18.5648 8.41831 18.25C9.75666 17.9352 11.1159 17.7778 12.4961 17.7778C13.8763 17.7778 15.2367 17.9352 16.5774 18.25C17.9182 18.5648 19.3663 19.0815 20.9219 19.8C21.6108 20.1333 22.1571 20.613 22.5608 21.2389C22.9645 21.8648 23.1663 22.563 23.1663 23.3333V25.5556C23.1663 25.8704 23.0599 26.1342 22.8469 26.3472C22.6339 26.5602 22.37 26.6667 22.0552 26.6667H2.94411ZM4.05521 24.4445H20.9441V23.3333C20.9441 23.0148 20.8645 22.7148 20.7052 22.4333C20.546 22.1518 20.3071 21.9407 19.9886 21.8C18.5515 21.0963 17.2626 20.6204 16.1219 20.3722C14.9812 20.1241 13.7737 20 12.4997 20C11.2256 20 10.0182 20.1278 8.87744 20.3833C7.73671 20.6389 6.44042 21.1111 4.98857 21.8C4.69966 21.9407 4.47187 22.1518 4.30521 22.4333C4.13854 22.7148 4.05521 23.0148 4.05521 23.3333V24.4445ZM12.4997 13.7556C13.3219 13.7556 14.0089 13.4796 14.5608 12.9278C15.1126 12.3759 15.3886 11.6889 15.3886 10.8667C15.3886 10.0444 15.1126 9.3574 14.5608 8.80555C14.0089 8.25369 13.3219 7.97775 12.4997 7.97775C11.6775 7.97775 10.9904 8.25369 10.4386 8.80555C9.88671 9.3574 9.61077 10.0444 9.61077 10.8667C9.61077 11.6889 9.88671 12.3759 10.4386 12.9278C10.9904 13.4796 11.6775 13.7556 12.4997 13.7556Z"
+                        fill="white" />
+                </g>
+            </svg>
+        </button>
+    
+    `;
+}
+
+function generateEditTaskHTML(id, title, description, category, categoryColor, duedate, prio) {
+    return `
+            <div id="task_open_overlay_frame" class="task-overlay-frame-open">
+                <!-- tesk overlay close Button -->
+                <div class="close-btn-container-task-edit">
+                    <div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none">
+                            <mask id="mask0_99379_7049" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                y="0" width="24" height="24">
+                                <rect width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_99379_7049)">
+                                <path
+                                    d="M12 13.4L7.10005 18.3C6.91672 18.4834 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4834 5.70005 18.3C5.51672 18.1167 5.42505 17.8834 5.42505 17.6C5.42505 17.3167 5.51672 17.0834 5.70005 16.9L10.6 12L5.70005 7.10005C5.51672 6.91672 5.42505 6.68338 5.42505 6.40005C5.42505 6.11672 5.51672 5.88338 5.70005 5.70005C5.88338 5.51672 6.11672 5.42505 6.40005 5.42505C6.68338 5.42505 6.91672 5.51672 7.10005 5.70005L12 10.6L16.9 5.70005C17.0834 5.51672 17.3167 5.42505 17.6 5.42505C17.8834 5.42505 18.1167 5.51672 18.3 5.70005C18.4834 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4834 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4834 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4834 18.1167 18.3 18.3C18.1167 18.4834 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4834 16.9 18.3L12 13.4Z"
+                                    fill="#2A3647" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="overlay-scroll">
+                    <!-- Title Edit Task-->
+                    <div class="subhead-container-ed-task">
+                        <div class="subhead-ed-task">Title</div>
+
+                        <input required="" placeholder="Enter a title" id="title_input_ed_task"
+                            class="input-frame-ed-task" type="text" autocomplete="off" value="${title}">
+                        <div class="error-message-slider" id="title_error_slider"></div>
+                    </div>
+                    <!-- Descrption Edit Task  -->
+                    <div class="subhead-container-ed-task">
+                        <div class="subhead-ed-task">Description</div>
+                        <textarea required="" placeholder="Enter a Description" name="" id="description_ed_task"
+                            class="description-textarea" cols="20" rows="10">${description}</textarea>
+                        <div></div>
+                    </div>
+
+                    <!-- Calender Edit Task -->
+                    <div class="date-container-slider">
+                        <div class="subhead-ed-task">Due date</div>
+                        <input type="date" id="calendar_edit_task" value="${duedate}">
+                        <div class="error-message-slider" id="date_error_slider"></div>
+                    </div>
+
+                    <!--Prio Edit Task  -->
+                    <div class="subhead-container-ed-task">
+                        <div class="subhead-ed-task">Prio</div>
+
+                        <div class="prio-buttons-container">
+                            <button value="Urgent" onclick=" changePrioBtnColor('urgent-btn-edit', true, '${id}', 'Urgent')"
+                                type="button" id="urgent-btn-edit">Urgent
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16"
+                                    viewBox="0 0 21 16" fill="none">
+                                    <g clip-path="url(#clip0_99234_5027)">
+                                        <path id='urgent-btn-edit-svg1'
+                                            d="M19.6527 15.2547C19.418 15.2551 19.1895 15.1803 19.0006 15.0412L10.7486 8.958L2.4965 15.0412C2.38065 15.1267 2.24907 15.1887 2.10927 15.2234C1.96947 15.2582 1.82419 15.2651 1.68172 15.2437C1.53925 15.2223 1.40239 15.1732 1.27894 15.099C1.1555 15.0247 1.04789 14.927 0.962258 14.8112C0.876629 14.6954 0.814657 14.5639 0.77988 14.4243C0.745104 14.2846 0.738203 14.1394 0.759574 13.997C0.802733 13.7095 0.958423 13.4509 1.19239 13.2781L10.0965 6.70761C10.2852 6.56802 10.5138 6.49268 10.7486 6.49268C10.9833 6.49268 11.2119 6.56802 11.4006 6.70761L20.3047 13.2781C20.4906 13.415 20.6285 13.6071 20.6987 13.827C20.7688 14.0469 20.7677 14.2833 20.6954 14.5025C20.6231 14.7216 20.4833 14.9124 20.296 15.0475C20.1088 15.1826 19.8836 15.2551 19.6527 15.2547Z"
+                                            fill="#FF3D00" />
+                                        <path id='urgent-btn-edit-svg2'
+                                            d="M19.6527 9.50568C19.4181 9.50609 19.1895 9.43124 19.0006 9.29214L10.7486 3.20898L2.49654 9.29214C2.26257 9.46495 1.96948 9.5378 1.68175 9.49468C1.39403 9.45155 1.13523 9.29597 0.962293 9.06218C0.789357 8.82838 0.71645 8.53551 0.759609 8.24799C0.802768 7.96048 0.958458 7.70187 1.19243 7.52906L10.0965 0.958588C10.2852 0.818997 10.5138 0.743652 10.7486 0.743652C10.9834 0.743652 11.212 0.818997 11.4007 0.958588L20.3048 7.52906C20.4907 7.66598 20.6286 7.85809 20.6987 8.07797C20.7689 8.29785 20.7677 8.53426 20.6954 8.75344C20.6231 8.97262 20.4833 9.16338 20.2961 9.29847C20.1088 9.43356 19.8837 9.50608 19.6527 9.50568Z"
+                                            fill="#FF3D00" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_99234_5027">
+                                            <rect width="20" height="14.5098" fill="white"
+                                                transform="translate(0.748535 0.745117)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                            </button>
+                            <button value="Medium" onclick=" changePrioBtnColor('medium-btn-edit', true, '${id}', 'Medium')"
+                                type="button" id="medium-btn-edit">Medium
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="8" viewBox="0 0 21 8"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_99234_5034)">
+                                        <path id='medium-btn-edit-svg1'
+                                            d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z"
+                                            fill="#FFA800" />
+                                        <path id='medium-btn-edit-svg2'
+                                            d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
+                                            fill="#FFA800" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_99234_5034">
+                                            <rect width="20" height="7.45098" fill="white"
+                                                transform="translate(0.248535 0.274414)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                            <button value="Low" onclick=" changePrioBtnColor('low-btn-edit', true, '${id}', 'Low')" type="button"
+                                id="low-btn-edit">Low
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="16"
+                                    viewBox="0 0 21 16" fill="none">
+                                    <path id='low-btn-edit-svg1'
+                                        d="M10.2485 9.50614C10.0139 9.50654 9.7854 9.4317 9.59655 9.29262L0.693448 2.72288C0.57761 2.63733 0.47977 2.52981 0.405515 2.40647C0.33126 2.28313 0.282043 2.14638 0.260675 2.00404C0.217521 1.71655 0.290421 1.42372 0.463337 1.18994C0.636253 0.956173 0.895022 0.800615 1.18272 0.757493C1.47041 0.71437 1.76347 0.787216 1.99741 0.960004L10.2485 7.04248L18.4997 0.960004C18.6155 0.874448 18.7471 0.812529 18.8869 0.777782C19.0266 0.743035 19.1719 0.736141 19.3144 0.757493C19.4568 0.778844 19.5937 0.828025 19.7171 0.902225C19.8405 0.976425 19.9481 1.07419 20.0337 1.18994C20.1194 1.3057 20.1813 1.43717 20.2161 1.57685C20.2509 1.71653 20.2578 1.86169 20.2364 2.00404C20.215 2.14638 20.1658 2.28313 20.0916 2.40647C20.0173 2.52981 19.9195 2.63733 19.8036 2.72288L10.9005 9.29262C10.7117 9.4317 10.4831 9.50654 10.2485 9.50614Z"
+                                        fill="#7AE229" />
+                                    <path id='low-btn-edit-svg2'
+                                        d="M10.2485 15.2547C10.0139 15.2551 9.7854 15.1802 9.59655 15.0412L0.693448 8.47142C0.459502 8.29863 0.30383 8.04005 0.260675 7.75257C0.217521 7.46509 0.290421 7.17225 0.463337 6.93848C0.636253 6.70471 0.895021 6.54915 1.18272 6.50603C1.47041 6.46291 1.76347 6.53575 1.99741 6.70854L10.2485 12.791L18.4997 6.70854C18.7336 6.53575 19.0267 6.46291 19.3144 6.50603C19.602 6.54915 19.8608 6.70471 20.0337 6.93848C20.2066 7.17225 20.2795 7.46509 20.2364 7.75257C20.1932 8.04005 20.0376 8.29863 19.8036 8.47142L10.9005 15.0412C10.7117 15.1802 10.4831 15.2551 10.2485 15.2547Z"
+                                        fill="#7AE229" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Assigned To Edit Task -->
+                    <div class="subhead-container-ed-task">
+                        <div class="subhead-ed-task">Assigned to</div>
+                        <div class="assigned-to-input-slider">
+                            <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
+                                placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', ${id})">
+                            <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
+                            <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
+                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
+
+                        </div>
+                        <div class="p-relative">
+                            <div class="contact-overlay d-none" id="et_contact_overlay">
+                                <!-- Contact for render -->
+                                
+                            </div>
+                            <div id="et_selected_contacts" class="selected-contacts">
+                                <!-- select contact -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subtask Edit Task -->
+                    <div id="subtask_container_slider" class="subtask-container-slider">
+                        <div class="subhead-ed-task">Subtasks</div>
+                        <div class="subtask-input-container">
+                            <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask"
+                                autocomplete="">
+                            <img id="add_subtask" class="add-subtask-slider" src="./assets/img/add-plus-icon.svg"
+                                alt="Add Subtasks" onclick="showSubtaskInput('add_subtask', 'check_subtask_icons')">
+
+                            <div id="check_subtask_icons" class="check-subtask-icons d-none">
+                                <img class="subtask-button-slider" src="./assets/img/add-cancel-icon.svg"
+                                    alt="Cancel Subtask" onclick="cancelAddSubtask('add_subtask', 'check_subtask_icons')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 2 24"
+                                    fill="none">
+                                    <path d="M1.14453 0V24" stroke="#D1D1D1" />
+                                </svg>
+                                <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
+                                    alt="Check Substask" onclick="addSubtask(${id}, 'subtask_lists')">
+
+                            </div>
+                        </div>
+
+                        <div id="subtask_lists">
+                            
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <div class="delete-edit-container-task-open">
+                    <button type="submit" class="ok-ed-task-btn" id="ok_ed-task-btn" onclick="updateOpenTask(${id})">
+                        <span>Ok</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24"
+                            fill="none">
+                            <mask id="mask0_71766_6017" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+                                y="0" width="25" height="24">
+                                <rect x="0.0683594" width="24" height="24" fill="#D9D9D9" />
+                            </mask>
+                            <g mask="url(#mask0_71766_6017)">
+                                <path
+                                    d="M9.61905 15.15L18.0941 6.675C18.2941 6.475 18.5316 6.375 18.8066 6.375C19.0816 6.375 19.3191 6.475 19.5191 6.675C19.7191 6.875 19.8191 7.1125 19.8191 7.3875C19.8191 7.6625 19.7191 7.9 19.5191 8.1L10.3191 17.3C10.1191 17.5 9.88572 17.6 9.61905 17.6C9.35239 17.6 9.11905 17.5 8.91905 17.3L4.61905 13C4.41905 12.8 4.32322 12.5625 4.33155 12.2875C4.33989 12.0125 4.44405 11.775 4.64405 11.575C4.84405 11.375 5.08155 11.275 5.35655 11.275C5.63155 11.275 5.86905 11.375 6.06905 11.575L9.61905 15.15Z"
+                                    fill="white" />
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+    
+    `;
+}
+
 //Template Jason
 addedTasks = [{
     "id": 0,
     "bucket": "in-progress",
     "title": "Kochwelt Page & Recipe Recommender",
     "description": "Build start page with recipe recommendation.",
-    "assigned": ["Jad El Nader", "Jonas Lambelet", "Heike Lüdemann"],
+    "assigned": [],
     "duedate": "2024-05-10",
     "prio": "Medium",
     "category": "User Story",
@@ -272,7 +555,7 @@ addedTasks = [{
     "bucket": "done",
     "title": "CSS Architecture Planning",
     "description": "Define CSS naming conventions and structure.",
-    "assigned": ["Alexander Riedel"],
+    "assigned": [],
     "duedate": "2023-09-02",
     "prio": "Low",
     "category": "Technical Task",
@@ -293,7 +576,7 @@ addedTasks = [{
     "bucket": "to-do",
     "title": "HTML Base Template Creation",
     "description": "Create reusable HTML base templates",
-    "assigned": ["Alexander Riedel", "Heike Lüdemann"],
+    "assigned": [],
     "duedate": "2024-10-03",
     "prio": "Low",
     "category": "Technical Task",
@@ -304,7 +587,7 @@ addedTasks = [{
     "bucket": "await-feedback",
     "title": "Daily Kochwelt Receipe",
     "description": "Implement daily receipe and portion calculator in JavaScript and HTML",
-    "assigned": ["Alexander Riedel", "Jad El Nader", "Jonas Lambelet", "Heike Lüdemann"],
+    "assigned": [],
     "duedate": "2023-09-02",
     "prio": "Urgent",
     "category": "Technical Task",
@@ -320,11 +603,4 @@ addedTasks = [{
         }
     ]
 },
-];
-
-
-users = [
-    {
-        usertoken: "",
-    },
 ];

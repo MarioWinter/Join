@@ -81,7 +81,6 @@
 }
 
 #title_input_slider,
-.assigned-to-slider,
 #calendar_add_task_slider,
 #slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
@@ -100,11 +99,6 @@
     outline: none;
 }
 
-.assigned-to-slider:focus {
-    border: 0.1rem solid var(--hover-blue);
-    outline: none;
-    background-image: url(../assets/img/arrow_drop_up.svg);
-}
 
 .error-message-slider {
     color: red;
@@ -141,15 +135,43 @@
 }
 
 .assigned-to-slider {
-    background-image: url(../assets/img/arrow_drop_down.svg);
-    background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: 95%;
+    display: flex;
+    padding: 1.2rem 1.6rem;
+    font-size: 2rem;
+    width: 44rem;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--light-grey-placeholder);
+    background-color: white;
+}
+
+.assigned-to-input-slider {
+    position: relative;
+}
+
+.select-contacts-dropdown {
+    position: absolute;
+    right: 2rem;
+    top: 1.2rem;
     cursor: pointer;
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 100%;
+}
+
+.select-contacts-dropdown:hover {
+    background-color: var(--light-grey-placeholder);
 }
 
 .assigned-to-slider:hover {
     border: 0.1rem solid var(--secondary-grey-sidebar);
+}
+
+.assigned-to-slider:focus {
+    border: 0.1rem solid var(--hover-blue);
+    outline: none;
 }
 
 .p-relative {
@@ -160,7 +182,6 @@
 }
 
 .contact-overlay {
-    position: absolute;
     flex-direction: column;
     gap: 0.3rem;
     width: 100%;
@@ -251,7 +272,7 @@
     display: flex !important;
 }
 
-#selected_contacts {
+.selected-contacts {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
@@ -314,24 +335,6 @@
 .prio-buttons-container button:hover {
     cursor: pointer;
     box-shadow: 0rem 0.4rem 0.4rem 0rem rgba(0, 0, 0, 0.251);
-}
-
-.urgent-btn {
-    background-color: rgba(255, 61, 0, 1) !important;
-    color: white !important;
-    font-weight: 500;
-}
-
-.medium-btn {
-    background-color: rgba(255, 168, 0, 1) !important;
-    color: white !important;
-    font-weight: 500;
-}
-
-.low-btn {
-    background-color: rgba(122, 226, 41, 1) !important;
-    color: white !important;
-    font-weight: 500;
 }
 
 .category-container {
@@ -470,6 +473,7 @@
 .subtask-edit-input {
     border: none;
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .subtask-edit-container {
