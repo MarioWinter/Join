@@ -530,7 +530,7 @@ function generateAddTaskSliderHTML(boardColumnID) {
 <div id="add_task_overlay_frame" class="slider-frame">
     <div class="add-task-head">
         <h1>Add Task</h1>
-        <div class="close-button">
+        <div class="close-button" onclick="hideTaskOpen('add_task_overlay_frame')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none">
                 <mask id="mask0_99234_5574" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
