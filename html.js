@@ -114,9 +114,9 @@ function renderSignUpHTML() {
             </div>
             <span id='message'></span>
             <div class="sing-up-check-box">
-              <input required style="margin-right: 10px; color: black" type="checkbox" id="sing-up-check" name="sing-up-check"
-                checked /><label style="font-size: 2rem" for="sing-up-check">i accept the <br> <a class="sign-up-link"
-                  href="privacy_policy.html">Privacy policy</a></label>
+              <input required style="margin-right: 10px; color: black"  type="checkbox" id="sing-up-check" name="sing-up-check"
+                checked /><label style="font-size: 2rem" for="sing-up-check">i accept the  <a style="padding-left: 10px" class="sign-up-link"
+                  href="privacy_policy_without_log_in.html">Privacy policy</a></label>
             </div>
 
 
