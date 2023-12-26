@@ -129,3 +129,12 @@ function setTodayDateForCalendar(id) {
 function setNewTaskPriority(taskID, prio) {
     addedTasks[taskID]['prio'] = prio;
 }
+
+function loadAddTaskSlider(boardColumnID) {
+    let taskOverlay = document.getElementById('task_overlay_bg');
+    taskOverlay.innerHTML = "";
+    showFrame('task_overlay_bg');
+    addOverlayBg('task_overlay_bg');
+    taskOverlay.innerHTML = generateAddTaskSliderHTML(boardColumnID);
+    frameSlideIn('add_task_overlay_frame');
+}

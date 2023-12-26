@@ -3,6 +3,7 @@
  * Checks the current path and activates the corresponding menu link if it matches specific page URLs.
  */
 function checkPath() {
+
   let currentPath = window.location.pathname;
 
   if (currentPath === '/10_Join/Join/summary.html' || currentPath === '/10_Join/Join/add_task.html' || currentPath === '/10_Join/Join/board.html' || currentPath === '/10_Join/Join/contacts.html') {

@@ -8,16 +8,15 @@ function loadTaskEdit(id) {
         let description = task['description'];
         let prio = task['prio'];
         let duedate = task['duedate'];
-        let category = task['category'];
         let assigneds = task['assigned'];
-        initEditTask(id, title, description, prio, category, assigneds, duedate);
+        initEditTask(id, title, description, prio, assigneds, duedate);
     }
 }
 
-function initEditTask(id, title, description, prio, category, assigneds, duedate) {
-    let categoryColor = loadCategoryColor(category);
+function initEditTask(id, title, description, prio, assigneds, duedate) {
+    
     document.getElementById('task_overlay_bg').innerHTML = 
-    generateEditTaskHTML(id, title, description, category, categoryColor, duedate, prio);
+    generateEditTaskHTML(id, title, description, duedate);
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', id);
     loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');

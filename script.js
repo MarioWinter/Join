@@ -270,7 +270,3 @@ function showSignUpBtn(){
 }
 
 
-
-
-
-
