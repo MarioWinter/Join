@@ -113,7 +113,13 @@ function loadAddTaskSlider(boardColumnID) {
     addOverlayBg('task_overlay_bg');
     taskOverlay.innerHTML = generateAddTaskSliderHTML(taskID);
     setTodayDateForCalendar('calendar_edit_task');
+    initAddTaskSlider(taskID);
     frameSlideIn('add_task_overlay_frame');
+}
+
+function initAddTaskSlider(taskID) {
+    let assigneds = addedTasks[taskID]['assigned'];
+    loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', taskID);
 }
 
 function createNewTaskID() {
