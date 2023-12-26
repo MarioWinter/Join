@@ -65,6 +65,7 @@ function clearAllFields() {
   document.getElementById('select_contacts_field').value = '';
   closeSubtaskIcons();
   document.getElementById('subtask_display_container').innerHTML = '';    
+  addedSubtasks = [];   
 }
 
 async function taskToRemoteStorage(){
@@ -99,6 +100,7 @@ function closeSubtaskIcons() {
   input.value = '';
 }
 
+// function for handling some Subtask
 function handleSubtaskActions() {
   let subtaskInput = document.getElementById('add_new_subtask_field');
   let subtask = subtaskInput.value.trim(); 
@@ -124,25 +126,45 @@ function renderAddedSubtasks() {
   subtaskContainer.innerHTML = '';
   for (let i = 0; i < addedSubtasks.length; i++) {
     let subtask = addedSubtasks[i];
-    let subtaskDiv = createAddedSubtask(subtask);
+    let subtaskDiv = createAddedSubtask(subtask, i);
     subtaskContainer.innerHTML += subtaskDiv.outerHTML;
   }
   subtaskContainer.classList.remove('d-none');
   closeSubtaskIcons();  
 }
 
-function createAddedSubtask(subtask) {
+function createAddedSubtask(subtask, index) {
   let subtaskDiv = document.createElement('div');
-  subtaskDiv.classList.add('added-subtask-entry');
-  subtaskDiv.innerHTML = `<span contenteditable="true">&#8226; ${subtask}</span>
-    <div class="subtask-icons">
-      <img id="subtask_icons_1" onclick="editAddedSubtask('${subtask}')" class="subtask-icon" src="./img/pencil-icon.svg">
-      <img id="subtask_icons_2" class="" src="./img/vector-line.svg">
-      <img id="subtask_icons_3" onclick="deleteAddedSubtask('${subtask}')" class="subtask-icon" src="./img/delete-icon.svg">
-      <img id="check_dark_save" class="subtask-icon d-none" src="./img/check-dark.svg">      
-      </div>`;
+  subtaskDiv.classList.add('added-subtask');
+  subtaskDiv.innerHTML = `<input id="input_${index}" class="subtask-input" type="text" value="• ${subtask}" contenteditable="true">
+    <div class="added-subtask-icons">
+      <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./img/delete-icon.svg">
+      <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./img/vector-line.svg">
+      <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./img/pencil-icon.svg">
+      <img id="check_dark_save_${index}" class="invisible subtask-icon d-none" src="./img/check-dark.svg">      
+    </div>`;
   return subtaskDiv;
 }
+
+function editAddedSubtask(index) {  
+  let editIcon = document.getElementById(`subtask_icons_1_${index}`);
+  let deleteIcon = document.getElementById(`subtask_icons_3_${index}`);
+  let saveIcon = document.getElementById(`check_dark_save_${index}`);
+  let vectorLine = document.getElementById(`subtask_icons_2_${index}`);
+  let container = editIcon.parentElement;
+  container.insertBefore(saveIcon, editIcon);
+  container.insertBefore(vectorLine, editIcon);
+  container.insertBefore(deleteIcon, editIcon);
+
+  document.getElementById(`subtask_icons_1_${index}`).classList.add('d-none');  
+  document.getElementById(`check_dark_save_${index}`).classList.remove('d-none');
+
+  // Fokus auf das Eingabefeld und Textauswahl
+  let inputField = document.getElementById(`input_${index}`);
+  inputField.focus(); // Setzt den Fokus auf das Eingabefeld
+  // inputField.select(); // Markiert den Text im Eingabefeld
+}
+
 
 function deleteAddedSubtask(subtask) {  
   let index = addedSubtasks.indexOf(subtask);  
@@ -150,10 +172,5 @@ function deleteAddedSubtask(subtask) {
     addedSubtasks.splice(index, 1);     
     renderAddedSubtasks();
   }
-}
-
-function editAddedSubtask() {  
-  document.getElementById(`subtask_icons${i}`).classList.add('d-none');  
-  document.getElementById('check_dark_save').classList.remove('d-none');     
 }
 
