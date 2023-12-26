@@ -43,7 +43,7 @@ function loadSubtaskprogress(subtasks, id) {
 
 function loadAssigneds(assigneds, id) {
     for (let i = 0; i < assigneds.length; i++) {
-        let badgeColor = getRandomColor();
+        let badgeColor = getUserColor(assigneds, i);
         let assignedUserName = assigneds[i];
         let userBadge = generateUserBadge(assignedUserName);
         document.getElementById(`task_assignment_container_${id}`).innerHTML +=

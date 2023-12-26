@@ -43,6 +43,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
     `;
 }
 
+
 /**
  * Generates the To Task HTML label if there are no cards on the column
  * @param {string} bucket - Board ID as column name 
@@ -51,6 +52,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
 function generateNoTaskHTML(bucket) {
     return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
+
 
 function generateSubtaskProgressHTML(allSubtask, done){
     let percentInWidth = generatePercentInWidth(allSubtask, done);
@@ -465,7 +467,7 @@ function generateEditTaskHTML(id, title, description, category, categoryColor, d
                                 <!-- Contact for render -->
                                 
                             </div>
-                            <div id="et_selected_contacts" class="selected-contacts d-none">
+                            <div id="et_selected_contacts" class="selected-contacts">
                                 <!-- select contact -->
 
                             </div>

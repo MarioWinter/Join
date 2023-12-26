@@ -32,6 +32,9 @@ function activeInfoLink() {
 
 let isSubMenu = false;
 
+/**
+ * Fades in the Subenu
+ */
 function showSubmenu() {
   let subMenu = document.getElementById('sub_menu');
   if (isSubMenu) {
