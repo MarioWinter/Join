@@ -20,7 +20,7 @@ function initEditTask(id, title, description, prio, assigneds, duedate) {
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', id);
     loadAssignedOnEditTask(assigneds, 'et_selected_contacts');
     setTodayDateForCalendar('calendar_edit_task');
-    loadPrioOnEditTask(prio, id);
+    loadPrioOnEditTask(prio);
     loadSubtasksEditTask('subtask_lists', id);
 
 }
@@ -29,6 +29,8 @@ function updateOpenTask(taskID) {
     updateOpenTaskTitle(taskID);
     updateOpenTaskDesc(taskID);
     updateOpenTaskDueDate(taskID);
+    updateTaskPriority(taskID);
+    
     renderOpenTask(taskID);
 }
 
@@ -48,16 +50,24 @@ function updateOpenTaskDueDate(taskID) {
     addedTasks[taskID]['duedate'] = dueDateValue;
 }
 
-function loadPrioOnEditTask(prio, taskID) {
+function updateTaskPriority(taskID) {
+    let prio = "";
+    if (globalPrioButtonID !== "") {
+        prio = document.getElementById(globalPrioButtonID).value;
+    }
+    addedTasks[taskID]['prio'] = prio;
+}
+
+function loadPrioOnEditTask(prio) {
     if (prio === "Urgent") {
         isActive = true;
-        changePrioBtnColor('urgent-btn-edit', false, taskID, prio);
+        changePrioBtnColor('urgent-btn', false);
     } else if (prio === "Medium") {
         isActive = true;
-        changePrioBtnColor('medium-btn-edit', false, taskID, prio);
+        changePrioBtnColor('medium-btn', false);
     } else if (prio === "Low") {
         isActive = true;
-        changePrioBtnColor('low-btn-edit', false, taskID, prio);
+        changePrioBtnColor('low-btn', false);
     }
 }
 
