@@ -33,6 +33,7 @@ body {
     --header-height: 9.6rem;
     --lable-turquoise: rgb(31, 215, 193);
     --progress-bar-blue: rgb(69, 137, 255);
+    --error-field-required: rgb(255, 129, 144);
 }
 
 .d-none {

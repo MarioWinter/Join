@@ -152,3 +152,17 @@ function deleteNewTask(taskID) {
     addedTasks.splice(taskID, 1);
 }
 
+function getRequiredFields() {
+    let titleInput = document.getElementById('title_input_ed_task').value;
+    // let dueDateInput = document.getElementById(dueDateID).value;
+    // let categoryInput = document.getElementById(categoryID).value;
+    checkRequiredFields(titleInput);
+}
+
+function checkRequiredFields(titleInput, dueDateInput, categoryInput) {
+    if(titleInput === "") {
+        show('title_error_slider');
+        document.getElementById('title_input_ed_task').classList.add('required-border');
+    }
+}
+

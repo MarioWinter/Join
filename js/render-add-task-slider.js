@@ -29,7 +29,7 @@ function generateAddTaskSliderHTML(id) {
 
                 <input required="" placeholder="Enter a title" id="title_input_ed_task" type="text"
                     autocomplete="off" class="input-frame-ed-task">
-                <div class="error-message-slider" id="title_error_slider"></div>
+                <div class="error-message-slider d-none" id="title_error_slider">This field is required</div>
             </div>
             <!-- Description Add Task -->
             <div class="slider-description">
@@ -74,7 +74,7 @@ function generateAddTaskSliderHTML(id) {
                     <span class="required-star-slider">*</span>
                 </div>
                 <input type="date" id="calendar_edit_task">
-                <div class="error-message-slider" id="date_error_slider"></div>
+                <div class="error-message-slider" id="date_error_slider">This field is required</div>
             </div>
             <!-- Prio Add Task -->
             <div class="prio-slider">
@@ -146,7 +146,7 @@ function generateAddTaskSliderHTML(id) {
                     <option value="1">Technical Task</option>
                     <option value="2">User Story</option>
                 </select>
-                <div class="error-message-slider" id="category_error_slider"></div>
+                <div class="error-message-slider" id="category_error_slider">This field is required</div>
             </div>
 
             <!-- Subtask Edit Task -->

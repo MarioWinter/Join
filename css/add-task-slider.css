@@ -79,9 +79,12 @@
 }
 
 .required-star-slider {
-    color: red;
+    color: var(--error-field-required);
 }
 
+.required-border {
+    border: 0.1rem solid var(--error-field-required) !important;
+}
 
 #slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
@@ -102,7 +105,7 @@
 
 
 .error-message-slider {
-    color: red;
+    color: var(--error-field-required);
     font-size: 1.2rem;
     margin-top: 0.4rem;
 }
