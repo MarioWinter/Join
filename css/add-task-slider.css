@@ -82,8 +82,7 @@
     color: red;
 }
 
-#title_input_slider,
-#calendar_add_task_slider,
+
 #slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
     border-radius: 1rem;
@@ -94,8 +93,8 @@
     cursor: pointer;
 }
 
-#title_input_slider:focus,
-#calendar_add_task_slider:focus,
+
+.calendar_slider:focus,
 .description-textarea:focus {
     border: 0.1rem solid var(--hover-blue);
     outline: none;
