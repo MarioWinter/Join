@@ -70,10 +70,12 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    font-size: 2rem;
 }
 
 .span-style-slider {
     color: var(--primary-dark-blue);
+    font-size: 2rem;
 }
 
 .required-star-slider {
@@ -110,6 +112,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    font-size: 2rem;
 }
 
 .description-textarea {

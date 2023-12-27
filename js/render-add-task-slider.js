@@ -25,15 +25,15 @@ function generateAddTaskSliderHTML(id) {
                 <div class="span-style-slider">Title <span class="required-star-slider">*</span>
                 </div>
 
-                <input required="" placeholder="Enter a title" id="title_input_slider" type="text"
-                    autocomplete="off">
+                <input required="" placeholder="Enter a title" id="title_input_ed_task" type="text"
+                    autocomplete="off" class="input-frame-ed-task">
                 <div class="error-message-slider" id="title_error_slider"></div>
             </div>
 
             <div class="slider-description">
                 <span class="span-style-slider">Description</span>
                 <textarea required="" placeholder="Enter a Description" name=""
-                    class="description-textarea" cols="20" rows="10"></textarea>
+                    class="description-textarea" cols="20" rows="10" id="description_ed_task"></textarea>
                 <div></div>
             </div>
             <!-- Assigned To Add Task -->
