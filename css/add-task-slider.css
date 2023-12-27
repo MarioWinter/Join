@@ -369,6 +369,10 @@
     background-image: url(../assets/img/arrow_drop_up.svg);
 }
 
+#select_category:hover {
+    border: 0.1rem solid var(--secondary-grey-sidebar);
+}
+
 .subtask-container-slider {
     display: flex;
     width: 44rem;

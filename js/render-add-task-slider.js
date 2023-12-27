@@ -19,8 +19,10 @@ function generateAddTaskSliderHTML(id) {
         </div>
     </div>
     <!-- Add Task Content -->
+    <!-- Left side Add Task -->
     <form class="add-task-container" novalidate="">
         <div class="left-side-slider">
+            <!-- Title Add Task -->
             <div class="title-content-slider">
                 <div class="span-style-slider">Title <span class="required-star-slider">*</span>
                 </div>
@@ -29,7 +31,7 @@ function generateAddTaskSliderHTML(id) {
                     autocomplete="off" class="input-frame-ed-task">
                 <div class="error-message-slider" id="title_error_slider"></div>
             </div>
-
+            <!-- Description Add Task -->
             <div class="slider-description">
                 <span class="span-style-slider">Description</span>
                 <textarea required="" placeholder="Enter a Description" name=""
@@ -63,9 +65,10 @@ function generateAddTaskSliderHTML(id) {
         </div>
 
         <div class="separator"></div>
-
+        <!-- Right side Add Task -->
         <div class="right-side-slider">
 
+        <!-- Due Date Add Task -->
             <div class="date-container-slider">
                 <div class="span-style-slider">Due date
                     <span class="required-star-slider">*</span>
@@ -73,7 +76,7 @@ function generateAddTaskSliderHTML(id) {
                 <input type="date" id="calendar_edit_task">
                 <div class="error-message-slider" id="date_error_slider"></div>
             </div>
-
+            <!-- Prio Add Task -->
             <div class="prio-slider">
                 <span class="span-style-slider">Prio</span>
 
@@ -130,9 +133,9 @@ function generateAddTaskSliderHTML(id) {
                         </svg>
                     </button>
                 </div>
-                <div></div>
+            
             </div>
-
+            <!-- Category Add Task -->
             <div class="category-container">
                 <div class="span-style-slider">Category <span class="required-star-slider">*</span>
                 </div>
@@ -146,56 +149,31 @@ function generateAddTaskSliderHTML(id) {
                 <div class="error-message-slider" id="category_error_slider"></div>
             </div>
 
+            <!-- Subtask Edit Task -->
             <div id="subtask_container_slider" class="subtask-container-slider">
-                <span class="span-style-slider">Subtasks</span>
+                <div class="subhead-ed-task">Subtasks</div>
                 <div class="subtask-input-container">
-                    <input class="subtask-input-slider" type="text" placeholder="Add new subtask"
+                    <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask"
                         autocomplete="">
-                    <img class="add-subtask-slider d-none" src="./assets/img/add-plus-icon.svg"
-                        alt="Add Subtasks">
-                    <div id="check_subtask_icons" class="check-subtask-icons">
+                    <img id="add_subtask" class="add-subtask-slider" src="./assets/img/add-plus-icon.svg"
+                        alt="Add Subtasks" onclick="showSubtaskInput('add_subtask', 'check_subtask_icons')">
+
+                    <div id="check_subtask_icons" class="check-subtask-icons d-none">
                         <img class="subtask-button-slider" src="./assets/img/add-cancel-icon.svg"
-                            alt="Cancel Subtask">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
-                            viewBox="0 0 2 24" fill="none">
+                            alt="Cancel Subtask" onclick="cancelAddSubtask('add_subtask', 'check_subtask_icons')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 2 24"
+                            fill="none">
                             <path d="M1.14453 0V24" stroke="#D1D1D1" />
                         </svg>
                         <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
-                            alt="Check Substask">
+                            alt="Check Substask" onclick="addSubtask(${id}, 'subtask_lists')">
 
                     </div>
-
                 </div>
 
                 <div id="subtask_lists">
-                    <div class="subtask-list-item-slider">
-                        <ul>
-                            <li>Contact Form</li>
-                        </ul>
-                        <div class="subtask-icon-container">
-                            <img src="./assets/img/edit-subtask.svg" alt="Edit Subtask">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
-                                viewBox="0 0 2 24" fill="none">
-                                <path d="M1.14453 0V24" stroke="#A8A8A8" />
-                            </svg>
-                            <img src="./assets/img/delete-icon.svg" alt="Delete Subtask">
-                        </div>
-                    </div>
-
-                    <div class="subtask-edit-input-container">
-                        <input id="subtask_edit_input1" class="subtask-edit-input" type="text"
-                            value="Contact Form">
-                        <div class="subtask-edit-container">
-                            <img class="subtask-button-slider" src="./assets/img/delete-icon.svg"
-                                alt="delete subtask">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24"
-                                viewBox="0 0 2 24" fill="none">
-                                <path d="M1.14453 0V24" stroke="#A8A8A8" />
-                            </svg>
-                            <img class="subtask-button-slider" src="./assets/img/add-check-icon.svg"
-                                alt="check subtask">
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
         </div>

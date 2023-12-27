@@ -385,7 +385,7 @@ function generateEditTaskHTML(id, title, description, duedate) {
                     <!-- Calender Edit Task -->
                     <div class="date-container-slider">
                         <div class="subhead-ed-task">Due date</div>
-                        <input class="calendar_slider" type="date" id="calendar_edit_task" value="${duedate}">
+                        <input type="date" id="calendar_edit_task" value="${duedate}">
                         <div class="error-message-slider" id="date_error_slider"></div>
                     </div>
 
