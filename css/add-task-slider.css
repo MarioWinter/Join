@@ -82,9 +82,18 @@
     color: var(--error-field-required);
 }
 
-.required-border {
+.required-border:invalid {
     border: 0.1rem solid var(--error-field-required) !important;
 }
+
+.required-border:valid {
+    border: 0.1rem solid var(--light-grey-placeholder) !important;
+}
+
+.required-border:valid ~ .error-message-slider{
+    display: none !important;
+}
+
 
 #slider_subtask-input {
     border: 0.1rem solid var(--light-grey-placeholder);
