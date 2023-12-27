@@ -4,6 +4,7 @@ let isActive = false;
 let globalPrioButtonID = "";
 
 function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
+
     if(!isClicked) {
         setButtonColor(prioButtonID);
         globalPrioButtonID = prioButtonID;
@@ -120,6 +121,7 @@ function loadAddTaskSlider(boardColumnID) {
 function initAddTaskSlider(taskID) {
     let assigneds = addedTasks[taskID]['assigned'];
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', taskID);
+    loadPrioOnEditTask('Medium');
 }
 
 function createNewTaskID() {
