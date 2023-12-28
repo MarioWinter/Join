@@ -155,9 +155,11 @@ function deleteNewTask(taskID) {
 
 
 async function submitForm(taskID) {
+    show('task_added_to_board');
     getRequiredFields(taskID);
     await setItem("addedTasks", JSON.stringify(addedTasks));
     hideTaskOpen('add_task_overlay_frame');
+    setTimeout(function(){hide('task_added_to_board');}, 500);
 }
 
 

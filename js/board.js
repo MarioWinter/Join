@@ -116,26 +116,18 @@ function showFrame(id) {
 }
 
 
-function deleteTask(TaskID) {
+async function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
     addedTasks = updatedAddedTasks;
+    await setItem("addedTasks", JSON.stringify(addedTasks));
     hideTaskOpen('task_open_overlay_frame');
     loadBoard();
 }
 
-//Generator & calculator
-
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 /**
  * returns the completed subtasks as a percentage
+ * 
  * @param {int} allSubtask - All stubtasks of a task
  * @param {*} done  - all completed subtasks of a task
  * @returns 

@@ -558,3 +558,24 @@
     box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
     border: 0.1rem solid var(--hover-blue);
 }
+
+.task-added-on-board {
+    position: absolute;
+    z-index: 9999;
+    display: flex;
+    width: 32.6rem;
+    height: 7.4rem;
+    gap: 1.8rem;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Inter;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    border-radius: 2rem;
+    background: var(--primary-dark-blue);
+    box-shadow: 0rem 0rem 0.4rem 0rem rgba(0, 0, 0, 0.15);
+}
+
