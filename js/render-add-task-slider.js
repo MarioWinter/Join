@@ -73,8 +73,8 @@ function generateAddTaskSliderHTML(id) {
                 <div class="span-style-slider">Due date
                     <span class="required-star-slider">*</span>
                 </div>
-                <input type="date" id="calendar_edit_task">
-                <div class="error-message-slider" id="date_error_slider">This field is required</div>
+                <input required type="date" id="calendar_edit_task">
+                <div class="error-message-slider d-none" id="date_error_slider">This field is required</div>
             </div>
             <!-- Prio Add Task -->
             <div class="prio-slider">
@@ -139,14 +139,14 @@ function generateAddTaskSliderHTML(id) {
             <div class="category-container">
                 <div class="span-style-slider">Category <span class="required-star-slider">*</span>
                 </div>
-                <select name="Select contacts to assign" id="select_category">
+                <select required name="Select contacts to assign" id="select_category">
                     <option value="" disabled="" selected="" hidden="">Select task
                         category
                     </option>
                     <option value="1">Technical Task</option>
                     <option value="2">User Story</option>
                 </select>
-                <div class="error-message-slider" id="category_error_slider">This field is required</div>
+                <div class="error-message-slider d-none" id="category_error_slider">This field is required</div>
             </div>
 
             <!-- Subtask Edit Task -->

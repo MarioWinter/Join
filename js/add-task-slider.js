@@ -148,21 +148,42 @@ function createNewTask(boardColumnID, taskID) {
     })
 }
 
+
 function deleteNewTask(taskID) {
     addedTasks.splice(taskID, 1);
 }
 
-function getRequiredFields() {
-    let titleInput = document.getElementById('title_input_ed_task').value;
-    // let dueDateInput = document.getElementById(dueDateID).value;
-    // let categoryInput = document.getElementById(categoryID).value;
-    checkRequiredFields(titleInput);
+
+function submitForm() {
+    debugger
+    getRequiredFields();
 }
 
+
+function getRequiredFields() {
+    let titleInput = document.getElementById('title_input_ed_task').value;
+    let dueDateInput = document.getElementById('calendar_edit_task').value;
+    let categoryInput = document.getElementById('select_category').value;
+    checkRequiredFields(titleInput, dueDateInput, categoryInput);
+}
+
+
 function checkRequiredFields(titleInput, dueDateInput, categoryInput) {
-    if(titleInput === "") {
-        show('title_error_slider');
-        document.getElementById('title_input_ed_task').classList.add('required-border');
+    if (titleInput && dueDateInput && categoryInput !== "") {
+
+    } else {
+        if(titleInput === "") {
+            show('title_error_slider');
+            document.getElementById('title_input_ed_task').classList.add('required-border');
+        }
+        if (dueDateInput === "") {
+            show('date_error_slider')
+            document.getElementById('calendar_edit_task').classList.add('required-border');
+        }
+        if (categoryInput === "") {
+            show('category_error_slider')
+            document.getElementById('select_category').classList.add('required-border');
+        }
     }
 }
 
