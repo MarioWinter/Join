@@ -3,7 +3,6 @@ let addedTasks = [];
 
 async function initBoard() {
     await loadUsers();
-    await loadAddedTasks();
     loadBoard();
     loadCurrentUser();
     
@@ -27,7 +26,8 @@ async function loadAddedTasks() {
 }
 
 
-function loadBoard() {
+async function loadBoard() {
+    await loadAddedTasks();
     for (let i = 0; i < buckets.length; i++) {
         let bucket = buckets[i];
         updateBoard(bucket);
@@ -119,7 +119,6 @@ function showFrame(id) {
 async function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
     addedTasks = updatedAddedTasks;
-    await setItem("addedTasks", JSON.stringify(addedTasks));
     hideTaskOpen('task_open_overlay_frame');
     loadBoard();
 }

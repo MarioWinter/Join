@@ -18,9 +18,11 @@ function removeOverlayBg(id) {
     document.getElementById(id).classList.add('slider-center');
 }
 
-function hideTaskOpen(id) {
+async function hideTaskOpen(id) {
+    await setItem("addedTasks", JSON.stringify(addedTasks));
+    loadBoard();
     frameSlideOut(id);
     removeOverlayBg('task_overlay_bg');
     setTimeout(function(){hide('task_overlay_bg');}, 400);
-    loadBoard();
+
 }

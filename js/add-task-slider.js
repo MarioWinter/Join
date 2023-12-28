@@ -186,7 +186,7 @@ function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
     }
 }
 
-async function updateNewTask(taskID) {
+function updateNewTask(taskID) {
     show('task_added_to_board');
     updateOpenTaskTitle(taskID);
     updateOpenTaskDesc(taskID);
@@ -194,8 +194,7 @@ async function updateNewTask(taskID) {
     updateTaskPriority(taskID);
     updateTaskCategory(taskID);
     hideTaskOpen('add_task_overlay_frame');
-    setTimeout(function(){hide('task_added_to_board');}, 300);
-    await setItem("addedTasks", JSON.stringify(addedTasks));
+    setTimeout(function(){hide('task_added_to_board');}, 350);
 }
 
 
