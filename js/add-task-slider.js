@@ -154,23 +154,24 @@ function deleteNewTask(taskID) {
 }
 
 
-function submitForm() {
-    debugger
-    getRequiredFields();
+async function submitForm(taskID) {
+    getRequiredFields(taskID);
+    await setItem("addedTasks", JSON.stringify(addedTasks));
+    hideTaskOpen('add_task_overlay_frame');
 }
 
 
-function getRequiredFields() {
+function getRequiredFields(taskID) {
     let titleInput = document.getElementById('title_input_ed_task').value;
     let dueDateInput = document.getElementById('calendar_edit_task').value;
     let categoryInput = document.getElementById('select_category').value;
-    checkRequiredFields(titleInput, dueDateInput, categoryInput);
+    checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID);
 }
 
 
-function checkRequiredFields(titleInput, dueDateInput, categoryInput) {
+function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
     if (titleInput && dueDateInput && categoryInput !== "") {
-
+        updateNewTask(taskID);
     } else {
         if(titleInput === "") {
             show('title_error_slider');
@@ -186,4 +187,19 @@ function checkRequiredFields(titleInput, dueDateInput, categoryInput) {
         }
     }
 }
+
+function updateNewTask(taskID) {
+    updateOpenTaskTitle(taskID);
+    updateOpenTaskDesc(taskID);
+    updateOpenTaskDueDate(taskID);
+    updateTaskPriority(taskID);
+    updateTaskCategory(taskID);
+}
+
+
+function updateTaskCategory(taskID) {
+    let categoryValue = document.getElementById('select_category').value;
+    addedTasks[taskID]['category'] = categoryValue;
+}
+
 

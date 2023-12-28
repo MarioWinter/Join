@@ -1,9 +1,29 @@
+let addedTasks = [];
+
 
 async function initBoard() {
     await loadUsers();
+    await loadAddedTasks();
     loadBoard();
     loadCurrentUser();
     
+}
+
+/**
+ * hidden function to clear Added Tasks Remote Storage from any information
+ */
+async function clearAddedTasksRemoteSTRG(){
+    addedTasks = [];
+    await setItem("addedTasks", JSON.stringify(addedTasks));
+}
+
+
+async function loadAddedTasks() {
+    try {
+        addedTasks = JSON.parse(await getItem("addedTasks"));
+    } catch (e) {
+      console.error("Loading Added Tasks error:", e);
+    }
 }
 
 

@@ -143,8 +143,8 @@ function generateAddTaskSliderHTML(id) {
                     <option value="" disabled="" selected="" hidden="">Select task
                         category
                     </option>
-                    <option value="1">Technical Task</option>
-                    <option value="2">User Story</option>
+                    <option value="Technical Task">Technical Task</option>
+                    <option value=User Story">User Story</option>
                 </select>
                 <div class="error-message-slider d-none" id="category_error_slider">This field is required</div>
             </div>
@@ -196,7 +196,7 @@ function generateAddTaskSliderHTML(id) {
                         stroke-linejoin="round"></path>
                 </svg>
             </button>
-            <button onclick="submitForm()" type="button" id="create_btn">
+            <button onclick="submitForm(${id})" type="button" id="create_btn">
                 Create Task <img src="./assets/img/add-check-icon-white.svg" alt="Add Subtask">
             </button>
         </div>
