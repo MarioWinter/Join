@@ -154,12 +154,8 @@ function deleteNewTask(taskID) {
 }
 
 
-async function submitForm(taskID) {
-    show('task_added_to_board');
+function submitForm(taskID) {
     getRequiredFields(taskID);
-    await setItem("addedTasks", JSON.stringify(addedTasks));
-    hideTaskOpen('add_task_overlay_frame');
-    setTimeout(function(){hide('task_added_to_board');}, 500);
 }
 
 
@@ -172,7 +168,7 @@ function getRequiredFields(taskID) {
 
 
 function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
-    if (titleInput && dueDateInput && categoryInput !== "") {
+    if (titleInput !== "" && dueDateInput !== "" && categoryInput !== "") {
         updateNewTask(taskID);
     } else {
         if(titleInput === "") {
@@ -190,12 +186,16 @@ function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
     }
 }
 
-function updateNewTask(taskID) {
+async function updateNewTask(taskID) {
+    show('task_added_to_board');
     updateOpenTaskTitle(taskID);
     updateOpenTaskDesc(taskID);
     updateOpenTaskDueDate(taskID);
     updateTaskPriority(taskID);
     updateTaskCategory(taskID);
+    hideTaskOpen('add_task_overlay_frame');
+    setTimeout(function(){hide('task_added_to_board');}, 300);
+    await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
 

@@ -144,7 +144,7 @@ function generateAddTaskSliderHTML(id) {
                         category
                     </option>
                     <option value="Technical Task">Technical Task</option>
-                    <option value=User Story">User Story</option>
+                    <option value="User Story">User Story</option>
                 </select>
                 <div class="error-message-slider d-none" id="category_error_slider">This field is required</div>
             </div>
