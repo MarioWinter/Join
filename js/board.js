@@ -2,6 +2,7 @@ let addedTasks = [];
 
 
 async function initBoard() {
+    await loadAddedTasks();
     await loadUsers();
     loadBoard();
     loadCurrentUser();
@@ -26,8 +27,7 @@ async function loadAddedTasks() {
 }
 
 
-async function loadBoard() {
-    await loadAddedTasks();
+function loadBoard() {
     for (let i = 0; i < buckets.length; i++) {
         let bucket = buckets[i];
         updateBoard(bucket);

@@ -36,9 +36,8 @@ function allowDrop(ev) {
  */
 async function moveTo(bucket) {
     addedTasks[currentDraggedElement]["bucket"] = bucket;
-    await setItem("addedTasks", JSON.stringify(addedTasks));
-    updateBoard(bucket);
     loadBoard();
+    await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
 /**

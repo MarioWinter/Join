@@ -19,10 +19,9 @@ function removeOverlayBg(id) {
 }
 
 async function hideTaskOpen(id) {
-    await setItem("addedTasks", JSON.stringify(addedTasks));
     loadBoard();
     frameSlideOut(id);
     removeOverlayBg('task_overlay_bg');
     setTimeout(function(){hide('task_overlay_bg');}, 400);
-
+    await setItem("addedTasks", JSON.stringify(addedTasks));
 }

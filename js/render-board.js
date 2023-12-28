@@ -350,7 +350,7 @@ function generateEditTaskHTML(id, title, description, duedate) {
             <div id="task_open_overlay_frame" class="task-overlay-frame-open">
                 <!-- tesk overlay close Button -->
                 <div class="close-btn-container-task-edit">
-                    <div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
+                    <div class="close-button" onclick="loadAddedTasks(), hideTaskOpen('task_open_overlay_frame')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
                             <mask id="mask0_99379_7049" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
