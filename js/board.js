@@ -1,9 +1,29 @@
+let addedTasks = [];
+
 
 async function initBoard() {
+    await loadAddedTasks();
     await loadUsers();
     loadBoard();
     loadCurrentUser();
     
+}
+
+/**
+ * hidden function to clear Added Tasks Remote Storage from any information
+ */
+async function clearAddedTasksRemoteSTRG(){
+    addedTasks = [];
+    await setItem("addedTasks", JSON.stringify(addedTasks));
+}
+
+
+async function loadAddedTasks() {
+    try {
+        addedTasks = JSON.parse(await getItem("addedTasks"));
+    } catch (e) {
+      console.error("Loading Added Tasks error:", e);
+    }
 }
 
 
@@ -96,26 +116,17 @@ function showFrame(id) {
 }
 
 
-function deleteTask(TaskID) {
+async function deleteTask(TaskID) {
     let updatedAddedTasks = addedTasks.filter(task => task.id !== TaskID);
     addedTasks = updatedAddedTasks;
     hideTaskOpen('task_open_overlay_frame');
     loadBoard();
 }
 
-//Generator & calculator
-
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 /**
  * returns the completed subtasks as a percentage
+ * 
  * @param {int} allSubtask - All stubtasks of a task
  * @param {*} done  - all completed subtasks of a task
  * @returns 
