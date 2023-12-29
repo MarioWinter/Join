@@ -77,8 +77,8 @@
                         <!-- Tasks Column Header -->
                         <div id="board_todo_section_head" class="column-title-area">
                             <h3>To Do</h3>
-                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                            <svg onclick="loadAddTaskSlider('to-do')" width="2.4rem" height="2.4rem" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg"
                                 onclick="addTaskSlider('to-do'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
@@ -101,8 +101,8 @@
                         <!-- Tasks Column Header -->
                         <div id="board_in_porogress_section_head" class="column-title-area">
                             <h3>In progress</h3>
-                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                            <svg onclick="loadAddTaskSlider('in-progress')" width="2.4rem" height="2.4rem"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 onclick="addTaskSlider('in-progress'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
@@ -125,8 +125,8 @@
                         <!-- Tasks Column Header -->
                         <div id="board_await_feedback_section_head" class="column-title-area">
                             <h3>Await feedback</h3>
-                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                            <svg onclick="loadAddTaskSlider('await-feedback')" width="2.4rem" height="2.4rem"
+                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 onclick="addTaskSlider('await-feedback'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
@@ -149,8 +149,9 @@
                         <!-- Tasks Column Header -->
                         <div class="column-title-area">
                             <h3 id="board_done_section_head">Done</h3>
-                            <svg width="2.4rem" height="2.4rem" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" onclick="addTaskSlider('done'); handleInputFocus();">
+                            <svg onclick="loadAddTaskSlider('done')" width="2.4rem" height="2.4rem" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                onclick="addTaskSlider('done'); handleInputFocus();">
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
                                     stroke-linecap="round"></path>
