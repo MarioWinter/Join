@@ -6,8 +6,9 @@ async function initBoard() {
     await loadUsers();
     loadBoard();
     loadCurrentUser();
-    
+    loadUserBadge();
 }
+
 
 /**
  * hidden function to clear Added Tasks Remote Storage from any information
@@ -35,6 +36,7 @@ function loadBoard() {
     }
 }
 
+
 function loadCard(id, bucket, title, description, prio, category, subtasks, assigneds) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById(bucket).innerHTML +=
@@ -44,6 +46,7 @@ function loadCard(id, bucket, title, description, prio, category, subtasks, assi
     loadCardPrioIcon(prio, id);
 }
 
+
 function loadNoTasksLabel(bucket) {
     let taskColumn = document.getElementById(bucket);
     if (taskColumn.innerHTML === '') {
@@ -51,6 +54,7 @@ function loadNoTasksLabel(bucket) {
         taskColumn.innerHTML = generateNoTaskHTML(formatBucket);
     }
 }
+
 
 function loadSubtaskprogress(subtasks, id) {
     let allSubtask = subtasks.length;
@@ -61,6 +65,7 @@ function loadSubtaskprogress(subtasks, id) {
     }
 }
 
+
 function loadAssigneds(assigneds, id) {
     for (let i = 0; i < assigneds.length; i++) {
         let badgeColor = getUserColor(assigneds, i);
@@ -70,6 +75,7 @@ function loadAssigneds(assigneds, id) {
         generateAssigmentBadgeHTML(userBadge, badgeColor);
     };
 }
+
 
 function loadCardPrioIcon(prio, id) {
     let taskPrioIcon = document.getElementById(`task_prio_img_${id}`);
@@ -94,6 +100,7 @@ function loadSubtaskAreDone(subtasks) {
     return done;
 }
 
+
 function loadCategoryColor(category) {
     if(category === 'Technical Task') {
         return '#1fd7c1';
@@ -102,13 +109,16 @@ function loadCategoryColor(category) {
     }
 }
 
+
 function show(id) {
     document.getElementById(id).classList.remove('d-none');
 }
 
+
 function hide(id) {
     document.getElementById(id).classList.add('d-none');
 }
+
 
 function showFrame(id) {
     addOverlayBg(id);
@@ -136,18 +146,13 @@ function generatePercentInWidth(allSubtask, done) {
     return percentInWidth
 }
 
+
 function formatNoTaskLabelString(str) {
     str = str.charAt(0).toUpperCase() + str.slice(1)
     let formattedStr = str.replace('-', ' ');
     return formattedStr;
 }
 
-function generateUserBadge(fullName) {
-    let nameParts =  fullName.split(' ');
-    let firstNameInitial = nameParts[0] ? nameParts[0].charAt(0).toUpperCase() : '';
-    let lastNameInitial = nameParts[1] ? nameParts[1].charAt(0).toUpperCase() : '';
-    return firstNameInitial + lastNameInitial;
-}
 
 /**
  * Converts the date to the correct format
@@ -159,6 +164,7 @@ function formatDueDate(dueDate) {
     let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
     return duedate;
 }
+
 
 async function clearRemoteStorage() {
     users = [];
