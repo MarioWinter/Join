@@ -8,6 +8,7 @@ function checkPath() {
 
   if (currentPath === '/10_Join/Join/summary.html' || currentPath === '/10_Join/Join/add_task.html' || currentPath === '/10_Join/Join/board.html' || currentPath === '/10_Join/Join/contacts.html') {
       activeMenuLink();
+      activeMenuLinkMobile();
   }
   if (currentPath === '/10_Join/Join/privacy_policy.html' || currentPath === '/10_Join/Join/legal_notice.html') {
     activeInfoLink();
@@ -20,6 +21,11 @@ function checkPath() {
  */
 function activeMenuLink() {
   let urlAsId = window.location.pathname.split('/').pop().split('.html')[0] + '_link';
+  document.getElementById(urlAsId).classList.add('sidebar-button-selected');
+}
+
+function activeMenuLinkMobile() {
+  let urlAsId = window.location.pathname.split('/').pop().split('.html')[0] + '_link_mobile';
   document.getElementById(urlAsId).classList.add('sidebar-button-selected');
 }
 

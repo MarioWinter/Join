@@ -1,14 +1,15 @@
 .main-content-summary {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .summary-content {
     width: calc(100vw - var(--sidebar-width));
-    flex: 1;
     margin-left: var(--sidebar-width);
     height: calc(100% - 9.6rem);
     display: flex;
+    flex: 1;
     flex-direction: column;
     padding-left: 9.6rem;
 }
