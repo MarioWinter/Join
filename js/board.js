@@ -171,49 +171,67 @@ async function clearRemoteStorage() {
     await setItem("users", JSON.stringify(users));
 }
 
+
 function searchTask() {
     let searchTerm = find_task.value;
     searchTerm = searchTerm.toLowerCase();
     console.log(searchTerm);
-
+    clearBoard();
     for (let taskID = 0; taskID < addedTasks.length; taskID++) {
         let taskTitle = addedTasks[taskID]['title'];
         console.log(taskTitle);
         if (taskTitle.toLowerCase().includes(searchTerm)) {
-            searchOnBoard(taskID);
+            filterTasksOnBoard(taskID);
         }
     }
-
 }
 
-function searchOnBoard(taskID) {
+
+function  clearBoard() {
     for (let i = 0; i < buckets.length; i++) {
         let bucket = buckets[i];
-        debugger
-        filterTasksOnBoard(bucket, taskID);
+        document.getElementById(bucket).innerHTML = "";
         loadNoTasksLabel(bucket);
     }
 }
 
-function filterTasksOnBoard(bucket, taskID) {
-    let tasks = addedTasks.filter((t) => t["bucket"] == bucket);
-    document.getElementById(bucket).innerHTML = "";
-    
-    for (let index = 0; index < tasks.length; index++) {
-        if (taskID === tasks[index]['id']) {
-        let task = tasks[0];
-        let id = task['id'];
-        let bucket = task['bucket'];
-        let title = task['title'];
-        let description = task['description'];
-        let prio = task['prio'];
-        let category = task['category'];
-        let subtasks = task['subtask'];
-        let assigneds = task['assigned'];
-        loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
-        }
-    }
+
+function filterTasksOnBoard(taskID) {
+    let filteredBucket = addedTasks[taskID]['bucket'];
+    document.getElementById(filteredBucket).innerHTML = "";
+    let task = addedTasks[taskID];
+    let id = task['id'];
+    let bucket = task['bucket'];
+    let title = task['title'];
+    let description = task['description'];
+    let prio = task['prio'];
+    let category = task['category'];
+    let subtasks = task['subtask'];
+    let assigneds = task['assigned'];
+    loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
+        
 }
+
+// function filterTasksOnBoard(taskID) {
+//     let searchInColumn = addedTasks[taskID]['bucket'];
+//     let tasks = addedTasks.filter((t) => t["bucket"] == bucket);
+//     document.getElementById(bucket).innerHTML = "";
+//     debugger
+//     for (let index = 0; index < tasks.length; index++) {
+//         if (taskID === tasks[index]['id']) {
+//         let task = tasks[0];
+//         let id = task['id'];
+//         let bucket = task['bucket'];
+//         let title = task['title'];
+//         let description = task['description'];
+//         let prio = task['prio'];
+//         let category = task['category'];
+//         let subtasks = task['subtask'];
+//         let assigneds = task['assigned'];
+//         loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
+//         }
+//     }
+// }
 
 function closeFilter() {
     let searchTerm = find_task.value;
