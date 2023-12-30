@@ -4,18 +4,16 @@ let isActive = false;
 let globalPrioButtonID = "";
 
 function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
+
     if(!isClicked) {
         setButtonColor(prioButtonID);
-        setNewTaskPriority(taskID, prio);
         globalPrioButtonID = prioButtonID;
     } else {
         setGlobalPrioButtonID(prioButtonID);
         if (isActive && prioButtonID == globalPrioButtonID) {
         resetButtonColor();
-        setNewTaskPriority(taskID, '');
         } else {
         setButtonColor(prioButtonID);
-        setNewTaskPriority(taskID, prio);
         globalPrioButtonID = prioButtonID;
         }
     }
@@ -33,8 +31,8 @@ function setButtonColor(prioButtonID) {
         let proSVG1 = prioButtonID + "-svg1";
         let proSVG2 = prioButtonID + "-svg2";
         let path1 = document.getElementById(proSVG1);
-        fillColor = path1.getAttribute("fill");
         let path2 = document.getElementById(proSVG2);
+        fillColor = path1.getAttribute("fill");
         let button = document.getElementById(prioButtonID);
         changeSVGPathColor(path1);
         changeSVGPathColor(path2);
@@ -78,8 +76,6 @@ function changeColorClasses(button, prioButtonID) {
 function clearPrioButtonColor() {
     resetBgColorAddTask();
     resetSVGColorAddTask();
-    resetBgColorEdit();
-    resetSVGColorEdit();
 }
 
 function resetBgColorAddTask() {
@@ -101,24 +97,6 @@ function resetSVGColorAddTask() {
     document.getElementById("urgent-btn-svg2").setAttribute("fill", "#FF3D00");
 }
 
-function resetBgColorEdit() {
-    document.getElementById("urgent-btn-edit").style.backgroundColor = "#ffffff";
-    document.getElementById("urgent-btn-edit").style.color = "#000000";
-    document.getElementById("medium-btn-edit").style.backgroundColor = "#ffffff";
-    document.getElementById("medium-btn-edit").style.color = "#000000";
-    document.getElementById("low-btn-edit").style.backgroundColor = "#ffffff";
-    document.getElementById("low-btn-edit").style.color = "#000000";
-}
-
-function resetSVGColorEdit() {
-    document.getElementById("low-btn-edit-svg1").setAttribute("fill", "#7AE229");
-    document.getElementById("low-btn-edit-svg2").setAttribute("fill", "#7AE229");
-    document.getElementById("medium-btn-edit-svg1").setAttribute("fill", "#FFA800");
-    document.getElementById("medium-btn-edit-svg2").setAttribute("fill", "#FFA800");
-    document.getElementById("urgent-btn-edit-svg1").setAttribute("fill", "#FF3D00");
-    document.getElementById("urgent-btn-edit-svg2").setAttribute("fill", "#FF3D00");
-}
-
 function setTodayDateForCalendar(id) {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById(id).setAttribute('min', today);
@@ -126,15 +104,103 @@ function setTodayDateForCalendar(id) {
     
 }
 
-function setNewTaskPriority(taskID, prio) {
-    addedTasks[taskID]['prio'] = prio;
-}
 
 function loadAddTaskSlider(boardColumnID) {
     let taskOverlay = document.getElementById('task_overlay_bg');
+    let taskID = createNewTaskID();
     taskOverlay.innerHTML = "";
+    createNewTask(boardColumnID, taskID);
     showFrame('task_overlay_bg');
     addOverlayBg('task_overlay_bg');
-    taskOverlay.innerHTML = generateAddTaskSliderHTML(boardColumnID);
+    taskOverlay.innerHTML = generateAddTaskSliderHTML(taskID);
+    setTodayDateForCalendar('calendar_edit_task');
+    initAddTaskSlider(taskID);
     frameSlideIn('add_task_overlay_frame');
 }
+
+function initAddTaskSlider(taskID) {
+    let assigneds = addedTasks[taskID]['assigned'];
+    loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', taskID);
+    loadPrioOnEditTask('Medium');
+}
+
+function createNewTaskID() {
+    let newTaskID;
+    if(addedTasks.length !== 0) {
+        newTaskID = addedTasks.length;
+    } else {
+        newTaskID = 0;
+    }
+    return newTaskID
+}
+
+function createNewTask(boardColumnID, taskID) {
+    addedTasks.push({
+        "id": taskID,
+        "bucket": boardColumnID,
+        "title": "",
+        "description": "",
+        "assigned": [],
+        "duedate": "",
+        "prio": "",
+        "category": "",
+        "subtask": []
+    })
+}
+
+
+function deleteNewTask(taskID) {
+    addedTasks.splice(taskID, 1);
+}
+
+
+function submitForm(taskID) {
+    getRequiredFields(taskID);
+}
+
+
+function getRequiredFields(taskID) {
+    let titleInput = document.getElementById('title_input_ed_task').value;
+    let dueDateInput = document.getElementById('calendar_edit_task').value;
+    let categoryInput = document.getElementById('select_category').value;
+    checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID);
+}
+
+
+function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
+    if (titleInput !== "" && dueDateInput !== "" && categoryInput !== "") {
+        updateNewTask(taskID);
+    } else {
+        if(titleInput === "") {
+            show('title_error_slider');
+            document.getElementById('title_input_ed_task').classList.add('required-border');
+        }
+        if (dueDateInput === "") {
+            show('date_error_slider')
+            document.getElementById('calendar_edit_task').classList.add('required-border');
+        }
+        if (categoryInput === "") {
+            show('category_error_slider')
+            document.getElementById('select_category').classList.add('required-border');
+        }
+    }
+}
+
+function updateNewTask(taskID) {
+    show('task_added_to_board');
+    updateOpenTaskTitle(taskID);
+    updateOpenTaskDesc(taskID);
+    updateOpenTaskDueDate(taskID);
+    updateTaskPriority(taskID);
+    updateTaskCategory(taskID);
+    hideTaskOpen('add_task_overlay_frame');
+    setTimeout(function(){hide('task_added_to_board');}, 350);
+}
+
+
+function updateTaskCategory(taskID) {
+    let categoryValue = document.getElementById('select_category').value;
+    addedTasks[taskID]['category'] = categoryValue;
+}
+
+

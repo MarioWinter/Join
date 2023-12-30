@@ -24,9 +24,9 @@ let hour = today.getHours();
 
 async function summaryInit() {
   await loadUsers();
-  includeHTML();
   loadCurrentUser();
-  greetUser();  
+  greetUser();
+  loadUserBadge(); 
 }
 
 

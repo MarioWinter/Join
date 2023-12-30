@@ -34,10 +34,10 @@ function allowDrop(ev) {
  * The position of the column is changed in the array and the board is reloaded
  * @param {String} bucket - HTML Id from the drop zone 
  */
-function moveTo(bucket) {
+async function moveTo(bucket) {
     addedTasks[currentDraggedElement]["bucket"] = bucket;
-    updateBoard(bucket);
     loadBoard();
+    await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
 /**
