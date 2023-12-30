@@ -17,6 +17,8 @@
     <script src="script.js"></script>
     <script src="./js/sidebar-header.js"></script>
     <script src="html.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/summary.js"></script>
 
 
 </head>
@@ -57,7 +59,7 @@
                                         </g>
                                     </svg>
                                     <div class="summary-to-do-right-box">
-                                        <span class="summary-to-do-number">1</span>
+                                        <span id="sm_todo" class="summary-to-do-number">1</span>
                                         <span class="summary-to-do-text">To-do</span>
                                     </div>
 
@@ -74,7 +76,7 @@
                                     </svg>
 
                                     <div class="summary-done-right-box">
-                                        <span class="summary-done-number">1</span>
+                                        <span id="sm_done" class="summary-done-number">1</span>
                                         <span class="summary-to-do-text">Done</span>
                                     </div>
 
@@ -88,7 +90,7 @@
                                         <img class="urgent-icon-top" src="./assets/img/Prio alta.svg" alt="">
                                     </div>
                                     <div class="urgent-right-box">
-                                        <span class="summary-done-number">1</span>
+                                        <span id="sm_urgent" class="summary-done-number">1</span>
                                         <span class="summary-done-text">Urgent</span>
                                     </div>
                                 </div>
@@ -103,15 +105,15 @@
                             </div>
                             <div class="summary-overlay">
                                 <div class="summ-overlay-box br-radius30-box-sh">
-                                    <span class="summ-overlay-numb">5</span>
+                                    <span id="sm_all_task" class="summ-overlay-numb">5</span>
                                     <h2 class="summary-to-do-text">Tasks in <br> Board</h2>
                                 </div>
                                 <div class="summ-overlay-box br-radius30-box-sh">
-                                    <span class="summ-overlay-numb">2</span>
+                                    <span id="progress_task" class="summ-overlay-numb">2</span>
                                     <h2 class="summary-to-do-text"> Tasks in <br> Progress</h2>
                                 </div>
                                 <div class="summ-overlay-box br-radius30-box-sh">
-                                    <span class="summ-overlay-numb">2</span>
+                                    <span id="sm_awaiting_fb" class="summ-overlay-numb">2</span>
                                     <h2 class="summary-to-do-text">Awaiting <br> Feedback</h2>
                                 </div>
                             </div>
