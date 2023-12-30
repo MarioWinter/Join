@@ -7,7 +7,7 @@ async function initBoard() {
     loadBoard();
     loadCurrentUser();
     loadUserBadge();
-    showTodo();
+    
 }
 
 
