@@ -234,6 +234,11 @@
     cursor: pointer;
 }
 
+#calendar_edit_task:focus {
+    border: 0.1rem solid var(--hover-blue);
+    outline: none;
+}
+
 .checkbox-edit-task {
     width: auto !important;
 }

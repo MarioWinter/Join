@@ -2,10 +2,12 @@
   display: none;
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 730px) {
   .w3include-container {
     display: flex;
     flex-direction: column-reverse;
+    height: 100vh;
+    justify-content: space-between;
   }
 
   .join-logo-mbl {
@@ -19,6 +21,7 @@
   .header {
     width: 100vw;
     height: 8rem;
+    margin-left: auto;
     padding: 2rem 4rem 2rem 4rem;
     font-size: 1.4rem;
   }
@@ -34,6 +37,10 @@
   }
 
   .navbar {
+    display: none;
+  }
+
+  .m-navbar {
     background-color: var(--primary-dark-blue);
     height: auto;
     display: flex;
@@ -42,7 +49,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
+    position: static;
     overflow: hidden;
   }
 
@@ -65,7 +73,8 @@
 
   .menu-sidebar-button {
     display: flex;
-    height: 8rem;
+    height: 7.6rem;
+    width: 7.6rem;
     justify-content: center;
     flex-direction: column;
     padding: 0;
@@ -74,6 +83,12 @@
     cursor: pointer;
     color: var(--primary-grey-sidebar);
     text-decoration: none;
+    font-size: 1.4rem;
+  }
+
+  .menu-sidebar-button img {
+    height: 2.4rem;
+    width: 2.4rem;
   }
 
   .aside-button {

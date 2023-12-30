@@ -52,12 +52,18 @@
     border-radius: 1rem;
 }
 
+
 #find_task {
     padding: 0 0.8rem 0 1.6rem;
     width: 100%;
     border: none;
     color: black;
     font-size: 2rem;
+}
+
+
+#input_section:focus-within {
+    border: 1px solid var(--hover-blue);
 }
 
 .task-search-field {
@@ -81,10 +87,19 @@
     width: 3.2rem;
 }
 
+
 .search-button:hover {
     border-radius: 100%;
     background-color: var(--light-grey-placeholder);
     cursor: pointer;
+}
+
+.search-button:active svg path{
+    fill: var(--hover-blue);
+}
+
+.search-button:active {
+    background-color: white;
 }
 
 #no_task_found {

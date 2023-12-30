@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="./css/contacts.css" />
 
   <script src="./script.js"></script>
-  <script src="./js/add_task.js"></script>
   <script src="./js/sidebar-header.js"></script>
+  <script src="./js/add_task.js"></script>
   <script src="html.js"></script>
   <script src="./js/contacts.js"></script>
   <script src="./storage.js"></script>
@@ -34,8 +34,8 @@
           <div class="contact-list">
             <div class="primary-contact" onclick="showOverlay()">Add new contact <img
                 src="./img/primary-contact-icon.svg" />
-            </div>            
-            <div id="contact_container"></div>            
+            </div>
+            <div id="contact_container"></div>
           </div>
           <div class="bar">
             <img class="bar-sign" src="./img/bar-top.svg">
@@ -45,48 +45,50 @@
         </div>
 
         <div class="contacts-container-right">
-        <div class="contacts-better-container">
-          <div class="contacts-letter">Contacts</div>
-          <div class="vector-line"></div>
-          <div class="better-team">Better with a team</div>
-        </div>
+          <div class="contacts-better-container">
+            <div class="contacts-letter">Contacts</div>
+            <div class="vector-line"></div>
+            <div class="better-team">Better with a team</div>
+          </div>
 
-        <div id="show_contact_details" class="show-contact-details d-none">
-          <div id="contact_icon_and_name" class="contact-icon-and-name">
-            <div id="contact_icon" class="contact-icon">
-              <div id="contact_initials_container" class="contact-initials-container">
-                <div id="contact_initials" class="contact-initials"></div>
+          <div id="show_contact_details" class="show-contact-details d-none">
+            <div id="contact_icon_and_name" class="contact-icon-and-name">
+              <div id="contact_icon" class="contact-icon">
+                <div id="contact_initials_container" class="contact-initials-container">
+                  <div id="contact_initials" class="contact-initials"></div>
+                </div>
               </div>
-            </div>
-            <div id="contact_name_and_edit_container" class="contact-name-and-edit-container">
-              <div id="details_contact_name" class="details-contact-name"></div>
-              <div id="edit_and_delete_container" class="edit-and-delete-container">
-                <div id="edit_container" class="edit-container">
-                  <div id="edit_contacts" class="edit-contacts">
-                    <div id="edit_icon" class="edit-icon">
-                      <img src="./img/pencil-icon.svg"></div>
-                     <div class="edit-text">Edit</div>
-                  </div>
-                  <div id="delete_container" class="delete-container">
-                   <div id="delete_icon" class="delete-icon">
-                    <img src="./img/delete-icon.svg"></div>
-                   <div class="delete-text">Delete</div>
+              <div id="contact_name_and_edit_container" class="contact-name-and-edit-container">
+                <div id="details_contact_name" class="details-contact-name"></div>
+                <div id="edit_and_delete_container" class="edit-and-delete-container">
+                  <div id="edit_container" class="edit-container">
+                    <div id="edit_contacts" class="edit-contacts">
+                      <div id="edit_icon" class="edit-icon">
+                        <img src="./img/pencil-icon.svg">
+                      </div>
+                      <div class="edit-text">Edit</div>
+                    </div>
+                    <div id="delete_container" class="delete-container">
+                      <div id="delete_icon" class="delete-icon">
+                        <img src="./img/delete-icon.svg">
+                      </div>
+                      <div class="delete-text">Delete</div>
+                    </div>
                   </div>
                 </div>
-              </div>            
+              </div>
+            </div>
+            <div class="contact-information">Contact Information</div>
+            <div class="mail-and-phone-container">
+              <div class="mail-text">Email</div>
+              <div id="mail_container" class="mail-container"></div>
+            </div>
+            <div class="phone-container">
+              <div class="phone-text">Phone</div>
+              <div id="contact_phone_number" class="contact-phone-number"></div>
             </div>
           </div>
-          <div class="contact-information">Contact Information</div>
-          <div class="mail-and-phone-container">
-            <div class="mail-text">Email</div>
-            <div id="mail_container" class="mail-container"></div>
-          </div>
-          <div class="phone-container">
-            <div class="phone-text">Phone</div>
-            <div id="contact_phone_number" class="contact-phone-number"></div>
-          </div>
         </div>
-      </div>
 
 
       </div>
@@ -100,10 +102,10 @@
             <div class="overlay-vectorline-horizontal"></div>
           </div>
         </div>
-        <div class="overlay-container-right">          
-           
-          <div class="overlay-close" id="cancel_overlay"><img class="oyerlay-close-img" src="./img/cancel-white.svg" 
-            onclick="cancelOverlay()"/>
+        <div class="overlay-container-right">
+
+          <div class="overlay-close" id="cancel_overlay"><img class="oyerlay-close-img" src="./img/cancel-white.svg"
+              onclick="cancelOverlay()" />
           </div>
 
 
@@ -132,7 +134,7 @@
           </div>
         </div>
       </div>
-
+      <div w3-include-html="assets/templates/mobile_sidebar_template.html"></div>
     </main>
   </div>
 </body>

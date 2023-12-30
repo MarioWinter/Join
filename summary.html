@@ -23,7 +23,7 @@
 
 <body>
 
-    <body onload="summaryInit()">
+    <body onload="includeHTML(); summaryInit()">
         <div class="w3include-container">
             <div w3-include-html="assets/templates/sidebar_template.html"></div>
             <main class="main-content-summary">
@@ -122,6 +122,7 @@
                         </div>
                     </div>
                 </div>
+                <div w3-include-html="assets/templates/mobile_sidebar_template.html"></div>
             </main>
         </div>
 
