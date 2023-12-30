@@ -182,6 +182,8 @@ function searchTask() {
         console.log(taskTitle);
         if (taskTitle.toLowerCase().includes(searchTerm)) {
             filterTasksOnBoard(taskID);
+        } else {
+            document.getElementById('no_task_found').style.display = "block"
         }
     }
 }
@@ -237,6 +239,7 @@ function closeFilter() {
     let searchTerm = find_task.value;
     searchTerm = searchTerm.toLowerCase();
     if(searchTerm.length == 0) {
+        document.getElementById('no_task_found').style.display = "none"
         loadBoard();
     }
 }
