@@ -1,4 +1,6 @@
 let addedTasks = [];
+let storageTasks = [];
+let filteredTasks;
 
 
 async function initBoard() {
@@ -8,6 +10,16 @@ async function initBoard() {
     loadCurrentUser();
     loadUserBadge();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById("find_task").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            searchTask();
+        }
+    });
+});
+
 
 
 /**
@@ -21,7 +33,8 @@ async function clearAddedTasksRemoteSTRG(){
 
 async function loadAddedTasks() {
     try {
-        addedTasks = JSON.parse(await getItem("addedTasks"));
+        storageTasks = JSON.parse(await getItem("addedTasks"));
+        addedTasks = storageTasks
     } catch (e) {
       console.error("Loading Added Tasks error:", e);
     }
@@ -172,19 +185,28 @@ async function clearRemoteStorage() {
 }
 
 
+
 function searchTask() {
     let searchTerm = find_task.value;
-    searchTerm = searchTerm.toLowerCase();
-    console.log(searchTerm);
     clearBoard();
-    for (let taskID = 0; taskID < addedTasks.length; taskID++) {
-        let taskTitle = addedTasks[taskID]['title'];
-        console.log(taskTitle);
-        if (taskTitle.toLowerCase().includes(searchTerm)) {
-            filterTasksOnBoard(taskID);
-        } else {
-            document.getElementById('no_task_found').style.display = "block"
-        }
+    filteredTasks = addedTasks.filter((t) => t['title'].toLowerCase().includes(searchTerm.toLowerCase()));
+
+    // for (let taskID = 0; taskID < addedTasks.length; taskID++) {
+    //     let taskTitle = addedTasks[taskID]['title'];
+
+    //     filteredTasks = filteredTasks.filter((t) => t['title'] == searchTerm);
+    //     if (taskTitle.toLowerCase().includes(searchTerm)) {
+    //         filteredTasks.push(addedTasks[taskID]);
+    //     }
+    // }
+    loadFilteredTasks();
+    errorNoteSearchTask();
+}
+
+
+function errorNoteSearchTask() {
+    if(filteredTasks.length == 0) {
+        document.getElementById('no_task_found').style.display = "block"
     }
 }
 
@@ -193,53 +215,44 @@ function  clearBoard() {
     for (let i = 0; i < buckets.length; i++) {
         let bucket = buckets[i];
         document.getElementById(bucket).innerHTML = "";
+    }
+}
+
+function loadFilteredTasks() {
+    for (let i = 0; i < buckets.length; i++) {
+        let bucket = buckets[i];
+        showfilteredTasksOnBoard(bucket);
         loadNoTasksLabel(bucket);
     }
 }
 
 
-function filterTasksOnBoard(taskID) {
-    let filteredBucket = addedTasks[taskID]['bucket'];
-    document.getElementById(filteredBucket).innerHTML = "";
-    let task = addedTasks[taskID];
-    let id = task['id'];
-    let bucket = task['bucket'];
-    let title = task['title'];
-    let description = task['description'];
-    let prio = task['prio'];
-    let category = task['category'];
-    let subtasks = task['subtask'];
-    let assigneds = task['assigned'];
-    loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
+function showfilteredTasksOnBoard(boardBucket) {
+     let tasks = filteredTasks.filter((t) => t["bucket"] == boardBucket);
+     document.getElementById(boardBucket).innerHTML = "";
+
+     for (let index = 0; index < tasks.length; index++) {
+         let task = tasks[index];
+         let id = task['id'];
+         let bucket = task['bucket'];
+         let title = task['title'];
+         let description = task['description'];
+         let prio = task['prio'];
+         let category = task['category'];
+         let subtasks = task['subtask'];
+         let assigneds = task['assigned'];
+         loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
         
+     }
 }
 
-// function filterTasksOnBoard(taskID) {
-//     let searchInColumn = addedTasks[taskID]['bucket'];
-//     let tasks = addedTasks.filter((t) => t["bucket"] == bucket);
-//     document.getElementById(bucket).innerHTML = "";
-//     debugger
-//     for (let index = 0; index < tasks.length; index++) {
-//         if (taskID === tasks[index]['id']) {
-//         let task = tasks[0];
-//         let id = task['id'];
-//         let bucket = task['bucket'];
-//         let title = task['title'];
-//         let description = task['description'];
-//         let prio = task['prio'];
-//         let category = task['category'];
-//         let subtasks = task['subtask'];
-//         let assigneds = task['assigned'];
-//         loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
-//         }
-//     }
-// }
 
 function closeFilter() {
     let searchTerm = find_task.value;
     searchTerm = searchTerm.toLowerCase();
     if(searchTerm.length == 0) {
         document.getElementById('no_task_found').style.display = "none"
+        filteredTasks = [];
         loadBoard();
     }
 }
