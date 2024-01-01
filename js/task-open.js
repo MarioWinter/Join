@@ -33,16 +33,25 @@ function renderOpenTask(taskID) {
     let tasks = addedTasks.filter((t) => t["id"] === taskID);
     document.getElementById('task_overlay_bg').innerHTML = "";
     for (let index = 0; index < tasks.length; index++) {
-        let task = tasks[index];
-        let title = task['title'];
-        let description = task['description'];
-        let prio = task['prio'];
-        let duedate = formatDueDate(task['duedate']);
-        let category = task['category'];
-        let subtasks = task['subtask'];
-        let assigneds = task['assigned'];
+        let [taskID, bucket, title, description, prio, category, subtasks, assigneds, duedate] = getTaskVariables(tasks, index);
+        // loadCard(id, bucket, title, description, prio, category, subtasks, assigneds);
         loadTask(taskID, title, description, prio, category, subtasks, assigneds, duedate);
     }
+
+
+
+
+    // for (let index = 0; index < tasks.length; index++) {
+    //     let task = tasks[index];
+    //     let title = task['title'];
+    //     let description = task['description'];
+    //     let prio = task['prio'];
+    //     let duedate = formatDueDate(task['duedate']);
+    //     let category = task['category'];
+    //     let subtasks = task['subtask'];
+    //     let assigneds = task['assigned'];
+    //     loadTask(taskID, title, description, prio, category, subtasks, assigneds, duedate);
+    // }
 }
 
 

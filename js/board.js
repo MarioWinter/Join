@@ -1,4 +1,6 @@
 let addedTasks = [];
+let storageTasks = [];
+let filteredTasks = [];
 
 
 async function initBoard() {
@@ -9,6 +11,16 @@ async function initBoard() {
     loadUserBadge();
     
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById("find_task").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            searchTask();
+        }
+    });
+});
+
 
 
 /**
@@ -35,6 +47,43 @@ function loadBoard() {
         updateBoard(bucket);
         loadNoTasksLabel(bucket);
     }
+}
+
+
+function updateBoard(currentBucket) {
+    let tasks = getTasksPerBucket(currentBucket);
+    for (let index = 0; index < tasks.length; index++) {
+        let [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate] = getTaskVariables(tasks, index);
+        loadCard(id, bucket, title, description, prio, category, subtasks, assigneds);
+    }
+}
+
+
+function getTasksPerBucket(currentBucket) {
+    let tasks = [];
+    if (filteredTasks.length == 0) {
+        tasks = addedTasks.filter((t) => t["bucket"] == currentBucket);
+    } else {
+        tasks = filteredTasks.filter((t) => t["bucket"] == currentBucket);
+    }
+    document.getElementById(currentBucket).innerHTML = "";
+    return tasks;
+}
+
+
+function getTaskVariables(tasks, index) {
+        let task = tasks[index];
+        let id = task['id'];
+        let bucket = task['bucket'];
+        let title = task['title'];
+        let description = task['description'];
+        let prio = task['prio'];
+        let category = task['category'];
+        let subtasks = task['subtask'];
+        let assigneds = task['assigned'];
+        let duedate = formatDueDate(task['duedate']);
+        let rawDuedate = task['duedate'];
+        return [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate];
 }
 
 
@@ -161,13 +210,51 @@ function formatNoTaskLabelString(str) {
  * @returns 
  */
 function formatDueDate(dueDate) {
-    let dateParts = dueDate.split('-');
-    let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
-    return duedate;
+    if(dueDate.includes('-')) {
+        let dateParts = dueDate.split('-');
+        let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
+        return duedate;
+    }
+    return dueDate;
 }
 
 
 async function clearRemoteStorage() {
     users = [];
     await setItem("users", JSON.stringify(users));
+}
+
+
+
+function searchTask() {
+    let searchTerm = find_task.value;
+    clearBoard();
+    filteredTasks = addedTasks.filter((t) => t['title'].toLowerCase().includes(searchTerm.toLowerCase()));
+    loadBoard();
+    errorNoteSearchTask();
+}
+
+
+function errorNoteSearchTask() {
+    if(filteredTasks.length == 0) {
+        document.getElementById('no_task_found').style.display = "block"
+    }
+}
+
+
+function  clearBoard() {
+    for (let i = 0; i < buckets.length; i++) {
+        let bucket = buckets[i];
+        document.getElementById(bucket).innerHTML = "";
+    }
+}
+
+function closeFilter() {
+    let searchTerm = find_task.value;
+    searchTerm = searchTerm.toLowerCase();
+    if(searchTerm.length == 0) {
+        document.getElementById('no_task_found').style.display = "none"
+        filteredTasks = [];
+        loadBoard();
+    }
 }
