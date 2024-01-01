@@ -1,20 +1,16 @@
 
-function loadTaskEdit(id) {
-    let tasks = addedTasks.filter((t) => t["id"] === id);
+function loadTaskEdit(TaskID) {
+    let tasks = addedTasks.filter((t) => t["id"] === TaskID);
     document.getElementById('task_overlay_bg').innerHTML = "";
+
     for (let index = 0; index < tasks.length; index++) {
-        let task = tasks[index];
-        let title = task['title'];
-        let description = task['description'];
-        let prio = task['prio'];
-        let duedate = task['duedate'];
-        let assigneds = task['assigned'];
-        initEditTask(id, title, description, prio, assigneds, duedate);
+        let [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate] = getTaskVariables(tasks, index);
+        initEditTask(id, title, description, prio, assigneds, rawDuedate);
     }
 }
 
+
 function initEditTask(id, title, description, prio, assigneds, duedate) {
-    
     document.getElementById('task_overlay_bg').innerHTML = 
     generateEditTaskHTML(id, title, description, duedate);
     loadAllUsersForContactOnAssignedTo(assigneds, 'et_contact_overlay', id);
@@ -22,7 +18,6 @@ function initEditTask(id, title, description, prio, assigneds, duedate) {
     setTodayDateForCalendar('calendar_edit_task');
     loadPrioOnEditTask(prio);
     loadSubtasksEditTask('subtask_lists', id);
-
 }
 
 function updateOpenTask(taskID) {
@@ -30,7 +25,6 @@ function updateOpenTask(taskID) {
     updateOpenTaskDesc(taskID);
     updateOpenTaskDueDate(taskID);
     updateTaskPriority(taskID);
-    
     renderOpenTask(taskID);
 }
 
