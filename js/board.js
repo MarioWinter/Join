@@ -109,20 +109,25 @@ function loadSubtaskprogress(subtasks, id) {
 function loadAssigneds(assigneds, id) {
  
     for (let i = 0; i < assigneds.length; i++) {
-        let badgeColor = getUserColor(assigneds, i);
-        let assignedUserName = assigneds[i];
-        let userBadge = generateUserBadge(assignedUserName);
-        let assignedLimit = assigneds.length - 1;
-        let addLimit = 5;
+        let [badgeColor, userBadge, assignedLimit, addLimit] = getVariableForAssignedsUserBadge(assigneds, i);
         if(i <= addLimit) {
             addAssignedBadge(userBadge, badgeColor, id);
-        }
-        if(i == assignedLimit && assigneds.length > 6) {
+        } else if(i == assignedLimit && assigneds.length > 6) {
             addLimitAssignedBadge(id, assigneds, assignedLimit);
         }
-        
     };
 }
+
+
+function getVariableForAssignedsUserBadge(assigneds, i) {
+    let badgeColor = getUserColor(assigneds, i);
+    let assignedUserName = assigneds[i];
+    let userBadge = generateUserBadge(assignedUserName);
+    let assignedLimit = assigneds.length - 1;
+    let addLimit = 5;
+    return [badgeColor, userBadge, assignedLimit, addLimit];
+}
+
 
 function addAssignedBadge(userBadge, badgeColor, id) {
     document.getElementById(`task_assignment_container_${id}`).innerHTML +=
