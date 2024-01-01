@@ -107,13 +107,31 @@ function loadSubtaskprogress(subtasks, id) {
 
 
 function loadAssigneds(assigneds, id) {
+ 
     for (let i = 0; i < assigneds.length; i++) {
         let badgeColor = getUserColor(assigneds, i);
         let assignedUserName = assigneds[i];
         let userBadge = generateUserBadge(assignedUserName);
-        document.getElementById(`task_assignment_container_${id}`).innerHTML +=
-        generateAssigmentBadgeHTML(userBadge, badgeColor);
+        let assignedLimit = assigneds.length - 1;
+        let addLimit = 5;
+        if(i <= addLimit) {
+            addAssignedBadge(userBadge, badgeColor, id);
+        }
+        if(i == assignedLimit && assigneds.length > 6) {
+            addLimitAssignedBadge(id, assigneds, assignedLimit);
+        }
+        
     };
+}
+
+function addAssignedBadge(userBadge, badgeColor, id) {
+    document.getElementById(`task_assignment_container_${id}`).innerHTML +=
+    generateAssignedBadgeHTML(userBadge, badgeColor);
+}
+
+function addLimitAssignedBadge(id, assigneds) {
+    let limit = assigneds.length - 6;
+    document.getElementById(`task_assignment_container_${id}`).innerHTML += `<div class="assigned-limit">+${limit}</div>`;
 }
 
 
