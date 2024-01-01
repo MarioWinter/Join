@@ -1,6 +1,6 @@
 let addedTasks = [];
 let storageTasks = [];
-let filteredTasks;
+let filteredTasks = [];
 
 
 async function initBoard() {
@@ -47,6 +47,43 @@ function loadBoard() {
         updateBoard(bucket);
         loadNoTasksLabel(bucket);
     }
+}
+
+
+function updateBoard(currentBucket) {
+    let tasks = getTasksPerBucket(currentBucket);
+    for (let index = 0; index < tasks.length; index++) {
+        let [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate] = getTaskVariables(tasks, index);
+        loadCard(id, bucket, title, description, prio, category, subtasks, assigneds);
+    }
+}
+
+
+function getTasksPerBucket(currentBucket) {
+    let tasks = [];
+    if (filteredTasks.length == 0) {
+        tasks = addedTasks.filter((t) => t["bucket"] == currentBucket);
+    } else {
+        tasks = filteredTasks.filter((t) => t["bucket"] == currentBucket);
+    }
+    document.getElementById(currentBucket).innerHTML = "";
+    return tasks;
+}
+
+
+function getTaskVariables(tasks, index) {
+        let task = tasks[index];
+        let id = task['id'];
+        let bucket = task['bucket'];
+        let title = task['title'];
+        let description = task['description'];
+        let prio = task['prio'];
+        let category = task['category'];
+        let subtasks = task['subtask'];
+        let assigneds = task['assigned'];
+        let duedate = formatDueDate(task['duedate']);
+        let rawDuedate = task['duedate'];
+        return [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate];
 }
 
 
@@ -173,9 +210,12 @@ function formatNoTaskLabelString(str) {
  * @returns 
  */
 function formatDueDate(dueDate) {
-    let dateParts = dueDate.split('-');
-    let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
-    return duedate;
+    if(dueDate.includes('-')) {
+        let dateParts = dueDate.split('-');
+        let duedate = dateParts[2] + '/' + dateParts[1]+ '/' + dateParts[0];
+        return duedate;
+    }
+    return dueDate;
 }
 
 
@@ -190,16 +230,7 @@ function searchTask() {
     let searchTerm = find_task.value;
     clearBoard();
     filteredTasks = addedTasks.filter((t) => t['title'].toLowerCase().includes(searchTerm.toLowerCase()));
-
-    // for (let taskID = 0; taskID < addedTasks.length; taskID++) {
-    //     let taskTitle = addedTasks[taskID]['title'];
-
-    //     filteredTasks = filteredTasks.filter((t) => t['title'] == searchTerm);
-    //     if (taskTitle.toLowerCase().includes(searchTerm)) {
-    //         filteredTasks.push(addedTasks[taskID]);
-    //     }
-    // }
-    loadFilteredTasks();
+    loadBoard();
     errorNoteSearchTask();
 }
 
@@ -217,35 +248,6 @@ function  clearBoard() {
         document.getElementById(bucket).innerHTML = "";
     }
 }
-
-function loadFilteredTasks() {
-    for (let i = 0; i < buckets.length; i++) {
-        let bucket = buckets[i];
-        showfilteredTasksOnBoard(bucket);
-        loadNoTasksLabel(bucket);
-    }
-}
-
-
-function showfilteredTasksOnBoard(boardBucket) {
-     let tasks = filteredTasks.filter((t) => t["bucket"] == boardBucket);
-     document.getElementById(boardBucket).innerHTML = "";
-
-     for (let index = 0; index < tasks.length; index++) {
-         let task = tasks[index];
-         let id = task['id'];
-         let bucket = task['bucket'];
-         let title = task['title'];
-         let description = task['description'];
-         let prio = task['prio'];
-         let category = task['category'];
-         let subtasks = task['subtask'];
-         let assigneds = task['assigned'];
-         loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
-        
-     }
-}
-
 
 function closeFilter() {
     let searchTerm = find_task.value;
