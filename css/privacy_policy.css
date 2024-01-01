@@ -11,10 +11,13 @@ body {
 
 
 .privacy-policy-content {
-    padding-right: 9.6rem;
-    padding-top: 9.6rem;
-    padding-left: calc(9.6rem + var(--sidebar-width));
-    padding-top: 9.6rem;
+    
+    width: calc(100vw - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+    height: calc(100% - 9.6rem);
+    display: flex;
+    flex-direction: column;
+    padding-left: 9.6rem;
 }
 
 

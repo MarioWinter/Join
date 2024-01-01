@@ -177,7 +177,7 @@
 .urgent-box {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 3.9rem;
 }
 
 .urgent-icon-box {
@@ -192,11 +192,13 @@
 .urgent-icon-bottom {
     position: absolute;
     z-index: 1;
+    width: 7rem;
 }
 
 .urgent-icon-top {
     position: absolute;
     z-index: 2;
+    width: 4rem;
 }
 
 .urgent-right-box {
