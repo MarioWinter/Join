@@ -1,5 +1,14 @@
 let currentDraggedElement;
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    document.getElementById("find_task").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            searchTask();
+        }
+    });
+});
+
 /**
  * Saves the current task ID
  * @param {int} id - ID from the drag elements 
