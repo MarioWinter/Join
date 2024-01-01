@@ -41,6 +41,10 @@ body {
     display: none !important;
 }
 
+.w3-header {
+    width: 100%;
+}
+
 .main-container-index {
     display: flex;
     width: auto;

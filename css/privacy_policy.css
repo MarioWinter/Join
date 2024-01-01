@@ -3,16 +3,19 @@ body {
     background-color: rgba(209, 209, 209, 0.5);
 }
 
-
 .main-content-policy {
     display: flex;
+    width: 100vw;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
 }
 
 
 .privacy-policy-content {
-    
-    width: calc(100vw - var(--sidebar-width));
+    display: flex;
+    /* width: calc(100vw - var(--sidebar-width)); */
+    width: 101.6rem;
     margin-left: var(--sidebar-width);
     height: calc(100% - 9.6rem);
     display: flex;

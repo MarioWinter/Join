@@ -7,6 +7,10 @@
   /* padding-left: 9.6rem;  */
 }
 
+.main-add-task-container {
+  width: 100vw;
+}
+
 .add-task-main-container {
   display: flex;
   flex-direction: column;

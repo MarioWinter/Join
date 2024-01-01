@@ -12,16 +12,6 @@ async function initBoard() {
     
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-
-    document.getElementById("find_task").addEventListener("keyup", function(event) {
-        if (event.key === "Enter") {
-            searchTask();
-        }
-    });
-});
-
-
 
 /**
  * hidden function to clear Added Tasks Remote Storage from any information
