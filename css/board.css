@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 100vw;
 }
 
 .board-head {
@@ -328,6 +329,13 @@
     border-radius: 100%;
     color: white;
     font-size: 1.2rem;
+}
+
+.assigned-limit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.6rem;
 }
 
 .drag-area-highlight {
