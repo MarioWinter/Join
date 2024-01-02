@@ -107,7 +107,6 @@ function loadSubtaskprogress(subtasks, id) {
 
 
 function loadAssigneds(assigneds, id) {
- 
     for (let i = 0; i < assigneds.length; i++) {
         let [badgeColor, userBadge, assignedLimit, addLimit] = getVariableForAssignedsUserBadge(assigneds, i);
         if(i <= addLimit) {
