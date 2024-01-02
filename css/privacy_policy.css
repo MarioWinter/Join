@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: rgba(209, 209, 209, 0.5);
+    
 }
 
 
@@ -18,10 +19,33 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 9.6rem;
+    padding-right: 9rem;
+    padding-top: 5rem;
 }
 
 
 .privacy-policy-on-login{
     margin: 5rem;
     
+}
+
+@media(max-width: 730px){
+    .privacy-policy-content{
+        margin-left: 0;
+        width: auto;
+        padding: 1rem;
+        height: 10rem;
+    }
+
+    body{
+        overflow-y: auto!important;
+    }
+
+    .m-navbar {
+        position: fixed;
+        bottom: 0;
+    }
+
+    
+
 }
