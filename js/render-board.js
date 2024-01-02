@@ -64,7 +64,7 @@ function generateSubtaskProgressHTML(allSubtask, done){
     `;
 }
 
-function generateAssigmentBadgeHTML(userBadge, badgeColor) {
+function generateAssignedBadgeHTML(userBadge, badgeColor) {
     return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
 }
 
