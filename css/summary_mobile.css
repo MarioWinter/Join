@@ -70,6 +70,10 @@
         margin-top: 2.6rem!important;
         width: 100%!important;
     }
+
+    .user-name{
+        font-size: 16rem;
+    }
 }
 
 @media(max-width: 390px){

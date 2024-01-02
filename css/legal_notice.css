@@ -15,4 +15,8 @@
     padding-top: 9.6rem;
 }
 
-@media
+@media(max-width: 730px){
+    .impressum{
+        padding: 3rem!important;
+    }
+}
