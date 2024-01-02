@@ -66,6 +66,14 @@
     font-size: 2rem;
 }
 
+#find_task_mobile {
+    padding: 0 0.8rem 0 1.6rem;
+    width: 100%;
+    border: none;
+    color: black;
+    font-size: 2rem;
+}
+
 
 #input_section:focus-within {
     border: 1px solid var(--hover-blue);
@@ -110,7 +118,15 @@
 #no_task_found {
     display: none;
     position: absolute;
-    margin: 1rem 0 0 0.6rem;
+    margin: 5rem 0 0 0.6rem;
+    color: red;
+    font-size: 1.4rem;
+}
+
+#no_task_found_mobile {
+    display: none;
+    position: absolute;
+    margin: 5rem 0 0 0.6rem;
     color: red;
     font-size: 1.4rem;
 }

@@ -243,13 +243,21 @@ function searchTask() {
     clearBoard();
     filteredTasks = addedTasks.filter((t) => t['title'].toLowerCase().includes(searchTerm.toLowerCase()));
     loadBoard();
-    errorNoteSearchTask();
+    errorNoteSearchTask('no_task_found');
+}
+
+function searchTaskMobile() {
+    let searchTerm = find_task_mobile.value;
+    clearBoard();
+    filteredTasks = addedTasks.filter((t) => t['title'].toLowerCase().includes(searchTerm.toLowerCase()));
+    loadBoard();
+    errorNoteSearchTask('no_task_found_mobile');
 }
 
 
-function errorNoteSearchTask() {
+function errorNoteSearchTask(searchID) {
     if(filteredTasks.length == 0) {
-        document.getElementById('no_task_found').style.display = "block"
+        document.getElementById(searchID).style.display = "block"
     }
 }
 
@@ -263,9 +271,12 @@ function  clearBoard() {
 
 function closeFilter() {
     let searchTerm = find_task.value;
+    let searchTermMobile = find_task_mobile.value;
     searchTerm = searchTerm.toLowerCase();
-    if(searchTerm.length == 0) {
-        document.getElementById('no_task_found').style.display = "none"
+    searchTermMobile = searchTermMobile.toLowerCase();
+    if(searchTerm.length == 0 || searchTermMobile == 0) {
+        document.getElementById('no_task_found').style.display = "none";
+        document.getElementById('no_task_found_mobile').style.display = "none"
         filteredTasks = [];
         loadBoard();
     }
