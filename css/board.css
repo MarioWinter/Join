@@ -1,11 +1,12 @@
 /* Board Header */
+
 .board-container {
+    display: flex;
     width: 100%;
     margin-left: var(--sidebar-width);
     max-width: 120.8rem;
     margin-top: 0.5rem;
-    height: auto;
-    display: flex;
+    height: 100%;
     flex: 1;
     flex-direction: column;
     padding-left: 9.6rem;
@@ -14,7 +15,7 @@
 .main-container-board {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 }
 
@@ -37,17 +38,10 @@
 
 }
 
-/* #search_task_container {
-    display: flex;
-    align-items: center;
-    gap: 2.4rem;
-} */
-
 #search_on_task_container {
     display: flex;
     flex-direction: column;
     grid-column: 2;
-    grid-column-start: span;
     grid-row: 1;
 }
 
@@ -170,6 +164,7 @@
 #board_content {
     display: flex;
     flex: 1;
+    height: 100%;
     background-color: var(--primary-light-grey);
     gap: 2.4rem;
 }
@@ -182,7 +177,7 @@
     display: flex;
     flex-direction: column;
     width: 25%;
-    overflow: hidden;
+    height: auto;
 }
 
 .column-title-area {
