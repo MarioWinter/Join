@@ -34,6 +34,7 @@
     font-weight: 700;
     grid-column: 1;
     grid-row: 1;
+
 }
 
 /* #search_task_container {
@@ -49,10 +50,6 @@
     grid-column-start: span;
     grid-row: 1;
 }
-
-/* #mobile_search_on_task_container {
-    display: none;
-} */
 
 #input_section {
     display: flex;
