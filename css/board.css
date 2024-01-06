@@ -20,31 +20,39 @@
 
 .board-head {
     padding: 6.4rem 0 6.4rem 0;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: space-between;
+    grid-column-gap: 3.2rem;
+    grid-template-columns: 2fr auto;
+    grid-template-rows: 1fr;
 }
 
 .board-head h1 {
     font-size: 6.1rem;
     font-style: normal;
     font-weight: 700;
+    grid-column: 1;
+    grid-row: 1;
 }
 
-#search_task_container {
+/* #search_task_container {
     display: flex;
     align-items: center;
     gap: 2.4rem;
-}
+} */
 
 #search_on_task_container {
     display: flex;
     flex-direction: column;
+    grid-column: 2;
+    grid-column-start: span;
+    grid-row: 1;
 }
 
-#mobile_search_on_task_container {
+/* #mobile_search_on_task_container {
     display: none;
-}
+} */
 
 #input_section {
     display: flex;
@@ -133,6 +141,8 @@
 
 #add_task_button {
     display: flex;
+    grid-column: 3;
+    grid-row: 1;
     align-items: center;
     font-size: 2.1rem;
     font-weight: 700;
