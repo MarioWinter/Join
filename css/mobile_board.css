@@ -3,13 +3,30 @@
         font-size: 0.58em;
     }
 
+	#board_content {
+		gap: 0.4rem;
+	}
+
+	.board-container {
+		padding-left: 1.6rem;
+		max-width: 111.8rem;
+	}
+
+}
+
+@media screen and (max-height: 700px) {
+
+	.privacy-sidebar {
+		padding: 0rem 0rem 0rem 0rem;
+
+	}
 }
 
 @media screen and (max-width: 730px) {
     html {
         font-size: 0.58em;
     }
-    
+
     .board-container {
         width: 100%;
         margin-left: 0;
@@ -29,7 +46,7 @@
         grid-row-gap: 4rem;
     }
 
-    
+
     #search_on_task_container {
         display: flex;
         flex-direction: column;
