@@ -3,9 +3,28 @@
         font-size: 0.6em;
     }
     
-    #search_on_task_container {
+    /* #search_on_task_container {
         display: none;
+    } */
+
+    /* Test */
+    .board-head {
+        display: grid;
+        grid-template-columns: auto auto 1fr; /* Erste Spalte für H1, zweite Spalte für Add Task Button, dritte Spalte für das Suchfeld */
+        align-items: center; /* Zentriert die Elemente vertikal */
+        gap: 10px; /* Abstand zwischen den Spalten */
     }
+    
+    #search_task_container {
+        display: grid;
+        grid-template-columns: 1fr; /* Eine Spalte für alle Elemente im Suchcontainer */
+        gap: 10px; /* Abstand zwischen den Elementen */
+    }
+    
+    #add_task_button {
+        cursor: pointer;
+    }
+    /* Test */
 
     .board-container {
         width: 100%;
