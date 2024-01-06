@@ -14,6 +14,32 @@
 
 }
 
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 0.5em;
+    }
+
+	.board-container {
+		padding-left: 1.6rem;
+		max-width: 100rem;
+	}
+
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 0.425em;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    html {
+        font-size: 0.36em;
+    }
+
+}
+
 @media screen and (max-height: 700px) {
 
 	.privacy-sidebar {
