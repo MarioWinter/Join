@@ -3,29 +3,6 @@
         font-size: 0.6em;
     }
     
-    /* #search_on_task_container {
-        display: none;
-    } */
-
-    /* Test */
-    .board-head {
-        display: grid;
-        grid-template-columns: auto auto 1fr; /* Erste Spalte für H1, zweite Spalte für Add Task Button, dritte Spalte für das Suchfeld */
-        align-items: center; /* Zentriert die Elemente vertikal */
-        gap: 10px; /* Abstand zwischen den Spalten */
-    }
-    
-    #search_task_container {
-        display: grid;
-        grid-template-columns: 1fr; /* Eine Spalte für alle Elemente im Suchcontainer */
-        gap: 10px; /* Abstand zwischen den Elementen */
-    }
-    
-    #add_task_button {
-        cursor: pointer;
-    }
-    /* Test */
-
     .board-container {
         width: 100%;
         margin-left: 0;
@@ -36,11 +13,6 @@
         flex: 1;
         flex-direction: column;
         padding: 0rem 1.6rem;
-    }
-
-    #mobile_search_on_task_container {
-        display: flex;
-        flex-direction: column;
     }
 
     #input_section {

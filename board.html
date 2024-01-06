@@ -37,6 +37,7 @@
             <div w3-include-html="assets/templates/header_template.html" class="w3-header"></div>
             <!-- board container -->
             <div class="board-container">
+
                 <!-- board Header -->
                 <div class="board-head">
                     <h1>Board</h1>
@@ -69,26 +70,24 @@
                             </svg>
                         </div>
                     </div>
-
                 </div>
 
-            </div>
-            <!-- Board Content Colums-->
-            <div id="board_content">
-                <div id="board_todo_section" class="column-section">
-                    <!-- Tasks Column Header -->
-                    <div id="board_todo_section_head" class="column-title-area">
-                        <h3>To Do</h3>
-                        <svg onclick="loadAddTaskSlider('to-do')" width="2.4rem" height="2.4rem" viewBox="0 0 24 24"
-                            fill="none" xmlns="http://www.w3.org/2000/svg"
-                            onclick="addTaskSlider('to-do'); handleInputFocus();">
-                            <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
-                            <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round">
-                            </path>
-                            <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
-                            </rect>
-                        </svg>
-                    </div>
+                <!-- Board Content Colums-->
+                <div id="board_content">
+                    <div id="board_todo_section" class="column-section">
+                        <!-- Tasks Column Header -->
+                        <div id="board_todo_section_head" class="column-title-area">
+                            <h3>To Do</h3>
+                            <svg onclick="loadAddTaskSlider('to-do')" width="2.4rem" height="2.4rem" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg"
+                                onclick="addTaskSlider('to-do'); handleInputFocus();">
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"></path>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2">
+                                </rect>
+                            </svg>
+                        </div>
 
                     <!-- To Do Task Drop Zone-->
                     <div id="to-do" class="column-drop-zone" ondrop="moveTo('to-do'); removeHighlight('to-do')"
