@@ -55,6 +55,7 @@
 
 	#board_content {
 		flex-direction: column;
+		overflow-y: auto;
 	}
 
     .board-container {
@@ -62,7 +63,7 @@
         margin-left: 0;
         max-width: auto;
         margin-top: 0;
-        height: auto;
+        height: calc(100vh - 4.477rem - 4.608rem - 15.707rem);
         display: flex;
         flex: 1;
         flex-direction: column;
