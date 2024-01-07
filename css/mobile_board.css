@@ -21,7 +21,7 @@
 
 	.board-container {
 		padding-left: 1.6rem;
-		max-width: 100rem;
+	    max-width: 96rem;
 	}
 
 }
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 900px) {
     html {
-        font-size: 0.36em;
+        font-size: 0.4em;
     }
 
 }
@@ -48,9 +48,9 @@
 	}
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 780px) {
     html {
-        font-size: 0.36em;
+        font-size: 0.4715em;
     }
 
 	#board_content {
@@ -60,11 +60,10 @@
 
     .board-container {
         width: 100%;
+		height: calc(100vh - 4.477rem - 4.608rem - 15.707rem);
+		display: flex;
         margin-left: 0;
-        max-width: auto;
         margin-top: 0;
-        height: calc(100vh - 4.477rem - 4.608rem - 15.707rem);
-        display: flex;
         flex: 1;
         flex-direction: column;
         padding: 0rem 1.6rem;
@@ -106,4 +105,18 @@
 		max-width: 58.88%;
 	}
 
+	.column-title-area {
+		margin-top: 2.6rem;
+	}
+
+	.column-drop-zone {
+		margin-top: 1.6rem;
+		gap: 0rem;
+		min-height: 0;
+
+	}
+
+	.title-task-overlay-open {
+		font-size: 5.4rem;
+	}
 }
