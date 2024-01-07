@@ -116,6 +116,11 @@
 
 	}
 
+    .task-overlay-frame-open {
+        padding: 4.25rem 2.13rem;
+        gap: 2rem;
+    }
+
 	.title-task-overlay-open {
 		font-size: 5.4rem;
 	}
