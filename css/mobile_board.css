@@ -50,8 +50,12 @@
 
 @media screen and (max-width: 730px) {
     html {
-        font-size: 0.58em;
+        font-size: 0.36em;
     }
+
+	#board_content {
+		flex-direction: column;
+	}
 
     .board-container {
         width: 100%;
@@ -65,10 +69,10 @@
         padding: 0rem 1.6rem;
     }
     .board-head {
-        grid-template-columns: auto;
-        grid-template-rows: 2fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
         padding: 4.8rem 0 4rem 0;
-        grid-column-gap: none;
+        grid-column-gap: 0rem;
         grid-row-gap: 4rem;
     }
 
@@ -76,7 +80,7 @@
     #search_on_task_container {
         display: flex;
         flex-direction: column;
-        grid-column: 1;
+        grid-column: 1/4;
         grid-row: 2;
     }
 
@@ -89,7 +93,12 @@
     }
 
     #add_task_button {
-        width: auto;
+		width: auto;
     }
+
+	.column-section {
+		width: 100%;
+
+	}
 
 }
