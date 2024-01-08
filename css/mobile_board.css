@@ -139,10 +139,19 @@
 
 	.description-textarea {
 		max-width: 100%;
+		min-width: auto;
+	}
+
+	.subhead-container-ed-task {
+		width: 100%;
+	}
+
+	.assigned-to-input-slider {
+		width: 100%;
 	}
 
 	.assigned-to-slider {
-		width: 48.1rem;
+		width: 100%;
 	}
 
 	.separator {
@@ -155,7 +164,8 @@
 	}
 
 	.category-container {
-		width: 48.1rem;
+		max-width: 100%;
+		width: 100%;
 	}
 
 	#select_category {
@@ -163,15 +173,22 @@
 	}
 
 	.subtask-container-slider {
-		width: 48.1rem;
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.subtask-input-container {
+		width: 100%;
 	}
 
 	.subtask-input-slider {
-		width: 48.1rem;
+		max-width: 100%;
+		width: 100%;
 	}
 
 	.subtask-list-item-slider {
-		width: 48.1rem;
+		max-width: 100%;
+		width: 100%;
 	}
 
 	.footer-subtask-slider {
@@ -184,6 +201,10 @@
 		margin-top: 2rem;
 	}
 
+	#subtask_lists {
+		width: 100%;
+	}
+
 	.clear-create-subtask-btn {
 		display: flex;
 		width: 100%;
@@ -191,5 +212,20 @@
 		align-items: center;
 		gap: 2.5rem;
 		margin-top: 1rem;
+	}
+
+	.subtask-edit-input-container {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.slider-frame {
+		max-width: 42.5rem;
+	}
+
+	.prio-buttons-container button {
+		padding: 1.6rem 1rem;
 	}
 }
