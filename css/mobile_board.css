@@ -220,12 +220,27 @@
 	}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+	.add-task-container {
+		margin-top: 2rem;
+		overflow-y: auto;
+	}
+
 	.slider-frame {
 		max-width: 42.5rem;
+		max-height: 68rem;
 	}
 
 	.prio-buttons-container button {
 		padding: 1.6rem 1rem;
+	}
+
+	.task-overlay-frame-open {
+		width: 42.5rem;
+		max-height: 100vh;
+	}
+	.overlay-scroll {
+		overflow-y: auto;
+		width: 100%;
 	}
 }
