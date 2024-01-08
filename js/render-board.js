@@ -401,7 +401,7 @@ function generateEditTaskHTML(id, title, description, duedate) {
                     <div class="subhead-container-ed-task">
                         <div class="subhead-ed-task">Description</div>
                         <textarea required="" placeholder="Enter a Description" name="" id="description_ed_task"
-                            class="description-textarea" cols="20" rows="10">${description}</textarea>
+                            class="description-textarea" cols="50" rows="10">${description}</textarea>
                         <div></div>
                     </div>
 

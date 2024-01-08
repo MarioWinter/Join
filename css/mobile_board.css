@@ -237,7 +237,7 @@
 
 	.task-overlay-frame-open {
 		width: 42.5rem;
-		max-height: 100vh;
+		max-height: calc(100vh - 15rem);
 	}
 	.overlay-scroll {
 		overflow-y: auto;
