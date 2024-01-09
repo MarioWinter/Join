@@ -3,7 +3,6 @@
 }
 
 @media screen and (max-width: 780px) {
-
 	.w3include-container {
 		display: flex;
 		flex-direction: column-reverse;
@@ -22,7 +21,7 @@
 	.header {
 		width: 100vw;
 		height: 8rem;
-		margin-left: auto;
+		margin-left: 0;
 		padding: 2rem 4rem 2rem 4rem;
 		font-size: 1.4rem;
 	}
@@ -56,7 +55,7 @@
 
 	.join-logo-sidebar {
 		display: none;
-  	}
+	}
 
 	.privacy-sidebar {
 		display: none;

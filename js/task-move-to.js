@@ -9,34 +9,34 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 
-	let dropZoneIds = buckets;
+	// let dropZoneIds = buckets;
 
-	dropZoneIds.forEach(function (dropZoneId) {
-		let dropZone = document.getElementById(dropZoneId);
-		let longPressTimeout;
+	// dropZoneIds.forEach(function (dropZoneId) {
+	// 	let dropZone = document.getElementById(dropZoneId);
+	// 	let longPressTimeout;
 
-		if (dropZone) {
-			dropZone.addEventListener("touchstart", function (event) {
-				let targetCard = event.target.closest(".task-card");
+	// 	if (dropZone) {
+	// 		dropZone.addEventListener("touchstart", function (event) {
+	// 			let targetCard = event.target.closest(".task-card");
 
-				if (targetCard) {
-					longPressTimeout = setTimeout(function () {
-						let cardIdString = targetCard.id.replace("task", "");
-						// Rufe die startDragging-Funktion auf
-						let cardId = parseInt(cardIdString, 10);
-						startDragging(cardId);
-						// moveTo(dropZoneId);
-						// removeHighlight(dropZoneId);
-						console.log("Long Press erkannt!");
-					}, 500); // Hier ist die Zeitverzögerung für den Long Press in Millisekunden (500ms in diesem Beispiel)
-				}
-			});
+	// 			if (targetCard) {
+	// 				longPressTimeout = setTimeout(function () {
+	// 					let cardIdString = targetCard.id.replace("task", "");
+	// 					// Rufe die startDragging-Funktion auf
+	// 					let cardId = parseInt(cardIdString, 10);
+	// 					startDragging(cardId);
+	// 					// moveTo(dropZoneId);
+	// 					// removeHighlight(dropZoneId);
+	// 					console.log("Long Press erkannt!");
+	// 				}, 500); // Hier ist die Zeitverzögerung für den Long Press in Millisekunden (500ms in diesem Beispiel)
+	// 			}
+	// 		});
 
-			dropZone.addEventListener("touchend", function () {
-				clearTimeout(longPressTimeout);
-			});
-		}
-	});
+	// 		dropZone.addEventListener("touchend", function () {
+	// 			clearTimeout(longPressTimeout);
+	// 		});
+	// 	}
+	// });
 });
 
 /**

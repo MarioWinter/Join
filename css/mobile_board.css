@@ -94,7 +94,8 @@
 	}
 
 	.task-card {
-		max-width: 58.88%;
+		max-width: 33.41rem;
+		min-width: 19rem;
 	}
 
 	.column-title-area {
