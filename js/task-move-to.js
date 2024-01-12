@@ -1,4 +1,6 @@
 let currentDraggedElement;
+let touchStartX;
+let touchStartY;
 
 document.addEventListener("DOMContentLoaded", function () {
 	document
@@ -8,35 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
 				searchTask();
 			}
 		});
-
-	// let dropZoneIds = buckets;
-
-	// dropZoneIds.forEach(function (dropZoneId) {
-	// 	let dropZone = document.getElementById(dropZoneId);
-	// 	let longPressTimeout;
-
-	// 	if (dropZone) {
-	// 		dropZone.addEventListener("touchstart", function (event) {
-	// 			let targetCard = event.target.closest(".task-card");
-
-	// 			if (targetCard) {
-	// 				longPressTimeout = setTimeout(function () {
-	// 					let cardIdString = targetCard.id.replace("task", "");
-	// 					// Rufe die startDragging-Funktion auf
-	// 					let cardId = parseInt(cardIdString, 10);
-	// 					startDragging(cardId);
-	// 					// moveTo(dropZoneId);
-	// 					// removeHighlight(dropZoneId);
-	// 					console.log("Long Press erkannt!");
-	// 				}, 500); // Hier ist die Zeitverzögerung für den Long Press in Millisekunden (500ms in diesem Beispiel)
-	// 			}
-	// 		});
-
-	// 		dropZone.addEventListener("touchend", function () {
-	// 			clearTimeout(longPressTimeout);
-	// 		});
-	// 	}
-	// });
 });
 
 /**
@@ -45,6 +18,52 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 function startDragging(id) {
 	currentDraggedElement = id;
+}
+
+function handleTouchStart(event, id) {
+	const touch = event.touches[0];
+	//touchStartX = touch.clientX;
+	touchStartY = touch.clientY;
+	currentDraggedElement = id;
+}
+
+function handleTouchMove(event) {
+	// if (!touchStartX || !touchStartY || !currentDraggedElement) return;
+	if (!touchStartY || !currentDraggedElement) return;
+	const touch = event.touches[0];
+	const offsetX = 0;
+	const offsetY = touch.clientY - touchStartY;
+
+	const draggedElement = document.getElementById(
+		`task${currentDraggedElement}`
+	);
+	draggedElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+	// draggedElement.style.transform = `translate(${offsetX}px)`;
+
+	event.preventDefault();
+}
+
+function handleTouchEnd(event, destinationBucket) {
+	debugger;
+	if (!currentDraggedElement) return;
+
+	const draggedElement = document.getElementById(
+		`task${currentDraggedElement}`
+	);
+	draggedElement.style.transform = ""; // Zurücksetzen der transform-Eigenschaft
+
+	// Hier kannst du die ID verwenden, um deine individuelle Logik durchzuführen
+	console.log(
+		`Element mit der ID ${currentDraggedElement} wurde verschoben.`
+	);
+
+	moveTo(destinationBucket);
+
+	// touchStartX = null;
+	touchStartY = null;
+	currentDraggedElement = null;
+
+	event.preventDefault();
 }
 
 function allowDrop(ev) {
@@ -56,6 +75,7 @@ function allowDrop(ev) {
  * @param {String} bucket - HTML Id from the drop zone
  */
 async function moveTo(bucket) {
+	debugger;
 	addedTasks[currentDraggedElement]["bucket"] = bucket;
 	loadBoard();
 	await setItem("addedTasks", JSON.stringify(addedTasks));

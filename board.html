@@ -92,7 +92,8 @@
 						<!-- To Do Task Drop Zone-->
 						<div id="to-do" class="column-drop-zone" ondrop="moveTo('to-do'); removeHighlight('to-do')"
 							ondragover="allowDrop(event), highlight('to-do')" ondragleave="removeHighlight('to-do')"
-							style="padding: 0px; height: 100%;">
+							style="padding: 0px; height: 100%;" ontouchmove="handleTouchMove(event)"
+							ontouchend="handleTouchEnd(event, 'to-do');">
 							<!-- Task Card -->
 
 						</div>
@@ -117,7 +118,8 @@
 						<div id="in-progress" class="column-drop-zone"
 							ondrop="moveTo('in-progress'); removeHighlight('in-progress')"
 							ondragover="allowDrop(event), highlight('in-progress')"
-							ondragleave="removeHighlight('in-progress')" style="padding: 0px; height: 100%;">
+							ondragleave="removeHighlight('in-progress')" style="padding: 0px; height: 100%;"
+							ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event, 'in-progress');">
 							<!-- Task Card -->
 
 						</div>
@@ -142,7 +144,9 @@
 						<div id="await-feedback" class="column-drop-zone"
 							ondrop="moveTo('await-feedback'); removeHighlight('await-feedback')"
 							ondragover="allowDrop(event), highlight('await-feedback')"
-							ondragleave="removeHighlight('await-feedback')" style="padding: 0px; height: 100%;">
+							ondragleave="removeHighlight('await-feedback')" style="padding: 0px; height: 100%;"
+							ontouchmove="handleTouchMove(event)"
+							ontouchend="handleTouchEnd(event); moveTo('await-feedback')">
 							<!-- Task Card -->
 
 						</div>
@@ -166,7 +170,8 @@
 						<!-- Done Task Drop Zone-->
 						<div id="done" class="column-drop-zone" ondrop="moveTo('done'); removeHighlight('done')"
 							ondragover="allowDrop(event), highlight('done')" ondragleave="removeHighlight('done')"
-							style="padding: 0px; height: 100%;">
+							style="padding: 0px; height: 100%;" ontouchmove="handleTouchMove(event)"
+							ontouchend="handleTouchEnd(event); moveTo('done')">
 							<!-- Task Card -->
 
 						</div>
