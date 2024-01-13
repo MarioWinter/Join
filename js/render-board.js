@@ -13,7 +13,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
 	return `
             <div class="task-card" id="task${id}" onclick="loadTaskOpen(${id})" ondragstart="startDragging(${id})"
             draggable="true" ontouchstart="handleTouchStart(event, ${id})" ontouchmove="handleTouchMove(event)"
-			ontouchend="handleTouchEnd(event); moveTo('to-do');">
+			ontouchend="handleTouchEnd(event)">
             <div class="category-move-card-container">
                 <div class="task-category-label" style="background-color: ${categoryColor};">${category}</div>
                 <svg fill="#000000" width="1.6rem" height="1.6rem" viewBox="0 0 16 16"

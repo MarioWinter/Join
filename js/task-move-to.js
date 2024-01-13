@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let currentBucketId;
 let touchStartX;
 let touchStartY;
 
@@ -38,12 +39,14 @@ function handleTouchMove(event) {
 		`task${currentDraggedElement}`
 	);
 	draggedElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+	currentBucketId = getParentId(draggedElement);
 	// draggedElement.style.transform = `translate(${offsetX}px)`;
 
 	event.preventDefault();
 }
 
-function handleTouchEnd(event, destinationBucket) {
+function handleTouchEnd(event) {
 	debugger;
 	if (!currentDraggedElement) return;
 
@@ -52,18 +55,57 @@ function handleTouchEnd(event, destinationBucket) {
 	);
 	draggedElement.style.transform = ""; // Zurücksetzen der transform-Eigenschaft
 
-	// Hier kannst du die ID verwenden, um deine individuelle Logik durchzuführen
-	console.log(
-		`Element mit der ID ${currentDraggedElement} wurde verschoben.`
-	);
+	// Überprüfen, ob das touchend-Ereignis über einer Drop-Zone liegt
+	const dropZoneId = getDropZoneFromEvent(event);
 
-	moveTo(destinationBucket);
+	if (dropZoneId) {
+		// Hier kannst du die ID verwenden, um deine individuelle Logik durchzuführen
+		console.log(
+			`Element mit der ID ${currentDraggedElement} wurde verschoben zur Drop-Zone ${dropZoneId}.`
+		);
+		debugger;
+		// Aktualisiere die aktuelle Bucket-ID
+		currentBucketId = dropZoneId;
+		moveTo(currentBucketId);
+	}
 
 	// touchStartX = null;
 	touchStartY = null;
 	currentDraggedElement = null;
 
 	event.preventDefault();
+}
+
+function getDropZoneFromEvent(event) {
+	const dropZones = document.querySelectorAll(".column-drop-zone");
+
+	for (const dropZone of dropZones) {
+		const rect = dropZone.getBoundingClientRect();
+		const touchX = event.changedTouches[0].clientX;
+		const touchY = event.changedTouches[0].clientY;
+
+		if (
+			touchX >= rect.left &&
+			touchX <= rect.right &&
+			touchY >= rect.top &&
+			touchY <= rect.bottom
+		) {
+			return dropZone.id;
+		}
+	}
+
+	// Falls keine Drop-Zone gefunden wurde, gib die aktuelle Bucket-ID zurück
+	return currentBucketId;
+}
+
+function getParentId(element) {
+	const parentElement = element.parentNode;
+
+	if (parentElement) {
+		return parentElement.id || null; // Gibt die ID des übergeordneten Elements zurück oder null, wenn es keine ID gibt.
+	} else {
+		return null; // Wenn es kein übergeordnetes Element gibt.
+	}
 }
 
 function allowDrop(ev) {
@@ -75,7 +117,6 @@ function allowDrop(ev) {
  * @param {String} bucket - HTML Id from the drop zone
  */
 async function moveTo(bucket) {
-	debugger;
 	addedTasks[currentDraggedElement]["bucket"] = bucket;
 	loadBoard();
 	await setItem("addedTasks", JSON.stringify(addedTasks));
