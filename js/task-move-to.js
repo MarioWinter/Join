@@ -47,7 +47,6 @@ function handleTouchMove(event) {
 }
 
 function handleTouchEnd(event) {
-	debugger;
 	if (!currentDraggedElement) return;
 
 	const draggedElement = document.getElementById(
@@ -63,7 +62,6 @@ function handleTouchEnd(event) {
 		console.log(
 			`Element mit der ID ${currentDraggedElement} wurde verschoben zur Drop-Zone ${dropZoneId}.`
 		);
-		debugger;
 		// Aktualisiere die aktuelle Bucket-ID
 		currentBucketId = dropZoneId;
 		moveTo(currentBucketId);
