@@ -2,6 +2,14 @@ let currentDraggedElement;
 let currentBucketId;
 let touchStartX;
 let touchStartY;
+// Ein Schwellenwert für die force Eigenschaft
+let FORCE_THRESHOLD = 0.2;
+
+// Eine Verzögerung für den Timer in Millisekunden
+let TIMER_DELAY = 2000;
+
+// Eine Variable, um den Timer zu speichern
+let timer = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 	document
@@ -22,10 +30,14 @@ function startDragging(id) {
 }
 
 function handleTouchStart(event, id) {
-	const touch = event.touches[0];
+	// Wenn die force Eigenschaft nicht verfügbar ist, starten Sie einen Timer
+	timer = setTimeout(function () {
+		// Starten Sie das Drag and Drop nach der Verzögerung
+		const touch = event.touches[0];
+		touchStartY = touch.clientY;
+		startDragging(id);
+	}, TIMER_DELAY);
 	//touchStartX = touch.clientX;
-	touchStartY = touch.clientY;
-	currentDraggedElement = id;
 }
 
 function handleTouchMove(event) {
