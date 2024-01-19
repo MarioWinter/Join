@@ -2,6 +2,7 @@ let currentDraggedElement;
 let currentBucketId;
 let touchStartX;
 let touchStartY;
+let lastHighlighted = null;
 // Ein Schwellenwert für die force Eigenschaft
 let FORCE_THRESHOLD = 0.2;
 
@@ -53,8 +54,9 @@ function handleTouchMove(event) {
 	draggedElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 
 	currentBucketId = getParentId(draggedElement);
-	// draggedElement.style.transform = `translate(${offsetX}px)`;
-
+	let dropZoneId = getDropZoneFromEvent(event);
+	removeHighlight(currentBucketId);
+	highlight(dropZoneId);
 	event.preventDefault();
 }
 
@@ -65,7 +67,7 @@ function handleTouchEnd(event) {
 		`task${currentDraggedElement}`
 	);
 	draggedElement.style.transform = ""; // Zurücksetzen der transform-Eigenschaft
-
+	removeHighlight(currentBucketId);
 	// Überprüfen, ob das touchend-Ereignis über einer Drop-Zone liegt
 	const dropZoneId = getDropZoneFromEvent(event);
 
@@ -76,6 +78,7 @@ function handleTouchEnd(event) {
 		);
 		// Aktualisiere die aktuelle Bucket-ID
 		currentBucketId = dropZoneId;
+		removeHighlight(currentBucketId);
 		moveTo(currentBucketId);
 	}
 
@@ -120,6 +123,36 @@ function getParentId(element) {
 
 function allowDrop(ev) {
 	ev.preventDefault();
+}
+
+function updateHighlight(event) {
+	// Holen Sie sich die Position des Fingers
+	let x = event.touches[0].pageX;
+	let y = event.touches[0].pageY;
+
+	// Holen Sie sich das Element an dieser Position
+	let element = document.elementFromPoint(x, y);
+
+	// Überprüfen Sie, ob das Element eine gültige Drop-Zone ist
+	if (element && element.classList.contains("column-drop-zone")) {
+		// Wenn das Element nicht das letzte hervorgehobene ist, aktualisieren Sie es
+		if (element !== lastHighlighted) {
+			// Entfernen Sie die Hervorhebung vom letzten Element, wenn es existiert
+			if (lastHighlighted) {
+				lastHighlighted.classList.remove("drag-area-highlight");
+			}
+			// Fügen Sie die Hervorhebung zum aktuellen Element hinzu
+			element.classList.add("drag-area-highlight");
+			// Speichern Sie das aktuelle Element als das letzte hervorgehobene
+			lastHighlighted = element;
+		}
+	} else {
+		// Wenn das Element keine gültige Drop-Zone ist, entfernen Sie die Hervorhebung vom letzten Element, wenn es existiert
+		if (lastHighlighted) {
+			lastHighlighted.classList.remove("drag-area-highlight");
+			lastHighlighted = null;
+		}
+	}
 }
 
 /**
