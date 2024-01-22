@@ -49,7 +49,6 @@
 
 	#board_content {
 		flex-direction: column;
-		overflow-y: auto;
 	}
 
 	.board-container {
@@ -61,6 +60,7 @@
 		flex: 1;
 		flex-direction: column;
 		padding: 0rem 1.6rem;
+		overflow-y: auto;
 	}
 	.board-head {
 		grid-template-columns: 1fr;
@@ -95,17 +95,26 @@
 
 	.task-card {
 		max-width: 33.41rem;
-		min-width: 19rem;
+		min-width: 27rem;
 	}
 
 	.column-title-area {
 		margin-top: 2.6rem;
 	}
 
+	.column-drop-zone::-webkit-scrollbar {
+		display: none;
+	}
+
 	.column-drop-zone {
 		margin-top: 1.6rem;
 		gap: 0rem;
 		min-height: 0;
+		overflow: auto;
+		align-items: flex-start;
+		flex-direction: row;
+		-ms-overflow-style: none; /* IE und Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 
 	.task-overlay-frame-open {
