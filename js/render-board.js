@@ -12,8 +12,7 @@ let buckets = ["to-do", "in-progress", "await-feedback", "done"];
 function generateCardHTML(id, title, description, category, categoryColor) {
 	return `
             <div class="task-card" id="task${id}" onclick="loadTaskOpen(${id})" ondragstart="startDragging(${id})"
-            draggable="true" ontouchstart="handleTouchStart(event, ${id})" ontouchmove="handleTouchMove(event)"
-			ontouchend="handleTouchEnd(event)">
+            draggable="true">
             <div class="category-move-card-container">
                 <div class="task-category-label" style="background-color: ${categoryColor};">${category}</div>
                 <svg fill="#000000" width="1.6rem" height="1.6rem" viewBox="0 0 16 16"
@@ -22,6 +21,16 @@ function generateCardHTML(id, title, description, category, categoryColor) {
                     <path d="M4 14v2l-4-3 4-3v2h12v2H4zm8-12V0l4 3-4 3V4H0V2h12z"
                         fill-rule="evenodd"></path>
                 </svg>
+				<div>
+					<button id="mbl_move${id}">Move</button>
+					<div id="move_submenu${id}">
+						<div onclick="startDragging(${id}); moveTo('to-do')">To Do</div>
+						<div onclick="startDragging(${id}); moveTo('in-progress')">In progress</div>
+						<div onclick="startDragging(${id}); moveTo('await-feedback')">Await feedback</div>
+						<div onclick="startDragging(${id}); moveTo('done')">Done</div>
+					</div>
+				</div>
+
             </div>
             <!-- Title and Description -->
             <div class="task-title-and-description">
