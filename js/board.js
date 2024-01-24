@@ -301,3 +301,7 @@ function closeFilter() {
 		loadBoard();
 	}
 }
+
+function DoNotForward(event) {
+	event.stopPropagation();
+}

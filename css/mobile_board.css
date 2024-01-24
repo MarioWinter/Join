@@ -1,3 +1,7 @@
+.mbl-move-btn-container {
+	display: none;
+}
+
 @media screen and (max-width: 1460px) {
 	html {
 		font-size: 0.58em;
@@ -227,6 +231,32 @@
 	.subtask-edit-input-container {
 		width: 100%;
 		max-width: 100%;
+	}
+
+	.mbl-move-btn-container {
+		display: block;
+	}
+
+	.mbl-move-btn {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.6rem;
+		font-weight: 600;
+		height: 4rem;
+		width: 8.5rem;
+		padding: 0rem 1.5rem;
+		background-color: var(--primary-dark-blue);
+		color: white;
+		border-radius: 1rem;
+		border: 0.1rem solid var(--primary-dark-blue);
+		cursor: pointer;
+	}
+
+	.mbl-move-btn:hover {
+		background-color: var(--hover-blue);
+		border: 0.1rem solid var(--hover-blue);
+		box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 	}
 }
 

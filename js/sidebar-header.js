@@ -74,13 +74,13 @@ let isSubMenu = false;
 /**
  * Fades in the Subenu
  */
-function showSubmenu() {
-	let subMenu = document.getElementById("sub_menu");
+function showSubmenu(elementID, usedClass) {
+	let subMenu = document.getElementById(elementID);
 	if (isSubMenu) {
-		subMenu.classList.add("hide-header-aside");
+		subMenu.classList.add(usedClass);
 		isSubMenu = false;
 	} else {
-		subMenu.classList.remove("hide-header-aside");
+		subMenu.classList.remove(usedClass);
 		isSubMenu = true;
 	}
 }

@@ -21,9 +21,9 @@ function generateCardHTML(id, title, description, category, categoryColor) {
                     <path d="M4 14v2l-4-3 4-3v2h12v2H4zm8-12V0l4 3-4 3V4H0V2h12z"
                         fill-rule="evenodd"></path>
                 </svg>
-				<div>
-					<button id="mbl_move${id}">Move</button>
-					<div id="move_submenu${id}">
+				<div class="mbl-move-btn-container">
+					<button class="mbl-move-btn" onclick="showSubmenu('move_submenu${id}', 'd-none'); DoNotForward(event)" id="mbl_move${id}">Move</button>
+					<div id="move_submenu${id}" class="d-none">
 						<div onclick="startDragging(${id}); moveTo('to-do')">To Do</div>
 						<div onclick="startDragging(${id}); moveTo('in-progress')">In progress</div>
 						<div onclick="startDragging(${id}); moveTo('await-feedback')">Await feedback</div>
