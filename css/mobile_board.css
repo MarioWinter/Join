@@ -1,5 +1,6 @@
 .mbl-move-btn-container {
 	display: none;
+	position: relative;
 }
 
 @media screen and (max-width: 1460px) {
@@ -239,7 +240,7 @@
 
 	.mbl-move-btn {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		font-size: 1.6rem;
 		font-weight: 600;
@@ -257,6 +258,41 @@
 		background-color: var(--hover-blue);
 		border: 0.1rem solid var(--hover-blue);
 		box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+	}
+
+	.mbl-move-menu {
+		display: inline-flex;
+		position: absolute;
+		right: -0.2rem;
+		z-index: 996;
+		padding: 1rem;
+		font-size: 1.6rem;
+		flex-direction: column;
+		align-items: flex-start;
+		border-radius: 2rem 0rem 2rem 2rem;
+		color: white;
+		background-color: var(--primary-dark-blue);
+		box-shadow: 0rem 0.4rem 0.4rem 0rem rgba(0, 0, 0, 0.25);
+	}
+
+	.mbl-move-item {
+		display: inline-flex;
+		padding: 0.8rem 0rem;
+		width: 16rem;
+		justify-content: center;
+		align-self: stretch;
+		border-radius: 0.8rem;
+	}
+	.mbl-move-item:hover {
+		background-color: rgb(42, 61, 89);
+	}
+
+	.task-card:active {
+		transform: none;
+	}
+
+	.task-card:hover {
+		border: 0.2rem solid var(--hover-blue);
 	}
 }
 

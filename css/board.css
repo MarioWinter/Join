@@ -228,6 +228,7 @@
 	background-color: white;
 	border-radius: 2.4rem;
 	box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.08);
+	border: 0.2rem solid rgba(0, 0, 0, 0);
 	transition: all 0.1s linear;
 	gap: 2.4rem;
 	touch-action: pan-y;
