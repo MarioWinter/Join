@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				searchTask();
 			}
 		});
+	// window.addEventListener("resize", updateHeight);
 });
 
 /**
