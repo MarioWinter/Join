@@ -4,16 +4,35 @@
   height: calc(100% - 9.6rem);
   display: flex;
   padding-left: 23.2rem;
+  overflow-x: hidden;
 }
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(182, 182, 182);
+  border-radius: 10px;
+  border: 5px solid #ffffff;
+}
+
+/* left hand side contact list  */
 
 .add-new-contact-main {
   padding-left: 3.6rem;
   display: flex;
   justify-content: center;
   width: 45.6rem;
+  overflow-y: auto;
   flex-shrink: 0;
   background: #fff;
   box-shadow: 0.4rem 0 0.6rem 0 rgba(0, 0, 0, 0.08);
+  height: 91vh;
 }
 
 .contact-list {
@@ -22,6 +41,7 @@
   flex-direction: column;
   align-items: center;
   background: #fff;
+  overflow-y: auto;
 }
 
 .primary-contact {
@@ -37,7 +57,6 @@
   color: #fff;
   font-size: 2.1rem;
   font-weight: 700;
-  line-height: 120%; /* 2.52rem */
   cursor: pointer;
 }
 
@@ -53,19 +72,12 @@
   justify-content: center;
   align-items: flex-start;
   gap: 0.8rem;
-  align-self: stretch;
-  color: #000;
   font-size: 2rem;
-  line-height: 120%; /* 2.4rem */
 }
 
 .alphabet-vector-line {
   display: flex;
   padding: 0.8rem 0rem;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-  align-self: stretch;
 }
 
 .alphabet-vector-line::before {
@@ -86,7 +98,7 @@
   cursor: pointer;
 }
 
-.contact-container:hover {
+.contact-container:not(.active-contact):hover {
   background: var(
     --Boton-gradient,
     linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%)
@@ -107,7 +119,6 @@ text {
 }
 
 .contact-name {
-  color: #000;
   font-size: 2rem;
 }
 
@@ -116,22 +127,9 @@ text {
   font-size: 1.6rem;
 }
 
-.bar {
-  width: 2.4rem;
-  height: 100%;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.bar-sign {
-  width: 1rem;
-  height: 0.4rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
+/* right hand side top  */
+
 
 .contacts-container-right {
   display: flex;
@@ -143,17 +141,15 @@ text {
 
 .contacts-better-container {
   display: inline-flex;
-  justify-content: flex-end;
   align-items: center;
   height: 7.3rem;
   gap: 3rem;
 }
 
 .contacts-letter {
-  color: #000;
   font-size: 6.1rem;
   font-weight: 700;
-  line-height: 120%; /* 7.32rem */
+  line-height: 120%;
 }
 
 .vector-line {
@@ -169,9 +165,22 @@ text {
   line-height: 120%; /* 32.4px */
 }
 
+
+
+
+
+
+
+
+
+
+
+/* overlay */
+
+
 /* overlay-add-contact */
 .overlay-add-contact {
-  position: fixed;
+  position: absolute;
   top: 50%;
   right: -100%;
   transform: translate(50%, -50%);
@@ -186,6 +195,11 @@ text {
 
 .overlay-add-contact.show {
   right: 50%;
+}
+
+.overlay-add-contact.close {
+  right: -100%;
+  transition: right 0.3s ease;
 }
 
 .overlay-container-left {
@@ -206,7 +220,6 @@ text {
 .add-contact-overlay-icon {
   width: 5.56rem;
   height: 6.6483rem;
-  /*position: absolute;*/
   left: 4.6904rem;
   top: 15.4rem;
 }
@@ -267,13 +280,13 @@ text {
 }
 
 .oyerlay-close-img {
-  background-color: #2a3647;
-  border-radius: 5.6rem;
   cursor: pointer;
 }
 
 .oyerlay-close-img:hover {
   background-color: #29abe2;
+  background-image: url("../img/cancel-white.svg");
+  border-radius: 50%;
 }
 
 .overlay-input-data {
@@ -286,6 +299,11 @@ text {
   border: 1px solid #d1d1d1;
   background: #fff;
   line-height: 120%; /* 2.4rem */
+}
+
+.overlay-input-data:focus-within {
+  color: #29abe2;
+  border: 1px solid #29abe2;
 }
 
 .overlay-contact-icons {
@@ -325,7 +343,13 @@ input {
 }
 
 .overlay-cancel-button:hover {
-  background-color: #29abe2;
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.overlay-cancel-button:hover path {
+  fill: #29abe2;
 }
 
 .overlay-create-contact-button {
@@ -345,6 +369,7 @@ input {
 
 .overlay-create-contact-button:hover {
   background-color: #29abe2;
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .overlay-contact-circle {
@@ -364,23 +389,36 @@ input {
 }
 
 .contact-person-white {
+  /* width: 12.8rem; */
   width: 6.4rem;
   height: 6.4rem;
   position: absolute;
 }
+
+
+
+
+
+
+
+
+
+/* right hand side center  */
+
+
 
 /* show-contact-details */
 .show-contact-details {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2.1rem; 
+  gap: 2.1rem;
   opacity: 0;
   transform: translateX(100%);
-  transition: opacity 0.3s ease, transform 0.3s ease-in-out;}
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+}
 
 .show-contact-details.show {
-  /* Setze den Endzustand der Animation, wenn die Klasse "show" hinzugefügt wird */
   opacity: 1;
   transform: translateX(0);
 }
@@ -391,11 +429,10 @@ input {
   gap: 5.4rem;
 }
 
-.contact-icon { 
+.contact-icon {
   border-radius: 7rem;
   border: 0.3rem solid var(--white, #fff);
   background: #fff;
-  /* nuevo */
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -441,17 +478,12 @@ input {
   line-height: 120%;
 }
 
-.edit-and-delete-container {
+.edit-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.6rem;
   cursor: pointer;
-}
-
-.edit-container {
-  display: flex;   
-  gap: 1.3rem;
 }
 
 .edit-contacts {
@@ -461,15 +493,25 @@ input {
   gap: 0.8rem;
 }
 
-.edit-icon, .delete-icon {
+.edit-icon,
+.delete-icon {
   width: 2.4rem;
-  height: 2.4rem;  
+  height: 2.4rem;
+}
+
+.edit-contacts:hover .edit-text,
+.delete-container:hover .delete-text,
+.edit-contacts:hover svg path,
+.delete-container:hover svg path {
+  color: #29abe2;
+  font-weight: bold;
+  fill: #29abe2;
 }
 
 .edit-text,
 .delete-text {
   color: var(--Version-2-main-color, #2a3647);
-  font-size: 1.6rem;    
+  font-size: 1.6rem;
 }
 
 .delete-container {
@@ -487,7 +529,6 @@ input {
   justify-content: center;
   color: #000;
   font-size: 2rem;
-  line-height: 120%;
 }
 
 .mail-and-phone-container {
@@ -500,15 +541,12 @@ input {
 .mail-text {
   color: #000;
   font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 120%;
 }
 
 .mail-container {
   color: #007cee;
   font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 120%;
+  cursor: pointer;
 }
 
 .phone-container {
@@ -528,6 +566,30 @@ input {
 .contact-phone-number {
   color: #000;
   font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 120%;
+  cursor: pointer;
+}
+
+
+/* display/show contact succesfull message */
+
+.contact-succesfully-created {
+  top: 75%;
+  position: absolute;
+  width: 32.6rem;
+  height: 7.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 2rem;
+  color: white;
+  background: #2a3647;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.hidden {
+  display: none;
 }

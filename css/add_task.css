@@ -258,7 +258,7 @@ select.minimal .placeholder {
 .subtask-container {
   display: flex;
   width: 44rem;
-  /* height: 23rem; */
+  height: 23rem;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;  

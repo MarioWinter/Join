@@ -2,8 +2,7 @@ let tasks = [];
 let addedSubtasks = [];
 
 
-
-// function for prio area
+// changes the color of priority area based on interaction
 function changePrioColor(prio) {
   let container = document.getElementById(prio + '_container');
   let img = document.getElementById(prio + '_img');
@@ -20,14 +19,16 @@ function changePrioColor(prio) {
   }
 }
 
-// function for prio area
+
+// resets the background color of priority area
 function settingPrioBackground(container, img, prio) {
   container.style.backgroundColor = 'white';
   container.style.color = '#2a3647';
   img.src = './img/' + prio + '.svg';
 }
 
-// function for prio area
+
+// determines the background color for a given priority
 function determinePrioBackgroundColor(prio) {
   let color;
   if (prio === 'urgent') {
@@ -40,7 +41,8 @@ function determinePrioBackgroundColor(prio) {
   return color;
 }
 
-// function for prio area
+
+// resets background color of all priority containers
 function resetContainers() {
   let containers = document.getElementsByClassName('status-definition-container');
   for (let i = 0; i < containers.length; i++) {
@@ -53,21 +55,36 @@ function resetContainers() {
   }
 }
 
-// function for celaring all fields after already named
+
+// clears input fields and resets various containers
 function clearAllFields() {
-  document.getElementById('enter_title_field').value = '';
-  document.getElementById('enter-description_field').value = '';
-  document.getElementById('select_contacts_field').selectedIndex = 0;
-  document.getElementById('date_field').value = '';  
+  clearContainerLeft();
   resetContainers();  
-  document.getElementById('select_category_field').selectedIndex = 0;
-  document.getElementById('add_new_subtask_field').value = '';
-  document.getElementById('select_contacts_field').value = '';
+  clearContainerRight();
   closeSubtaskIcons();
   document.getElementById('subtask_display_container').innerHTML = '';    
   addedSubtasks = [];   
 }
 
+
+// clears input fields left side 
+function clearContainerLeft() {
+  document.getElementById('enter_title_field').value = '';
+  document.getElementById('enter-description_field').value = '';
+  document.getElementById('select_contacts_field').selectedIndex = 0;
+  document.getElementById('date_field').value = '';  
+}
+
+
+// clears input fields right side
+function clearContainerRight() {
+  document.getElementById('select_category_field').selectedIndex = 0;
+  document.getElementById('add_new_subtask_field').value = '';
+  document.getElementById('select_contacts_field').value = '';
+}
+
+
+// adds a new task to remote storage 
 async function taskToRemoteStorage(){
   users.push({
     title: id.value,
@@ -77,13 +94,15 @@ async function taskToRemoteStorage(){
   await setItem('tasks', JSON.stringify(users));
 }
 
-// function for display date today and future
+
+// sets the minimum date for the date field to today
 function getDateToday(){
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("date_field").setAttribute('min', today);
 }
 
-// function to change the subtask icons for adding 
+
+// changes the visibility of subtask icons for adding subtasks 
 function changingSubtaskIcons() {
   let inputField = document.getElementById('add_new_subtask_field');
   document.getElementById('normal_subtask_icon').classList.add('d-none');
@@ -92,7 +111,8 @@ function changingSubtaskIcons() {
   inputField.select(); 
 }
 
-// function to close the adding icons and back to normal 
+
+// closes the subtask icons and returns to normal view
 function closeSubtaskIcons() {
   document.getElementById('normal_subtask_icon').classList.remove('d-none');
   document.getElementById('three_subtask_icons').classList.add('d-none');  
@@ -100,7 +120,8 @@ function closeSubtaskIcons() {
   input.value = '';
 }
 
-// function for handling some Subtask
+
+// handles actions related to adding subtasks
 function handleSubtaskActions() {
   let subtaskInput = document.getElementById('add_new_subtask_field');
   let subtask = subtaskInput.value.trim(); 
@@ -112,6 +133,8 @@ function handleSubtaskActions() {
   }
 }
 
+
+// show added subtasks
 function displaySubtasks() {
   let subtask = document.getElementById('add_new_subtask_field').value.trim();
   if (subtask !== '') {
@@ -121,6 +144,8 @@ function displaySubtasks() {
   }
 }
 
+
+// renders the added subtasks 
 function renderAddedSubtasks() {
   let subtaskContainer = document.getElementById('subtask_display_container');
   subtaskContainer.innerHTML = '';
@@ -133,39 +158,55 @@ function renderAddedSubtasks() {
   closeSubtaskIcons();  
 }
 
+
+// creates html for an added subtask
 function createAddedSubtask(subtask, index) {
   let subtaskDiv = document.createElement('div');
   subtaskDiv.classList.add('added-subtask');
-  subtaskDiv.innerHTML = `<input id="input_${index}" class="subtask-input" type="text" value="• ${subtask}" contenteditable="true">
+  subtaskDiv.innerHTML = `${createSubtaskHTML(subtask, index)}`;
+  return subtaskDiv;
+}
+
+
+// creates the html code for subtask
+function createSubtaskHTML(subtask, index) {
+  return `
+    <input id="input_${index}" class="subtask-input" type="text" value="• ${subtask}" contenteditable="true">
     <div class="added-subtask-icons">
       <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./img/delete-icon.svg">
       <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./img/vector-line.svg">
       <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./img/pencil-icon.svg">
       <img id="check_dark_save_${index}" class="invisible subtask-icon d-none" src="./img/check-dark.svg">      
-    </div>`;
-  return subtaskDiv;
+    </div>
+  `;
 }
 
-function editAddedSubtask(index) {  
+
+// initiate edited added subtask
+function editAddedSubtask(index) {
+  moveIconsForEditing(index);
+  document.getElementById(`subtask_icons_1_${index}`).classList.add('d-none');  
+  document.getElementById(`check_dark_save_${index}`).classList.remove('d-none');
+  let inputField = document.getElementById(`input_${index}`);
+  inputField.focus(); 
+}
+
+
+// moves icons for editing within the subtask container
+function moveIconsForEditing(index) {
   let editIcon = document.getElementById(`subtask_icons_1_${index}`);
   let deleteIcon = document.getElementById(`subtask_icons_3_${index}`);
   let saveIcon = document.getElementById(`check_dark_save_${index}`);
   let vectorLine = document.getElementById(`subtask_icons_2_${index}`);
   let container = editIcon.parentElement;
+
   container.insertBefore(saveIcon, editIcon);
   container.insertBefore(vectorLine, editIcon);
   container.insertBefore(deleteIcon, editIcon);
-
-  document.getElementById(`subtask_icons_1_${index}`).classList.add('d-none');  
-  document.getElementById(`check_dark_save_${index}`).classList.remove('d-none');
-
-  // Fokus auf das Eingabefeld und Textauswahl
-  let inputField = document.getElementById(`input_${index}`);
-  inputField.focus(); // Setzt den Fokus auf das Eingabefeld
-  // inputField.select(); // Markiert den Text im Eingabefeld
 }
 
 
+// deletes added subtask from the list
 function deleteAddedSubtask(subtask) {  
   let index = addedSubtasks.indexOf(subtask);  
   if (index !== -1) {    
