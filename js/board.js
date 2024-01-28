@@ -211,6 +211,7 @@ function hide(id) {
 }
 
 function showFrame(id) {
+	addFixedBackround("main_container_board");
 	addOverlayBg(id);
 	show(id);
 }
