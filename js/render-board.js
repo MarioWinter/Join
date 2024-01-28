@@ -318,7 +318,7 @@ function generateEditTaskAssigmentContactsHTML(
 	ID
 ) {
 	return `
-    <label class="slider-contact-label" for="check-contact${i}">
+    <label class="slider-contact-label">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
                 style="background-color: ${badgeColor};">
@@ -352,7 +352,7 @@ function generateEditTaskAssigmentContactsCheckedHTML(
 	ID
 ) {
 	return `
-    <label class="slider-contact-label" for="check-contact${i}">
+    <label class="slider-contact-label">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
                 style="background-color: ${badgeColor};">
@@ -630,8 +630,7 @@ function generateEditTaskHTML(id, title, description, duedate) {
                     <div id="subtask_container_slider" class="subtask-container-slider">
                         <div class="subhead-ed-task">Subtasks</div>
                         <div class="subtask-input-container">
-                            <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask"
-                                autocomplete="">
+                            <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask">
                             <img id="add_subtask" class="add-subtask-slider" src="./assets/img/add-plus-icon.svg"
                                 alt="Add Subtasks" onclick="showSubtaskInput('add_subtask', 'check_subtask_icons')">
 
