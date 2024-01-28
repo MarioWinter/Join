@@ -61,6 +61,13 @@ function generateNoTaskHTML(bucket) {
 	return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
 
+/**
+ * Generates HTML for displaying subtask progress, including a progress bar and subtask count.
+ *
+ * @param {number} allSubtask - The total number of subtasks.
+ * @param {number} done - The number of completed subtasks.
+ * @returns {string} - The HTML for subtask progress display.
+ */
 function generateSubtaskProgressHTML(allSubtask, done) {
 	let percentInWidth = generatePercentInWidth(allSubtask, done);
 	return `
@@ -71,14 +78,34 @@ function generateSubtaskProgressHTML(allSubtask, done) {
     `;
 }
 
+/**
+ * Generates HTML for an assigned badge with specified user badge content and background color.
+ *
+ * @param {string} userBadge - The HTML content of the assigned individual's badge.
+ * @param {string} badgeColor - The background color of the assigned individual's badge.
+ * @returns {string} - The HTML for the assigned badge.
+ */
 function generateAssignedBadgeHTML(userBadge, badgeColor) {
 	return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
 }
 
+/**
+ * Generates HTML for an assignment badge in the context of editing a task.
+ *
+ * @param {string} userBadge - The HTML content of the assigned individual's badge.
+ * @param {string} badgeColor - The background color of the assigned individual's badge.
+ * @param {number} i - The index used for unique identification.
+ * @returns {string} - The HTML for the assignment badge.
+ */
 function generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i) {
 	return `<div id="initials${i}" class="contact-badge" style="background-color: ${badgeColor};">${userBadge}</div>`;
 }
 
+/**
+ * Generates HTML for a medium priority icon.
+ *
+ * @returns {string} - The HTML for the medium priority icon.
+ */
 function generateMediumPrioIcon() {
 	return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="0.8rem" viewBox="0 0 18 8" fill="none">
@@ -96,6 +123,11 @@ function generateMediumPrioIcon() {
     `;
 }
 
+/**
+ * Generates HTML for a low priority icon.
+ *
+ * @returns {string} - The HTML for the low priority icon.
+ */
 function generateLowPrioIcon() {
 	return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.2rem" viewBox="0 0 18 12" fill="none">
@@ -112,6 +144,11 @@ function generateLowPrioIcon() {
     `;
 }
 
+/**
+ * Generates HTML for an urgent priority icon.
+ *
+ * @returns {string} - The HTML for the urgent priority icon.
+ */
 function generateUrgentPrioIcon() {
 	return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.2rem" viewBox="0 0 18 12" fill="none">
@@ -128,6 +165,17 @@ function generateUrgentPrioIcon() {
     `;
 }
 
+/**
+ * Generates HTML for an open task frame.
+ *
+ * @param {string} id - The task ID.
+ * @param {string} title - The task title.
+ * @param {string} description - The task description.
+ * @param {string} category - The task category.
+ * @param {string} categoryColor - The color associated with the task category.
+ * @param {string} duedate - The task due date.
+ * @returns {string} - The HTML for the open task frame.
+ */
 function generateOpenTaskHTML(
 	id,
 	title,
@@ -232,6 +280,15 @@ function generateOpenTaskHTML(
     `;
 }
 
+/**
+ * Generates HTML for an assignment in the open task frame.
+ *
+ * @param {string} userBadge - The badge representing the assigned user.
+ * @param {string} badgeColor - The color of the user badge.
+ * @param {string} assignedUserName - The name of the assigned user.
+ * @param {string} id - The task ID.
+ * @returns {string} - The HTML for the assignment in the open task frame.
+ */
 function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
 	return `
         <div class="assigned-to-contact-task-open">
@@ -243,6 +300,16 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
     `;
 }
 
+/**
+ * Generates HTML for the assigned contacts in the edit task slider.
+ *
+ * @param {string} badgeColor - The color of the user badge.
+ * @param {string} userBadge - The badge representing the assigned user.
+ * @param {string} assignedUserName - The name of the assigned user.
+ * @param {number} i - The index of the assigned contact.
+ * @param {string} ID - The task ID.
+ * @returns {string} - The HTML for the assigned contacts in the edit task slider.
+ */
 function generateEditTaskAssigmentContactsHTML(
 	badgeColor,
 	userBadge,
@@ -267,6 +334,16 @@ function generateEditTaskAssigmentContactsHTML(
     `;
 }
 
+/**
+ * Generates HTML for the assigned contacts with a checked state in the edit task slider.
+ *
+ * @param {string} badgeColor - The color of the user badge.
+ * @param {string} userBadge - The badge representing the assigned user.
+ * @param {string} assignedUserName - The name of the assigned user.
+ * @param {number} i - The index of the assigned contact.
+ * @param {string} ID - The task ID.
+ * @returns {string} - The HTML for the assigned contacts with a checked state in the edit task slider.
+ */
 function generateEditTaskAssigmentContactsCheckedHTML(
 	badgeColor,
 	userBadge,
@@ -291,6 +368,14 @@ function generateEditTaskAssigmentContactsCheckedHTML(
     `;
 }
 
+/**
+ * Generates HTML for a subtask in the task frame.
+ *
+ * @param {string} subtitle - The text of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @param {string} ID - The task ID.
+ * @returns {string} - The HTML for the subtask in the task frame.
+ */
 function generateSubtasksHTML(subtitle, i, ID) {
 	return `
     <div class="log-in-checkbox">
@@ -300,6 +385,14 @@ function generateSubtasksHTML(subtitle, i, ID) {
     `;
 }
 
+/**
+ * Generates HTML for a checked subtask in the task frame.
+ *
+ * @param {string} subtitle - The text of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @param {string} ID - The task ID.
+ * @returns {string} - The HTML for the checked subtask in the task frame.
+ */
 function generateSubtasksCheckedHTML(subtitle, i, ID) {
 	return `
     <div class="log-in-checkbox">
@@ -309,6 +402,18 @@ function generateSubtasksCheckedHTML(subtitle, i, ID) {
     `;
 }
 
+/**
+ * Generates HTML for a subtask list item in the task frame.
+ *
+ * @param {string} subtitle - The text of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @param {string} ID - The task ID.
+ * @param {string} subtaskListItemID - The unique identifier for the subtask list item.
+ * @param {string} subtaskEditContainerID - The unique identifier for the subtask edit container.
+ * @param {string} subtaskEditInputID - The unique identifier for the subtask edit input.
+ * @param {string} subtaskList - The ID of the subtask list container.
+ * @returns {string} - The HTML for the subtask list item in the task frame.
+ */
 function generateSubtaskListItemHTML(
 	subtitle,
 	i,
@@ -357,6 +462,11 @@ function generateSubtaskListItemHTML(
     `;
 }
 
+/**
+ * Generates HTML for the "Add new contact to Assigned To" button in the assigned to section of the task frame.
+ *
+ * @returns {string} - The HTML for the "Add new contact" button.
+ */
 function generateAddContactAssignedToBtnHTML() {
 	return `
         <button class="add-new-contact-assignedto-btn">
@@ -378,6 +488,15 @@ function generateAddContactAssignedToBtnHTML() {
     `;
 }
 
+/**
+ * Generates HTML for editing a task.
+ *
+ * @param {string} id - The ID of the task.
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {string} duedate - The due date of the task.
+ * @returns {string} - The HTML for the task editing frame.
+ */
 function generateEditTaskHTML(id, title, description, duedate) {
 	return `
             <div id="task_open_overlay_frame" class="task-overlay-frame-open">
@@ -557,83 +676,3 @@ function generateEditTaskHTML(id, title, description, duedate) {
 
     `;
 }
-
-//Template Jason
-let addedTasksTemplate = [
-	{
-		id: 0,
-		bucket: "in-progress",
-		title: "Kochwelt Page & Recipe Recommender",
-		description: "Build start page with recipe recommendation.",
-		assigned: [],
-		duedate: "2024-05-10",
-		prio: "Medium",
-		category: "User Story",
-		subtask: [
-			{
-				subdone: true,
-				subtitle: "Implement Recipe Recommendation",
-			},
-			{
-				subdone: false,
-				subtitle: "Start Page Layout",
-			},
-			{
-				subdone: true,
-				subtitle: "Start Page Layout",
-			},
-		],
-	},
-	{
-		id: 1,
-		bucket: "done",
-		title: "CSS Architecture Planning",
-		description: "Define CSS naming conventions and structure.",
-		assigned: [],
-		duedate: "2023-09-02",
-		prio: "Low",
-		category: "Technical Task",
-		subtask: [
-			{
-				subdone: false,
-				subtitle: "Establish CSS Methodology",
-			},
-			{
-				subdone: false,
-				subtitle: "Setup Base Styles",
-			},
-		],
-	},
-	{
-		id: 2,
-		bucket: "to-do",
-		title: "HTML Base Template Creation",
-		description: "Create reusable HTML base templates",
-		assigned: [],
-		duedate: "2024-10-03",
-		prio: "Low",
-		category: "Technical Task",
-		subtask: [],
-	},
-	{
-		id: 3,
-		bucket: "await-feedback",
-		title: "Daily Kochwelt Receipe",
-		description:
-			"Implement daily receipe and portion calculator in JavaScript and HTML",
-		assigned: [],
-		duedate: "2023-09-02",
-		prio: "Urgent",
-		category: "Technical Task",
-		subtask: [
-			{
-				subdone: true,
-				subtitle: "Establish CSS Methodology",
-			},
-			{
-				subdone: true,
-				subtitle: "Setup Base Styles",
-			},
-		],
-	},
-];

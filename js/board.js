@@ -2,6 +2,16 @@ let addedTasks = [];
 let storageTasks = [];
 let filteredTasks = [];
 
+/**
+ * Asynchronously initializes the board by performing the following actions:
+ * - Loads added tasks using the loadAddedTasks function.
+ * - Loads users using the loadUsers function.
+ * - Loads the board using the loadBoard function.
+ * - Loads the current user using the loadCurrentUser function.
+ * - Loads the user badge using the loadUserBadge function.
+ *
+ * @returns {Promise<void>} - A promise that resolves when the board is initialized.
+ */
 async function initBoard() {
 	await loadAddedTasks();
 	await loadUsers();
@@ -18,6 +28,11 @@ async function clearAddedTasksRemoteSTRG() {
 	await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
+/**
+ * Asynchronously loads added tasks from storage.
+ *
+ * @returns {Promise<void>} - A promise that resolves when added tasks are loaded.
+ */
 async function loadAddedTasks() {
 	try {
 		addedTasks = JSON.parse(await getItem("addedTasks"));
@@ -26,6 +41,11 @@ async function loadAddedTasks() {
 	}
 }
 
+/**
+ * Loads the board by iterating through each bucket, updating the board, and loading the "No Tasks" label.
+ *
+ * @returns {void}
+ */
 function loadBoard() {
 	for (let i = 0; i < buckets.length; i++) {
 		let bucket = buckets[i];
@@ -34,6 +54,13 @@ function loadBoard() {
 	}
 }
 
+/**
+ * Updates the board for a specific bucket by iterating through tasks and loading cards for each task.
+ * - Load a card for the task using the loadCard function.
+ *
+ * @param {string} currentBucket - The current bucket being updated.
+ * @returns {void}
+ */
 function updateBoard(currentBucket) {
 	let tasks = getTasksPerBucket(currentBucket);
 	for (let index = 0; index < tasks.length; index++) {
@@ -62,6 +89,12 @@ function updateBoard(currentBucket) {
 	}
 }
 
+/**
+ * Retrieves tasks for a specific bucket based on the current bucket and filtered tasks.
+ * - Clear the inner HTML of the current bucket element.
+ * @param {string} currentBucket - The current bucket for which tasks are retrieved.
+ * @returns {Array} - An array of tasks for the specified bucket.
+ */
 function getTasksPerBucket(currentBucket) {
 	let tasks = [];
 	if (filteredTasks.length == 0) {
@@ -73,6 +106,14 @@ function getTasksPerBucket(currentBucket) {
 	return tasks;
 }
 
+/**
+ * Extracts task variables from the specified tasks array at the given index.
+ *
+ * @param {Array} tasks - The array of tasks from which variables are extracted.
+ * @param {number} index - The index of the task in the array.
+ * @returns {Array} - An array containing task variables in the order:
+ *   [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate].
+ */
 function getTaskVariables(tasks, index) {
 	let task = tasks[index];
 	let id = task["id"];
@@ -99,6 +140,23 @@ function getTaskVariables(tasks, index) {
 	];
 }
 
+/**
+ * Loads a card into the specified bucket with task details.
+ * - Load the category color using the loadCategoryColor function.
+ * - Load subtask progress using the loadSubtaskprogress function.
+ * - Load assigned individuals using the loadAssigneds function.
+ * - Load assigned individuals using the loadAssigneds function.
+ *
+ * @param {string} id - The ID of the task.
+ * @param {string} bucket - The bucket where the card is loaded.
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {string} prio - The priority of the task.
+ * @param {string} category - The category of the task.
+ * @param {Array} subtasks - An array of subtasks for the task.
+ * @param {Array} assigneds - An array of assigned individuals for the task.
+ * @returns {void}
+ */
 function loadCard(
 	id,
 	bucket,
@@ -122,6 +180,15 @@ function loadCard(
 	loadCardPrioIcon(prio, id);
 }
 
+/**
+ * Loads a "No Tasks" label into the specified bucket if the bucket has no tasks.
+ * - Check if the inner HTML of the bucket is empty.
+ * - Format the bucket name for the label using the formatNoTaskLabelString function.
+ * - Load the "No Tasks" label HTML into the inner HTML of the specified bucket.
+ *
+ * @param {string} bucket - The bucket to check for tasks and where the label is loaded.
+ * @returns {void}
+ */
 function loadNoTasksLabel(bucket) {
 	let taskColumn = document.getElementById(bucket);
 	if (taskColumn.innerHTML === "") {
@@ -130,6 +197,16 @@ function loadNoTasksLabel(bucket) {
 	}
 }
 
+/**
+ * Loads subtask progress into the specified task's subtasks container.
+ * - Check if there are any subtasks.
+ * - Count the number of completed subtasks using the loadSubtaskAreDone function.
+ * - Load the subtask progress HTML into the specified task's subtasks container.
+ *
+ * @param {Array} subtasks - An array of subtasks for the task.
+ * @param {string} id - The ID of the task.
+ * @returns {void}
+ */
 function loadSubtaskprogress(subtasks, id) {
 	let allSubtask = subtasks.length;
 	let done = loadSubtaskAreDone(subtasks);
@@ -139,6 +216,17 @@ function loadSubtaskprogress(subtasks, id) {
 	}
 }
 
+/**
+ * Loads assigned individuals' badges into the specified task's assigneds container.
+ *  - Extract variables using the getVariableForAssignedsUserBadge function.
+ *  - Check if the current index is within the addLimit.
+ *  - Add the assigned badge using the addAssignedBadge function.
+ *  - Add a limit badge using the addLimitAssignedBadge function.
+ *
+ * @param {Array} assigneds - An array of assigned individuals for the task.
+ * @param {string} id - The ID of the task.
+ * @returns {void}
+ */
 function loadAssigneds(assigneds, id) {
 	for (let i = 0; i < assigneds.length; i++) {
 		let [badgeColor, userBadge, assignedLimit, addLimit] =
@@ -151,6 +239,17 @@ function loadAssigneds(assigneds, id) {
 	}
 }
 
+/**
+ * Retrieves variables for assigned individuals' badges based on the specified array and index.
+ * - Get the badge color using the getUserColor function.
+ * - Get the assigned user name from the array.
+ * - Generate the user badge using the generateUserBadge function.
+ * - Calculate the assignedLimit (last index) and addLimit for conditions.
+ *
+ * @param {Array} assigneds - An array of assigned individuals for the task.
+ * @param {number} i - The index of the assigned individual in the array.
+ * @returns {Array} - An array containing variables in the order: [badgeColor, userBadge, assignedLimit, addLimit].
+ */
 function getVariableForAssignedsUserBadge(assigneds, i) {
 	let badgeColor = getUserColor(assigneds, i);
 	let assignedUserName = assigneds[i];
@@ -160,11 +259,29 @@ function getVariableForAssignedsUserBadge(assigneds, i) {
 	return [badgeColor, userBadge, assignedLimit, addLimit];
 }
 
+/**
+ * Adds an assigned badge to the specified task's assignment container.
+ * - Append the assigned badge HTML to the assignment container of the specified task.
+ *
+ * @param {string} userBadge - The HTML content of the assigned individual's badge.
+ * @param {string} badgeColor - The color of the assigned individual's badge.
+ * @param {string} id - The ID of the task.
+ * @returns {void}
+ */
 function addAssignedBadge(userBadge, badgeColor, id) {
 	document.getElementById(`task_assignment_container_${id}`).innerHTML +=
 		generateAssignedBadgeHTML(userBadge, badgeColor);
 }
 
+/**
+ * Adds a limit badge to the specified task's assignment container indicating additional assigned individuals.
+ * - Calculate the limit based on the difference between assigned individuals and the visible limit.
+ * - Append the limit badge HTML to the assignment container of the specified task.
+ *
+ * @param {string} id - The ID of the task.
+ * @param {Array} assigneds - An array of assigned individuals for the task.
+ * @returns {void}
+ */
 function addLimitAssignedBadge(id, assigneds) {
 	let limit = assigneds.length - 6;
 	document.getElementById(
@@ -172,6 +289,15 @@ function addLimitAssignedBadge(id, assigneds) {
 	).innerHTML += `<div class="assigned-limit">+${limit}</div>`;
 }
 
+/**
+ * Loads a priority icon into the specified task's priority icon container based on the priority level.
+ * - Get the task priority icon container element.
+ * - Check the priority level and set the inner HTML accordingly.
+ *
+ * @param {string} prio - The priority level of the task.
+ * @param {string} id - The ID of the task.
+ * @returns {void}
+ */
 function loadCardPrioIcon(prio, id) {
 	let taskPrioIcon = document.getElementById(`task_prio_img_${id}`);
 	if (prio === "Urgent") {
@@ -183,6 +309,13 @@ function loadCardPrioIcon(prio, id) {
 	}
 }
 
+/**
+ * Counts the number of completed subtasks in the specified array.
+ *  - Iterate through subtasks and increment 'done' for each completed subtask.
+ *
+ * @param {Array} subtasks - An array of subtasks for the task.
+ * @returns {number} - The number of completed subtasks.
+ */
 function loadSubtaskAreDone(subtasks) {
 	let done = 0;
 	for (let i = 0; i < subtasks.length; i++) {
@@ -194,6 +327,12 @@ function loadSubtaskAreDone(subtasks) {
 	return done;
 }
 
+/**
+ * Retrieves the color associated with the specified category.
+ *
+ * @param {string} category - The category for which to retrieve the color.
+ * @returns {string} - The color associated with the category.
+ */
 function loadCategoryColor(category) {
 	if (category === "Technical Task") {
 		return "#1fd7c1";
@@ -202,20 +341,50 @@ function loadCategoryColor(category) {
 	}
 }
 
+/**
+ * Displays the element with the specified ID by removing the "d-none" class.
+ *
+ * @param {string} id - The ID of the element to display.
+ * @returns {void}
+ */
 function show(id) {
 	document.getElementById(id).classList.remove("d-none");
 }
 
+/**
+ * Hides the element with the specified ID by adding the "d-none" class.
+ *
+ * @param {string} id - The ID of the element to hide.
+ * @returns {void}
+ */
 function hide(id) {
 	document.getElementById(id).classList.add("d-none");
 }
-
+/**
+ * Displays a frame by performing the following actions:
+ * - Adds a fixed background to the main container using the addFixedBackround function.
+ * - Adds an overlay background using the addOverlayBg function.
+ * - Displays the element with the specified ID using the show function.
+ *
+ * @param {string} id - The ID of the frame to display.
+ * @returns {void}
+ */
 function showFrame(id) {
 	addFixedBackround("main_container_board");
 	addOverlayBg(id);
 	show(id);
 }
 
+/**
+ * Asynchronously deletes a task by performing the following actions:
+ * - Filters out the task with the specified ID from the addedTasks array.
+ * - Updates the addedTasks array with the filtered tasks.
+ * - Hides the task open overlay frame using the hideTaskOpen function.
+ * - Reloads the board using the loadBoard function.
+ *
+ * @param {string} TaskID - The ID of the task to delete.
+ * @returns {Promise<void>} - A promise that resolves when the task is deleted and the board is reloaded.
+ */
 async function deleteTask(TaskID) {
 	let updatedAddedTasks = addedTasks.filter((task) => task.id !== TaskID);
 	addedTasks = updatedAddedTasks;
@@ -235,6 +404,16 @@ function generatePercentInWidth(allSubtask, done) {
 	return percentInWidth;
 }
 
+/**
+ * Formats a string for the "No Tasks" label by capitalizing the first letter and replacing dashes with spaces.
+ *
+ * @param {string} str - The string to format.
+ * @returns {string} - The formatted string.
+ *
+ * Steps:
+ * 1. Capitalize the first letter of the string.
+ * 2. Replace dashes with spaces in the formatted string.
+ */
 function formatNoTaskLabelString(str) {
 	str = str.charAt(0).toUpperCase() + str.slice(1);
 	let formattedStr = str.replace("-", " ");
@@ -255,11 +434,33 @@ function formatDueDate(dueDate) {
 	return dueDate;
 }
 
+/**
+ * Asynchronously clears the remote storage by resetting the 'users' array and updating the storage.
+ *
+ * Steps:
+ * 1. Reset the 'users' array.
+ * 2. Update the 'users' array in the storage using the setItem function.
+ *
+ * @returns {Promise<void>} - A promise that resolves when the remote storage is cleared.
+ */
 async function clearRemoteStorage() {
 	users = [];
 	await setItem("users", JSON.stringify(users));
 }
 
+/**
+ * Searches for tasks based on the entered search term and updates the board accordingly.
+ *
+ * Steps:
+ * 1. Retrieve the search term from the 'find_task' input field.
+ * 2. Clear the board using the clearBoard function.
+ * 3. Filter tasks based on whether their title contains the search term (case-insensitive).
+ * 4. Update the 'filteredTasks' array with the filtered tasks.
+ * 5. Reload the board using the loadBoard function.
+ * 6. Display an error note if no tasks are found using the errorNoteSearchTask function.
+ *
+ * @returns {void}
+ */
 function searchTask() {
 	let searchTerm = find_task.value;
 	clearBoard();
@@ -270,6 +471,19 @@ function searchTask() {
 	errorNoteSearchTask("no_task_found");
 }
 
+/**
+ * Searches for tasks on mobile devices based on the entered search term and updates the board accordingly.
+ *
+ * Steps:
+ * 1. Retrieve the search term from the 'find_task_mobile' input field.
+ * 2. Clear the board using the clearBoard function.
+ * 3. Filter tasks based on whether their title contains the search term (case-insensitive).
+ * 4. Update the 'filteredTasks' array with the filtered tasks.
+ * 5. Reload the board using the loadBoard function.
+ * 6. Display an error note if no tasks are found using the errorNoteSearchTask function.
+ *
+ * @returns {void}
+ */
 function searchTaskMobile() {
 	let searchTerm = find_task_mobile.value;
 	clearBoard();
@@ -280,12 +494,31 @@ function searchTaskMobile() {
 	errorNoteSearchTask("no_task_found_mobile");
 }
 
+/**
+ * Displays an error note for the search task if no tasks are found.
+ *
+ * Steps:
+ * 1. Check if the 'filteredTasks' array is empty.
+ * 2. If empty, display the error note with the specified ID.
+ *
+ * @param {string} searchID - The ID of the error note element.
+ * @returns {void}
+ */
 function errorNoteSearchTask(searchID) {
 	if (filteredTasks.length == 0) {
 		document.getElementById(searchID).style.display = "block";
 	}
 }
 
+/**
+ * Clears the board by emptying the inner HTML of each bucket element.
+ *
+ * Steps:
+ * 1. Iterate through each bucket.
+ * 2. Empty the inner HTML of the bucket element.
+ *
+ * @returns {void}
+ */
 function clearBoard() {
 	for (let i = 0; i < buckets.length; i++) {
 		let bucket = buckets[i];
@@ -293,6 +526,16 @@ function clearBoard() {
 	}
 }
 
+/**
+ * Closes the filter and clears the search-related elements if the search term is empty.
+ *
+ * Steps:
+ * 1. Retrieve the search term from the 'find_task' input field and convert it to lowercase.
+ * 2. Check if the search term is empty.
+ * 3. If empty, hide the "No Tasks Found" error note, reset the 'filteredTasks' array, and reload the board.
+ *
+ * @returns {void}
+ */
 function closeFilter() {
 	let searchTerm = find_task.value;
 	searchTerm = searchTerm.toLowerCase();
@@ -303,6 +546,12 @@ function closeFilter() {
 	}
 }
 
+/**
+ * Prevents event propagation to avoid undesired event forwarding.
+ *
+ * @param {Event} event - The event object.
+ * @returns {void}
+ */
 function DoNotForward(event) {
 	event.stopPropagation();
 }
