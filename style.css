@@ -17,7 +17,7 @@ body {
     font-size: 1.6rem;
     background-color: var(--primary-light-grey);
     margin: 0;
-    
+
 }
 
 :root {
@@ -181,6 +181,7 @@ input[type="checkbox"] + label::before {
     height: 1.9rem;
     background-image: url("./assets/img/chechbox.svg");
     background-repeat: no-repeat;
+	background-size: contain;
     display: block;
     content: "";
     float: left;
