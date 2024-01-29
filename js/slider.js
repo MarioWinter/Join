@@ -78,6 +78,7 @@ async function hideTaskOpen(id) {
 	loadBoard();
 	frameSlideOut(id);
 	removeFixedBackround("main_container_board");
+	show("sub_menu");
 	removeOverlayBg("task_overlay_bg");
 
 	setTimeout(function () {

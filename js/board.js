@@ -370,6 +370,7 @@ function hide(id) {
  * @returns {void}
  */
 function showFrame(id) {
+	hide("sub_menu");
 	addFixedBackround("main_container_board");
 	addOverlayBg(id);
 	show(id);
