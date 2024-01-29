@@ -22,7 +22,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
                         fill-rule="evenodd"></path>
                 </svg>
 				<div class="mbl-move-btn-container">
-					<button class="mbl-move-btn" onclick="showSubmenu('move_submenu${id}', 'd-none')" id="mbl_move${id}">Move</button>
+					<button class="mbl-move-btn" onclick="DoNotForward(event); showSubmenu('move_submenu${id}', 'd-none')" id="mbl_move${id}">Move</button>
 					<div id="move_submenu${id}" class="mbl-move-menu d-none">
 						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('to-do')">To Do</div>
 						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('in-progress')">In progress</div>

@@ -171,6 +171,19 @@ function loadPrioOnEditTask(prio) {
 	}
 }
 
+/**
+ * Toggles the visibility of the contact overlay.
+ *
+ * This function toggles the visibility of the contact overlay based on the current state.
+ * If the contact overlay is open, it hides the container and shows the selected contacts.
+ * If the contact overlay is closed, it shows the container and hides the selected contacts.
+ * Additionally, it adjusts the visibility of specific elements related to the contact overlay.
+ *
+ * @param {string} containerID - The ID of the contact container element.
+ * @param {string} selectedContactsID - The ID of the selected contacts element.
+ * @returns {void} - No return value.
+ *
+ */
 let isCantactOpen = true;
 function openContactOverlay(containerID, selectedContactsID) {
 	if (isCantactOpen) {
