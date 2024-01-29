@@ -284,9 +284,10 @@ text {
 }
 
 .oyerlay-close-img:hover {
-  background-color: #29abe2;
-  background-image: url("../img/cancel-white.svg");
+  /* background-color: #29abe2;
+  background-image: url("../img/cancel-white.svg"); */
   border-radius: 50%;
+  background-color: lightgray;
 }
 
 .overlay-input-data {

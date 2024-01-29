@@ -74,7 +74,7 @@ async function initContacts() {
   loadCurrentUser();
   includeHTML();
   sortContactsAlphabetically(users);
-  sortContactsAlphabetically(contactsData);
+  // sortContactsAlphabetically(contactsData);
   renderDifferentContacts();
 }
 
@@ -93,7 +93,7 @@ function renderContacts() {
 
   let editLinks = document.getElementsByClassName("edit-text");
   for (let i = 0; i < editLinks.length; i++) {
-    editLinks[i].addEventListener("click", function () {
+    editLinks[i].addEventListener("click", function() {
       editContacts(i);
     });
   }
@@ -659,14 +659,14 @@ function getOverlayContactCircleHTML() {
 }
 
 // changes the image on hover for ovelay close
-function changeImageOnHover(isHover) {
-  let closeImage = document.querySelector(".oyerlay-close-img");
-  if (isHover) {
-    closeImage.src = "./img/cancel-white.svg";
-  } else {
-    closeImage.src = "./img/cancel.svg";
-  }
-}
+// function changeImageOnHover(isHover) {
+//   let closeImage = document.querySelector(".oyerlay-close-img");
+//   if (isHover) {
+//     closeImage.src = "./img/cancel-white.svg";
+//   } else {
+//     closeImage.src = "./img/cancel.svg";
+//   }
+// }
 
 // clears the input fields in the add new contact overlay
 function clearEntrys() {

@@ -1,5 +1,14 @@
 let tasks = [];
 let addedSubtasks = [];
+let = newAssigned = [];
+
+
+async function initAddTask() {
+  await loadUsers();
+  getDateToday(); 
+  changePrioColor('medium');
+  initUserSelectField('et_contact_overlay');
+}
 
 
 // changes the color of priority area based on interaction
@@ -93,6 +102,84 @@ async function taskToRemoteStorage(){
   });
   await setItem('tasks', JSON.stringify(users));
 }
+
+
+
+
+
+
+function initUserSelectField(containerID) {
+
+  let contactsContainer = document.getElementById(containerID);
+  for (let i = 0; i < users.length; i++) {
+      let userName = users[i]['name'];
+      let userBadge = generateUserBadge(userName);
+      let badgeColor = users[i]['bgcolor'];
+      if (newAssigned.includes(userName)) {
+          contactsContainer.innerHTML += generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, userName, i);
+      } else {
+          contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, userName, i);
+      }
+  }
+  contactsContainer.innerHTML += generateAddContactAssignedToBtnHTML();
+}
+
+
+function addElectedContact(id, i) {
+  let checkAssigned = document.getElementById(id);
+  // let assigned = addedTasks[j]['assigned'];
+  let userName = users[i]['name'];
+  let deleteName = assigned.indexOf(userName);
+  if(checkAssigned.checked) {
+      newAssigned.push(userName);
+  } else if (!checkAssigned.checked)
+  {
+      newAssigned.splice(deleteName,1);
+  }
+  loadAssignedOnEditTask(newAssigned, 'et_selected_contacts');
+}
+
+// 
+function generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, assignedUserName, i, ID) {
+  return`
+  <label class="slider-contact-label" for="check-contact${i}">
+      <div class="current-contact-slider">
+          <div id="contect_badge${i}" class="contact-badge"
+              style="background-color: ${badgeColor};">
+              <span>${userBadge}</span>
+          </div>
+          <span>${assignedUserName} </span>
+          <div class="log-in-checkbox">
+              <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" />
+              <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+          </div>
+      </div>
+  </label>
+  `;
+}
+
+// 
+function generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, assignedUserName, i, ID) {
+  return`
+  <label class="slider-contact-label" for="check-contact${i}">
+      <div class="current-contact-slider">
+          <div id="contect_badge${i}" class="contact-badge"
+              style="background-color: ${badgeColor};">
+              <span>${userBadge}</span>
+          </div>
+          <span>${assignedUserName} </span>
+          <div class="log-in-checkbox">
+              <input onclick="addContactAsAssigned('${ID}_confirm_contact${i}', ${i}, ${ID})" id="${ID}_confirm_contact${i}" type="checkbox" checked/>
+              <label class="checkbox-edit-task" for="${ID}_confirm_contact${i}"></label>
+          </div>
+      </div>
+  </label>
+  `;
+}
+
+
+
+
 
 
 // sets the minimum date for the date field to today

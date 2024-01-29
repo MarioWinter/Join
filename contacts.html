@@ -60,8 +60,9 @@
               </div>
             </div>
             <div class="overlay-container-right">
-              <div class="overlay-close" id="cancel_overlay"><img class="oyerlay-close-img" id="overlay_close_img" src="./img/cancel.svg"
-                  onmouseover="changeImageOnHover(true)" onmouseout="changeImageOnHover(false)" onclick="cancelOverlay()"/>
+              <div class="overlay-close" id="cancel_overlay">
+                <img class="oyerlay-close-img" id="overlay_close_img" src="./img/cancel.svg" onclick="cancelOverlay()"/>
+                  <!-- onmouseover="changeImageOnHover(true)" onmouseout="changeImageOnHover(false)"  -->
               </div>
               <div class="overlay-add-contact-container">
                 <div class="overlay-input-data"><input type="text" id="contact_Name" required placeholder="Name"/>
@@ -75,7 +76,7 @@
                 </div>
               </div>
               <div class="cancel-and-create-container">
-                <div id="overlay_cancel_button" class="overlay-cancel-button" onclick="clearEntrys()">Cancel
+                <div id="overlay_cancel_button" class="overlay-cancel-button" onclick="cancelOverlay()">Cancel
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                     <mask id="mask0_71720_5473" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                       <rect y="0.96582" width="24" height="24" fill="#D9D9D9"/>

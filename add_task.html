@@ -13,16 +13,22 @@
   <link rel="stylesheet" href="./css/add_task.css">
   <link rel="stylesheet" href="./css/sidebar-header_template.css">
   <link rel="stylesheet" href="./css/mobile-header-footer.css">
+  <link rel="stylesheet" href="./css/add-task-slider.css">
+  <link rel="stylesheet" href="./css/edit-board-slider.css">
 
+  <script src="./js/board.js"></script>
   <script src="./js/storage.js"></script>
   <script src="./script.js"></script>
   <script src="./js/sidebar-header.js"></script>
   <script src="./js/add_task.js"></script>
   <script src="html.js"></script>
   <script src="./js/contacts.js"></script>
+  <script src="./js/task-edit.js"></script>
+  <script src="./js/render-board.js"></script>
+  <script src="./js/add-task-slider.js"></script>
 </head>
 
-<body onload="includeHTML(); getDateToday(); changePrioColor('medium')">
+<body onload="includeHTML(), initAddTask()">
 
   <div class="w3include-container">
     <div w3-include-html="assets/templates/sidebar_template.html"></div>
@@ -46,11 +52,22 @@
                 </div>
                 <div class="assigned-main">
                   <div class="assigned-field">Assigned to</div>
-                  <div class="selected-contacts-container">
-                    <input id="select_contacts_field" class="selected-contacts-field" placeholder="Select contacts to assign" required>
-                    <img id="arrow_icon" src="./img/arrow-down.svg" onclick="rotateArrow()" />
+                  <div class="assigned-to-input-slider">
+                    <input id="et_select_contacts_search" class="assigned-to-slider" type="text " placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', 10)">
+                    <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg" alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
+                    <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg" alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
                   </div>
                 </div>
+                <!-- von hier neu -->
+                  <div class="p-relative">
+                    <div class="contact-overlay d-none" id="et_contact_overlay">
+                      <!-- Contact for render -->                      
+                    </div>
+                    <div id="et_selected_contacts" class="selected-contacts">
+                      <!-- select contact -->
+                    </div>
+                  </div>
+                  <!-- bis hier  -->
               </div>
 
               <div class="dividing-line"></div>
@@ -72,8 +89,8 @@
                   <div class="category-field">Category<span class="star">*</span></div>
                   <select class="minimal select-category" id="select_category_field" required>
                     <option class="placeholder" disabled selected>Select task category</option>
-                    <option>Technical Task</option>
-                    <option>User Story</option>
+                    <option class="category-options">Technical Task</option>
+                    <option class="category-options">User Story</option>
                   </select>
                 </div>
                 <div class="subtask-container">
@@ -106,7 +123,7 @@
               </div>
               <button type="submit" id="create_task_button" class="create-task-container" type="button">Create Task <img src="./img/check.svg"></button>
             </div>
-          </form>
+          </form>         
         </div>
       </div>
     </main>
