@@ -176,7 +176,7 @@ function loadCard(
 		categoryColor
 	);
 	loadSubtaskprogress(subtasks, id);
-	loadAssigneds(assigneds, id);
+	addAssignedsBadgesToCard(assigneds, id);
 	loadCardPrioIcon(prio, id);
 }
 
@@ -227,7 +227,7 @@ function loadSubtaskprogress(subtasks, id) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
-function loadAssigneds(assigneds, id) {
+function addAssignedsBadgesToCard(assigneds, id) {
 	for (let i = 0; i < assigneds.length; i++) {
 		let [badgeColor, userBadge, assignedLimit, addLimit] =
 			getVariableForAssignedsUserBadge(assigneds, i);
