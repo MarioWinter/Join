@@ -185,98 +185,98 @@ function generateOpenTaskHTML(
 	duedate
 ) {
 	return `
-                <div id="task_open_overlay_frame" class="task-overlay-frame-open">
-                        <!-- tesk overlay tag -->
-                        <div class="category-container-task-open">
-                            <div class="category-tag-task-open"style="background-color: ${categoryColor};">${category}</div>
-                            <div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <mask id="mask0_99379_7049" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
-                                        y="0" width="24" height="24">
-                                        <rect width="24" height="24" fill="#D9D9D9" />
-                                    </mask>
-                                    <g mask="url(#mask0_99379_7049)">
-                                        <path
-                                            d="M12 13.4L7.10005 18.3C6.91672 18.4834 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4834 5.70005 18.3C5.51672 18.1167 5.42505 17.8834 5.42505 17.6C5.42505 17.3167 5.51672 17.0834 5.70005 16.9L10.6 12L5.70005 7.10005C5.51672 6.91672 5.42505 6.68338 5.42505 6.40005C5.42505 6.11672 5.51672 5.88338 5.70005 5.70005C5.88338 5.51672 6.11672 5.42505 6.40005 5.42505C6.68338 5.42505 6.91672 5.51672 7.10005 5.70005L12 10.6L16.9 5.70005C17.0834 5.51672 17.3167 5.42505 17.6 5.42505C17.8834 5.42505 18.1167 5.51672 18.3 5.70005C18.4834 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4834 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4834 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4834 18.1167 18.3 18.3C18.1167 18.4834 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4834 16.9 18.3L12 13.4Z"
-                                            fill="#2A3647" />
-                                    </g>
-                                </svg>
-                            </div>
+	<div id="task_open_overlay_frame" class="task-overlay-frame-open">
+			<!-- tesk overlay tag -->
+			<div class="category-container-task-open">
+				<div class="category-tag-task-open"style="background-color: ${categoryColor};">${category}</div>
+				<div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						fill="none">
+						<mask id="mask0_99379_7049" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+							y="0" width="24" height="24">
+							<rect width="24" height="24" fill="#D9D9D9" />
+						</mask>
+						<g mask="url(#mask0_99379_7049)">
+							<path
+								d="M12 13.4L7.10005 18.3C6.91672 18.4834 6.68338 18.575 6.40005 18.575C6.11672 18.575 5.88338 18.4834 5.70005 18.3C5.51672 18.1167 5.42505 17.8834 5.42505 17.6C5.42505 17.3167 5.51672 17.0834 5.70005 16.9L10.6 12L5.70005 7.10005C5.51672 6.91672 5.42505 6.68338 5.42505 6.40005C5.42505 6.11672 5.51672 5.88338 5.70005 5.70005C5.88338 5.51672 6.11672 5.42505 6.40005 5.42505C6.68338 5.42505 6.91672 5.51672 7.10005 5.70005L12 10.6L16.9 5.70005C17.0834 5.51672 17.3167 5.42505 17.6 5.42505C17.8834 5.42505 18.1167 5.51672 18.3 5.70005C18.4834 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4834 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4834 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4834 18.1167 18.3 18.3C18.1167 18.4834 17.8834 18.575 17.6 18.575C17.3167 18.575 17.0834 18.4834 16.9 18.3L12 13.4Z"
+								fill="#2A3647" />
+						</g>
+					</svg>
+				</div>
 
-                        </div>
-                        <!-- task overlay title -->
-                        <div class="title-task-overlay-open">${title}</div>
-                        <!-- task overlay description -->
-                        <div class="desc-task-open">${description}</div>
-                        <!-- task overlay duedate -->
-                        <div class="subheader-task-open">
-                            <div class="label-task-open">Due date:</div>
-                            <div>${duedate}</div>
-                        </div>
-                        <!-- task overlay prio -->
+			</div>
+			<!-- task overlay title -->
+			<div class="title-task-overlay-open">${title}</div>
+			<!-- task overlay description -->
+			<div class="desc-task-open">${description}</div>
+			<!-- task overlay duedate -->
+			<div class="subheader-task-open">
+				<div class="label-task-open">Due date:</div>
+				<div>${duedate}</div>
+			</div>
+			<!-- task overlay prio -->
 
-                        <div class="subheader-task-open">
-                            <div class="label-task-open">Priority:</div>
-                            <div id="task_open_prio" class="prio-container-style-task-open">
-                            </div>
-                        </div>
+			<div class="subheader-task-open">
+				<div class="label-task-open">Priority:</div>
+				<div id="task_open_prio" class="prio-container-style-task-open">
+				</div>
+			</div>
 
-                        <!-- task overlay assigned to -->
-                        <div class="column-frame-container-task-open">
-                            <div class="label-task-open">Assigned To:</div>
-                            <div id="assigned_to_contacts_task_open">
+			<!-- task overlay assigned to -->
+			<div class="column-frame-container-task-open">
+				<div class="label-task-open">Assigned To:</div>
+				<div id="assigned_to_contacts_task_open">
 
-                            </div>
-                        </div>
+				</div>
+			</div>
 
-                        <!-- task overlay subtasks-->
-                        <div class="column-frame-container-task-open">
-                            <div id="label_task_open_subtask" class="label-task-open">Subtasks</div>
-                            <div id="task_overlay_subtasks_container">
-                                <!-- substasks -->
+			<!-- task overlay subtasks-->
+			<div class="column-frame-container-task-open">
+				<div id="label_task_open_subtask" class="label-task-open">Subtasks</div>
+				<div id="task_overlay_subtasks_container">
+					<!-- substasks -->
 
-                            </div>
-                        </div>
-                        <div class="delete-edit-container-task-open">
-                            <div id="delete_btn_task_open" class="del-ed-btn-task-open" onclick="deleteTask(${id})">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <mask id="mask0_99408_2217" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
-                                        y="0" width="24" height="24">
-                                        <rect width="24" height="24" fill="#D9D9D9" />
-                                    </mask>
-                                    <g mask="url(#mask0_99408_2217)">
-                                        <path
-                                            d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
-                                            fill="#2A3647" />
-                                    </g>
-                                </svg>
-                                <div>Delete</div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 2 24"
-                                fill="none">
-                                <path d="M1 0V24" stroke="#D1D1D1" />
-                            </svg>
-                            <div id="edit_btn_task_open" class="del-ed-btn-task-open" onclick="loadTaskEdit(${id})">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <mask id="mask0_99408_2223" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
-                                        y="0" width="24" height="24">
-                                        <rect width="24" height="24" fill="#D9D9D9" />
-                                    </mask>
-                                    <g mask="url(#mask0_99408_2223)">
-                                        <path
-                                            d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
-                                            fill="#2A3647" />
-                                    </g>
-                                </svg>
-                                <div>Edit</div>
-                            </div>
-                        </div>
+				</div>
+			</div>
+			<div class="delete-edit-container-task-open">
+				<div id="delete_btn_task_open" class="del-ed-btn-task-open" onclick="deleteTask(${id})">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						fill="none">
+						<mask id="mask0_99408_2217" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+							y="0" width="24" height="24">
+							<rect width="24" height="24" fill="#D9D9D9" />
+						</mask>
+						<g mask="url(#mask0_99408_2217)">
+							<path
+								d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z"
+								fill="#2A3647" />
+						</g>
+					</svg>
+					<div>Delete</div>
+				</div>
+				<svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 2 24"
+					fill="none">
+					<path d="M1 0V24" stroke="#D1D1D1" />
+				</svg>
+				<div id="edit_btn_task_open" class="del-ed-btn-task-open" onclick="loadTaskEdit(${id})">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						fill="none">
+						<mask id="mask0_99408_2223" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0"
+							y="0" width="24" height="24">
+							<rect width="24" height="24" fill="#D9D9D9" />
+						</mask>
+						<g mask="url(#mask0_99408_2223)">
+							<path
+								d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z"
+								fill="#2A3647" />
+						</g>
+					</svg>
+					<div>Edit</div>
+				</div>
+			</div>
 
-                    </div>
-                </div>
+		</div>
+	</div>
     `;
 }
 
@@ -459,32 +459,6 @@ function generateSubtaskListItemHTML(
                     alt="check subtask" onclick="updateSubtask(${ID}, '${subtaskListItem}', '${subtaskEditInput}', ${i}, '${subtaskEditContainer}', '${subtaskList}')">
             </div>
         </div>
-    `;
-}
-
-/**
- * Generates HTML for the "Add new contact to Assigned To" button in the assigned to section of the task frame.
- *
- * @returns {string} - The HTML for the "Add new contact" button.
- */
-function generateAddContactAssignedToBtnHTML() {
-	return `
-        <button class="add-new-contact-assignedto-btn">
-            <div>Add new contact</div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="3.3rem" height="3.2rem"
-                viewBox="0 0 33 32" fill="none">
-                <mask id="mask0_99517_6729" style="mask-type:alpha"
-                    maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
-                    <rect x="0.5" width="32" height="32" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_99517_6729)">
-                    <path
-                        d="M25.8291 18.6667C25.5132 18.6667 25.2497 18.5602 25.0386 18.3472C24.8275 18.1342 24.7219 17.8704 24.7219 17.5556V14.4444H21.6108C21.296 14.4444 21.0321 14.3376 20.8191 14.1239C20.6062 13.9101 20.4997 13.6453 20.4997 13.3294C20.4997 13.0135 20.6062 12.75 20.8191 12.5389C21.0321 12.3278 21.296 12.2222 21.6108 12.2222H24.7219V9.11109C24.7219 8.79629 24.8288 8.5324 25.0425 8.31942C25.2562 8.10647 25.521 7.99999 25.8369 7.99999C26.1528 7.99999 26.4163 8.10647 26.6274 8.31942C26.8386 8.5324 26.9441 8.79629 26.9441 9.11109V12.2222H30.0552C30.37 12.2222 30.6339 12.3291 30.8469 12.5428C31.0599 12.7565 31.1663 13.0213 31.1663 13.3372C31.1663 13.6531 31.0599 13.9166 30.8469 14.1278C30.6339 14.3389 30.37 14.4444 30.0552 14.4444H26.9441V17.5556C26.9441 17.8704 26.8373 18.1342 26.6235 18.3472C26.4098 18.5602 26.145 18.6667 25.8291 18.6667ZM12.4997 15.9778C11.033 15.9778 9.81449 15.4926 8.84411 14.5222C7.87375 13.5518 7.38858 12.3333 7.38858 10.8667C7.38858 9.39999 7.87375 8.18148 8.84411 7.21112C9.81449 6.24074 11.033 5.75555 12.4997 5.75555C13.9663 5.75555 15.1849 6.24074 16.1552 7.21112C17.1256 8.18148 17.6108 9.39999 17.6108 10.8667C17.6108 12.3333 17.1256 13.5518 16.1552 14.5222C15.1849 15.4926 13.9663 15.9778 12.4997 15.9778ZM2.94411 26.6667C2.62931 26.6667 2.36542 26.5602 2.15244 26.3472C1.93949 26.1342 1.83301 25.8704 1.83301 25.5556V23.3333C1.83301 22.563 2.03115 21.8611 2.42744 21.2278C2.82375 20.5945 3.36635 20.1185 4.05524 19.8C5.62562 19.0815 7.07998 18.5648 8.41831 18.25C9.75666 17.9352 11.1159 17.7778 12.4961 17.7778C13.8763 17.7778 15.2367 17.9352 16.5774 18.25C17.9182 18.5648 19.3663 19.0815 20.9219 19.8C21.6108 20.1333 22.1571 20.613 22.5608 21.2389C22.9645 21.8648 23.1663 22.563 23.1663 23.3333V25.5556C23.1663 25.8704 23.0599 26.1342 22.8469 26.3472C22.6339 26.5602 22.37 26.6667 22.0552 26.6667H2.94411ZM4.05521 24.4445H20.9441V23.3333C20.9441 23.0148 20.8645 22.7148 20.7052 22.4333C20.546 22.1518 20.3071 21.9407 19.9886 21.8C18.5515 21.0963 17.2626 20.6204 16.1219 20.3722C14.9812 20.1241 13.7737 20 12.4997 20C11.2256 20 10.0182 20.1278 8.87744 20.3833C7.73671 20.6389 6.44042 21.1111 4.98857 21.8C4.69966 21.9407 4.47187 22.1518 4.30521 22.4333C4.13854 22.7148 4.05521 23.0148 4.05521 23.3333V24.4445ZM12.4997 13.7556C13.3219 13.7556 14.0089 13.4796 14.5608 12.9278C15.1126 12.3759 15.3886 11.6889 15.3886 10.8667C15.3886 10.0444 15.1126 9.3574 14.5608 8.80555C14.0089 8.25369 13.3219 7.97775 12.4997 7.97775C11.6775 7.97775 10.9904 8.25369 10.4386 8.80555C9.88671 9.3574 9.61077 10.0444 9.61077 10.8667C9.61077 11.6889 9.88671 12.3759 10.4386 12.9278C10.9904 13.4796 11.6775 13.7556 12.4997 13.7556Z"
-                        fill="white" />
-                </g>
-            </svg>
-        </button>
-
     `;
 }
 

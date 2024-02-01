@@ -228,7 +228,6 @@ function loadAllUsersForContactOnAssignedTo(assigneds, containerID, ID) {
 				);
 		}
 	}
-	contactsContainer.innerHTML += generateAddContactAssignedToBtnHTML();
 }
 
 function addContactAsAssigned(id, i, j) {
