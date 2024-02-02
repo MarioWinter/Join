@@ -202,6 +202,22 @@ function openContactOverlay(containerID, selectedContactsID) {
 	}
 }
 
+/**
+ * Loads all users for contact assignment on the edit task interface.
+ *
+ * @param {Array<string>} assigneds - An array of assigned user names.
+ * @param {string} containerID - The ID of the container to display the assigned users.
+ * @param {string} ID - The ID of the task.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Get the container element by ID.
+ * 2. Iterate through the users array.
+ * 3. For each user, generate a badge with the user's name and badge color.
+ * 4. If the user is assigned to the task, generate and append the HTML for a checked badge.
+ * 5. If the user is not assigned to the task, generate and append the HTML for an unchecked badge.
+ */
 function loadAllUsersForContactOnAssignedTo(assigneds, containerID, ID) {
 	let contactsContainer = document.getElementById(containerID);
 	for (let i = 0; i < users.length; i++) {
@@ -228,9 +244,25 @@ function loadAllUsersForContactOnAssignedTo(assigneds, containerID, ID) {
 				);
 		}
 	}
-	contactsContainer.innerHTML += generateAddContactAssignedToBtnHTML();
 }
 
+/**
+ * Adds or removes a contact as assigned to the task.
+ *
+ * @param {string} id - The ID of the checkbox element.
+ * @param {number} i - The index of the user in the users array.
+ * @param {number} j - The index of the task in the addedTasks array.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Get the checkbox element by ID.
+ * 2. Get the assigned users array from the specified task in the addedTasks array.
+ * 3. Get the user name from the users array based on the provided index.
+ * 4. If the checkbox is checked, add the user to the assigned users array.
+ * 5. If the checkbox is unchecked, remove the user from the assigned users array.
+ * 6. Load the assigned users on the edit task interface using the loadAssignedOnEditTask function.
+ */
 function addContactAsAssigned(id, i, j) {
 	let checkAssigned = document.getElementById(id);
 	let assigned = addedTasks[j]["assigned"];
@@ -244,6 +276,23 @@ function addContactAsAssigned(id, i, j) {
 	loadAssignedOnEditTask(assigned, "et_selected_contacts");
 }
 
+/**
+ * Loads the assigned contacts on the edit task interface.
+ *
+ * @param {string[]} assigneds - The array of assigned contact names.
+ * @param {string} containerID - The ID of the container element.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Get the container element by ID.
+ * 2. Clear the container's inner HTML.
+ * 3. Iterate through the assigned contacts array.
+ *    a. Get the badge color for the current assigned contact.
+ *    b. Get the assigned contact's name.
+ *    c. Generate the user badge HTML using the generateUserBadge function.
+ *    d. Append the generated assignment badge HTML to the container.
+ */
 function loadAssignedOnEditTask(assigneds, containerID) {
 	let selectetContactsContainer = document.getElementById(containerID);
 	selectetContactsContainer.innerHTML = "";
@@ -256,6 +305,24 @@ function loadAssignedOnEditTask(assigneds, containerID) {
 	}
 }
 
+/**
+ * Filters and displays users based on the search term in the "Assigned To" section of the edit task interface.
+ *
+ * @param {string} inputID - The ID of the input element for the search term.
+ * @param {string} searchContainerID - The ID of the container element for displaying search results.
+ * @param {string} id - The ID of the task being edited.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Get the search term from the input element by ID.
+ * 2. Get the assigned contacts for the current task by ID.
+ * 3. Convert the search term to lowercase.
+ * 4. Get the container element for displaying search results by ID.
+ * 5. Clear the container's inner HTML.
+ * 6. If the search term is empty, load all users for the "Assigned To" section using loadAllUsersForContactOnAssignedTo.
+ * 7. If the search term is not empty, filter and display contacts based on the search term using getContect.
+ */
 function filterUserOnAssignedTo(inputID, searchContainerID, id) {
 	let searchTerm = document.getElementById(inputID).value;
 	let assigneds = addedTasks[id]["assigned"];
@@ -265,11 +332,38 @@ function filterUserOnAssignedTo(inputID, searchContainerID, id) {
 	if (searchTerm == "") {
 		loadAllUsersForContactOnAssignedTo(assigneds, searchContainerID, id);
 	} else {
-		getContect(assigneds, searchTerm, id, contactsContainer);
+		renderFilterdUsersOnAssignedTo(
+			assigneds,
+			searchTerm,
+			id,
+			contactsContainer
+		);
 	}
 }
 
-function getContect(assigneds, searchTerm, id, contactsContainer) {
+/**
+ * Renders filtered users based on the search term in the "Assigned To" section of the edit task interface.
+ *
+ * @param {string[]} assigneds - An array of assigned contacts for the current task.
+ * @param {string} searchTerm - The search term used for filtering contacts.
+ * @param {string} id - The ID of the task being edited.
+ * @param {HTMLElement} contactsContainer - The container element for displaying filtered users.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Iterate through the users array.
+ * 2. Get the name of each user from the users array.
+ * 3. Check if the user's name (converted to lowercase) includes the search term (converted to lowercase).
+ * 4. If the condition is met, generate the user badge, get the badge color, and update the container's inner HTML.
+ * 5. If the user is already assigned, use generateEditTaskAssigmentContactsCheckedHTML; otherwise, use generateEditTaskAssigmentContactsHTML.
+ */
+function renderFilterdUsersOnAssignedTo(
+	assigneds,
+	searchTerm,
+	id,
+	contactsContainer
+) {
 	for (let i = 0; i < users.length; i++) {
 		let userName = users[i]["name"];
 		if (userName.toLowerCase().includes(searchTerm)) {
@@ -298,17 +392,54 @@ function getContect(assigneds, searchTerm, id, contactsContainer) {
 	}
 }
 
+/**
+ * Displays the subtask input and hides the "Add Subtask" button.
+ *
+ * @param {string} addSubtaskID - The ID of the "Add Subtask" button to be hidden.
+ * @param {string} checkSubtaskID - The ID of the subtask input or checkbox to be displayed.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Hides the "Add Subtask" button using the hide function.
+ * 2. Displays the subtask input or checkbox using the show function.
+ */
 function showSubtaskInput(addSubtaskID, checkSubtaskID) {
 	hide(addSubtaskID);
 	show(checkSubtaskID);
 }
 
+/**
+ * Cancels the addition of a subtask, hides the subtask input or checkbox, and shows the "Add Subtask" button.
+ *
+ * @param {string} addSubtaskID - The ID of the "Add Subtask" button to be displayed.
+ * @param {string} checkSubtaskID - The ID of the subtask input or checkbox to be hidden.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Displays the "Add Subtask" button using the show function.
+ * 2. Hides the subtask input or checkbox using the hide function.
+ * 3. Resets the value of the subtask input to an empty string.
+ */
 function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
 	show(addSubtaskID);
 	hide(checkSubtaskID);
 	document.getElementById("subtask_input").value = "";
 }
 
+/**
+ * Loads the subtasks of a specific task.
+ *
+ * @param {number} taskID - The ID of the task for which subtasks are to be loaded.
+ * @returns {Array<string>} - An array containing the subtasks of the specified task.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Filters the addedTasks array to retrieve tasks with the specified taskID.
+ * 2. Retrieves the subtasks from the filtered task.
+ * 3. Returns the array of subtasks.
+ */
 function loadSubtask(taskID) {
 	let tasks = addedTasks.filter((t) => t["id"] === taskID);
 	for (let index = 0; index < tasks.length; index++) {
@@ -318,6 +449,20 @@ function loadSubtask(taskID) {
 	}
 }
 
+/**
+ * Loads and renders the subtasks of a task on the edit task interface.
+ *
+ * @param {string} subtaskListID - The ID of the HTML container for the subtask list.
+ * @param {number} ID - The ID of the task for which subtasks are to be loaded.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Retrieves the subtasks of the specified task using the loadSubtask function.
+ * 2. Clears the content of the specified subtask container.
+ * 3. Iterates through the subtasks and generates HTML for each subtask using the generateSubtaskListItemHTML function.
+ * 4. Appends the generated HTML to the subtask container.
+ */
 function loadSubtasksEditTask(subtaskListID, ID) {
 	let subtaskContainer = document.getElementById(subtaskListID);
 	subtaskContainer.innerHTML = "";
@@ -336,6 +481,21 @@ function loadSubtasksEditTask(subtaskListID, ID) {
 	}
 }
 
+/**
+ * Adds a new subtask to a task and updates the rendered subtasks on the edit task interface.
+ *
+ * @param {number} taskID - The ID of the task to which the subtask is added.
+ * @param {string} subtaskListItemID - The ID of the HTML container for the subtask list item.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Retrieves the current subtasks of the specified task using the loadSubtask function.
+ * 2. Checks if the subtask input value is empty. If empty, no action is taken.
+ * 3. If the subtask input value is not empty, adds a new subtask to the subtasks array.
+ * 4. Cancels the subtask addition using the cancelAddSubtask function.
+ * 5. Reloads and renders the updated subtasks on the edit task interface using the loadSubtasksEditTask function.
+ */
 function addSubtask(taskID, subtaskListItemID) {
 	let subtask = loadSubtask(taskID);
 	if (subtask_input.value == "") {
@@ -349,22 +509,79 @@ function addSubtask(taskID, subtaskListItemID) {
 	}
 }
 
+/**
+ * Deletes a subtask from a task and updates the rendered subtasks on the edit task interface.
+ *
+ * @param {number} taskID - The ID of the task from which the subtask is deleted.
+ * @param {number} subTaskID - The ID of the subtask to be deleted.
+ * @param {string} subtaskListItemID - The ID of the HTML container for the subtask list item.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Retrieves the current subtasks of the specified task using the loadSubtask function.
+ * 2. Deletes the specified subtask from the subtasks array based on its ID.
+ * 3. Reloads and renders the updated subtasks on the edit task interface using the loadSubtasksEditTask function.
+ */
 function deleteSubtask(taskID, subTaskID, subtaskListItemID) {
 	let subTask = loadSubtask(taskID);
 	subTask.splice(subTaskID, 1);
 	loadSubtasksEditTask(subtaskListItemID, taskID);
 }
 
+/**
+ * Shows the subtask edit input frame and hides the subtask list item.
+ *
+ * @param {string} subtaskListItemID - The ID of the HTML container for the subtask list item.
+ * @param {string} subtaskEditFrameID - The ID of the HTML container for the subtask edit input frame.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Hides the subtask list item using the hide function.
+ * 2. Shows the subtask edit input frame using the show function.
+ */
+
 function showSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
 	hide(subtaskListItemID);
 	show(subtaskEditFrameID);
 }
 
+/**
+ * Closes the subtask edit input frame and shows the subtask list item.
+ *
+ * @param {string} subtaskListItemID - The ID of the HTML container for the subtask list item.
+ * @param {string} subtaskEditFrameID - The ID of the HTML container for the subtask edit input frame.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Hides the subtask edit input frame using the hide function.
+ * 2. Shows the subtask list item using the show function.
+ */
 function closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
 	hide(subtaskEditFrameID);
 	show(subtaskListItemID);
 }
 
+/**
+ * Updates a subtask's title and hides the subtask edit input frame.
+ *
+ * @param {string} taskID - The ID of the task associated with the subtask.
+ * @param {string} subtaskListItemID - The ID of the HTML container for the subtask list item.
+ * @param {string} subtaskEditInputID - The ID of the HTML input element for editing the subtask.
+ * @param {number} subtaskID - The ID of the subtask to update.
+ * @param {string} subtaskEditFrameID - The ID of the HTML container for the subtask edit input frame.
+ * @param {string} subtaskList - The ID of the HTML container for the subtask list.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Loads the subtask associated with the provided task ID.
+ * 2. Updates the title and subdone status of the specified subtask.
+ * 3. Closes the subtask edit input frame using the closeSubtaskEditInputFrame function.
+ * 4. Reloads the subtasks for the task using the loadSubtasksEditTask function.
+ */
 function updateSubtask(
 	taskID,
 	subtaskListItemID,

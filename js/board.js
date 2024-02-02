@@ -176,7 +176,7 @@ function loadCard(
 		categoryColor
 	);
 	loadSubtaskprogress(subtasks, id);
-	loadAssigneds(assigneds, id);
+	addAssignedsBadgesToCard(assigneds, id);
 	loadCardPrioIcon(prio, id);
 }
 
@@ -227,7 +227,7 @@ function loadSubtaskprogress(subtasks, id) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
-function loadAssigneds(assigneds, id) {
+function addAssignedsBadgesToCard(assigneds, id) {
 	for (let i = 0; i < assigneds.length; i++) {
 		let [badgeColor, userBadge, assignedLimit, addLimit] =
 			getVariableForAssignedsUserBadge(assigneds, i);
@@ -389,8 +389,26 @@ function showFrame(id) {
 async function deleteTask(TaskID) {
 	let updatedAddedTasks = addedTasks.filter((task) => task.id !== TaskID);
 	addedTasks = updatedAddedTasks;
+	updateTaskID();
 	hideTaskOpen("task_open_overlay_frame");
 	loadBoard();
+}
+
+/**
+ * Updates the task IDs in the addedTasks array.
+ *
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function performs the following steps:
+ * 1. Iterate through the addedTasks array.
+ * 2. For each task, update its ID to match its index in the array.
+ */
+function updateTaskID() {
+	for (let i = 0; i < addedTasks.length; i++) {
+		let task = addedTasks[i];
+		task["id"] = i;
+	}
 }
 
 /**
