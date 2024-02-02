@@ -19,6 +19,15 @@ function startDragging(id) {
 	currentDraggedElement = id;
 }
 
+/**
+ * Handles the "dragover" event, allowing the dropping of dragged elements.
+ *
+ * @param {Event} ev - The "dragover" event object.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function prevents the default behavior of the dragover event, allowing the dropping of dragged elements.
+ */
 function allowDrop(ev) {
 	ev.preventDefault();
 }
