@@ -63,3 +63,26 @@
 .help-content span {
 	color: var(--hover-blue);
 }
+
+@media screen and (max-width: 1460px) {
+	html {
+		font-size: 0.58em;
+	}
+}
+
+@media screen and (max-width: 1280px) {
+	html {
+		font-size: 0.5em;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	html {
+		font-size: 0.4715em;
+	}
+
+	.help-content {
+		padding: 11rem 1.6rem 0rem 1.6rem;
+		overflow-y: auto;
+	}
+}
