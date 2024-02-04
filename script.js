@@ -1,3 +1,13 @@
+
+let users = [];
+let currentUser;
+
+let today = new Date();
+let hour = today.getHours();
+
+
+
+
 /*-------------------------------------
 Include HTML Templates (header/footer)
 --------------------------------------*/
@@ -16,18 +26,15 @@ async function includeHTML() {
   checkPath();
 }
 
-let users = [];
-let currentUser;
 
-let today = new Date();
-let hour = today.getHours();
 
 async function summaryInit() {
   await loadUsers();
-  await loadAddedTasks();
   loadCurrentUser();
   greetUser();
-  loadUserBadge(); 
+  await loadAddedTasks();
+  
+  loadUserBadge();
   renderSummaryData();
 }
 
@@ -53,7 +60,7 @@ function renderLogIn() {
  * Function for render the Sign Up window
  */
 function renderSignUp() {
-  
+
   let log_container = document.getElementById("log_container");
   log_container.innerHTML = "";
   log_container.classList.add("height-sing-up");
@@ -80,7 +87,7 @@ async function registerUser() {
 /**
  * hidden function to clear Storage from any information
  */
-async function clearRemoteSTRG(){
+async function clearRemoteSTRG() {
   users = [];
   await setItem("users", JSON.stringify(users));
 }
@@ -224,12 +231,15 @@ function loadCurrentUser() {
  * The function uses the value of index to transfer from the array Users which user should be welcomed.
  */
 function greetUser() {
-  displayGreeting();
+
   let greet = document.getElementById('user_name');
   i = currentUser;
   if (i >= 0) {
     greet.innerHTML = `${users[i]['name']}`;
+  } else {
+    greet.innerHTML = `Guest`;
   }
+  displayGreeting();
 }
 /**
  * This function is for guest registration. This sets the index to -1 so that if query in greetUser() does not come into effect. and the standard greeting is displayed
@@ -264,11 +274,11 @@ function hideSignUpBtn() {
   }
 }
 
-function showSignUpBtn(){
+function showSignUpBtn() {
   let width = document.documentElement.clientWidth;
   if (width < 500) {
-  document.getElementById('sing_up_mobile').classList.remove('d-none');
-}
+    document.getElementById('sing_up_mobile').classList.remove('d-none');
+  }
 }
 
 
