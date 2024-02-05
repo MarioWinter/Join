@@ -328,6 +328,10 @@ input[type="checkbox"]:checked + label::before {
     height: 5.2rem;
 }
 
+.left-arrow:hover {
+    scale: 1.2;
+}
+
 .height-sing-up {
     height: 68.4rem !important;
 }
@@ -360,6 +364,10 @@ input[type="checkbox"]:checked + label::before {
     font-weight: 700;
     border-radius: 8px;
     color: white;
+}
+
+.reg-btn {
+    background-color: rgb(153 153 153)!important;
 }
 
 .btn-sign-up:hover {

@@ -23,7 +23,7 @@
         height: 100vh;
         background-color: var(--primary-light-grey);
         z-index: 999;
-        animation: greet 4s ease-in-out forwards;
+        animation: greet 3s ease-in forwards;
     }
 }
 
@@ -71,9 +71,7 @@
         width: 100%!important;
     }
 
-    .user-name{
-        font-size: 16rem;
-    }
+   
 }
 
 @media(max-width: 390px){

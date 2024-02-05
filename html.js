@@ -115,12 +115,12 @@ function renderSignUpHTML() {
             <span id='message'></span>
             <div class="sing-up-check-box">
               <input required style="margin-right: 10px; color: black"  type="checkbox" id="sing-up-check" name="sing-up-check"
-                checked /><label style="font-size: 2rem" for="sing-up-check">i accept the  <a style="padding-left: 10px" class="sign-up-link"
-                  href="privacy_policy_without_log_in.html">Privacy policy</a></label>
+                 checked onclick="ifChecked()"/><label style="font-size: 2rem" for="sing-up-check">I accept the  <a style="padding-left: 10px" class="sign-up-link"
+                  href="privacy_policy_without_log_in.html" target="_blank">Privacy policy</a></label>
             </div>
 
 
-            <div class="sign-up-btn-container"> <button id="register_btn" class="btn-sign-up">
+            <div class="sign-up-btn-container"> <button disabled id="register_btn" class="btn-sign-up reg-btn">
                 Sign up
               </button></div>
           </form>
