@@ -60,11 +60,12 @@ function renderLogIn() {
  * Function for render the Sign Up window
  */
 function renderSignUp() {
-
+  
   let log_container = document.getElementById("log_container");
   log_container.innerHTML = "";
   log_container.classList.add("height-sing-up");
   log_container.innerHTML += renderSignUpHTML();
+  ifChecked();
   hideSignUpBtn();
 }
 
@@ -76,16 +77,31 @@ function renderSignUp() {
  */
 async function registerUser() {
   let email = document.getElementById("sign_email").value;
+  ifChecked();
   if (isEmailExists(email)) {
     emailExist();
   } else {
+    
     userToRemoteStorage();
     successfulRegistration();
   }
 }
 
+function ifChecked() {
+  let checkedTrue = document.getElementById('sing-up-check');
+  let registerBtn = document.getElementById('register_btn');
+
+  if (checkedTrue.checked) {
+    registerBtn.disabled = false;
+    registerBtn.classList.remove('reg-btn'); // Zurücksetzen der Hintergrundfarbe
+  } else {
+    registerBtn.disabled = true;
+    registerBtn.classList.add('reg-btn') // Setzen der Hintergrundfarbe auf Grau
+  }
+}
+
 /**
- * hidden function to clear Storage from any information
+ * hidden function to clear RemoteStorage from any information
  */
 async function clearRemoteSTRG() {
   users = [];

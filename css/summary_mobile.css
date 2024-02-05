@@ -23,7 +23,7 @@
         height: 100vh;
         background-color: var(--primary-light-grey);
         z-index: 999;
-        animation: greet 5s ease-in forwards;
+        animation: greet 3s ease-in forwards;
     }
 }
 
