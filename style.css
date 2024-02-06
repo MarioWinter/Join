@@ -17,7 +17,7 @@ body {
     font-size: 1.6rem;
     background-color: var(--primary-light-grey);
     margin: 0;
-    
+
 }
 
 :root {
@@ -39,6 +39,10 @@ body {
 
 .d-none {
     display: none !important;
+}
+
+.w3-header {
+    width: 100%;
 }
 
 .main-container-index {
@@ -177,6 +181,7 @@ input[type="checkbox"] + label::before {
     height: 1.9rem;
     background-image: url("./assets/img/chechbox.svg");
     background-repeat: no-repeat;
+	background-size: contain;
     display: block;
     content: "";
     float: left;
@@ -323,6 +328,10 @@ input[type="checkbox"]:checked + label::before {
     height: 5.2rem;
 }
 
+.left-arrow:hover {
+    scale: 1.2;
+}
+
 .height-sing-up {
     height: 68.4rem !important;
 }
@@ -355,6 +364,10 @@ input[type="checkbox"]:checked + label::before {
     font-weight: 700;
     border-radius: 8px;
     color: white;
+}
+
+.reg-btn {
+    background-color: rgb(153 153 153)!important;
 }
 
 .btn-sign-up:hover {

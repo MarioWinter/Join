@@ -7,6 +7,7 @@
   overflow-x: hidden;
 }
 
+
 *::-webkit-scrollbar {
   width: 16px;
 }
@@ -22,6 +23,10 @@
 }
 
 /* left hand side contact list  */
+
+
+
+
 
 .add-new-contact-main {
   padding-left: 3.6rem;

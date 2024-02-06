@@ -1,51 +1,53 @@
 let currentDraggedElement;
 
-function updateBoard(bucket) {
-    let tasks = addedTasks.filter((t) => t["bucket"] == bucket);
-    document.getElementById(bucket).innerHTML = "";
-    for (let index = 0; index < tasks.length; index++) {
-        let task = tasks[index];
-        let id = task['id'];
-        let bucket = task['bucket'];
-        let title = task['title'];
-        let description = task['description'];
-        let prio = task['prio'];
-        let category = task['category'];
-        let subtasks = task['subtask'];
-        let assigneds = task['assigned'];
-        loadCard(id,bucket, title, description, prio, category, subtasks, assigneds);
-    }
-}
+document.addEventListener("DOMContentLoaded", function () {
+	document
+		.getElementById("find_task")
+		.addEventListener("keyup", function (event) {
+			if (event.key === "Enter") {
+				searchTask();
+			}
+		});
+	// window.addEventListener("resize", updateHeight);
+});
 
 /**
  * Saves the current task ID
- * @param {int} id - ID from the drag elements 
+ * @param {int} id - ID from the drag elements
  */
 function startDragging(id) {
-    currentDraggedElement = id;
+	currentDraggedElement = id;
 }
 
-
+/**
+ * Handles the "dragover" event, allowing the dropping of dragged elements.
+ *
+ * @param {Event} ev - The "dragover" event object.
+ * @returns {void} - No return value.
+ *
+ * @description
+ * This function prevents the default behavior of the dragover event, allowing the dropping of dragged elements.
+ */
 function allowDrop(ev) {
-    ev.preventDefault();
+	ev.preventDefault();
 }
 
 /**
  * The position of the column is changed in the array and the board is reloaded
- * @param {String} bucket - HTML Id from the drop zone 
+ * @param {String} bucket - HTML Id from the drop zone
  */
 async function moveTo(bucket) {
-    addedTasks[currentDraggedElement]["bucket"] = bucket;
-    loadBoard();
-    await setItem("addedTasks", JSON.stringify(addedTasks));
+	addedTasks[currentDraggedElement]["bucket"] = bucket;
+	loadBoard();
+	await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
 /**
  * The target dropzone is highlighted when draging
- * @param {int} id - ID from the drag elements 
+ * @param {int} id - ID from the drag elements
  */
 function highlight(id) {
-    document.getElementById(id).classList.add("drag-area-highlight");
+	document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 /**
@@ -53,7 +55,5 @@ function highlight(id) {
  * @param {int} id - ID from the drag elements
  */
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove("drag-area-highlight");
+	document.getElementById(id).classList.remove("drag-area-highlight");
 }
-
-
