@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="./css/edit-board-slider.css">
 
   <script src="./js/board.js"></script>
+  <script src="./js/task-open.js"></script>
   <script src="./js/storage.js"></script>
   <script src="./script.js"></script>
   <script src="./js/sidebar-header.js"></script>
@@ -26,6 +27,7 @@
   <script src="./js/task-edit.js"></script>
   <script src="./js/render-board.js"></script>
   <script src="./js/add-task-slider.js"></script>
+  
 </head>
 
 <body onload="includeHTML(), initAddTask()">
@@ -38,8 +40,10 @@
         <div class="add-task-main-container">
           <div class="add-task-container">
             <div class="add-task-font">Add Task</div>
+            <div id="sending_confirmation" class="sending-confirmation">Task added to board <img src="./img/added-task-to-board-icon.svg">
+            </div>
           </div>
-          <form onsubmit="submit()">
+          <form id="add_task_validation" onsubmit="return validateForm()">
             <div class="main-container-center">
               <div class="add-task-container-left">
                 <div class="title-main">
@@ -48,7 +52,7 @@
                 </div>
                 <div class="description-main">
                   <div class="description-field">Description</div>
-                  <textarea id="enter-description_field" class="enter-description-field" placeholder="Enter a Description"></textarea>
+                  <textarea id="enter-description_field" class="enter-description-field" placeholder="Enter a Description" required></textarea>
                 </div>
                 <div class="assigned-main">
                   <div class="assigned-field">Assigned to</div>
@@ -57,17 +61,13 @@
                     <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg" alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
                     <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg" alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
                   </div>
-                </div>
-                <!-- von hier neu -->
+                </div>                
                   <div class="p-relative">
-                    <div class="contact-overlay d-none" id="et_contact_overlay">
-                      <!-- Contact for render -->                      
+                    <div class="contact-overlay d-none" id="et_contact_overlay">                                           
                     </div>
-                    <div id="et_selected_contacts" class="selected-contacts">
-                      <!-- select contact -->
+                    <div id="et_selected_contacts" class="selected-contacts">                     
                     </div>
-                  </div>
-                  <!-- bis hier  -->
+                  </div>                 
               </div>
 
               <div class="dividing-line"></div>
@@ -88,7 +88,7 @@
                 <div class="category-container">
                   <div class="category-field">Category<span class="star">*</span></div>
                   <select class="minimal select-category" id="select_category_field" required>
-                    <option class="placeholder" disabled selected>Select task category</option>
+                    <option value="" class="placeholder" disabled selected>Select task category</option>
                     <option class="category-options">Technical Task</option>
                     <option class="category-options">User Story</option>
                   </select>
@@ -121,7 +121,7 @@
                   </g>
                 </svg>
               </div>
-              <button type="submit" id="create_task_button" class="create-task-container" type="button">Create Task <img src="./img/check.svg"></button>
+              <button type="submit" id="create_task_button" class="create-task-container" type="button" disabled onclick="createTask()">Create Task <img src="./img/check.svg"></button>
             </div>
           </form>         
         </div>

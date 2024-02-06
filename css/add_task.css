@@ -31,7 +31,7 @@
   width: 44rem;
   height: 37.6rem;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: flex-start;
   gap: 1.6rem;
   flex-shrink: 0;
@@ -120,9 +120,14 @@
 }
 
 .contact-overlay {
-  position: absolute;  
+  position: absolute;
   overflow-x: hidden;
+}
 
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dividing-line {
@@ -161,6 +166,7 @@
   background: #fff;
   font-size: 2rem;
   cursor: pointer;
+  color: lightgrey;
 }
 
 .prio-container,
@@ -212,7 +218,7 @@
 
 .select-category {
   width: 44rem;
-  padding: 1.2rem 1.6rem !important;  
+  padding: 1.2rem 1.6rem !important;
 }
 
 select.minimal {
@@ -226,6 +232,10 @@ select.minimal {
   font-size: 2rem;
   -webkit-appearance: none;
   appearance: none;
+}
+
+select.minimal:hover {
+  border-color: rgb(156, 156, 156);
 }
 
 select.minimal:focus {
@@ -375,7 +385,7 @@ select.minimal .placeholder {
   justify-content: flex-end;
   align-items: flex-end;
   gap: 1.6rem;
-  width: 97.7rem; 
+  width: 97.7rem;
 }
 
 .clear-container {
@@ -443,12 +453,61 @@ select.minimal .placeholder {
   fill: #29abe2;
 }
 
-/* @media (max-width: 768px) {
-  .add-task-content {
+.create-task-container:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sending-confirmation {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  background-color: #2a3647;
+  width: 32.6rem;
+  height: 7.4rem;
+  border-radius: 2rem;
+  font-size: 2rem;
+  opacity: 0;
+  
+  /* transition: opacity 0.3s ease, transform 0.3s ease-in-out;  */
+}
+
+.animate-message {  
+  animation: animate 8s ease-in-out forwards;  
+}
+
+@keyframes animate {
+  0% {    
+    opacity: 1;
+      
+    transform: translateX(100%);  
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;    
+    transform: translate(150%);
   }
 }
 
-@media (min-width: 769px) {
-  .add-task-content {
+
+
+
+@media (max-width: 1360px) {
+  .main-container-center {
+    display: flex;
+    flex-direction: column;
   }
-} */
+
+  .dividing-line {
+    display: none;
+  }
+
+  .add-task-container-left {
+    justify-content: center;
+  }
+}
