@@ -32,7 +32,7 @@ async function summaryInit() {
   await loadUsers();
   loadCurrentUser();
   greetUser();
-  await loadAddedTasks();
+  await loadAddedTasksFromStorage();
   
   loadUserBadge();
   renderSummaryData();
