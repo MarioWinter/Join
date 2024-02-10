@@ -540,6 +540,7 @@ function showOverlay(isEdit) {
   setTimeout(() => {
     addNewContact.classList.add("show");
   }, 100);
+  cancelOverlay()
 }
 
 

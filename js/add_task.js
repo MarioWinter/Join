@@ -6,10 +6,10 @@ addedTasks = [];
 async function initAddTask() {
   await loadUsers();
   await loadAddedTasks();
-  getDateToday();
+  getDateToday();  
   changePrioColor("medium");
   initUserSelectField("et_contact_overlay");
-  checkIfSendingIsPossible();
+  checkIfSendingIsPossible();  
 }
 
 async function loadAddedTasks() {
@@ -54,9 +54,7 @@ function determinePrioBackgroundColor(prio) {
 
 // resets background color of all priority containers
 function resetContainers() {
-  let containers = document.getElementsByClassName(
-    "status-definition-container"
-  );
+  let containers = document.getElementsByClassName("status-definition-container");
   for (let i = 0; i < containers.length; i++) {
     let container = containers[i];
     container.style.backgroundColor = "white";
@@ -204,8 +202,18 @@ function generateTaskAssigmentContactsCheckedHTML(
 // sets the minimum date for the date field to today
 function getDateToday() {
   let today = new Date().toISOString().split("T")[0];
-  document.getElementById("date_field").setAttribute("min", today);
+  let dateField = document.getElementById("date_field");
+  dateField.setAttribute("min", today);
+  
+  dateField.addEventListener("input", function() {
+    if (dateField.value) {
+      dateField.style.color = "black";
+    } else {
+      dateField.style.color = "lightgrey";
+    }
+  });
 }
+
 
 // changes the visibility of subtask icons for adding subtasks
 function changingSubtaskIcons() {
@@ -320,7 +328,7 @@ function moveIconsForEditing(index) {
 // deletes added subtask from the list
 function deleteAddedSubtask(subtask) {
   let index = addedSubtasks.indexOf(subtask);
-  if (index !== -1) {
+  if (index == -1 || index !== -1) {
     addedSubtasks.splice(index, 1);
     renderAddedSubtasks();
   }
@@ -334,6 +342,7 @@ function clearAllFields() {
   closeSubtaskIcons();
   document.getElementById("subtask_display_container").innerHTML = "";
   addedSubtasks = [];
+  changePrioColor("medium");   
 }
 
 // clears input fields left side
@@ -352,7 +361,9 @@ function clearSelectedContacts() {
 
 // clears input fields right side
 function clearContainerRight() {
-  document.getElementById("date_field").value = "";
+  let dateField = document.getElementById("date_field");
+  document.getElementById("date_field").value = "";  
+  dateField.style.color = "lightgrey";
   document.getElementById("select_category_field").selectedIndex = 0;
   document.getElementById("add_new_subtask_field").value = "";
 }
@@ -365,9 +376,7 @@ function checkIfSendingIsPossible() {
 
   function checkInputs() {
     if (
-      titleField.value.trim().length > 0 &&
-      dateField.value.trim().length > 0 &&
-      categoryField.value.trim().length > 0
+      titleField.value.trim().length > 0 && dateField.value.trim().length > 0 && categoryField.value.trim().length > 0
     ) {
       createTaskButton.disabled = false;
     } else {
