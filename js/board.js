@@ -130,8 +130,7 @@ function getTaskVariables(tasks, index) {
 function loadCard(id, bucket, title, description, prio, category, subtasks, assigneds) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById(bucket).innerHTML += generateCardHTML(id, title, description, category, categoryColor);
- final-work-1
-    loadSubtaskprogress(subtasks, id);
+    loadSubtaskProgressBar(subtasks, id);
 
     addAssignedsBadgesToCard(assigneds, id);
     loadCardPrioIcon(prio, id);
@@ -164,13 +163,11 @@ function loadNoTasksLabel(bucket) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
- final-work-1
-function loadSubtaskprogress(subtasks, id) {
+function loadSubtaskProgressBar(subtasks, id) {
     let allSubtask = subtasks.length;
     let done = loadSubtaskAreDone(subtasks);
     if (allSubtask > 0) {
         document.getElementById(`subtasks_container_${id}`).innerHTML = generateSubtaskProgressHTML(allSubtask, done);
-
     }
 }
 
@@ -189,11 +186,9 @@ function addAssignedsBadgesToCard(assigneds, id) {
     for (let i = 0; i < assigneds.length; i++) {
         let [badgeColor, userBadge, assignedLimit, addLimit] = getVariableForAssignedsUserBadge(assigneds, i);
         if (i <= addLimit) {
- final-work-1
-            addAssignedBadge(userBadge, badgeColor, id);
+            renderAssignedBadge(userBadge, badgeColor, id);
         } else if (i == assignedLimit && assigneds.length > 6) {
-            addLimitAssignedBadge(id, assigneds, assignedLimit);
-
+            renderAssignedBadgeWithLimit(id, assigneds, assignedLimit);
         }
     }
 }
@@ -227,9 +222,7 @@ function getVariableForAssignedsUserBadge(assigneds, i) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
- final-work-1
-function addAssignedBadge(userBadge, badgeColor, id) {
-
+function renderAssignedBadge(userBadge, badgeColor, id) {
     document.getElementById(`task_assignment_container_${id}`).innerHTML += generateAssignedBadgeHTML(
         userBadge,
         badgeColor
@@ -245,9 +238,7 @@ function addAssignedBadge(userBadge, badgeColor, id) {
  * @param {Array} assigneds - An array of assigned individuals for the task.
  * @returns {void}
  */
- final-work-1
-function addLimitAssignedBadge(id, assigneds) {
-
+function renderAssignedBadgeWithLimit(id, assigneds) {
     let limit = assigneds.length - 6;
     document.getElementById(
         `task_assignment_container_${id}`
@@ -282,16 +273,14 @@ function loadCardPrioIcon(prio, id) {
  * @returns {number} - The number of completed subtasks.
  */
 function loadSubtaskAreDone(subtasks) {
- final-work-1
-    let done = 0;
+    let doneSubtask = 0;
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         if (subtask.subdone) {
-            done++;
+            doneSubtask++;
         }
     }
-    return done;
-
+    return doneSubtask;
 }
 
 /**
