@@ -402,7 +402,7 @@ async function createTask() {
   createTaskMessage();
   setTimeout(() => {
     window.location.href = "board.html";
-  }, 3000);
+  }, 1000);
 }
 
 async function pushToJSON(setNewTask, selectedPriority) {
