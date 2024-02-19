@@ -29,21 +29,23 @@
       <main>
         <div w3-include-html="assets/templates/header_template.html"></div>
         <div class="contacts-main">
-          <div class="add-new-contact-main">
+          <div id="add_new_contact_main" class="add-new-contact-main">
             <div class="contact-list">
-              <div class="primary-contact" onclick="showOverlay()">
-                Add new contact <img src="./img/primary-contact-icon.svg" />
-
-              </div>
+              <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./img/primary-contact-icon.svg"/>
+              </div>              
               <div id="contact_container"></div>
-            </div>
+            </div>            
           </div>
+          
 
-          <div class="contacts-container-right">
+          <div id="contacts_container_right" class="contacts-container-right">
             <div class="contacts-better-container">
+              <div id="resp_arrow_back" class="resp-arrow-back d-none" onclick="closeResponsiveDetails()">
+                <img class="responsive-arrow-back" src="./img/arrow-left-line.svg"></div>
               <div class="contacts-letter">Contacts</div>
               <div class="vector-line"></div>
               <div class="better-team">Better with a team</div>
+              <div class="horizontal-vector-line d-none"></div>
             </div>
 
             <div id="show_contact_details" class="show-contact-details d-none" onclick="showContactDetails()">
@@ -62,9 +64,8 @@
               </div>
             </div>
             <div class="overlay-container-right">
-              <div class="overlay-close" id="cancel_overlay">
-                <img class="oyerlay-close-img" id="overlay_close_img" src="./img/cancel.svg" onclick="cancelOverlay()"/>
-                  <!-- onmouseover="changeImageOnHover(true)" onmouseout="changeImageOnHover(false)"  -->
+              <div class="overlay-close" id="cancel_overlay" onclick="cancelOverlay()">
+                <img class="oyerlay-close-img" id="overlay_close_img" src="./img/cancel.svg" />                  
               </div>
               <div class="overlay-add-contact-container">
                 <div class="overlay-input-data"><input type="text" id="contact_Name" required placeholder="Name"/>
@@ -99,10 +100,18 @@
               </div>
             </div>
           </div>
-        </form>        
-        <div
-          w3-include-html="assets/templates/mobile_sidebar_template.html"
-        ></div>
+        </form>
+
+        <div class="handle-resp-contact-container ">            
+            <img id="handle_resp_contact_icon" class="resp-contact-icon" src="./img/primary-contact-icon.svg" onclick="showOverlay()"/>          
+        </div>
+
+        <div class="handle-resp-edit-delete-container">          
+            <img id="handle_resp_edit_delete_icon" class="resp-handle-icon d-none" src="./img/menu-contact-options.svg">         
+        </div>   
+
+        <div w3-include-html="assets/templates/mobile_sidebar_template.html">          
+        </div>
       </main>
     </div>
   </body>

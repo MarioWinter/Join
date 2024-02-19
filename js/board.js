@@ -130,7 +130,9 @@ function getTaskVariables(tasks, index) {
 function loadCard(id, bucket, title, description, prio, category, subtasks, assigneds) {
     let categoryColor = loadCategoryColor(category);
     document.getElementById(bucket).innerHTML += generateCardHTML(id, title, description, category, categoryColor);
-    loadSubtaskProgressBar(subtasks, id);
+ final-work-1
+    loadSubtaskprogress(subtasks, id);
+
     addAssignedsBadgesToCard(assigneds, id);
     loadCardPrioIcon(prio, id);
 }
@@ -162,14 +164,13 @@ function loadNoTasksLabel(bucket) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
-function loadSubtaskProgressBar(subtasks, id) {
+ final-work-1
+function loadSubtaskprogress(subtasks, id) {
     let allSubtask = subtasks.length;
-    let doneSubtask = loadSubtaskAreDone(subtasks);
+    let done = loadSubtaskAreDone(subtasks);
     if (allSubtask > 0) {
-        document.getElementById(`subtasks_container_${id}`).innerHTML = generateSubtaskProgressHTML(
-            allSubtask,
-            doneSubtask
-        );
+        document.getElementById(`subtasks_container_${id}`).innerHTML = generateSubtaskProgressHTML(allSubtask, done);
+
     }
 }
 
@@ -188,9 +189,11 @@ function addAssignedsBadgesToCard(assigneds, id) {
     for (let i = 0; i < assigneds.length; i++) {
         let [badgeColor, userBadge, assignedLimit, addLimit] = getVariableForAssignedsUserBadge(assigneds, i);
         if (i <= addLimit) {
-            renderAssignedBadge(userBadge, badgeColor, id);
+ final-work-1
+            addAssignedBadge(userBadge, badgeColor, id);
         } else if (i == assignedLimit && assigneds.length > 6) {
-            renderAssignedBadgeWithLimit(id, assigneds, assignedLimit);
+            addLimitAssignedBadge(id, assigneds, assignedLimit);
+
         }
     }
 }
@@ -224,7 +227,9 @@ function getVariableForAssignedsUserBadge(assigneds, i) {
  * @param {string} id - The ID of the task.
  * @returns {void}
  */
-function renderAssignedBadge(userBadge, badgeColor, id) {
+ final-work-1
+function addAssignedBadge(userBadge, badgeColor, id) {
+
     document.getElementById(`task_assignment_container_${id}`).innerHTML += generateAssignedBadgeHTML(
         userBadge,
         badgeColor
@@ -240,7 +245,9 @@ function renderAssignedBadge(userBadge, badgeColor, id) {
  * @param {Array} assigneds - An array of assigned individuals for the task.
  * @returns {void}
  */
-function renderAssignedBadgeWithLimit(id, assigneds) {
+ final-work-1
+function addLimitAssignedBadge(id, assigneds) {
+
     let limit = assigneds.length - 6;
     document.getElementById(
         `task_assignment_container_${id}`
@@ -275,14 +282,16 @@ function loadCardPrioIcon(prio, id) {
  * @returns {number} - The number of completed subtasks.
  */
 function loadSubtaskAreDone(subtasks) {
-    let doneSubtasks = 0;
+ final-work-1
+    let done = 0;
     for (let i = 0; i < subtasks.length; i++) {
         let subtask = subtasks[i];
         if (subtask.subdone) {
-            doneSubtasks++;
+            done++;
         }
     }
-    return doneSubtasks;
+    return done;
+
 }
 
 /**

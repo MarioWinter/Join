@@ -1,14 +1,16 @@
 .add-task-content {
-  background-color: var(--primary-light-grey);
   width: 100%;
   height: calc(100% - 9.6rem);
   display: flex;
+  flex: 1;
   padding-left: 32.8rem;
-  /* padding-left: 9.6rem;  */
 }
 
 .main-add-task-container {
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .add-task-main-container {
@@ -86,7 +88,6 @@
 
 .enter-description-field {
   display: flex;
-  width: 44rem;
   height: 13.6rem;
   padding: 1.8rem 1.6rem;
   align-items: flex-start;
@@ -150,7 +151,6 @@
 
 .date-container {
   display: flex;
-  width: 44rem;
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
@@ -175,6 +175,7 @@
 
 .prio-container,
 .category-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -186,8 +187,8 @@
 }
 
 .status-container {
+  width: 100%;
   display: flex;
-  width: 44rem;
   justify-content: center;
   align-items: center;
   gap: 1.6rem;
@@ -221,7 +222,6 @@
 }
 
 .select-category {
-  width: 44rem;
   padding: 1.2rem 1.6rem !important;
 }
 
@@ -265,7 +265,7 @@ select.minimal .placeholder {
 
 .subtask-container {
   display: flex;
-  width: 44rem;
+  width: 100%;
   height: 23rem;
   flex-direction: column;
   align-items: flex-start;
@@ -294,6 +294,7 @@ select.minimal .placeholder {
 
 .subtask-entry-field {
   border: none !important;
+  width: 80%;
   font-size: 2rem;
 }
 
@@ -304,7 +305,7 @@ select.minimal .placeholder {
 .subtask-display {
   display: flex;
   flex-direction: column;
-  width: 44rem;
+  width: 100%;
   height: 14.6rem;
   align-items: center;
   gap: 0.8rem;
@@ -346,7 +347,7 @@ select.minimal .placeholder {
 
 .added-subtask {
   display: flex;
-  width: 44rem;
+  width: 100%;
   padding: 0.4rem 1.6rem;
   justify-content: space-between;
   align-items: center;
@@ -366,6 +367,7 @@ select.minimal .placeholder {
   background: transparent;
   border: none !important;
   font-size: 1.6rem;
+  width: 100%;
 }
 
 .invisible {
@@ -380,21 +382,23 @@ select.minimal .placeholder {
 
 .required-advise {
   font-size: 2rem;
-  padding-right: 44.8rem;
   padding-top: 3rem;
 }
 
 .clear-and-create-task-container {
   display: inline-flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
-  gap: 1.6rem;
   width: 97.7rem;
+}
+
+.clear-and-create-area {
+  display: flex;
+  gap: 1.6rem;
 }
 
 .clear-container {
   display: flex;
-  height: 5.6rem;
   padding: 1.6rem;
   justify-content: center;
   align-items: center;
@@ -414,6 +418,7 @@ select.minimal .placeholder {
 
 .create-task-container {
   display: flex;
+  align-items: center;
   padding: 1.6rem;
   gap: 0.4rem;
   font-size: 2.1rem;
@@ -474,37 +479,66 @@ select.minimal .placeholder {
   border-radius: 2rem;
   font-size: 2rem;
   opacity: 0;
-  
+
   /* transition: opacity 0.3s ease, transform 0.3s ease-in-out;  */
 }
 
-.animate-message {  
-  animation: animate 8s ease-in-out forwards;  
+.animate-message {
+  animation: animate 1s ease-in-out forwards;
 }
 
 @keyframes animate {
-  0% {    
+  0% {
     opacity: 1;
-      
-    transform: translateX(100%);  
+
+    transform: translateX(100%);
   }
   50% {
     opacity: 1;
     transform: translateX(0);
   }
   100% {
-    opacity: 0;    
+    opacity: 0;
     transform: translate(150%);
   }
 }
 
+/* add task mobile view */
 
-
+@media screen and (max-width: 1460px) {
+  html {
+    font-size: 0.58em;
+  }
+}
 
 @media (max-width: 1360px) {
+  .add-task-main-container {
+    width: 100%;
+    padding-right: 10rem;
+    padding-top: 5rem;
+  }
+
+  .add-task-container {
+    display: flex;
+    margin-top: 0;
+  }
+
   .main-container-center {
     display: flex;
     flex-direction: column;
+    padding-top: 2.4rem;
+  }
+
+  .assigned-main {
+    width: 100%;
+  }
+
+  .assigned-to-input-slider {
+    width: 100% !important;
+  }
+
+  .assigned-to-slider {
+    width: 100% !important;
   }
 
   .dividing-line {
@@ -513,5 +547,124 @@ select.minimal .placeholder {
 
   .add-task-container-left {
     justify-content: center;
+    width: 100%;
+  }
+
+  /* .add-task-container-right {
+        padding-top: 2rem;
+    } */
+
+  .required-advise {
+    align-items: center;
+    display: flex;
+    padding-top: 0;
+    /* font-size: 1.6rem; */
+  }
+
+  .category-container {
+    width: 100% !important;
+  }
+
+  .clear-and-create-task-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 1050px) {
+  .add-task-container {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 950px) {
+  .clear-and-create-area {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .required-advise {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 780px) {
+  .add-task-content {
+    padding-left: 1.6rem;
+    height: calc(100vh - 4.477rem - 4.608rem - 15.707rem);
+    overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 0.425em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 0.4em;
+  }
+
+  .add-task-font {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  html {
+    font-size: 0.4715em;
+  }
+
+  .add-task-main-container {
+    width: 100%;
+    padding-right: 1.6rem;
+    padding-top: 3.5rem;
+  }
+
+  .add-task-font {
+    font-size: 4rem;
+  }
+
+  .clear-and-create-area {
+    width: 100%;
+  }
+
+  .sending-confirmation {
+    height: 5rem;
+    width: 23rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .clear-and-create-task-container {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .clear-and-create-area {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 350px) {
+  .status-container {
+    flex-direction: column;
+  }
+
+  .status-definition-container {
+    width: 100%;
   }
 }
