@@ -3,6 +3,7 @@ let newAssigned = [];
 // let addedTasks = [];
 
 async function initAddTask() {
+ final-work-1
   await loadUsers();
   await loadAddedTasks();
   getDateToday();
@@ -17,6 +18,7 @@ async function loadAddedTasks() {
   } catch (e) {
     console.error("Loading Added Tasks error:", e);
   }
+
 }
 
 // changes the color of priority area based on interaction
@@ -32,6 +34,7 @@ async function loadAddedTasks() {
 // }
 
 function changePrioColor(prio) {
+ final-work-1
   resetContainers();
   let container = document.getElementById(`${prio}_container`);
   let img = document.getElementById(`${prio}_img`);
@@ -45,6 +48,7 @@ function changePrioColor(prio) {
   } else {
       console.error(`Container or image not found for prio: ${prio}`);
   }
+
 }
 
 
@@ -57,6 +61,7 @@ function settingPrioBackground(container, img, prio) {
 
 // determines the background color for a given priority
 function determinePrioBackgroundColor(prio) {
+ final-work-1
   let color;
   if (prio === "Urgent") {
     color = "#ff3d00";
@@ -66,21 +71,20 @@ function determinePrioBackgroundColor(prio) {
     color = "#7ae229";
   }
   return color;
+
 }
 
 // resets background color of all priority containers
 function resetContainers() {
-  let containers = document.getElementsByClassName(
-    "status-definition-container"
-  );
-  for (let i = 0; i < containers.length; i++) {
-    let container = containers[i];
-    container.style.backgroundColor = "white";
-    container.style.color = "#2a3647";
-    let img = container.getElementsByClassName("prio-images")[0];
-    img.src = "./img/" + container.id.replace("_container", "") + ".svg";
-    container.classList.remove("selected");
-  }
+    let containers = document.getElementsByClassName("status-definition-container");
+    for (let i = 0; i < containers.length; i++) {
+        let container = containers[i];
+        container.style.backgroundColor = "white";
+        container.style.color = "#2a3647";
+        let img = container.getElementsByClassName("prio-images")[0];
+        img.src = "./img/" + container.id.replace("_container", "") + ".svg";
+        container.classList.remove("selected");
+    }
 }
 
 function initUserSelectField(containerID) {
@@ -174,6 +178,7 @@ function generateTaskAssigmentContactsCheckedHTML(userName, badgeColor, userBadg
 
 // sets the minimum date for the date field to today
 function getDateToday() {
+final-work-1
   let today = new Date().toISOString().split("T")[0];
   let dateField = document.getElementById("date_field");
   dateField.setAttribute("min", today);
@@ -185,6 +190,7 @@ function getDateToday() {
       dateField.style.color = "lightgrey";
     }
   });
+
 }
 
 // changes the visibility of subtask icons for adding subtasks
@@ -206,25 +212,30 @@ function closeSubtaskIcons() {
 
 // handles actions related to adding subtasks
 function handleSubtaskActions() {
+ final-work-1
   let subtaskInput = document.getElementById("add_new_subtask_field");
   let input = document.getElementById("add_new_subtask_field");
   let subtask = subtaskInput.value.trim();
   changingSubtaskIcons();
   displaySubtasks();
   input.value = "";
+
 }
 
 // show added subtasks
 function displaySubtasks() {
+ final-work-1
   let subtask = document.getElementById("add_new_subtask_field").value.trim();
   if (subtask !== "") {
     addedSubtasks.push({ subdone: false, subtitle: subtask });
     renderAddedSubtasks();
     subtask.value = "";
   }
+
 }
 
 function renderAddedSubtasks() {
+ final-work-1
   let subtaskContainer = document.getElementById("subtask_display_container");
   subtaskContainer.innerHTML = "";
   for (let i = 0; i < addedSubtasks.length; i++) {
@@ -241,6 +252,7 @@ function renderAddedSubtasks() {
 function createSubtaskHTML(subtask, index) {
   return `
   <div class="added-subtask">•
+
     <input id="input_${index}" class="subtask-input" type="text" value="${subtask}" contenteditable="true">
      <div class="added-subtask-icons">
       <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./img/delete-icon.svg">
@@ -254,12 +266,14 @@ function createSubtaskHTML(subtask, index) {
 
 // speichert den bearbeiteten subtask
 function saveEditedSubtask(index) {
+ final-work-1
   let inputField = document.getElementById(`input_${index}`);
   let subtask = inputField.value.trim();
   if (subtask !== "") {
     addedSubtasks[index].subtitle = subtask;
     renderAddedSubtasks();
   }
+
 }
 
 // initiate edited added subtask
@@ -287,7 +301,9 @@ function moveIconsForEditing(index) {
 // deletes added subtask from the list
 function deleteAddedSubtask(subtask) {
     let index = addedSubtasks.indexOf(subtask);
+final-work-1
     if (index == -1 || index !== -1) {
+
         addedSubtasks.splice(index, 1);
         renderAddedSubtasks();
     }
@@ -295,6 +311,7 @@ function deleteAddedSubtask(subtask) {
 
 // clears input fields and resets various containers
 function clearAllFields() {
+final-work-1
   clearContainerLeft();
   resetContainers();
   clearContainerRight();
@@ -302,14 +319,17 @@ function clearAllFields() {
   document.getElementById("subtask_display_container").innerHTML = "";
   addedSubtasks = [];
   changePrioColor("medium");
+
 }
 
 // clears input fields left side
 function clearContainerLeft() {
+ final-work-1
   document.getElementById("enter_title_field").value = "";
   document.getElementById("enter_description_field").value = "";
   document.getElementById("et_select_contacts_search").value = "";
   clearSelectedContacts();
+
 }
 
 // clears already selected and added contacts
@@ -320,11 +340,13 @@ function clearSelectedContacts() {
 
 // clears input fields right side
 function clearContainerRight() {
+ final-work-1
   let dateField = document.getElementById("date_field");
   document.getElementById("date_field").value = "";
   dateField.style.color = "lightgrey";
   document.getElementById("select_category_field").selectedIndex = 0;
   document.getElementById("add_new_subtask_field").value = "";
+
 }
 
 function checkIfSendingIsPossible() {
@@ -333,6 +355,7 @@ function checkIfSendingIsPossible() {
     let dateField = document.getElementById("date_field");
     let categoryField = document.getElementById("select_category_field");
 
+ final-work-1
   function checkInputs() {
     if (
       titleField.value.trim().length > 0 &&
@@ -342,12 +365,13 @@ function checkIfSendingIsPossible() {
       createTaskButton.disabled = false;
     } else {
       createTaskButton.disabled = true;
+
     }
-  }
 
     titleField.addEventListener("input", checkInputs);
     dateField.addEventListener("input", checkInputs);
     categoryField.addEventListener("input", checkInputs);
+final-work-1
 }
 
 // function validateForm() {
@@ -372,14 +396,15 @@ function checkIfSendingIsPossible() {
 //   return results;
 // }
 
+
 function getSelectedPriority() {
-  let priorityContainers = document.getElementsByClassName(
-    "status-definition-container"
-  );
-  for (let i = 0; i < priorityContainers.length; i++) {
-    if (priorityContainers[i].classList.contains("selected")) {
-      return priorityContainers[i].id.replace("_container", "");
+    let priorityContainers = document.getElementsByClassName("status-definition-container");
+    for (let i = 0; i < priorityContainers.length; i++) {
+        if (priorityContainers[i].classList.contains("selected")) {
+            return priorityContainers[i].id.replace("_container", "");
+        }
     }
+ final-work-1
   }  
 }
 
@@ -422,6 +447,7 @@ async function pushToJSON(setNewTask, selectedPriority) {
 function createTaskMessage() {
   let taskMessage = document.getElementById("sending_confirmation");
   taskMessage.classList.add("animate-message");
+
 }
 
 function createNewTaskID() {
