@@ -4,7 +4,7 @@ let filteredTasks = [];
 
 /**
  * Asynchronously initializes the board by performing the following actions:
- * - Loads added tasks using the loadAddedTasks function.
+ * - Loads added tasks using the loadAddedTasksFromStorage function.
  * - Loads users using the loadUsers function.
  * - Loads the board using the loadBoard function.
  * - Loads the current user using the loadCurrentUser function.
@@ -13,19 +13,19 @@ let filteredTasks = [];
  * @returns {Promise<void>} - A promise that resolves when the board is initialized.
  */
 async function initBoard() {
-	await loadAddedTasks();
-	await loadUsers();
-	loadBoard();
-	loadCurrentUser();
-	loadUserBadge();
+    await loadAddedTasksFromStorage();
+    await loadUsers();
+    loadBoard();
+    loadCurrentUser();
+    loadUserBadge();
 }
 
 /**
  * hidden function to clear Added Tasks Remote Storage from any information
  */
 async function clearAddedTasksRemoteSTRG() {
-	addedTasks = [];
-	await setItem("addedTasks", JSON.stringify(addedTasks));
+    addedTasks = [];
+    await setItem("addedTasks", JSON.stringify(addedTasks));
 }
 
 /**
@@ -33,12 +33,12 @@ async function clearAddedTasksRemoteSTRG() {
  *
  * @returns {Promise<void>} - A promise that resolves when added tasks are loaded.
  */
-async function loadAddedTasks() {
-	try {
-		addedTasks = JSON.parse(await getItem("addedTasks"));
-	} catch (e) {
-		console.error("Loading Added Tasks error:", e);
-	}
+async function loadAddedTasksFromStorage() {
+    try {
+        addedTasks = JSON.parse(await getItem("addedTasks"));
+    } catch (e) {
+        console.error("Loading Added Tasks error:", e);
+    }
 }
 
 /**
@@ -47,11 +47,11 @@ async function loadAddedTasks() {
  * @returns {void}
  */
 function loadBoard() {
-	for (let i = 0; i < buckets.length; i++) {
-		let bucket = buckets[i];
-		updateBoard(bucket);
-		loadNoTasksLabel(bucket);
-	}
+    for (let i = 0; i < buckets.length; i++) {
+        let bucket = buckets[i];
+        updateBoard(bucket);
+        loadNoTasksLabel(bucket);
+    }
 }
 
 /**
@@ -62,31 +62,12 @@ function loadBoard() {
  * @returns {void}
  */
 function updateBoard(currentBucket) {
-	let tasks = getTasksPerBucket(currentBucket);
-	for (let index = 0; index < tasks.length; index++) {
-		let [
-			id,
-			bucket,
-			title,
-			description,
-			prio,
-			category,
-			subtasks,
-			assigneds,
-			duedate,
-			rawDuedate,
-		] = getTaskVariables(tasks, index);
-		loadCard(
-			id,
-			bucket,
-			title,
-			description,
-			prio,
-			category,
-			subtasks,
-			assigneds
-		);
-	}
+    let tasks = getTasksPerBucket(currentBucket);
+    for (let index = 0; index < tasks.length; index++) {
+        let [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate] =
+            getTaskVariables(tasks, index);
+        loadCard(id, bucket, title, description, prio, category, subtasks, assigneds);
+    }
 }
 
 /**
@@ -96,14 +77,14 @@ function updateBoard(currentBucket) {
  * @returns {Array} - An array of tasks for the specified bucket.
  */
 function getTasksPerBucket(currentBucket) {
-	let tasks = [];
-	if (filteredTasks.length == 0) {
-		tasks = addedTasks.filter((t) => t["bucket"] == currentBucket);
-	} else {
-		tasks = filteredTasks.filter((t) => t["bucket"] == currentBucket);
-	}
-	document.getElementById(currentBucket).innerHTML = "";
-	return tasks;
+    let tasks = [];
+    if (filteredTasks.length == 0) {
+        tasks = addedTasks.filter((t) => t["bucket"] == currentBucket);
+    } else {
+        tasks = filteredTasks.filter((t) => t["bucket"] == currentBucket);
+    }
+    document.getElementById(currentBucket).innerHTML = "";
+    return tasks;
 }
 
 /**
@@ -115,29 +96,18 @@ function getTasksPerBucket(currentBucket) {
  *   [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate].
  */
 function getTaskVariables(tasks, index) {
-	let task = tasks[index];
-	let id = task["id"];
-	let bucket = task["bucket"];
-	let title = task["title"];
-	let description = task["description"];
-	let prio = task["prio"];
-	let category = task["category"];
-	let subtasks = task["subtask"];
-	let assigneds = task["assigned"];
-	let duedate = formatDueDate(task["duedate"]);
-	let rawDuedate = task["duedate"];
-	return [
-		id,
-		bucket,
-		title,
-		description,
-		prio,
-		category,
-		subtasks,
-		assigneds,
-		duedate,
-		rawDuedate,
-	];
+    let task = tasks[index];
+    let id = task["id"];
+    let bucket = task["bucket"];
+    let title = task["title"];
+    let description = task["description"];
+    let prio = task["prio"];
+    let category = task["category"];
+    let subtasks = task["subtask"];
+    let assigneds = task["assigned"];
+    let duedate = formatDueDate(task["duedate"]);
+    let rawDuedate = task["duedate"];
+    return [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate];
 }
 
 /**
@@ -157,27 +127,12 @@ function getTaskVariables(tasks, index) {
  * @param {Array} assigneds - An array of assigned individuals for the task.
  * @returns {void}
  */
-function loadCard(
-	id,
-	bucket,
-	title,
-	description,
-	prio,
-	category,
-	subtasks,
-	assigneds
-) {
-	let categoryColor = loadCategoryColor(category);
-	document.getElementById(bucket).innerHTML += generateCardHTML(
-		id,
-		title,
-		description,
-		category,
-		categoryColor
-	);
-	loadSubtaskprogress(subtasks, id);
-	addAssignedsBadgesToCard(assigneds, id);
-	loadCardPrioIcon(prio, id);
+function loadCard(id, bucket, title, description, prio, category, subtasks, assigneds) {
+    let categoryColor = loadCategoryColor(category);
+    document.getElementById(bucket).innerHTML += generateCardHTML(id, title, description, category, categoryColor);
+    loadSubtaskprogress(subtasks, id);
+    addAssignedsBadgesToCard(assigneds, id);
+    loadCardPrioIcon(prio, id);
 }
 
 /**
@@ -190,11 +145,11 @@ function loadCard(
  * @returns {void}
  */
 function loadNoTasksLabel(bucket) {
-	let taskColumn = document.getElementById(bucket);
-	if (taskColumn.innerHTML === "") {
-		let formatBucket = formatNoTaskLabelString(bucket);
-		taskColumn.innerHTML = generateNoTaskHTML(formatBucket);
-	}
+    let taskColumn = document.getElementById(bucket);
+    if (taskColumn.innerHTML === "") {
+        let formatBucket = formatNoTaskLabelString(bucket);
+        taskColumn.innerHTML = generateNoTaskHTML(formatBucket);
+    }
 }
 
 /**
@@ -208,12 +163,11 @@ function loadNoTasksLabel(bucket) {
  * @returns {void}
  */
 function loadSubtaskprogress(subtasks, id) {
-	let allSubtask = subtasks.length;
-	let done = loadSubtaskAreDone(subtasks);
-	if (allSubtask > 0) {
-		document.getElementById(`subtasks_container_${id}`).innerHTML =
-			generateSubtaskProgressHTML(allSubtask, done);
-	}
+    let allSubtask = subtasks.length;
+    let done = loadSubtaskAreDone(subtasks);
+    if (allSubtask > 0) {
+        document.getElementById(`subtasks_container_${id}`).innerHTML = generateSubtaskProgressHTML(allSubtask, done);
+    }
 }
 
 /**
@@ -228,15 +182,14 @@ function loadSubtaskprogress(subtasks, id) {
  * @returns {void}
  */
 function addAssignedsBadgesToCard(assigneds, id) {
-	for (let i = 0; i < assigneds.length; i++) {
-		let [badgeColor, userBadge, assignedLimit, addLimit] =
-			getVariableForAssignedsUserBadge(assigneds, i);
-		if (i <= addLimit) {
-			addAssignedBadge(userBadge, badgeColor, id);
-		} else if (i == assignedLimit && assigneds.length > 6) {
-			addLimitAssignedBadge(id, assigneds, assignedLimit);
-		}
-	}
+    for (let i = 0; i < assigneds.length; i++) {
+        let [badgeColor, userBadge, assignedLimit, addLimit] = getVariableForAssignedsUserBadge(assigneds, i);
+        if (i <= addLimit) {
+            addAssignedBadge(userBadge, badgeColor, id);
+        } else if (i == assignedLimit && assigneds.length > 6) {
+            addLimitAssignedBadge(id, assigneds, assignedLimit);
+        }
+    }
 }
 
 /**
@@ -251,12 +204,12 @@ function addAssignedsBadgesToCard(assigneds, id) {
  * @returns {Array} - An array containing variables in the order: [badgeColor, userBadge, assignedLimit, addLimit].
  */
 function getVariableForAssignedsUserBadge(assigneds, i) {
-	let badgeColor = getUserColor(assigneds, i);
-	let assignedUserName = assigneds[i];
-	let userBadge = generateUserBadge(assignedUserName);
-	let assignedLimit = assigneds.length - 1;
-	let addLimit = 5;
-	return [badgeColor, userBadge, assignedLimit, addLimit];
+    let badgeColor = getUserColor(assigneds, i);
+    let assignedUserName = assigneds[i];
+    let userBadge = generateUserBadge(assignedUserName);
+    let assignedLimit = assigneds.length - 1;
+    let addLimit = 5;
+    return [badgeColor, userBadge, assignedLimit, addLimit];
 }
 
 /**
@@ -269,8 +222,10 @@ function getVariableForAssignedsUserBadge(assigneds, i) {
  * @returns {void}
  */
 function addAssignedBadge(userBadge, badgeColor, id) {
-	document.getElementById(`task_assignment_container_${id}`).innerHTML +=
-		generateAssignedBadgeHTML(userBadge, badgeColor);
+    document.getElementById(`task_assignment_container_${id}`).innerHTML += generateAssignedBadgeHTML(
+        userBadge,
+        badgeColor
+    );
 }
 
 /**
@@ -283,10 +238,10 @@ function addAssignedBadge(userBadge, badgeColor, id) {
  * @returns {void}
  */
 function addLimitAssignedBadge(id, assigneds) {
-	let limit = assigneds.length - 6;
-	document.getElementById(
-		`task_assignment_container_${id}`
-	).innerHTML += `<div class="assigned-limit">+${limit}</div>`;
+    let limit = assigneds.length - 6;
+    document.getElementById(
+        `task_assignment_container_${id}`
+    ).innerHTML += `<div class="assigned-limit">+${limit}</div>`;
 }
 
 /**
@@ -299,14 +254,14 @@ function addLimitAssignedBadge(id, assigneds) {
  * @returns {void}
  */
 function loadCardPrioIcon(prio, id) {
-	let taskPrioIcon = document.getElementById(`task_prio_img_${id}`);
-	if (prio === "Urgent") {
-		taskPrioIcon.innerHTML = generateUrgentPrioIcon();
-	} else if (prio === "Medium") {
-		taskPrioIcon.innerHTML = generateMediumPrioIcon();
-	} else if (prio === "Low") {
-		taskPrioIcon.innerHTML = generateLowPrioIcon();
-	}
+    let taskPrioIcon = document.getElementById(`task_prio_img_${id}`);
+    if (prio === "Urgent") {
+        taskPrioIcon.innerHTML = generateUrgentPrioIcon();
+    } else if (prio === "Medium") {
+        taskPrioIcon.innerHTML = generateMediumPrioIcon();
+    } else if (prio === "Low") {
+        taskPrioIcon.innerHTML = generateLowPrioIcon();
+    }
 }
 
 /**
@@ -317,14 +272,14 @@ function loadCardPrioIcon(prio, id) {
  * @returns {number} - The number of completed subtasks.
  */
 function loadSubtaskAreDone(subtasks) {
-	let done = 0;
-	for (let i = 0; i < subtasks.length; i++) {
-		let subtask = subtasks[i];
-		if (subtask.subdone) {
-			done++;
-		}
-	}
-	return done;
+    let done = 0;
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtask = subtasks[i];
+        if (subtask.subdone) {
+            done++;
+        }
+    }
+    return done;
 }
 
 /**
@@ -334,11 +289,11 @@ function loadSubtaskAreDone(subtasks) {
  * @returns {string} - The color associated with the category.
  */
 function loadCategoryColor(category) {
-	if (category === "Technical Task") {
-		return "#1fd7c1";
-	} else if (category === "User Story") {
-		return "#0038FF";
-	}
+    if (category === "Technical Task") {
+        return "#1fd7c1";
+    } else if (category === "User Story") {
+        return "#0038FF";
+    }
 }
 
 /**
@@ -348,7 +303,7 @@ function loadCategoryColor(category) {
  * @returns {void}
  */
 function show(id) {
-	document.getElementById(id).classList.remove("d-none");
+    document.getElementById(id).classList.remove("d-none");
 }
 
 /**
@@ -358,7 +313,7 @@ function show(id) {
  * @returns {void}
  */
 function hide(id) {
-	document.getElementById(id).classList.add("d-none");
+    document.getElementById(id).classList.add("d-none");
 }
 /**
  * Displays a frame by performing the following actions:
@@ -370,10 +325,10 @@ function hide(id) {
  * @returns {void}
  */
 function showFrame(id) {
-	hide("sub_menu");
-	addFixedBackround("main_container_board");
-	addOverlayBg(id);
-	show(id);
+    hide("sub_menu");
+    addFixedBackround("main_container_board");
+    addOverlayBg(id);
+    show(id);
 }
 
 /**
@@ -387,11 +342,11 @@ function showFrame(id) {
  * @returns {Promise<void>} - A promise that resolves when the task is deleted and the board is reloaded.
  */
 async function deleteTask(TaskID) {
-	let updatedAddedTasks = addedTasks.filter((task) => task.id !== TaskID);
-	addedTasks = updatedAddedTasks;
-	updateTaskID();
-	hideTaskOpen("task_open_overlay_frame");
-	loadBoard();
+    let updatedAddedTasks = addedTasks.filter((task) => task.id !== TaskID);
+    addedTasks = updatedAddedTasks;
+    updateTaskID();
+    hideTaskOpen("task_open_overlay_frame");
+    loadBoard();
 }
 
 /**
@@ -405,10 +360,10 @@ async function deleteTask(TaskID) {
  * 2. For each task, update its ID to match its index in the array.
  */
 function updateTaskID() {
-	for (let i = 0; i < addedTasks.length; i++) {
-		let task = addedTasks[i];
-		task["id"] = i;
-	}
+    for (let i = 0; i < addedTasks.length; i++) {
+        let task = addedTasks[i];
+        task["id"] = i;
+    }
 }
 
 /**
@@ -419,8 +374,8 @@ function updateTaskID() {
  * @returns
  */
 function generatePercentInWidth(allSubtask, done) {
-	let percentInWidth = (done / allSubtask) * 100;
-	return percentInWidth;
+    let percentInWidth = (done / allSubtask) * 100;
+    return percentInWidth;
 }
 
 /**
@@ -434,9 +389,9 @@ function generatePercentInWidth(allSubtask, done) {
  * 2. Replace dashes with spaces in the formatted string.
  */
 function formatNoTaskLabelString(str) {
-	str = str.charAt(0).toUpperCase() + str.slice(1);
-	let formattedStr = str.replace("-", " ");
-	return formattedStr;
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+    let formattedStr = str.replace("-", " ");
+    return formattedStr;
 }
 
 /**
@@ -445,12 +400,12 @@ function formatNoTaskLabelString(str) {
  * @returns
  */
 function formatDueDate(dueDate) {
-	if (dueDate.includes("-")) {
-		let dateParts = dueDate.split("-");
-		let duedate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
-		return duedate;
-	}
-	return dueDate;
+    if (dueDate.includes("-")) {
+        let dateParts = dueDate.split("-");
+        let duedate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+        return duedate;
+    }
+    return dueDate;
 }
 
 /**
@@ -463,8 +418,8 @@ function formatDueDate(dueDate) {
  * @returns {Promise<void>} - A promise that resolves when the remote storage is cleared.
  */
 async function clearRemoteStorage() {
-	users = [];
-	await setItem("users", JSON.stringify(users));
+    users = [];
+    await setItem("users", JSON.stringify(users));
 }
 
 /**
@@ -481,13 +436,11 @@ async function clearRemoteStorage() {
  * @returns {void}
  */
 function searchTask() {
-	let searchTerm = find_task.value;
-	clearBoard();
-	filteredTasks = addedTasks.filter((t) =>
-		t["title"].toLowerCase().includes(searchTerm.toLowerCase())
-	);
-	loadBoard();
-	errorNoteSearchTask("no_task_found");
+    let searchTerm = find_task.value;
+    clearBoard();
+    filteredTasks = addedTasks.filter((t) => t["title"].toLowerCase().includes(searchTerm.toLowerCase()));
+    loadBoard();
+    errorNoteSearchTask("no_task_found");
 }
 
 /**
@@ -504,13 +457,11 @@ function searchTask() {
  * @returns {void}
  */
 function searchTaskMobile() {
-	let searchTerm = find_task_mobile.value;
-	clearBoard();
-	filteredTasks = addedTasks.filter((t) =>
-		t["title"].toLowerCase().includes(searchTerm.toLowerCase())
-	);
-	loadBoard();
-	errorNoteSearchTask("no_task_found_mobile");
+    let searchTerm = find_task_mobile.value;
+    clearBoard();
+    filteredTasks = addedTasks.filter((t) => t["title"].toLowerCase().includes(searchTerm.toLowerCase()));
+    loadBoard();
+    errorNoteSearchTask("no_task_found_mobile");
 }
 
 /**
@@ -524,9 +475,9 @@ function searchTaskMobile() {
  * @returns {void}
  */
 function errorNoteSearchTask(searchID) {
-	if (filteredTasks.length == 0) {
-		document.getElementById(searchID).style.display = "block";
-	}
+    if (filteredTasks.length == 0) {
+        document.getElementById(searchID).style.display = "block";
+    }
 }
 
 /**
@@ -539,10 +490,10 @@ function errorNoteSearchTask(searchID) {
  * @returns {void}
  */
 function clearBoard() {
-	for (let i = 0; i < buckets.length; i++) {
-		let bucket = buckets[i];
-		document.getElementById(bucket).innerHTML = "";
-	}
+    for (let i = 0; i < buckets.length; i++) {
+        let bucket = buckets[i];
+        document.getElementById(bucket).innerHTML = "";
+    }
 }
 
 /**
@@ -556,13 +507,13 @@ function clearBoard() {
  * @returns {void}
  */
 function closeFilter() {
-	let searchTerm = find_task.value;
-	searchTerm = searchTerm.toLowerCase();
-	if (searchTerm.length == 0) {
-		document.getElementById("no_task_found").style.display = "none";
-		filteredTasks = [];
-		loadBoard();
-	}
+    let searchTerm = find_task.value;
+    searchTerm = searchTerm.toLowerCase();
+    if (searchTerm.length == 0) {
+        document.getElementById("no_task_found").style.display = "none";
+        filteredTasks = [];
+        loadBoard();
+    }
 }
 
 /**
@@ -572,5 +523,5 @@ function closeFilter() {
  * @returns {void}
  */
 function DoNotForward(event) {
-	event.stopPropagation();
+    event.stopPropagation();
 }

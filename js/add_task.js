@@ -50,9 +50,9 @@ function changePrioColor(prio) {
 
 // resets the background color of priority area
 function settingPrioBackground(container, img, prio) {
-  container.style.backgroundColor = "white";
-  container.style.color = "#2a3647";
-  img.src = "./img/" + prio + ".svg";
+    container.style.backgroundColor = "white";
+    container.style.color = "#2a3647";
+    img.src = "./img/" + prio + ".svg";
 }
 
 // determines the background color for a given priority
@@ -84,66 +84,51 @@ function resetContainers() {
 }
 
 function initUserSelectField(containerID) {
-  let contactsContainer = document.getElementById(containerID);
-  for (let i = 0; i < users.length; i++) {
-    let userName = users[i]["name"];
-    let userBadge = generateUserBadge(userName);
-    let badgeColor = users[i]["bgcolor"];
-    if (newAssigned.includes(userName)) {
-      contactsContainer.innerHTML += generateTaskAssigmentContactsHTML(
-        userName,
-        badgeColor,
-        userBadge,
-        i
-      );
-    } else {
-      contactsContainer.innerHTML += generateTaskAssigmentContactsHTML(
-        userName,
-        badgeColor,
-        userBadge,
-        i
-      );
+    let contactsContainer = document.getElementById(containerID);
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]["name"];
+        let userBadge = generateUserBadge(userName);
+        let badgeColor = users[i]["bgcolor"];
+        if (newAssigned.includes(userName)) {
+            contactsContainer.innerHTML += generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i);
+        } else {
+            contactsContainer.innerHTML += generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i);
+        }
     }
-  }
 }
 
 function addElectedContact(id, i, newAssigned) {
-  let checkAssigned = document.getElementById(id);
-  let userName = users[i]["name"];
-  let deleteName = newAssigned.indexOf(userName);
-  if (checkAssigned.checked) {
-    newAssigned.push(userName);
-  } else if (!checkAssigned.checked) {
-    newAssigned.splice(deleteName, 1);
-  }
-  showSelectedContacts(newAssigned, "et_selected_contacts");
+    let checkAssigned = document.getElementById(id);
+    let userName = users[i]["name"];
+    let deleteName = newAssigned.indexOf(userName);
+    if (checkAssigned.checked) {
+        newAssigned.push(userName);
+    } else if (!checkAssigned.checked) {
+        newAssigned.splice(deleteName, 1);
+    }
+    showSelectedContacts(newAssigned, "et_selected_contacts");
 }
 
 function showSelectedContacts(newAssigned) {
-  let selectedContacts = document.getElementById("et_selected_contacts");
-  selectedContacts.innerHTML = "";
+    let selectedContacts = document.getElementById("et_selected_contacts");
+    selectedContacts.innerHTML = "";
 
-  for (let i = 0; i < newAssigned.length; i++) {
-    let userName = newAssigned[i];
-    let userIndex = users.findIndex((user) => user.name === userName);
+    for (let i = 0; i < newAssigned.length; i++) {
+        let userName = newAssigned[i];
+        let userIndex = users.findIndex((user) => user.name === userName);
 
-    if (userIndex !== -1) {
-      let badgeColor = users[userIndex]["bgcolor"];
-      let userBadge = generateUserBadge(userName);
+        if (userIndex !== -1) {
+            let badgeColor = users[userIndex]["bgcolor"];
+            let userBadge = generateUserBadge(userName);
 
-      let selectedContactHTML = generateSelectedContactHTML(
-        userName,
-        badgeColor,
-        userBadge,
-        i
-      );
-      selectedContacts.innerHTML += selectedContactHTML;
+            let selectedContactHTML = generateSelectedContactHTML(userName, badgeColor, userBadge, i);
+            selectedContacts.innerHTML += selectedContactHTML;
+        }
     }
-  }
 }
 
 function generateSelectedContactHTML(userName, badgeColor, userBadge, i) {
-  return `
+    return `
     <label class="selected-contact-label">      
         <div class="contact-badge" style="background-color: ${badgeColor};">
           <span>${userBadge}</span>
@@ -154,7 +139,7 @@ function generateSelectedContactHTML(userName, badgeColor, userBadge, i) {
 
 //
 function generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i) {
-  return `
+    return `
     <label class="slider-contact-label" for="_check-contact${i}">
       <div class="current-contact-slider">
         <div id="_contect_badge${i}" class="contact-badge" style="background-color: ${badgeColor};">
@@ -170,13 +155,8 @@ function generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i) {
   `;
 }
 
-function generateTaskAssigmentContactsCheckedHTML(
-  userName,
-  badgeColor,
-  userBadge,
-  i
-) {
-  return `
+function generateTaskAssigmentContactsCheckedHTML(userName, badgeColor, userBadge, i) {
+    return `
     <label class="slider-contact-label" for="_check-contact${i}">
       <div class="current-contact-slider">
         <div id="_contect_badge${i}" class="contact-badge" style="background-color: ${badgeColor};">
@@ -209,19 +189,19 @@ function getDateToday() {
 
 // changes the visibility of subtask icons for adding subtasks
 function changingSubtaskIcons() {
-  let inputField = document.getElementById("add_new_subtask_field");
-  document.getElementById("normal_subtask_icon").classList.add("d-none");
-  document.getElementById("three_subtask_icons").classList.remove("d-none");
-  inputField.focus();
-  inputField.select();
+    let inputField = document.getElementById("add_new_subtask_field");
+    document.getElementById("normal_subtask_icon").classList.add("d-none");
+    document.getElementById("three_subtask_icons").classList.remove("d-none");
+    inputField.focus();
+    inputField.select();
 }
 
 // closes the subtask icons and returns to normal view
 function closeSubtaskIcons() {
-  document.getElementById("normal_subtask_icon").classList.remove("d-none");
-  document.getElementById("three_subtask_icons").classList.add("d-none");
-  let input = document.getElementById("add_new_subtask_field");
-  input.value = "";
+    document.getElementById("normal_subtask_icon").classList.remove("d-none");
+    document.getElementById("three_subtask_icons").classList.add("d-none");
+    let input = document.getElementById("add_new_subtask_field");
+    input.value = "";
 }
 
 // handles actions related to adding subtasks
@@ -284,35 +264,33 @@ function saveEditedSubtask(index) {
 
 // initiate edited added subtask
 function editAddedSubtask(index) {
-  moveIconsForEditing(index);
-  document.getElementById(`subtask_icons_1_${index}`).classList.add("d-none");
-  document
-    .getElementById(`check_dark_save_${index}`)
-    .classList.remove("d-none");
-  let inputField = document.getElementById(`input_${index}`);
-  inputField.focus();
+    moveIconsForEditing(index);
+    document.getElementById(`subtask_icons_1_${index}`).classList.add("d-none");
+    document.getElementById(`check_dark_save_${index}`).classList.remove("d-none");
+    let inputField = document.getElementById(`input_${index}`);
+    inputField.focus();
 }
 
 // moves icons for editing within the subtask container
 function moveIconsForEditing(index) {
-  let editIcon = document.getElementById(`subtask_icons_1_${index}`);
-  let deleteIcon = document.getElementById(`subtask_icons_3_${index}`);
-  let saveIcon = document.getElementById(`check_dark_save_${index}`);
-  let vectorLine = document.getElementById(`subtask_icons_2_${index}`);
-  let container = editIcon.parentElement;
+    let editIcon = document.getElementById(`subtask_icons_1_${index}`);
+    let deleteIcon = document.getElementById(`subtask_icons_3_${index}`);
+    let saveIcon = document.getElementById(`check_dark_save_${index}`);
+    let vectorLine = document.getElementById(`subtask_icons_2_${index}`);
+    let container = editIcon.parentElement;
 
-  container.insertBefore(saveIcon, editIcon);
-  container.insertBefore(vectorLine, editIcon);
-  container.insertBefore(deleteIcon, editIcon);
+    container.insertBefore(saveIcon, editIcon);
+    container.insertBefore(vectorLine, editIcon);
+    container.insertBefore(deleteIcon, editIcon);
 }
 
 // deletes added subtask from the list
 function deleteAddedSubtask(subtask) {
-  let index = addedSubtasks.indexOf(subtask);
-  if (index == -1 || index !== -1) {
-    addedSubtasks.splice(index, 1);
-    renderAddedSubtasks();
-  }
+    let index = addedSubtasks.indexOf(subtask);
+    if (index == -1 || index !== -1) {
+        addedSubtasks.splice(index, 1);
+        renderAddedSubtasks();
+    }
 }
 
 // clears input fields and resets various containers
@@ -336,8 +314,8 @@ function clearContainerLeft() {
 
 // clears already selected and added contacts
 function clearSelectedContacts() {
-  newAssigned = [];
-  showSelectedContacts(newAssigned);
+    newAssigned = [];
+    showSelectedContacts(newAssigned);
 }
 
 // clears input fields right side
@@ -350,10 +328,10 @@ function clearContainerRight() {
 }
 
 function checkIfSendingIsPossible() {
-  let createTaskButton = document.getElementById("create_task_button");
-  let titleField = document.getElementById("enter_title_field");
-  let dateField = document.getElementById("date_field");
-  let categoryField = document.getElementById("select_category_field");
+    let createTaskButton = document.getElementById("create_task_button");
+    let titleField = document.getElementById("enter_title_field");
+    let dateField = document.getElementById("date_field");
+    let categoryField = document.getElementById("select_category_field");
 
   function checkInputs() {
     if (
@@ -367,9 +345,9 @@ function checkIfSendingIsPossible() {
     }
   }
 
-  titleField.addEventListener("input", checkInputs);
-  dateField.addEventListener("input", checkInputs);
-  categoryField.addEventListener("input", checkInputs);
+    titleField.addEventListener("input", checkInputs);
+    dateField.addEventListener("input", checkInputs);
+    categoryField.addEventListener("input", checkInputs);
 }
 
 // function validateForm() {
