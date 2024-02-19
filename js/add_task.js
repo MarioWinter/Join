@@ -1,36 +1,52 @@
-// let tasks = [];
 let addedSubtasks = [];
 let newAssigned = [];
-addedTasks = [];
+// let addedTasks = [];
 
 async function initAddTask() {
   await loadUsers();
   await loadAddedTasks();
-  getDateToday();  
-  changePrioColor("medium");
+  getDateToday();
+  changePrioColor("Medium");
   initUserSelectField("et_contact_overlay");
-  checkIfSendingIsPossible();  
+  checkIfSendingIsPossible();
 }
 
 async function loadAddedTasks() {
   try {
-      addedTasks = JSON.parse(await getItem("addedTasks"));
+    addedTasks = JSON.parse(await getItem("addedTasks"));
   } catch (e) {
     console.error("Loading Added Tasks error:", e);
   }
 }
 
 // changes the color of priority area based on interaction
+// function changePrioColor(prio) {
+//   resetContainers();
+//   let container = document.getElementById(`${prio}_container`);
+//   let img = document.getElementById(`${prio}_img`);
+//   container.classList.add("selected");
+//   let color = determinePrioBackgroundColor(prio);
+//   container.style.backgroundColor = color;
+//   container.style.color = "white";
+//   img.src = `./img/${prio}-white.svg`;
+// }
+
 function changePrioColor(prio) {
   resetContainers();
   let container = document.getElementById(`${prio}_container`);
   let img = document.getElementById(`${prio}_img`);
-  container.classList.add("selected");
-  let color = determinePrioBackgroundColor(prio);
-  container.style.backgroundColor = color;
-  container.style.color = "white";
-  img.src = `./img/${prio}-white.svg`;
+
+  if (container && img) {
+      container.classList.add("selected");
+      let color = determinePrioBackgroundColor(prio);
+      container.style.backgroundColor = color;
+      container.style.color = "white";
+      img.src = `./img/${prio}-white.svg`;
+  } else {
+      console.error(`Container or image not found for prio: ${prio}`);
+  }
 }
+
 
 // resets the background color of priority area
 function settingPrioBackground(container, img, prio) {
@@ -42,11 +58,11 @@ function settingPrioBackground(container, img, prio) {
 // determines the background color for a given priority
 function determinePrioBackgroundColor(prio) {
   let color;
-  if (prio === "urgent") {
+  if (prio === "Urgent") {
     color = "#ff3d00";
-  } else if (prio === "medium") {
+  } else if (prio === "Medium") {
     color = "#ffa800";
-  } else if (prio === "low") {
+  } else if (prio === "Low") {
     color = "#7ae229";
   }
   return color;
@@ -54,7 +70,9 @@ function determinePrioBackgroundColor(prio) {
 
 // resets background color of all priority containers
 function resetContainers() {
-  let containers = document.getElementsByClassName("status-definition-container");
+  let containers = document.getElementsByClassName(
+    "status-definition-container"
+  );
   for (let i = 0; i < containers.length; i++) {
     let container = containers[i];
     container.style.backgroundColor = "white";
@@ -64,31 +82,6 @@ function resetContainers() {
     container.classList.remove("selected");
   }
 }
-
-// adds a new task to remote storage
-// async function taskToRemoteStorage() {
-//   users.push({
-//     title: id.value,
-//     description: id.value,
-//     password: sign_password.value,
-//   });
-//   await setItem("tasks", JSON.stringify(users));
-// }
-
-// async function taskToRemoteStorage() {
-//   let title = document.getElementById("enter_title_field").value;
-//   let description = document.getElementById("enter-description_field").value;
-//   let date = document.getElementById("date_field").value;
-
-//   tasks.push({
-//     title: title,
-//     description: description,
-//     date: date,
-//     assigned: newAssigned,
-//     subtasks: addedSubtasks,
-//   });
-//   await setItem("tasks", JSON.stringify(tasks));
-// }
 
 function initUserSelectField(containerID) {
   let contactsContainer = document.getElementById(containerID);
@@ -204,8 +197,8 @@ function getDateToday() {
   let today = new Date().toISOString().split("T")[0];
   let dateField = document.getElementById("date_field");
   dateField.setAttribute("min", today);
-  
-  dateField.addEventListener("input", function() {
+
+  dateField.addEventListener("input", function () {
     if (dateField.value) {
       dateField.style.color = "black";
     } else {
@@ -213,7 +206,6 @@ function getDateToday() {
     }
   });
 }
-
 
 // changes the visibility of subtask icons for adding subtasks
 function changingSubtaskIcons() {
@@ -235,68 +227,57 @@ function closeSubtaskIcons() {
 // handles actions related to adding subtasks
 function handleSubtaskActions() {
   let subtaskInput = document.getElementById("add_new_subtask_field");
+  let input = document.getElementById("add_new_subtask_field");
   let subtask = subtaskInput.value.trim();
   changingSubtaskIcons();
-  if (subtask !== "") {
-    addedSubtasks.push(subtask);
-    displaySubtasks();
-    input.value = "";
-  }
-  updateSubtaskRequired();
+  displaySubtasks();
+  input.value = "";
 }
 
 // show added subtasks
 function displaySubtasks() {
   let subtask = document.getElementById("add_new_subtask_field").value.trim();
   if (subtask !== "") {
-    addedSubtasks.push(subtask);
+    addedSubtasks.push({ subdone: false, subtitle: subtask });
     renderAddedSubtasks();
-    document.getElementById("add_new_subtask_field").value = "";
+    subtask.value = "";
   }
-  updateSubtaskRequired();
 }
 
-// renders the added subtasks
 function renderAddedSubtasks() {
   let subtaskContainer = document.getElementById("subtask_display_container");
   subtaskContainer.innerHTML = "";
   for (let i = 0; i < addedSubtasks.length; i++) {
-    let subtask = addedSubtasks[i];
-    let cleanedSubtask = subtask.startsWith("• ") ? subtask.slice(2) : subtask;
-    let subtaskDiv = createAddedSubtask("• " + cleanedSubtask, i);
-    subtaskContainer.innerHTML += subtaskDiv.outerHTML;
-  }
+    let subtask = addedSubtasks[i].subtitle;
+    // let subtaskDiv = createAddedSubtask(subtask, i);
+    subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);
+    console.log(subtask); } 
   subtaskContainer.classList.remove("d-none");
-  closeSubtaskIcons();
+  closeSubtaskIcons();  
 }
 
-// creates html for an added subtask
-function createAddedSubtask(subtask, index) {
-  let subtaskDiv = document.createElement("div");
-  subtaskDiv.classList.add("added-subtask");
-  subtaskDiv.innerHTML = `${createSubtaskHTML(subtask, index)}`;
-  return subtaskDiv;
-}
 
 // creates the html code for subtask
 function createSubtaskHTML(subtask, index) {
   return `
+  <div class="added-subtask">•
     <input id="input_${index}" class="subtask-input" type="text" value="${subtask}" contenteditable="true">
-    <div class="added-subtask-icons">
+     <div class="added-subtask-icons">
       <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./img/delete-icon.svg">
       <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./img/vector-line.svg">
       <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./img/pencil-icon.svg">
       <img id="check_dark_save_${index}" onclick="saveEditedSubtask(${index})" class="invisible subtask-icon d-none" src="./img/check-dark.svg">  
+     </div>
     </div>
   `;
 }
 
-// speichert den bearbeiteten Subtask
+// speichert den bearbeiteten subtask
 function saveEditedSubtask(index) {
   let inputField = document.getElementById(`input_${index}`);
   let subtask = inputField.value.trim();
   if (subtask !== "") {
-    addedSubtasks[index] = subtask;
+    addedSubtasks[index].subtitle = subtask;
     renderAddedSubtasks();
   }
 }
@@ -342,13 +323,13 @@ function clearAllFields() {
   closeSubtaskIcons();
   document.getElementById("subtask_display_container").innerHTML = "";
   addedSubtasks = [];
-  changePrioColor("medium");   
+  changePrioColor("medium");
 }
 
 // clears input fields left side
 function clearContainerLeft() {
   document.getElementById("enter_title_field").value = "";
-  document.getElementById("enter-description_field").value = "";
+  document.getElementById("enter_description_field").value = "";
   document.getElementById("et_select_contacts_search").value = "";
   clearSelectedContacts();
 }
@@ -362,7 +343,7 @@ function clearSelectedContacts() {
 // clears input fields right side
 function clearContainerRight() {
   let dateField = document.getElementById("date_field");
-  document.getElementById("date_field").value = "";  
+  document.getElementById("date_field").value = "";
   dateField.style.color = "lightgrey";
   document.getElementById("select_category_field").selectedIndex = 0;
   document.getElementById("add_new_subtask_field").value = "";
@@ -376,7 +357,9 @@ function checkIfSendingIsPossible() {
 
   function checkInputs() {
     if (
-      titleField.value.trim().length > 0 && dateField.value.trim().length > 0 && categoryField.value.trim().length > 0
+      titleField.value.trim().length > 0 &&
+      dateField.value.trim().length > 0 &&
+      categoryField.value.trim().length > 0
     ) {
       createTaskButton.disabled = false;
     } else {
@@ -389,38 +372,27 @@ function checkIfSendingIsPossible() {
   categoryField.addEventListener("input", checkInputs);
 }
 
-function validateForm() {
-  let subtasksContainer = document.getElementById("subtask_display_container");
-  let subtasks = subtasksContainer.getElementsByClassName("added-subtask");
+// function validateForm() {
+//   let subtasksContainer = document.getElementById("subtask_display_container");
+//   let subtasks = subtasksContainer.getElementsByClassName("added-subtask");
 
-  if (subtasks.length === 0 || isSubtasksEmpty(subtasks).length > 0) {
-    return false;
-  }
-  return true;
-}
+//   if (subtasks.length === 0 || isSubtasksEmpty(subtasks).length > 0) {
+//     return false;
+//   }
+//   return true;
+// }
 
-function isSubtasksEmpty(subtasks) {
-  let results = [];
+// function isSubtasksEmpty(subtasks) {
+//   let results = [];
 
-  for (let i = 0; i < subtasks.length; i++) {
-    let inputField = subtasks[i].querySelector(".subtask-input");
-    if (inputField && inputField.value.trim().length === 0) {
-      results.push(inputField.value.trim());
-    }
-  }
-  return results;
-}
-
-function updateSubtaskRequired() {
-  let subtasksContainer = document.getElementById("subtask_display_container");
-  let subtaskInput = document.getElementById("add_new_subtask_field");
-
-  if (subtasksContainer.children.length === 0) {
-    subtaskInput.setAttribute("required", "");
-  } else {
-    subtaskInput.removeAttribute("required");
-  }
-}
+//   for (let i = 0; i < subtasks.length; i++) {
+//     let inputField = subtasks[i].querySelector(".subtask-input");
+//     if (inputField && inputField.value.trim().length === 0) {
+//       results.push(inputField.value.trim());
+//     }
+//   }
+//   return results;
+// }
 
 function getSelectedPriority() {
   let priorityContainers = document.getElementsByClassName(
@@ -430,34 +402,56 @@ function getSelectedPriority() {
     if (priorityContainers[i].classList.contains("selected")) {
       return priorityContainers[i].id.replace("_container", "");
     }
-  }
-  // return null;
-}
-
-async function createTask() {
-  // let title = document.getElementById("enter_title_field").value;
-  // let description = document.getElementById("enter-description_field").value;
-  // let date = document.getElementById("date_field").value;
-  let priority = getSelectedPriority();
-
-  if (validateForm()) {
-    addedTasks.push({
-      title: enter_title_field.value,
-      description: enter-description_field.value,
-      assigned: newAssigned,
-      date: date_field.value,
-      priority: getSelectedPriority(),
-      subtasks: addedSubtasks,
-    });    
-    await setItem("addedTasks", JSON.stringify(addedTasks));      
-    createTaskMessage();
-    setTimeout(() => {
-      window.location.href='board.html';
-    }, 1000); 
   }  
 }
 
+async function createTask() {
+  let setNewTask = createNewTaskID();
+  let selectedPriority = getSelectedPriority();
+  await pushToJSON(setNewTask, selectedPriority);
+  // addedTasks.push({
+  //   id: setNewTask,
+  //   bucket: "to-do",
+  //   title: enter_title_field.value,
+  //   description: enter_description_field.value,
+  //   assigned: newAssigned,
+  //   duedate: date_field.value,
+  //   prio: selectedPriority,
+  //   category: select_category_field.value,
+  //   subtask: addedSubtasks,
+  // });
+  await setItem("addedTasks", JSON.stringify(addedTasks));
+  createTaskMessage();
+  setTimeout(() => {
+    window.location.href = "board.html";
+  }, 3000);
+}
+
+async function pushToJSON(setNewTask, selectedPriority) {
+  addedTasks.push({
+    id: setNewTask,
+    bucket: "to-do",
+    title: enter_title_field.value,
+    description: enter_description_field.value,
+    assigned: newAssigned,
+    duedate: date_field.value,
+    prio: selectedPriority,
+    category: select_category_field.value,
+    subtask: addedSubtasks,
+  });
+}
+
 function createTaskMessage() {
-  let taskMessage = document.getElementById("sending_confirmation");  
+  let taskMessage = document.getElementById("sending_confirmation");
   taskMessage.classList.add("animate-message");
+}
+
+function createNewTaskID() {
+  let newTaskID;
+  if (addedTasks.length !== 0) {
+    newTaskID = addedTasks.length;
+  } else {
+    newTaskID = 0;
+  }
+  return newTaskID;
 }

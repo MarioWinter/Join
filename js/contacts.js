@@ -259,11 +259,39 @@ function showContactDetails(selectedIndex) {
   let contactDetails = document.getElementById("show_contact_details");
 
   if (isActive) {
-    deactivateContactDetails(contact);
+    deactivateContactDetails(contact);    
   } else if (contact) {
-    activateDetailAndDisplay(selectedIndex, contact);
+    activateDetailAndDisplay(selectedIndex, contact);    
+    if (window.innerWidth < 851) {
+      showResponsiveContactDetails();
+      showResponsiveArrowBack()
+    }
   }
 }
+
+
+// shows contact details by hiding main contact list 
+function showResponsiveContactDetails() {
+  document.getElementById('add_new_contact_main').classList.add('d-none');
+  document.getElementById('contacts_container_right').classList.remove('d-none');
+  document.getElementById('handle_resp_contact_icon').classList.add('d-none');
+  document.getElementById('handle_resp_edit_delete_icon').classList.remove('d-none');
+}
+
+// displays the back arrow for responsive navigation
+function showResponsiveArrowBack() {
+  document.getElementById('resp_arrow_back').classList.remove('d-none');
+}
+
+// closes contact details view and return to main contact list
+function closeResponsiveDetails() {
+  document.getElementById('resp_arrow_back').classList.add('d-none');
+  document.getElementById('contacts_container_right').classList.add('d-none');
+  document.getElementById('add_new_contact_main').classList.remove('d-none');
+  document.getElementById('handle_resp_edit_delete_icon').classList.add('d-none');
+  document.getElementById('handle_resp_contact_icon').classList.remove('d-none');
+}
+
 
 
 // activates contact details and displays them

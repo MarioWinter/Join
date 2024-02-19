@@ -1,12 +1,14 @@
-.contacts-main {
-  background-color: var(--primary-light-grey);
+main {
   width: 100%;
-  height: calc(100% - 9.6rem);
+}
+
+.contacts-main {
+  width: 100%;
+  /* height: calc(100% - 9.6rem); */
   display: flex;
   padding-left: 23.2rem;
   overflow-x: hidden;
 }
-
 
 *::-webkit-scrollbar {
   width: 16px;
@@ -24,15 +26,11 @@
 
 /* left hand side contact list  */
 
-
-
-
-
 .add-new-contact-main {
-  padding-left: 3.6rem;
+  /* padding-left: 3.6rem; */
   display: flex;
   justify-content: center;
-  width: 45.6rem;
+  /* width: 45.6rem; */
   overflow-y: auto;
   flex-shrink: 0;
   background: #fff;
@@ -132,9 +130,7 @@ text {
   font-size: 1.6rem;
 }
 
-
 /* right hand side top  */
-
 
 .contacts-container-right {
   display: flex;
@@ -170,18 +166,7 @@ text {
   line-height: 120%; /* 32.4px */
 }
 
-
-
-
-
-
-
-
-
-
-
 /* overlay */
-
 
 /* overlay-add-contact */
 .overlay-add-contact {
@@ -272,12 +257,11 @@ text {
 }
 
 .overlay-close {
-  display: flex;
+  display: block;
+  position: relative;
   width: 3.2rem;
   height: 3.2rem;
   padding: 0.4rem;
-  justify-content: center;
-  align-items: center;
   flex-shrink: 0;
   border-radius: 5.6rem;
   padding-left: 66.5rem;
@@ -401,11 +385,7 @@ input {
   position: absolute;
 }
 
-
-
 /* right hand side center  */
-
-
 
 /* show-contact-details */
 .show-contact-details {
@@ -569,7 +549,6 @@ input {
   cursor: pointer;
 }
 
-
 /* display/show contact succesfull message */
 
 .contact-succesfully-created {
@@ -592,4 +571,331 @@ input {
 
 .hidden {
   display: none;
+}
+
+.resp-arrow-back {
+  display: block;
+  padding-right: 1.6rem;    
+  right: 16px;
+  position: fixed;
+  cursor: pointer;      
+}
+
+.responsive-arrow-back:hover {
+  border-radius: 20px;
+  background-color: rgb(223, 221, 221);
+}
+
+/* contacts mobile view  */
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 0.5em;
+  }
+
+  .contacts-main {
+    width: 100%;
+  }
+
+  .contacts-container-right {
+    padding-left: 4.5rem;
+  }
+
+  .edit-container {
+    gap: 2rem;
+  }
+
+  .edit-text {
+    font-size: 2rem;
+  }
+
+  .edit-contacts {
+    gap: 1.2rem;
+  }
+
+  .delete-container {
+    gap: 1.2rem;
+  }
+
+  .delete-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1055px) {
+  .contacts-letter {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 0.425em;
+  }
+
+  .add-new-contact-main {
+    height: 93vh;
+    padding-left: 3rem;
+  }
+
+  #contact_container {
+    width: 100%;
+  }
+
+  .contact-gray {
+    border-radius: 9rem;
+  }
+
+  .edit-text {
+    font-size: 2.5rem !important;
+  }
+
+  .edit-contacts {
+    gap: 2rem;
+  }
+
+  .delete-container {
+    gap: 2rem;
+  }
+
+  .delete-text {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 950px) {
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 0.4em;
+  }
+
+  .edit-text {
+    font-size: 2rem;
+  }
+
+  .edit-contacts {
+    gap: 2rem;
+  }
+
+  .delete-container {
+    gap: 2rem;
+  }
+
+  .delete-text {
+    font-size: 2rem;
+  }
+
+  .contact-name {
+    font-size: 2rem;
+  }
+
+  .contact-mail {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .contacts-container-right {
+    /* display: none;     */
+    width: 100%;
+    height: 91vh;
+  }
+
+  .add-new-contact-main {
+    width: 83vw;
+    padding-left: 0;
+    padding-right: 10px;
+    height: 95vh;
+  }
+
+  .contact-list {
+    width: 100%;
+  }
+
+  .primary-contact {
+    width: 100%;
+    font-size: 3rem;
+  }
+
+  .contact-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .contact-name {
+    font-size: 2.5rem;
+  }
+
+  .contact-mail {
+    font-size: 1.9rem;
+  }
+
+  .contacts-better-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 120px;
+    gap: 1.6rem;
+  }
+
+  .vector-line {
+    display: none;
+  }
+
+  .horizontal-vector-line {
+    display: flex !important;
+    height: 3px;
+    width: 70px;
+    border: 3px;
+    background-color: #29abe2;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  html {
+    font-size: 0.4715em;
+  }
+
+  .contacts-main {
+    padding-left: 0;
+    height: auto;
+  }
+
+  .contact-list {
+    padding-top: 3.2rem;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  .add-new-contact-main {
+    width: 100%;
+    height: 91vh;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .primary-contact {
+    display: none;
+  }
+
+  .handle-resp-contact-container,
+  .handle-resp-edit-delete-container {
+    display: block !important;
+    padding-right: 1.6rem;
+    height: 9rem;
+    right: 16px;
+    position: fixed;
+    bottom: 8rem;
+  }
+
+  .resp-contact-icon,
+  .resp-handle-icon {
+    display: flex;
+    border-radius: 5rem;
+    padding: 1.3rem;
+    width: 7rem;
+    height: 7rem;
+    cursor: pointer;
+    background-color: #2a3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .resp-contact-icon:hover,
+  .resp-handle-icon:hover {
+    background-color: #29abe2;
+  }
+
+  .add-contact-overlay-icon {
+    display: none;
+  }
+
+  .overlay-add-contact {
+    /* background-color: rgb(243, 242, 242); */
+    display: block;
+    width: 396px;
+    height: 760px;
+  }
+
+  .overlay-container-left {
+    display: flex;
+    width: 396px;
+    height: 352px;
+    padding-left: 24px !important;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3rem;
+  }
+
+  .overlay-container-right {
+    width: 396px;
+  }
+
+  .overlay-close {
+    content: url("../img/cancel-white.svg");
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 6rem;
+  }
+
+  .overlay-close:hover {
+    content: url("../img/cancel-lightblue.svg");
+  }
+
+  .overlay-contact-circle {
+    position: fixed;
+    width: 55rem;
+    height: 0;
+  }
+
+  .contact-gray {
+    border-radius: 8rem;
+  }
+
+  .overlay-add-contact-container {
+    width: 396px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .overlay-input-data {
+    width: 100%;
+  }
+
+  .cancel-and-create-container {
+    width: 396px;
+    height: 130px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .overlay-cancel-button {
+    display: none;
+  }
+
+  .edit-container {
+    display: none;
+  }
+
+  .contact-icon-and-name {
+    gap: 20px;
+  }
+
+  .contact-information {
+    height: 24px;
+  }
+}
+
+@media (max-width: 535px) {
+  .contacts-container-right {
+    padding-left: 10px;
+    padding-top: 50px;
+    /* overflow-y: hidden !important;
+    overflow-x: hidden !important; */
+  }
 }
