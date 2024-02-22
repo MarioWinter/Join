@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="./css/add_task.css">
   <link rel="stylesheet" href="./css/sidebar-header_template.css">
   <link rel="stylesheet" href="./css/mobile-header-footer.css">
-
   <link rel="stylesheet" href="./css/add-task-slider.css">
   <link rel="stylesheet" href="./css/edit-board-slider.css">
 
@@ -27,14 +26,12 @@
   <script src="html.js"></script>
   <script src="./js/contacts.js"></script>
   <script src="./js/task-edit.js"></script>
-  <script src="./js/render-board.js"></script>
-  <!-- <script src="./js/add-task-slider.js"></script> -->
+  <script src="./js/render-board.js"></script>  
   <script src="./js/add_task.js"></script>
 
 </head>
 
 <body onload="includeHTML(), initAddTask()">
-
 
   <div class="w3include-container">
     <div w3-include-html="assets/templates/sidebar_template.html"></div>
@@ -44,8 +41,7 @@
         <div class="add-task-main-container">
           <div class="add-task-container">
             <div class="add-task-font">Add Task</div>
-            <div id="sending_confirmation" class="sending-confirmation">Task added to board <img
-                src="./img/added-task-to-board-icon.svg">
+            <div id="sending_confirmation" class="sending-confirmation">Task added to board <img class="confirmation-picture" src="./img/added-task-to-board-icon.svg">
             </div>
           </div>
           <form id="add_task_validation" onsubmit="createTask(); return false">
@@ -63,13 +59,10 @@
                 <div class="assigned-main">
                   <div class="assigned-field">Assigned to</div>
                   <div class="assigned-to-input-slider">
-                    <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
-                      placeholder="Select contacts to assign" autocomplete="off"
-                      onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', 10)">
-                    <img id="select-contacts_down" class="select-contacts-dropdown"
+                    <input id="et_select_contacts_search" class="assigned-to-slider" type="text" placeholder="Select contacts to assign" autocomplete="off"
+                      onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', 10)"><img id="select-contacts_down" class="select-contacts-dropdown"
                       src="./assets/img/arrow_drop_down.svg" alt="Select Contacts Button"
-                      onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
-                    <img id="select-contacts_up" class="select-contacts-dropdown d-none"
+                      onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')"><img id="select-contacts_up" class="select-contacts-dropdown d-none"
                       src="./assets/img/arrow_drop_up.svg" alt="Select Contacts Button"
                       onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
                   </div>
@@ -93,12 +86,9 @@
                 <div class="prio-container">
                   <div class="prio-field">Prio</div>
                   <div class="status-container">
-                    <div id="Urgent_container" onclick="changePrioColor('Urgent')" class="status-definition-container">
-                      Urgent <img id="Urgent_img" class="prio-images" src="./img/urgent.svg"></div>
-                    <div id="Medium_container" onclick="changePrioColor('Medium')" class="status-definition-container">
-                      Medium <img id="Medium_img" class="prio-images" src="./img/medium.svg"></div>
-                    <div id="Low_container" onclick="changePrioColor('Low')" class="status-definition-container">Low
-                      <img id="Low_img" class="prio-images" src="./img/low.svg"></div>
+                    <div id="Urgent_container" onclick="changePrioColor('Urgent')" class="status-definition-container">Urgent<img id="Urgent_img" class="prio-images" src="./img/urgent.svg"></div>
+                    <div id="Medium_container" onclick="changePrioColor('Medium')" class="status-definition-container">Medium<img id="Medium_img" class="prio-images" src="./img/medium.svg"></div>
+                    <div id="Low_container" onclick="changePrioColor('Low')" class="status-definition-container">Low<img id="Low_img" class="prio-images" src="./img/low.svg"></div>
                   </div>
                 </div>
                 <div class="category-container">
@@ -112,16 +102,11 @@
                 <div class="subtask-container">
                   <div class="subtask-field">Subtask</div>
                   <div class="adding-new-subtask">
-                    <input onclick="handleSubtaskActions()" class="subtask-entry-field" id="add_new_subtask_field"
-                      placeholder="Add new subtask">
-                    <img id="normal_subtask_icon" class="normal-subtask-icon"
-                      onclick="changingSubtaskIcons(), handleSubtaskActions()" src="./img/add-task-plus.svg">
+                     <input onclick="handleSubtaskActions()" class="subtask-entry-field" id="add_new_subtask_field" placeholder="Add new subtask">
+                      <img id="normal_subtask_icon" class="normal-subtask-icon" onclick="changingSubtaskIcons(), handleSubtaskActions()" src="./img/add-task-plus.svg">
                     <div id="three_subtask_icons" class="three-subtask-icons d-none">
-                      <img id="adding_subtask_icon-c" class="subtask-icons" src="./img/cancel.svg"
-                        onclick="closeSubtaskIcons()">
-                      <img src="./img/vector-line.svg">
-                      <img id="adding_subtask_icon-ok" class="subtask-icons" onclick="displaySubtasks()"
-                        src="./img/check-dark.svg">
+                      <img id="adding_subtask_icon-c" class="subtask-icons" src="./img/cancel.svg" onclick="closeSubtaskIcons()"><img src="./img/vector-line.svg">
+                      <img id="adding_subtask_icon-ok" class="subtask-icons" onclick="displaySubtasks()" src="./img/check-dark.svg">
                     </div>
                   </div>
                   <div id="subtask_display_container" class="subtask-display"></div>

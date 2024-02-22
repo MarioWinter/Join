@@ -2,7 +2,6 @@ let selectedContactIndex = null;
 let colorIndex = 0;
 let isEditing = false;
 
-
 let contactsData = [
   {
     name: "Anton Meyer",
@@ -67,23 +66,19 @@ let contactCircleColors = [
 
 loadCurrentUser();
 
-
 // initailizes the contacts and loads user data
 async function initContacts() {
   await loadUsers();
   loadCurrentUser();
   includeHTML();
   sortContactsAlphabetically(users);
-  // sortContactsAlphabetically(contactsData);
   renderDifferentContacts();
 }
-
 
 // function for sorting contacts alphabetically
 function sortContactsAlphabetically(contacts) {
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
-
 
 // renders the contact view
 function renderContacts() {
@@ -93,12 +88,11 @@ function renderContacts() {
 
   let editLinks = document.getElementsByClassName("edit-text");
   for (let i = 0; i < editLinks.length; i++) {
-    editLinks[i].addEventListener("click", function() {
+    editLinks[i].addEventListener("click", function () {
       editContacts(i);
     });
   }
 }
-
 
 // renders the contacts based on the users login status
 function renderDifferentContacts() {
@@ -109,11 +103,10 @@ function renderDifferentContacts() {
   }
 }
 
-
 // generates html for logged contacts including initials
 function renderLoggedContactsHTML() {
   let alphabetLetters = {};
-  let contactsHTML = "";  
+  let contactsHTML = "";
   users.forEach((contact, index) => {
     let initials = getInitials(contact.name);
     let firstLetter = initials.charAt(0).toUpperCase();
@@ -128,15 +121,13 @@ function renderLoggedContactsHTML() {
   return contactsHTML;
 }
 
-
-// generates firstletter html for the contact initials 
+// generates firstletter html for the contact initials
 function generateAlphabetHTML(firstLetter) {
   return `
     <div class="alphabet" id="alphabet-${firstLetter}">${firstLetter}</div>  
     <div class="alphabet-vector-line"></div>
   `;
 }
-
 
 // renders contacts for logged in users
 function renderLoggedContacts() {
@@ -152,10 +143,9 @@ function renderLoggedContacts() {
   }
 }
 
-
 // generates html for all contacts
 function generateContactsHTML() {
-  let contactsHTML = "";  
+  let contactsHTML = "";
   contactsData.forEach((contact, index) => {
     let initials = getInitials(contact.name);
     let firstLetter = initials.charAt(0).toUpperCase();
@@ -170,7 +160,6 @@ function generateContactsHTML() {
   return contactsHTML;
 }
 
-
 // Creates html for alphabet section
 function createAlphabetHTML(firstLetter) {
   return `
@@ -178,7 +167,6 @@ function createAlphabetHTML(firstLetter) {
     <div class="alphabet-vector-line"></div>
   `;
 }
-
 
 // generates html for an individual contact
 function generateContactHTML(contact, initials, circleColor, index) {
@@ -198,6 +186,14 @@ function generateContactHTML(contact, initials, circleColor, index) {
     `;
 }
 
+// gets the current user contact at specified index
+function getCurrentUserContact(index) {
+  if (currentUser >= 0) {
+    return users[index];
+  } else {
+    return contactsData[index];
+  }
+}
 
 // removes "active-style" from a contact
 function removeActiveContactStyles(contact) {
@@ -207,15 +203,13 @@ function removeActiveContactStyles(contact) {
   nameElement.style.color = "";
 }
 
-
 // activates "clicked-style" for a selected contact
 function activateContactStyles(contact) {
-  contact.classList.add("active-contact");
   contact.style.backgroundColor = "#2a3647";
+  contact.classList.add("active-contact");
   let nameElement = contact.getElementsByClassName("contact-name")[0];
   nameElement.style.color = "white";
 }
-
 
 // deactivates styles for all contacts
 function deactivateAllContacts() {
@@ -227,17 +221,6 @@ function deactivateAllContacts() {
     }
   }
 }
-
-
-// gets the current user contact at specified index
-function getCurrentUserContact(index) {
-  if (currentUser >= 0) {
-    return users[index];
-  } else {
-    return contactsData[index];
-  }
-}
-
 
 // updates contact details in the overlay
 function updateContactDetails(selectedContact, circleColor, contactInitials) {
@@ -251,7 +234,6 @@ function updateContactDetails(selectedContact, circleColor, contactInitials) {
   contactDetails.classList.add("show");
 }
 
-
 // shows contact details container
 function showContactDetails(selectedIndex) {
   let contact = document.getElementById(`contact-${selectedIndex}`);
@@ -259,47 +241,62 @@ function showContactDetails(selectedIndex) {
   let contactDetails = document.getElementById("show_contact_details");
 
   if (isActive) {
-    deactivateContactDetails(contact);    
+    deactivateContactDetails(contact);
   } else if (contact) {
-    activateDetailAndDisplay(selectedIndex, contact);    
+    activateDetailAndDisplay(selectedIndex, contact);
     if (window.innerWidth < 851) {
       showResponsiveContactDetails();
-      showResponsiveArrowBack()
+      showResponsiveArrowBack();
+      hideResponsiveEditMenu();
     }
   }
 }
 
-
-// shows contact details by hiding main contact list 
+// shows contact details by hiding main contact list
 function showResponsiveContactDetails() {
-  document.getElementById('add_new_contact_main').classList.add('d-none');
-  document.getElementById('contacts_container_right').classList.remove('d-none');
-  document.getElementById('handle_resp_contact_icon').classList.add('d-none');
-  document.getElementById('handle_resp_edit_delete_icon').classList.remove('d-none');
+  document.getElementById("add_new_contact_main").classList.add("d-none");
+  let contactsContainerRight = document.getElementById(
+    "contacts_container_right"
+  );
+
+  if (contactsContainerRight) {
+    contactsContainerRight.style.display = "flex";
+  }
+  document.getElementById("handle_resp_contact_icon").classList.add("d-none");
+  document
+    .getElementById("handle_resp_menu_icon")
+    .classList.remove("d-none");
 }
 
 // displays the back arrow for responsive navigation
 function showResponsiveArrowBack() {
-  document.getElementById('resp_arrow_back').classList.remove('d-none');
+  document.getElementById("resp_arrow_back").classList.remove("d-none");
 }
 
 // closes contact details view and return to main contact list
 function closeResponsiveDetails() {
-  document.getElementById('resp_arrow_back').classList.add('d-none');
-  document.getElementById('contacts_container_right').classList.add('d-none');
-  document.getElementById('add_new_contact_main').classList.remove('d-none');
-  document.getElementById('handle_resp_edit_delete_icon').classList.add('d-none');
-  document.getElementById('handle_resp_contact_icon').classList.remove('d-none');
+  let contactsContainerRight = document.getElementById(
+    "contacts_container_right"
+  );
+
+  if (contactsContainerRight) {
+    contactsContainerRight.style.display = "none";
+  }
+  helpForClosingResponsiveDetails();
+  deactivateAllContacts();
 }
 
-
+function helpForClosingResponsiveDetails() {
+  document.getElementById("resp_arrow_back").classList.add("d-none");
+  document.getElementById("add_new_contact_main").classList.remove("d-none");
+  document.getElementById("handle_resp_menu_icon").classList.add("d-none");
+  document.getElementById("handle_resp_contact_icon").classList.remove("d-none");
+}
 
 // activates contact details and displays them
 function activateDetailAndDisplay(selectedIndex, contact) {
   activateContactDetails(contact);
-  let circleColor = contact
-    .querySelector(".contact-circle > svg > circle")
-    .getAttribute("fill");
+  let circleColor = contact.querySelector(".contact-circle > svg > circle").getAttribute("fill");
   let selectedContact = getCurrentUserContact(selectedIndex);
   let contactInitials = getInitials(selectedContact.name);
   let contactDetails = document.getElementById("show_contact_details");
@@ -308,20 +305,17 @@ function activateDetailAndDisplay(selectedIndex, contact) {
   }
 }
 
-
 // deactivates contact details
 function deactivateContactDetails(contact) {
   removeActiveContactStyles(contact);
-    hideContactDetails();
+  hideContactDetails();
 }
-
 
 // activates contact details by applying styles and deactivating other contacts
 function activateContactDetails(contact) {
   deactivateAllContacts();
   activateContactStyles(contact);
 }
-
 
 // shows contact details with specified information
 function displayContactDetails(selectedIndex, circleColor, contactInitials) {
@@ -331,6 +325,11 @@ function displayContactDetails(selectedIndex, circleColor, contactInitials) {
   contactDetails.classList.add("show");
 }
 
+// hides the contact details container
+function hideContactDetails() {
+  let contactDetails = document.getElementById("show_contact_details");
+  contactDetails.classList.remove("show");
+}
 
 // creates html for clicked/selected contact details
 function createContactDetailsHTML(index, circleColor, contactInitials) {
@@ -386,14 +385,6 @@ function createContactDetailsHTML(index, circleColor, contactInitials) {
   `;
 }
 
-
-// hides the contact details container
-function hideContactDetails() {
-  let contactDetails = document.getElementById("show_contact_details");
-  contactDetails.classList.remove("show");
-}
-
-
 // gets the both initials of a name
 function getInitials(name) {
   let parts = name.split(" ");
@@ -403,7 +394,6 @@ function getInitials(name) {
   });
   return initials;
 }
-
 
 // edits the selected contact
 function editContacts(index) {
@@ -419,9 +409,9 @@ function editContacts(index) {
   updateContactDetails(index, originalCircleColor, initials);
   generateOverlayContactCircle(originalCircleColor, initials);
   updateContactInputs(contact);
-  setSaveButtonFunction(index);  
+  setSaveButtonFunction(index);
+  hideResponsiveEditMenu();
 }
-
 
 // updates the contact details after editing
 function updateContact(index) {
@@ -432,24 +422,22 @@ function updateContact(index) {
   contact.email = document.getElementById("contact_Email").value;
   contact.phone = document.getElementById("contact_Phone").value;
 
-  if (currentUser >= 0) {    
+  if (currentUser >= 0) {
     sortContactsAlphabetically(users);
     setItem("users", JSON.stringify(users));
-  } else {    
+  } else {
     sortContactsAlphabetically(contactsData);
   }
   finalizeContactUpdate();
 }
 
-
-// perform additional actions 
+// perform additional actions
 function finalizeContactUpdate() {
   hideContactDetails();
   cancelOverlay();
-  clearEntrys();  
+  clearEntrys();
   renderDifferentContacts();
 }
-
 
 // function for adding a new contact
 async function addNewContact(event) {
@@ -461,17 +449,16 @@ async function addNewContact(event) {
     bgcolor: getRandomColor(),
   };
   let index;
-  if (currentUser >= 0) {    
+  if (currentUser >= 0) {
     index = findInsertIndex(newContact.name, users);
     users.splice(index, 0, newContact);
     await setItem("users", JSON.stringify(users));
-  } else {    
+  } else {
     index = findInsertIndex(newContact.name, contactsData);
     contactsData.splice(index, 0, newContact);
-  }  
+  }
   handleNewContact(index);
 }
-
 
 // handles: clear inputs, cancel overlay, show success, render contacts, and display details.
 function handleNewContact(index) {
@@ -482,7 +469,6 @@ function handleNewContact(index) {
   showContactDetails(index);
 }
 
-
 // finds index of new contact and placed in contact list
 function findInsertIndex(newContactName, contactList) {
   let index = contactList.findIndex(
@@ -490,7 +476,6 @@ function findInsertIndex(newContactName, contactList) {
   );
   return index !== -1 ? index : contactList.length;
 }
-
 
 // adds a new user
 function addUser() {
@@ -504,7 +489,6 @@ function addUser() {
   renderDifferentContacts();
 }
 
-
 // adds new contact data
 function addContactsData() {
   contactsData.push({
@@ -516,22 +500,21 @@ function addContactsData() {
   renderDifferentContacts();
 }
 
-
 // function for permanently deleting contact
 async function deleteContact(index) {
   if (currentUser >= 0) {
-    users.splice(index, 1);    
+    users.splice(index, 1);
     await setItem("users", JSON.stringify(users));
   } else {
-    contactsData.splice(index, 1);    
-  }  
+    contactsData.splice(index, 1);
+  }
   let contactDetails = document.getElementById("show_contact_details");
   if (contactDetails.classList.contains("show")) {
     hideContactDetails();
-  }  
+  }
   renderDifferentContacts();
+  hideResponsiveEditMenu();
 }
-
 
 // function for display/show and hide success message
 function showSuccessMessage() {
@@ -542,7 +525,7 @@ function showSuccessMessage() {
 
   setTimeout(() => {
     successMessage.style.opacity = 0;
-    successMessage.style.transform = "translateX(100%)";    
+    successMessage.style.transform = "translateX(100%)";
   }, 2000);
 
   setTimeout(() => {
@@ -551,12 +534,31 @@ function showSuccessMessage() {
 }
 
 
+function hideResponsiveEditMenu() {
+  let editOrDelete = document.getElementById('edit_container'); 
+  let responsiveContactsMenu = document.getElementById('handle_resp_menu_icon');   
+  editOrDelete.classList.add('d-none');      
+  responsiveContactsMenu.classList.remove('d-none');
+}
+
+
+
+function showResponsiveEditMenu() {  
+  let responsiveContactsMenu = document.getElementById('handle_resp_menu_icon');  
+  let editOrDelete = document.getElementById('edit_container');
+  responsiveContactsMenu.classList.add('d-none');    
+  editOrDelete.classList.remove('d-none');
+}
+
+
+
+
+
+
+
 
 
 // overlay functions...
-
-
-
 
 // shows the overlay view for editing or adding new contact
 function showOverlay(isEdit) {
@@ -568,9 +570,8 @@ function showOverlay(isEdit) {
   setTimeout(() => {
     addNewContact.classList.add("show");
   }, 100);
-  cancelOverlay()
+  cancelOverlay();
 }
-
 
 // fucntion to check overlay current state
 function cancelOverlay() {
@@ -605,7 +606,6 @@ function handleOverlay() {
   overlay.classList.remove("close");
   overlay.classList.add("show");
 }
-
 
 // updates the content of the overlay view based on editing or adding new contact
 function updateOverlayContent(isEdit) {
@@ -686,16 +686,6 @@ function getOverlayContactCircleHTML() {
     <img id="contact_person_white" class="contact-person-white" src="./img/person-white.svg"/>
   </div>`;
 }
-
-// changes the image on hover for ovelay close
-// function changeImageOnHover(isHover) {
-//   let closeImage = document.querySelector(".oyerlay-close-img");
-//   if (isHover) {
-//     closeImage.src = "./img/cancel-white.svg";
-//   } else {
-//     closeImage.src = "./img/cancel.svg";
-//   }
-// }
 
 // clears the input fields in the add new contact overlay
 function clearEntrys() {

@@ -1,6 +1,6 @@
 let addedSubtasks = [];
 let newAssigned = [];
-// let addedTasks = [];
+
 
 async function initAddTask() {
   await loadUsers();
@@ -20,31 +20,15 @@ async function loadAddedTasks() {
 }
 
 // changes the color of priority area based on interaction
-// function changePrioColor(prio) {
-//   resetContainers();
-//   let container = document.getElementById(`${prio}_container`);
-//   let img = document.getElementById(`${prio}_img`);
-//   container.classList.add("selected");
-//   let color = determinePrioBackgroundColor(prio);
-//   container.style.backgroundColor = color;
-//   container.style.color = "white";
-//   img.src = `./img/${prio}-white.svg`;
-// }
-
 function changePrioColor(prio) {
   resetContainers();
   let container = document.getElementById(`${prio}_container`);
   let img = document.getElementById(`${prio}_img`);
-
-  if (container && img) {
-      container.classList.add("selected");
-      let color = determinePrioBackgroundColor(prio);
-      container.style.backgroundColor = color;
-      container.style.color = "white";
-      img.src = `./img/${prio}-white.svg`;
-  } else {
-      console.error(`Container or image not found for prio: ${prio}`);
-  }
+  container.classList.add("selected");
+  let color = determinePrioBackgroundColor(prio);
+  container.style.backgroundColor = color;
+  container.style.color = "white";
+  img.src = `./img/${prio}-white.svg`;
 }
 
 
@@ -228,8 +212,7 @@ function renderAddedSubtasks() {
   let subtaskContainer = document.getElementById("subtask_display_container");
   subtaskContainer.innerHTML = "";
   for (let i = 0; i < addedSubtasks.length; i++) {
-    let subtask = addedSubtasks[i].subtitle;
-    // let subtaskDiv = createAddedSubtask(subtask, i);
+    let subtask = addedSubtasks[i].subtitle;    
     subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);
     console.log(subtask); } 
   subtaskContainer.classList.remove("d-none");
@@ -301,7 +284,7 @@ function clearAllFields() {
   closeSubtaskIcons();
   document.getElementById("subtask_display_container").innerHTML = "";
   addedSubtasks = [];
-  changePrioColor("medium");
+  changePrioColor("Medium");
 }
 
 // clears input fields left side
@@ -335,42 +318,18 @@ function checkIfSendingIsPossible() {
 
   function checkInputs() {
     if (
-      titleField.value.trim().length > 0 &&
-      dateField.value.trim().length > 0 &&
-      categoryField.value.trim().length > 0
+      titleField.value.trim().length > 0 && dateField.value.trim().length > 0 && categoryField.value.trim().length > 0
     ) {
       createTaskButton.disabled = false;
     } else {
       createTaskButton.disabled = true;
     }
   }
-
     titleField.addEventListener("input", checkInputs);
     dateField.addEventListener("input", checkInputs);
     categoryField.addEventListener("input", checkInputs);
 }
 
-// function validateForm() {
-//   let subtasksContainer = document.getElementById("subtask_display_container");
-//   let subtasks = subtasksContainer.getElementsByClassName("added-subtask");
-
-//   if (subtasks.length === 0 || isSubtasksEmpty(subtasks).length > 0) {
-//     return false;
-//   }
-//   return true;
-// }
-
-// function isSubtasksEmpty(subtasks) {
-//   let results = [];
-
-//   for (let i = 0; i < subtasks.length; i++) {
-//     let inputField = subtasks[i].querySelector(".subtask-input");
-//     if (inputField && inputField.value.trim().length === 0) {
-//       results.push(inputField.value.trim());
-//     }
-//   }
-//   return results;
-// }
 
 function getSelectedPriority() {
   let priorityContainers = document.getElementsByClassName(
@@ -386,18 +345,7 @@ function getSelectedPriority() {
 async function createTask() {
   let setNewTask = createNewTaskID();
   let selectedPriority = getSelectedPriority();
-  await pushToJSON(setNewTask, selectedPriority);
-  // addedTasks.push({
-  //   id: setNewTask,
-  //   bucket: "to-do",
-  //   title: enter_title_field.value,
-  //   description: enter_description_field.value,
-  //   assigned: newAssigned,
-  //   duedate: date_field.value,
-  //   prio: selectedPriority,
-  //   category: select_category_field.value,
-  //   subtask: addedSubtasks,
-  // });
+  await pushToJSON(setNewTask, selectedPriority);  
   await setItem("addedTasks", JSON.stringify(addedTasks));
   createTaskMessage();
   setTimeout(() => {
