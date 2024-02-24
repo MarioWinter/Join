@@ -657,7 +657,11 @@ select.minimal .placeholder {
   }
 
   .clear-and-create-area {
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .required-advise {
+    justify-content: center;
   }
 }
 

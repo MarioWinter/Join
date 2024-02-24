@@ -291,6 +291,7 @@ function helpForClosingResponsiveDetails() {
   document.getElementById("add_new_contact_main").classList.remove("d-none");
   document.getElementById("handle_resp_menu_icon").classList.add("d-none");
   document.getElementById("handle_resp_contact_icon").classList.remove("d-none");
+  document.getElementById('resp_edit_container').classList.add('d-none');
 }
 
 // activates contact details and displays them
@@ -410,7 +411,7 @@ function editContacts(index) {
   generateOverlayContactCircle(originalCircleColor, initials);
   updateContactInputs(contact);
   setSaveButtonFunction(index);
-  hideResponsiveEditMenu();
+  hideResponsiveEditMenu();  
 }
 
 // updates the contact details after editing
@@ -535,7 +536,7 @@ function showSuccessMessage() {
 
 
 function hideResponsiveEditMenu() {
-  let editOrDelete = document.getElementById('edit_container'); 
+  let editOrDelete = document.getElementById('resp_edit_container'); 
   let responsiveContactsMenu = document.getElementById('handle_resp_menu_icon');   
   editOrDelete.classList.add('d-none');      
   responsiveContactsMenu.classList.remove('d-none');
@@ -543,9 +544,9 @@ function hideResponsiveEditMenu() {
 
 
 
-function showResponsiveEditMenu() {  
+function showResponsiveEditMenu() {    
   let responsiveContactsMenu = document.getElementById('handle_resp_menu_icon');  
-  let editOrDelete = document.getElementById('edit_container');
+  let editOrDelete = document.getElementById('resp_edit_container');
   responsiveContactsMenu.classList.add('d-none');    
   editOrDelete.classList.remove('d-none');
 }
@@ -561,9 +562,10 @@ function showResponsiveEditMenu() {
 // overlay functions...
 
 // shows the overlay view for editing or adding new contact
-function showOverlay(isEdit) {
+function showOverlay(isEdit) {  
   updateOverlayContent(isEdit);
   updateOverlayButtons(isEdit);
+  handleResponsiveEditing();
 
   let addNewContact = document.getElementById("add_new_contact");
   addNewContact.classList.remove("d-none");
@@ -572,6 +574,24 @@ function showOverlay(isEdit) {
   }, 100);
   cancelOverlay();
 }
+
+function handleResponsiveEditing() {
+  let responsiveAddNewIcon = document.getElementById('handle_resp_contact_container');
+  let responsiveMenuIcon = document.getElementById('handle_resp_menu_container');
+  responsiveAddNewIcon.style.setProperty("display", "none", "important");
+  responsiveMenuIcon.style.setProperty("display", "none", "important");
+}
+
+function revertResponsiveEditing() {
+  let responsiveAddNewIcon = document.getElementById('handle_resp_contact_container');
+  let responsiveMenuIcon = document.getElementById('handle_resp_menu_container');
+
+  // Setze display wieder auf block oder entferne die Eigenschaft, falls die Standard-CSS-Klassen dies steuern sollen
+  responsiveAddNewIcon.style.setProperty("display", "block", "important");
+  responsiveMenuIcon.style.setProperty("display", "block", "important");  
+}
+
+
 
 // fucntion to check overlay current state
 function cancelOverlay() {
@@ -590,6 +610,7 @@ function closeOverlay() {
   overlay.classList.add("close");
 
   setTimeout(() => {
+    revertResponsiveEditing();
     hideAddNewContact();
     resetOverlayContactCircle();
     setTimeout(() => {
@@ -631,9 +652,7 @@ function updateOverlayContent(isEdit) {
 // updates the buttons in the overlay view based on editing or adding a new contact
 function updateOverlayButtons(isEdit) {
   let overlayCancelButton = document.getElementById("overlay_cancel_button");
-  let overlayCreateButton = document.getElementById(
-    "overlay_create_contact_button"
-  );
+  let overlayCreateButton = document.getElementById("overlay_create_contact_button");
 
   if (isEdit) {
     setEditButtons(overlayCancelButton, overlayCreateButton);
@@ -718,9 +737,7 @@ function generateOverlayContactCircle(color, initials) {
 
 // sets the save button function for editing
 function setSaveButtonFunction(index) {
-  let overlayCreateButton = document.getElementById(
-    "overlay_create_contact_button"
-  );
+  let overlayCreateButton = document.getElementById("overlay_create_contact_button");
   overlayCreateButton.innerHTML = "Save <img src='./img/overlay-ok.svg'/>";
   overlayCreateButton.onclick = function () {
     updateContact(index);
