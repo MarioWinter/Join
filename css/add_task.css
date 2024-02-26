@@ -162,7 +162,6 @@
 }
 
 .date-entry-container {
-  display: flex;
   padding: 1.2rem 1.6rem;
   align-self: stretch;
   border-radius: 1rem;
@@ -478,9 +477,7 @@ select.minimal .placeholder {
   height: 7.4rem;
   border-radius: 2rem;
   font-size: 2rem;
-  opacity: 0;
-
-  /* transition: opacity 0.3s ease, transform 0.3s ease-in-out;  */
+  opacity: 0;  
 }
 
 .animate-message {
@@ -557,8 +554,7 @@ select.minimal .placeholder {
   .required-advise {
     align-items: center;
     display: flex;
-    padding-top: 0;
-    /* font-size: 1.6rem; */
+    padding-top: 0;    
   }
 
   .category-container {
@@ -645,6 +641,11 @@ select.minimal .placeholder {
   .sending-confirmation {
     height: 5rem;
     width: 23rem;
+    font-size: 1.5rem;
+  }
+
+  .confirmation-picture {
+    width: 20px;  
   }
 }
 
@@ -655,7 +656,11 @@ select.minimal .placeholder {
   }
 
   .clear-and-create-area {
-    justify-content: space-between;
+    justify-content: center;
+  }
+
+  .required-advise {
+    justify-content: center;
   }
 }
 

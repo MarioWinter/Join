@@ -1,16 +1,13 @@
-
 let users = [];
 let currentUser;
 
 let today = new Date();
 let hour = today.getHours();
 
-
-
-
-/*-------------------------------------
-Include HTML Templates (header/footer)
---------------------------------------*/
+/**
+ * Includes HTML Templates (header/footer) asynchronously.
+ * Fetches HTML files specified in elements with attribute 'w3-include-html' and inserts them into those elements.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
@@ -26,28 +23,28 @@ async function includeHTML() {
   checkPath();
 }
 
-
-
+/**
+ * Initializes summary page by loading users, setting current user, greeting user, loading added tasks, loading user badge, and rendering summary data.
+ */
 async function summaryInit() {
   await loadUsers();
   loadCurrentUser();
   greetUser();
   await loadAddedTasksFromStorage();
-  
   loadUserBadge();
   renderSummaryData();
 }
 
-
+/**
+ * Initializes the page by loading users and rendering the login window.
+ */
 async function init() {
   loadUsers();
   renderLogIn();
 }
 
 /**
- *
- * This Function render login window
- *
+ * Renders the login window.
  */
 function renderLogIn() {
   let log_container = document.getElementById("log_container");
@@ -56,11 +53,11 @@ function renderLogIn() {
   log_container.innerHTML += renderHtmlLogIn();
   showSignUpBtn();
 }
+
 /**
- * Function for render the Sign Up window
+ * Renders the Sign Up window.
  */
 function renderSignUp() {
-  
   let log_container = document.getElementById("log_container");
   log_container.innerHTML = "";
   log_container.classList.add("height-sing-up");
@@ -69,11 +66,10 @@ function renderSignUp() {
   hideSignUpBtn();
 }
 
-// sign up //
+// Sign up //
 
 /**
- * function for save user data in remoteStorage, first we push infos from register inputs in array "users",
- * then we send that to remoteStorage
+ * Registers a user if email doesn't exist in the users array.
  */
 async function registerUser() {
   let email = document.getElementById("sign_email").value;
@@ -81,32 +77,38 @@ async function registerUser() {
   if (isEmailExists(email)) {
     emailExist();
   } else {
-    
     userToRemoteStorage();
     successfulRegistration();
   }
 }
 
+/**
+ * Checks if the terms and conditions checkbox is checked to enable the register button.
+ */
 function ifChecked() {
   let checkedTrue = document.getElementById('sing-up-check');
   let registerBtn = document.getElementById('register_btn');
 
   if (checkedTrue.checked) {
     registerBtn.disabled = false;
-    registerBtn.classList.remove('reg-btn'); // Zurücksetzen der Hintergrundfarbe
+    registerBtn.classList.remove('reg-btn'); // Reset background color
   } else {
     registerBtn.disabled = true;
-    registerBtn.classList.add('reg-btn') // Setzen der Hintergrundfarbe auf Grau
+    registerBtn.classList.add('reg-btn'); // Set background color to gray
   }
 }
 
 /**
- * hidden function to clear RemoteStorage from any information
+ * Clears remote storage by resetting the users array.
  */
 async function clearRemoteSTRG() {
   users = [];
   await setItem("users", JSON.stringify(users));
 }
+
+/**
+ * Adds a user to the users array and stores it in remote storage.
+ */
 async function userToRemoteStorage() {
   users.push({
     name: sign_name.value,
@@ -118,6 +120,10 @@ async function userToRemoteStorage() {
   await setItem("users", JSON.stringify(users));
 }
 
+/**
+ * Generates a random color code.
+ * @returns {string} The generated color code.
+ */
 function getRandomColor() {
   let letters = '0123456789ABCDEF';
   let color = '#';
@@ -128,7 +134,7 @@ function getRandomColor() {
 }
 
 /**
- * Information that registration was successful and we will be redirected
+ * Displays a message indicating successful registration and redirects to login after a short delay.
  */
 function successfulRegistration() {
   const sing_up_container = document.getElementById('sing_up_container');
@@ -138,15 +144,18 @@ function successfulRegistration() {
     renderLogIn();
   }, 1000);
 }
+
 /**
- * 
-This function checks whether email exists in Array Users
+ * Checks if an email already exists in the users array.
+ * @param {string} email - The email to check.
+ * @returns {boolean} True if the email exists, false otherwise.
  */
 function isEmailExists(email) {
   return users.some((user) => user.email === email);
 }
-/**This function tells us that email is available
- * 
+
+/**
+ * Displays a message indicating that the email already exists.
  */
 function emailExist() {
   let messageElement = document.getElementById("message");
@@ -155,7 +164,7 @@ function emailExist() {
 }
 
 /**
- * This function load the users from remoteStorage to local array
+ * Loads users from remote storage to the local array.
  */
 async function loadUsers() {
   try {
@@ -166,7 +175,7 @@ async function loadUsers() {
 }
 
 /**
- * function to check out if password and confirm password are the same, if yes change button status to clickable.
+ * Checks if the password and confirm password fields match to enable the register button.
  */
 function checkPass() {
   if (
@@ -184,7 +193,7 @@ function checkPass() {
 }
 
 /**
- * This function reset  inputs fields from form
+ * Resets input fields in the registration form.
  */
 function resetForm() {
   document.getElementById("sign_name").value = "";
@@ -196,7 +205,7 @@ function resetForm() {
 // Log in //
 
 /**
- * The function checks whether all operations are fulfilled, if so the user is logged in
+ * Logs in the user if email and password match.
  */
 function logIn() {
   let email = document.getElementById('log_in_email').value;
@@ -208,28 +217,31 @@ function logIn() {
   }
   else {
     document.getElementById('log_message').innerText = 'Email or password not found';
-    document.getElementById('log_message').style = 'color: red'
+    document.getElementById('log_message').style = 'color: red';
   }
 }
+
 /**
- * This function searches for the index in the array users of specified "email",
- * if email is found the index is stored in localStorage
- 
+ * Finds the index of a user by email and stores it in local storage.
  */
 function indexOfUser(email) {
   let userIndex = users.findIndex(user => user.email === email);
   localStorage.setItem('currentUserIndex', userIndex);
 }
+
 /**
- * 
- This function checks whether the same email and password are in the array
+ * Validates user login by checking email and password.
+ * @param {string} email - The email entered by the user.
+ * @param {string} password - The password entered by the user.
+ * @returns {object|null} The user object if found, null otherwise.
  */
 function logInValidation(email, password) {
   let user = users.find(u => u.email == email && u.password == password);
   return user;
 }
+
 /**
- * This function tells us that the registration was successful. Then we will be redirected to the next website
+ * Displays a message indicating successful login and redirects to the summary page after a short delay.
  */
 function logInSuccedMsg() {
   document.getElementById('log_message').innerText = "Log in successful";
@@ -237,17 +249,18 @@ function logInSuccedMsg() {
     window.location.href = 'summary.html';
   }, 1000);
 }
+
 /**
- * This function loads the index number from localStorage, it is needed for further functions. so that the site knows who exactly is logged in
+ * Loads the current user index from local storage.
  */
 function loadCurrentUser() {
   currentUser = localStorage.getItem('currentUserIndex');
 }
+
 /**
- * The function uses the value of index to transfer from the array Users which user should be welcomed.
+ * Greets the user based on the current time and the current user.
  */
 function greetUser() {
-
   let greet = document.getElementById('user_name');
   i = currentUser;
   if (i >= 0) {
@@ -257,8 +270,9 @@ function greetUser() {
   }
   displayGreeting();
 }
+
 /**
- * This function is for guest registration. This sets the index to -1 so that if query in greetUser() does not come into effect. and the standard greeting is displayed
+ * Registers a guest user and redirects to the summary page.
  */
 function logInGuest() {
   window.location.href = 'summary.html';
@@ -266,8 +280,9 @@ function logInGuest() {
   localStorage.setItem('currentUserIndex', userIndex);
   document.getElementById('user_name') = 'Guest User';
 }
+
 /**
- * This function determines the time and depending on what hour it is, a greeting is displayed accordingly
+ * Displays a greeting based on the current time.
  */
 function displayGreeting() {
   let greeting;
@@ -283,6 +298,9 @@ function displayGreeting() {
   greetBox.textContent = greeting;
 }
 
+/**
+ * Hides the sign-up button on mobile devices.
+ */
 function hideSignUpBtn() {
   let width = document.documentElement.clientWidth;
   if (width < 500) {
@@ -290,11 +308,12 @@ function hideSignUpBtn() {
   }
 }
 
+/**
+ * Shows the sign-up button on mobile devices.
+ */
 function showSignUpBtn() {
   let width = document.documentElement.clientWidth;
   if (width < 500) {
     document.getElementById('sing_up_mobile').classList.remove('d-none');
   }
 }
-
-
