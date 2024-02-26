@@ -42,7 +42,7 @@
           <div class="add-task-container">
             <div class="add-task-font">Add Task</div>
             <div id="sending_confirmation" class="sending-confirmation">Task added to board <img
-                class="confirmation-picture" src="./img/added-task-to-board-icon.svg">
+                class="confirmation-picture" src="./assets/img/added-task-to-board-icon.svg">
             </div>
           </div>
           <form id="add_task_validation" onsubmit="createTask(); return false">
@@ -93,11 +93,11 @@
                   <div class="prio-field">Prio</div>
                   <div class="status-container">
                     <div id="Urgent_container" onclick="changePrioColor('Urgent')" class="status-definition-container">
-                      Urgent<img id="Urgent_img" class="prio-images" src="./img/urgent.svg"></div>
+                      Urgent<img id="Urgent_img" class="prio-images" src="./assets/img/urgent.svg"></div>
                     <div id="Medium_container" onclick="changePrioColor('Medium')" class="status-definition-container">
-                      Medium<img id="Medium_img" class="prio-images" src="./img/medium.svg"></div>
+                      Medium<img id="Medium_img" class="prio-images" src="./assets/img/medium.svg"></div>
                     <div id="Low_container" onclick="changePrioColor('Low')" class="status-definition-container">Low<img
-                        id="Low_img" class="prio-images" src="./img/low.svg"></div>
+                        id="Low_img" class="prio-images" src="./assets/img/low.svg"></div>
                   </div>
                 </div>
                 <div class="category-container">
@@ -114,12 +114,12 @@
                     <input onclick="handleSubtaskActions()" class="subtask-entry-field" id="add_new_subtask_field"
                       placeholder="Add new subtask">
                     <img id="normal_subtask_icon" class="normal-subtask-icon"
-                      onclick="changingSubtaskIcons(), handleSubtaskActions()" src="./img/add-task-plus.svg">
+                      onclick="changingSubtaskIcons(), handleSubtaskActions()" src="./assets/img/add-task-plus.svg">
                     <div id="three_subtask_icons" class="three-subtask-icons d-none">
-                      <img id="adding_subtask_icon-c" class="subtask-icons" src="./img/cancel.svg"
-                        onclick="closeSubtaskIcons()"><img src="./img/vector-line.svg">
+                      <img id="adding_subtask_icon-c" class="subtask-icons" src="./assets/img/cancel.svg"
+                        onclick="closeSubtaskIcons()"><img src="./assets/img/vector-line.svg">
                       <img id="adding_subtask_icon-ok" class="subtask-icons" onclick="displaySubtasks()"
-                        src="./img/check-dark.svg">
+                        src="./assets/img/check-dark.svg">
                     </div>
                   </div>
                   <div id="subtask_display_container" class="subtask-display"></div>
@@ -144,7 +144,7 @@
                   </svg>
                 </div>
                 <button type="submit" id="create_task_button" class="create-task-container" type="button"
-                  disabled>Create Task <img src="./img/check.svg"></button>
+                  disabled>Create Task <img src="./assets/img/check.svg"></button>
               </div>
             </div>
           </form>
