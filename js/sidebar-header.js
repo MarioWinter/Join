@@ -12,23 +12,20 @@
  *    - If true, activates the links related to information using the activeInfoLink function.
  */
 function checkPath() {
-	let currentPath = window.location.pathname;
+    let currentPath = window.location.pathname;
 
-	if (
-		currentPath === "/10_Join/Join/summary.html" ||
-		currentPath === "/10_Join/Join/add_task.html" ||
-		currentPath === "/10_Join/Join/board.html" ||
-		currentPath === "/10_Join/Join/contacts.html"
-	) {
-		activeMenuLink();
-		activeMenuLinkMobile();
-	}
-	if (
-		currentPath === "/10_Join/Join/privacy_policy.html" ||
-		currentPath === "/10_Join/Join/legal_notice.html"
-	) {
-		activeInfoLink();
-	}
+    if (
+        currentPath === "Join/summary.html" ||
+        currentPath === "Join/add_task.html" ||
+        currentPath === "Join/board.html" ||
+        currentPath === "Join/contacts.html"
+    ) {
+        activeMenuLink();
+        activeMenuLinkMobile();
+    }
+    if (currentPath === "Join/privacy_policy.html" || currentPath === "Join/legal_notice.html") {
+        activeInfoLink();
+    }
 }
 
 /**
@@ -43,9 +40,8 @@ function checkPath() {
  * 3. Adds the CSS class "sidebar-button-selected" to highlight the active link.
  */
 function activeMenuLink() {
-	let urlAsId =
-		window.location.pathname.split("/").pop().split(".html")[0] + "_link";
-	document.getElementById(urlAsId).classList.add("sidebar-button-selected");
+    let urlAsId = window.location.pathname.split("/").pop().split(".html")[0] + "_link";
+    document.getElementById(urlAsId).classList.add("sidebar-button-selected");
 }
 
 /**
@@ -60,10 +56,8 @@ function activeMenuLink() {
  * 3. Adds the CSS class "sidebar-button-selected" to highlight the active link.
  */
 function activeMenuLinkMobile() {
-	let urlAsId =
-		window.location.pathname.split("/").pop().split(".html")[0] +
-		"_link_mobile";
-	document.getElementById(urlAsId).classList.add("sidebar-button-selected");
+    let urlAsId = window.location.pathname.split("/").pop().split(".html")[0] + "_link_mobile";
+    document.getElementById(urlAsId).classList.add("sidebar-button-selected");
 }
 
 /**
@@ -78,11 +72,8 @@ function activeMenuLinkMobile() {
  * 3. Adds the CSS class "sidebar-privacy-button-selected" to highlight the active link.
  */
 function activeInfoLink() {
-	let urlAsId =
-		window.location.pathname.split("/").pop().split(".html")[0] + "_link";
-	document
-		.getElementById(urlAsId)
-		.classList.add("sidebar-privacy-button-selected");
+    let urlAsId = window.location.pathname.split("/").pop().split(".html")[0] + "_link";
+    document.getElementById(urlAsId).classList.add("sidebar-privacy-button-selected");
 }
 
 /**
@@ -99,13 +90,13 @@ function activeInfoLink() {
  * 5. Updates the inner HTML of the user badge container with the generated user badge.
  */
 function loadUserBadge() {
-	let userBadgeContainer = document.getElementById("user_initials");
-	i = currentUser;
-	if (i >= 0) {
-		let userName = users[i]["name"];
-		let userInitials = generateUserBadge(userName);
-		userBadgeContainer.innerHTML = userInitials;
-	}
+    let userBadgeContainer = document.getElementById("user_initials");
+    i = currentUser;
+    if (i >= 0) {
+        let userName = users[i]["name"];
+        let userInitials = generateUserBadge(userName);
+        userBadgeContainer.innerHTML = userInitials;
+    }
 }
 
 /**
@@ -123,14 +114,10 @@ function loadUserBadge() {
  * 5. Returns the generated user badge.
  */
 function generateUserBadge(fullName) {
-	let nameParts = fullName.split(" ");
-	let firstNameInitial = nameParts[0]
-		? nameParts[0].charAt(0).toUpperCase()
-		: "";
-	let lastNameInitial = nameParts[1]
-		? nameParts[1].charAt(0).toUpperCase()
-		: "";
-	return firstNameInitial + lastNameInitial;
+    let nameParts = fullName.split(" ");
+    let firstNameInitial = nameParts[0] ? nameParts[0].charAt(0).toUpperCase() : "";
+    let lastNameInitial = nameParts[1] ? nameParts[1].charAt(0).toUpperCase() : "";
+    return firstNameInitial + lastNameInitial;
 }
 
 let isSubMenu = false;
@@ -150,12 +137,12 @@ let isSubMenu = false;
  * 4. If the submenu is hidden, removes the specified CSS class to show it and sets the flag isSubMenu to true.
  */
 function showSubmenu(elementID, usedClass) {
-	let subMenu = document.getElementById(elementID);
-	if (isSubMenu) {
-		subMenu.classList.add(usedClass);
-		isSubMenu = false;
-	} else {
-		subMenu.classList.remove(usedClass);
-		isSubMenu = true;
-	}
+    let subMenu = document.getElementById(elementID);
+    if (isSubMenu) {
+        subMenu.classList.add(usedClass);
+        isSubMenu = false;
+    } else {
+        subMenu.classList.remove(usedClass);
+        isSubMenu = true;
+    }
 }
