@@ -162,7 +162,6 @@
 }
 
 .date-entry-container {
-  display: flex;
   padding: 1.2rem 1.6rem;
   align-self: stretch;
   border-radius: 1rem;

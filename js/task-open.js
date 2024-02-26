@@ -218,8 +218,11 @@ function changeSubtaskConfirmation(elementID, subtaskNumber, taskID) {
  * @returns
  */
 function getUserColor(assigneds, index) {
-	let assignedName = assigneds[index];
-	let filteredUser = users.filter((t) => t["name"] === assignedName);
-	let badgeColor = filteredUser[0]["bgcolor"];
-	return badgeColor;
+    let assignedName = assigneds[index];
+    let filteredUser = users.filter((t) => t["name"] === assignedName);
+    if (filteredUser.length > 0) {
+        return filteredUser[0]["bgcolor"];
+    } else {
+        return "#000000"; 
+    }
 }
