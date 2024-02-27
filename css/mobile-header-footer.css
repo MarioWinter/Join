@@ -21,6 +21,9 @@
     .header {
         width: 100vw;
         height: 8rem;
+        position: fixed;
+        z-index: 999;
+        top: 0;
         margin-left: 0;
         padding: 2rem 4rem 2rem 4rem;
         font-size: 1.4rem;
