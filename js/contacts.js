@@ -101,6 +101,7 @@ function sortContactsAlphabetically(contacts) {
  * if user is logged in, function renders contacts for the logged-in user, otherwise it renders all contacts
  */
 function renderDifferentContacts() {
+  document.getElementById('handle_resp_contact_container').classList.remove('d-none');
   let contactsContainer = document.getElementById("contact_container");
   let contactsHTML;
   if (currentUser >= 0) {
@@ -263,7 +264,6 @@ function activateDetailAndDisplay(selectedIndex, contact) {
   }
 }
 
-
 /**
  * this help function for deactivating contact details for the specified contact by removing active styles and hiding the details
  * @param {html element} contact - the contact element
@@ -335,18 +335,6 @@ function finalizeContactUpdate() {
 }
 
 /**
- * this help function handles addition of new contact by performing various actions
- * @param {number} index - index of the newly added contact
- */
-function handleNewContact(index) {
-  clearEntrys();
-  cancelOverlay();
-  showSuccessMessage();
-  renderDifferentContacts();
-  showContactDetails(index);
-}
-
-/**
  * this function finds insert index for new contact in a sorted contact list
  * @param {string} newContactName - name of the new contact
  * @param {object[]} contactList - list of contacts
@@ -370,7 +358,7 @@ function addUser() {
     bgcolor: getRandomColor(),
   });
   setItem("users", JSON.stringify(users));
-  renderDifferentContacts();
+  renderDifferentContacts(); 
 }
 
 /**

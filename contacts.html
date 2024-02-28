@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
 
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Contacts</title>
+    <link rel="icon" type="image/svg" href="./assets/img/LogoFavicon.svg"/>    
 
-    <link rel="icon" type="image/svg" href="./assets/img/LogoFavicon.svg"/>
-    <link rel="stylesheet" href="/Join/"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="./fonts.css"/>
     <link rel="stylesheet" href="./css/add_task.css"/>
@@ -17,8 +16,6 @@
     <link rel="stylesheet" href="./css/contacts.css"/>
     <link rel="stylesheet" href="./css/contacts-overlay.css"/>
     <link rel="stylesheet" href="./css/contacts-mobile.css"/>
-    
-
 
     <script src="./js/storage.js"></script>
     <script src="./script.js"></script>
@@ -31,7 +28,6 @@
     <script src="./js/board.js"></script>
     <script src="./js/render-board.js"></script>
   </head>
-
 
   <body onload="initContacts()">
     <div class="w3include-container">
@@ -57,22 +53,22 @@
               <div class="better-team">Better with a team</div>
               <div class="horizontal-vector-line d-none"></div>
 
+            </div>
 
-          <div id="show_contact_details" class="show-contact-details d-none" onclick="showContactDetails()">
+            <div id="show_contact_details" class="show-contact-details d-none" onclick="showContactDetails()">
+            </div>
+            <div id="contact_succesfully_created" class="contact-succesfully-created">Contact succesfully created</div>
           </div>
-
         </div>    
 
-        <form onsubmit="addNewContact(event)">
+        <form>
           <div id="add_new_contact" class="overlay-add-contact d-none">
             <div class="overlay-container-left"><img class="add-contact-overlay-icon" src="./assets/img/join-overlay-icon-white.svg"/>
               <div class="overlay-letter-add-contact">Add contact
                 <div class="overlay-letters-better">Tasks are better with a team!
                 </div>
                 <div class="overlay-vectorline-horizontal"></div>
-
               </div>
-              <div class="overlay-vectorline-horizontal"></div>
             </div>
 
             <div class="overlay-container-right">
@@ -102,7 +98,9 @@
                     </g>
                   </svg>
                 </div>
-                <button type="submit" id="overlay_create_contact_button" class="overlay-create-contact-button">Create contact
+
+                <button id="overlay_create_contact_button" class="overlay-create-contact-button" onclick="addNewContact()">Create contact
+
                   <img src="./assets/img/overlay-ok.svg" />
                 </button>
               </div>
@@ -111,14 +109,6 @@
                 <img id="contact_person_white" class="contact-person-white" src="./assets/img/person-white.svg"/>
 
               </div>
-              <button type="submit" id="overlay_create_contact_button" class="overlay-create-contact-button">Create
-                contact
-                <img src="./assets/img/overlay-ok.svg" />
-              </button>
-            </div>
-            <div id="overlay_contact_circle" class="overlay-contact-circle">
-              <img id="contact_gray" class="contact-gray" src="./assets/img/contacts-circle-grey.svg" />
-              <img id="contact_person_white" class="contact-person-white" src="./assets/img/person-white.svg" />
             </div>
           </div>
 
@@ -126,16 +116,8 @@
 
         <div id="handle_resp_contact_container" class="handle-resp-contact-container">            
             <img id="handle_resp_contact_icon" class="resp-contact-icon" src="./assets/img/primary-contact-icon.svg" onclick="showOverlay()"/>          
+        </div>       
 
-        </div>
-      </form>
-
-
-        <div id="handle_resp_menu_container" class="handle-resp-menu-container"> 
-          <img id="handle_resp_menu_icon" class="resp-menu-icon d-none" src="./assets/img/menu-contact-options.svg" onclick="showResponsiveEditMenu()">         
-        </div>
-        
-        <div id="resp_edit_container" class="resp-edit-container d-none">
 
         </div>
       </div>

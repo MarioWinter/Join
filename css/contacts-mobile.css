@@ -48,11 +48,7 @@
   
     .contacts-main {
       height: 92vh;
-    }
-  
-    /* .add-new-contact-main {
-      height: 94vh;
-    } */
+    }  
   
     #contact_container {
       width: 100%;
@@ -119,13 +115,12 @@
     .contacts-container-right {
       display: none;
       width: 100%;
-      height: 91vh;
+      height: 100vh;
     }
   
     .add-new-contact-main {
       width: 82.5vw;
-      padding-left: 0;
-      /* height: 95vh; */
+      padding-left: 0;      
     }
   
     .contact-list {
@@ -209,7 +204,7 @@
   
     .handle-resp-contact-container,
     .handle-resp-menu-container {
-      display: block !important;
+      display: block;
       padding-right: 1.6rem;
       height: 13rem;
       right: 16px;
@@ -261,7 +256,7 @@
     }
   
     .overlay-close {
-      content: url("../img/cancel-white.svg");
+      content: url("../assets/img/cancel-white.svg");
       position: absolute;
       top: 32px;
       right: 32px;
@@ -271,7 +266,7 @@
     }
   
     .overlay-close:hover {
-      content: url("../img/cancel-lightblue.svg");
+      content: url("../assets/img/cancel-lightblue.svg");
     }
   
     .overlay-contact-circle {
