@@ -1,3 +1,5 @@
+// contacts - mobile
+
 /**
  * this function displays contact details in a responsive view and responsive icons for contact handling updating accordingly
  */
@@ -54,12 +56,11 @@ function hideResponsiveEditMenu() {
 /**
  * this function shows the responsive edit menu
  */
-function showResponsiveEditMenu(index) {
+function showResponsiveEditMenu() {
   let responsiveContactsMenu = document.getElementById("handle_resp_menu_icon");
   let editOrDelete = document.getElementById("resp_edit_container");
   responsiveContactsMenu.classList.add("d-none");
-  editOrDelete.classList.remove("d-none");  
-  editOrDelete.innerHTML = generateEditMenuMobile(index);
+  editOrDelete.classList.remove("d-none");
 }
 
 /**
@@ -130,7 +131,6 @@ async function addNewContact(event) {
  * @param {number} index - index of the selected contact
  */
 function editContacts(index) {
-  console.log("Selected Index:", index);
   let contact = currentUser >= 0 ? users[index] : contactsData[index];
   if (!contact) return;
   selectedContactIndex = index;

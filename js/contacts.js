@@ -7,41 +7,49 @@ let contactsData = [
     name: "Anton Meyer",
     email: "antom@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#6E52FF",
   },
   {
     name: "Anja Schulz",
     email: "schulz@hotmail.com",
     phone: "0123 45678910",
+    bgcolor: "#FF7A00",
   },
   {
     name: "Benedikt Ziegler",
     email: "benedikt@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#9327FF",
   },
   {
     name: "David Eisenberg",
     email: "davidberg@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#FC71FF",
   },
   {
     name: "Eva Fischer",
     email: "eva@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#FFBB2B",
   },
   {
     name: "Emmanuel Mauer",
     email: "emmanuelma@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#1FD7C1",
   },
   {
     name: "Marcel Bauer",
     email: "bauer@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#462F8A",
   },
   {
     name: "Tatjana Wolf",
     email: "wolf@gmail.com",
     phone: "0123 45678910",
+    bgcolor: "#FF5EB3",
   },
 ];
 
