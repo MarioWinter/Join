@@ -108,6 +108,16 @@ async function addNewContact(event) {
 }
 
 /**
+ * this help function handles addition of new contact by performing various actions
+ * @param {number} index - index of the newly added contact
+ */
+function handleNewContact(index) {
+  clearEntrys();
+  cancelOverlay();
+  showSuccessMessage();  
+}
+
+/**
  * this function edits selected contact in case of changing name nummer etc
  * @param {number} index - index of the selected contact
  */
@@ -217,7 +227,7 @@ function updateContactInputs(contact) {
  */
 function setSaveButtonFunction(index) {
   let overlayCreateButton = document.getElementById("overlay_create_contact_button");
-  overlayCreateButton.innerHTML = "Speichern <img src='./assets/img/overlay-ok.svg'/>";
+  overlayCreateButton.innerHTML = "Save <img src='./assets/img/overlay-ok.svg'/>";
   overlayCreateButton.onclick = function () {
     updateContact(index);
     showSuccessMessage();
@@ -226,7 +236,6 @@ function setSaveButtonFunction(index) {
     // Ändern Sie closeResponsiveDetails() in closeOverlay()
   }; 
 }
-
 
 /**
  * this function sets the functionality for edit buttons in the overlay

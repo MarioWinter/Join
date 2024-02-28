@@ -377,7 +377,7 @@
 }
 
 .animate-message {
-  animation: animate 2s ease-in-out;
+  animation: animate 1s ease-in-out;
 }
 
 @keyframes animate {

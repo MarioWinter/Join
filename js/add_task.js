@@ -48,11 +48,9 @@ function changePrioColor(prio) {
  * @param {string} prio - prio level urgent medium and low
  */
 function settingPrioBackground(container, img, prio) {
-
-    container.style.backgroundColor = "white";
-    container.style.color = "#2a3647";
-    img.src = "./assets/img/" + prio + ".svg";
-
+  container.style.backgroundColor = "white";
+  container.style.color = "#2a3647";
+  img.src = "./assets/img/" + prio + ".svg";
 }
 
 /**
@@ -76,17 +74,15 @@ function determinePrioBackgroundColor(prio) {
  * this function resets background color text color image source of prio containers
  */
 function resetContainers() {
-
-    let containers = document.getElementsByClassName("status-definition-container");
-    for (let i = 0; i < containers.length; i++) {
-        let container = containers[i];
-        container.style.backgroundColor = "white";
-        container.style.color = "#2a3647";
-        let img = container.getElementsByClassName("prio-images")[0];
-        img.src = "./assets/img/" + container.id.replace("_container", "") + ".svg";
-        container.classList.remove("selected");
-    }
-
+  let containers = document.getElementsByClassName("status-definition-container");
+  for (let i = 0; i < containers.length; i++) {
+    let container = containers[i];
+    container.style.backgroundColor = "white";
+    container.style.color = "#2a3647";
+    let img = container.getElementsByClassName("prio-images")[0];
+    img.src = "./assets/img/" + container.id.replace("_container", "") + ".svg";
+    container.classList.remove("selected");
+  }
 }
 
 /**
@@ -218,30 +214,24 @@ function renderAddedSubtasks() {
   subtaskContainer.innerHTML = "";
   for (let i = 0; i < addedSubtasks.length; i++) {
     let subtask = addedSubtasks[i].subtitle;
-    subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);
-    console.log(subtask);
+    subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);    
   }
   subtaskContainer.classList.remove("d-none");
-
-  closeSubtaskIcons();  
+  closeSubtaskIcons();
 }
-
 
 // creates the html code for subtask
 function createSubtaskHTML(subtask, index) {
   return `
-  <div class="added-subtask">•
-
-    <input id="input_${index}" class="subtask-input" type="text" value="${subtask}" contenteditable="true">
+  <div class="added-subtask">• <input id="input_${index}" class="subtask-input" type="text" value="${subtask}" contenteditable="true">
      <div class="added-subtask-icons">
       <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./assets/img/delete-icon.svg">
-      <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./img/vector-line.svg">
+      <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./assets/img/vector-line.svg">
       <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./assets/img/pencil-icon.svg">
       <img id="check_dark_save_${index}" onclick="saveEditedSubtask(${index})" class="invisible subtask-icon d-none" src="./assets/img/check-dark.svg">  
      </div>
     </div>
   `;
-
 }
 
 /**

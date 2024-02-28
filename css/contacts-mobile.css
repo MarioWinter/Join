@@ -48,11 +48,7 @@
   
     .contacts-main {
       height: 92vh;
-    }
-  
-    /* .add-new-contact-main {
-      height: 94vh;
-    } */
+    }  
   
     #contact_container {
       width: 100%;
@@ -124,8 +120,7 @@
   
     .add-new-contact-main {
       width: 82.5vw;
-      padding-left: 0;
-      /* height: 95vh; */
+      padding-left: 0;      
     }
   
     .contact-list {

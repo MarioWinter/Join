@@ -264,7 +264,6 @@ function activateDetailAndDisplay(selectedIndex, contact) {
   }
 }
 
-
 /**
  * this help function for deactivating contact details for the specified contact by removing active styles and hiding the details
  * @param {html element} contact - the contact element
@@ -333,18 +332,6 @@ function finalizeContactUpdate() {
   cancelOverlay();
   clearEntrys();
   renderDifferentContacts();
-}
-
-/**
- * this help function handles addition of new contact by performing various actions
- * @param {number} index - index of the newly added contact
- */
-function handleNewContact(index) {
-  clearEntrys();
-  cancelOverlay();
-  showSuccessMessage();
-  
-  
 }
 
 /**
