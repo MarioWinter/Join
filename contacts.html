@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Contacts</title>
 
-    <link rel="icon" type="image/svg" href="./img/LogoFavicon.svg"/>
+    <link rel="icon" type="image/svg" href="./assets/img/LogoFavicon.svg"/>
     <link rel="stylesheet" href="/Join/"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="./fonts.css"/>
@@ -36,7 +36,7 @@
         <div class="contacts-main">
           <div id="add_new_contact_main" class="add-new-contact-main">
             <div class="contact-list">
-              <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./img/primary-contact-icon.svg"/>
+              <div class="primary-contact" onclick="showOverlay()">Add new contact <img src="./assets/img/primary-contact-icon.svg"/>
               </div>              
               <div id="contact_container"></div>
             </div>            
@@ -46,7 +46,7 @@
           <div id="contacts_container_right" class="contacts-container-right show-responsive-details">
             <div class="contacts-better-container">
               <div id="resp_arrow_back" class="resp-arrow-back d-none" onclick="closeResponsiveDetails()">
-                <img class="responsive-arrow-back" src="./img/arrow-left-line.svg"></div>
+                <img class="responsive-arrow-back" src="./assets/img/arrow-left-line.svg"></div>
               <div class="contacts-letter">Contacts</div>
               <div class="vector-line"></div>
               <div class="better-team">Better with a team</div>
@@ -61,7 +61,7 @@
 
         <form onsubmit="addNewContact(event)">
           <div id="add_new_contact" class="overlay-add-contact d-none">
-            <div class="overlay-container-left"><img class="add-contact-overlay-icon" src="./img/join-overlay-icon-white.svg"/>
+            <div class="overlay-container-left"><img class="add-contact-overlay-icon" src="./assets/img/join-overlay-icon-white.svg"/>
               <div class="overlay-letter-add-contact">Add contact
                 <div class="overlay-letters-better">Tasks are better with a team!
                 </div>
@@ -70,17 +70,17 @@
             </div>
             <div class="overlay-container-right">
               <div class="overlay-close" id="cancel_overlay" onclick="cancelOverlay()">
-                <img class="oyerlay-close-img" id="overlay_close_img" src="./img/cancel.svg" />                  
+                <img class="oyerlay-close-img" id="overlay_close_img" src="./assets/img/cancel.svg" />                  
               </div>
               <div class="overlay-add-contact-container">
                 <div class="overlay-input-data"><input type="text" id="contact_Name" required placeholder="Name"/>
-                  <img class="overlay-contact-icons" src="./img/overlay-person.svg"/>
+                  <img class="overlay-contact-icons" src="./assets/img/overlay-person.svg"/>
                 </div>
                 <div class="overlay-input-data"><input type="email" id="contact_Email" required placeholder="Email"/>
-                  <img class="overlay-contact-icons" src="./img/overlay-mail.svg"/>
+                  <img class="overlay-contact-icons" src="./assets/img/overlay-mail.svg"/>
                 </div>
                 <div class="overlay-input-data"><input type="tel" id="contact_Phone" required placeholder="Phone" pattern="[0-9]*" inputmode="numeric"/>
-                  <img class="overlay-contact-icons" src="./img/overlay-call.svg"/>
+                  <img class="overlay-contact-icons" src="./assets/img/overlay-call.svg"/>
                 </div>
               </div>
               <div class="cancel-and-create-container">
@@ -96,23 +96,23 @@
                   </svg>
                 </div>
                 <button type="submit" id="overlay_create_contact_button" class="overlay-create-contact-button">Create contact
-                  <img src="./img/overlay-ok.svg" />
+                  <img src="./assets/img/overlay-ok.svg" />
                 </button>
               </div>
               <div id="overlay_contact_circle" class="overlay-contact-circle">
-                <img id="contact_gray" class="contact-gray" src="./img/contacts-circle-grey.svg"/>
-                <img id="contact_person_white" class="contact-person-white" src="./img/person-white.svg"/>
+                <img id="contact_gray" class="contact-gray" src="./assets/img/contacts-circle-grey.svg"/>
+                <img id="contact_person_white" class="contact-person-white" src="./assets/img/person-white.svg"/>
               </div>
             </div>
           </div>
         </form>
 
         <div id="handle_resp_contact_container" class="handle-resp-contact-container">            
-            <img id="handle_resp_contact_icon" class="resp-contact-icon" src="./img/primary-contact-icon.svg" onclick="showOverlay()"/>          
+            <img id="handle_resp_contact_icon" class="resp-contact-icon" src="./assets/img/primary-contact-icon.svg" onclick="showOverlay()"/>          
         </div>
 
         <div id="handle_resp_menu_container" class="handle-resp-menu-container"> 
-          <img id="handle_resp_menu_icon" class="resp-menu-icon d-none" src="./img/menu-contact-options.svg" onclick="showResponsiveEditMenu()">         
+          <img id="handle_resp_menu_icon" class="resp-menu-icon d-none" src="./assets/img/menu-contact-options.svg" onclick="showResponsiveEditMenu()">         
         </div>
         
         <div id="resp_edit_container" class="resp-edit-container d-none">

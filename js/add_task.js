@@ -31,7 +31,7 @@ function changePrioColor(prio) {
   let color = determinePrioBackgroundColor(prio);
   container.style.backgroundColor = color;
   container.style.color = "white";
-  img.src = `./img/${prio}-white.svg`;
+  img.src = `./assets/img/${prio}-white.svg`;
 }
 
 
@@ -39,7 +39,7 @@ function changePrioColor(prio) {
 function settingPrioBackground(container, img, prio) {
     container.style.backgroundColor = "white";
     container.style.color = "#2a3647";
-    img.src = "./img/" + prio + ".svg";
+    img.src = "./assets/img/" + prio + ".svg";
 }
 
 // determines the background color for a given priority
@@ -65,7 +65,7 @@ function resetContainers() {
         container.style.backgroundColor = "white";
         container.style.color = "#2a3647";
         let img = container.getElementsByClassName("prio-images")[0];
-        img.src = "./img/" + container.id.replace("_container", "") + ".svg";
+        img.src = "./assets/img/" + container.id.replace("_container", "") + ".svg";
         container.classList.remove("selected");
     }
 }
@@ -237,10 +237,10 @@ function createSubtaskHTML(subtask, index) {
 
     <input id="input_${index}" class="subtask-input" type="text" value="${subtask}" contenteditable="true">
      <div class="added-subtask-icons">
-      <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./img/delete-icon.svg">
+      <img id="subtask_icons_3_${index}" onclick="deleteAddedSubtask('${subtask}')" class="invisible subtask-icon" src="./assets/img/delete-icon.svg">
       <img id="subtask_icons_2_${index}" class="invisible vector-line" src="./img/vector-line.svg">
-      <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./img/pencil-icon.svg">
-      <img id="check_dark_save_${index}" onclick="saveEditedSubtask(${index})" class="invisible subtask-icon d-none" src="./img/check-dark.svg">  
+      <img id="subtask_icons_1_${index}" onclick="editAddedSubtask(${index})" class="invisible subtask-icon" src="./assets/img/pencil-icon.svg">
+      <img id="check_dark_save_${index}" onclick="saveEditedSubtask(${index})" class="invisible subtask-icon d-none" src="./assets/img/check-dark.svg">  
      </div>
     </div>
   `;
