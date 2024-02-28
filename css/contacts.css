@@ -181,6 +181,7 @@ input {
 
 
 .show-contact-details {
+  height: 100%;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -371,6 +372,6 @@ input {
   background-color: rgb(223, 221, 221);
 }
 
-.handle-resp-contact-container {
+/* .handle-resp-contact-container {
   display: none;
-}
+} */

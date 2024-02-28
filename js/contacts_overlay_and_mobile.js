@@ -63,26 +63,6 @@ function showResponsiveEditMenu() {
   editOrDelete.classList.remove("d-none");
 }
 
-/**
- * this function handles responsive editing by hiding the responsive add new and menu icons
- */
-function handleResponsiveEditing() {
-  let responsiveAddNewIcon = document.getElementById("handle_resp_contact_container");
-  let responsiveMenuIcon = document.getElementById("handle_resp_menu_container");
-  responsiveAddNewIcon.style.setProperty("display", "none", "important");
-  responsiveMenuIcon.style.setProperty("display", "none", "important");
-}
-
-/**
- * this function reverts responsive editing by displaying the responsive add new and menu icons
- */
-function revertResponsiveEditing() {
-  let responsiveAddNewIcon = document.getElementById("handle_resp_contact_container");
-  let responsiveMenuIcon = document.getElementById("handle_resp_menu_container");
-  responsiveAddNewIcon.style.setProperty("display", "block", "important");
-  responsiveMenuIcon.style.setProperty("display", "block", "important");
-}
-
 // contacts - overlay
 
 /**
@@ -90,16 +70,16 @@ function revertResponsiveEditing() {
  * @param {boolean} isEdit - indicates whether the overlay is for editing an existing contact
  */
 function showOverlay(isEdit) {
+  
   updateOverlayContent(isEdit);
   updateOverlayButtons(isEdit);
-  handleResponsiveEditing();
-
   let addNewContact = document.getElementById("add_new_contact");
   addNewContact.classList.remove("d-none");
   setTimeout(() => {
     addNewContact.classList.add("show");
   }, 100);
   cancelOverlay();
+  document.getElementById('handle_resp_contact_container').classList.add('d-none');
 }
 
 /**
@@ -107,6 +87,7 @@ function showOverlay(isEdit) {
  * @param {event} event - event object
  */
 async function addNewContact(event) {
+  document.getElementById('handle_resp_contact_container').classList.add('d-none');
   event.preventDefault();
   let newContact = {
     name: document.getElementById("contact_Name").value,
@@ -141,7 +122,7 @@ function editContacts(index) {
   generateOverlayContactCircle(originalCircleColor, initials);
   updateContactInputs(contact);
   setSaveButtonFunction(index);
-  hideResponsiveEditMenu();
+  hideResponsiveEditMenu();  
 }
 
 /**
@@ -153,7 +134,8 @@ function cancelOverlay() {
     closeOverlay();
   } else {
     handleOverlay();
-  }
+  };
+  renderDifferentContacts();
 }
 
 /**
@@ -164,8 +146,7 @@ function closeOverlay() {
   overlay.classList.remove("show");
   overlay.classList.add("close");
 
-  setTimeout(() => {
-    revertResponsiveEditing();
+  setTimeout(() => {    
     hideAddNewContact();
     resetOverlayContactCircle();
     setTimeout(() => {
@@ -174,6 +155,7 @@ function closeOverlay() {
     }, 300);
     clearEntrys();
   }, 300);
+  renderDifferentContacts();
 }
 
 /**
@@ -239,7 +221,8 @@ function setSaveButtonFunction(index) {
   overlayCreateButton.onclick = function () {
     updateContact(index);
     showSuccessMessage();
-  };
+    closeResponsiveDetails();
+  }; 
 }
 
 /**
@@ -255,7 +238,8 @@ function setEditButtons(overlayCancelButton, overlayCreateButton) {
   };
   overlayCreateButton.innerHTML = "Save <img src='./assets/img/overlay-ok.svg'/>";
   overlayCreateButton.onclick = function () {
-    showSuccessMessage();
+    showSuccessMessage();  
+    closeResponsiveDetails();  
   };
 }
 

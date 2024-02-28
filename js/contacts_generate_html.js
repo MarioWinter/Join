@@ -141,7 +141,7 @@ function createContactDetailsHTML(index, circleColor, contactInitials) {
         </div>
         <div class="phone-container">
           <div class="phone-text">Phone</div>
-          <div id="contact_phone_number" class="contact-phone-number"></div>
+          <div id="contact_phone_number" class="contact-phone-number">${selectedContact.phone}</div>
         </div>
 
         <div id="handle_resp_menu_container" class="handle-resp-menu-container"> 
