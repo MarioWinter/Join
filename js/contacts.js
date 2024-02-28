@@ -141,7 +141,7 @@ function generateContactsHTML(contacts) {
   contacts.forEach((contact, index) => {
     let initials = getInitials(contact.name);
     let firstLetter = initials.charAt(0).toUpperCase();
-    let circleColor = contact.bgcolor || contact.color;
+    let circleColor = contact.bgcolor || contact.color || getRandomColor();
     if (!alphabetLetters[firstLetter]) {
       alphabetLetters[firstLetter] = true;
       contactsHTML += createAlphabetHTML(firstLetter);
@@ -219,9 +219,7 @@ function deactivateAllContacts() {
  */
 function updateContactDetails(selectedContact, circleColor, contactInitials) {
   let contactDetails = document.getElementById("show_contact_details");
-  contactDetails.innerHTML = createContactDetailsHTML(
-    selectedContact, circleColor, contactInitials
-  );
+  contactDetails.innerHTML = createContactDetailsHTML(selectedContact, circleColor, contactInitials);
   contactDetails.classList.remove("d-none");
   contactDetails.classList.add("show");
 }
@@ -404,7 +402,7 @@ async function deleteContact(index) {
     hideContactDetails();
   }
   renderDifferentContacts();
-  hideResponsiveEditMenu();
+  hideResponsiveEditMenu();     
 }
 
 /**

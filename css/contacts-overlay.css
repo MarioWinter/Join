@@ -133,6 +133,7 @@
 
 .overlay-cancel-button {
   display: flex;
+  height: 100%;
   padding: 1.6rem;
   justify-content: center;
   align-items: center;
