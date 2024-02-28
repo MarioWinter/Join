@@ -52,7 +52,6 @@ function settingPrioBackground(container, img, prio) {
     container.style.backgroundColor = "white";
     container.style.color = "#2a3647";
     img.src = "./assets/img/" + prio + ".svg";
-
 }
 
 /**

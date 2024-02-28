@@ -46,7 +46,6 @@ function getOverlayContactCircleHTML() {
     return `<div id="overlay_contact_circle" class="overlay-contact-circle">
         <img id="contact_gray" class="contact-gray" src="./assets/img/contacts-circle-grey.svg" />
         <img id="contact_person_white" class="contact-person-white" src="./assets/img/person-white.svg"/>
-
       </div>`;
 }
 
