@@ -371,7 +371,7 @@ function addUser() {
     bgcolor: getRandomColor(),
   });
   setItem("users", JSON.stringify(users));
-  renderDifferentContacts();
+  renderDifferentContacts(); 
 }
 
 /**

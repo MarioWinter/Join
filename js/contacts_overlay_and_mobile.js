@@ -104,7 +104,7 @@ async function addNewContact(event) {
     index = findInsertIndex(newContact.name, contactsData);
     contactsData.splice(index, 0, newContact);
   }
-  handleNewContact(index);
+  handleNewContact(index); 
 }
 
 /**
