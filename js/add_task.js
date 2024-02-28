@@ -7,6 +7,8 @@ let newAssigned = [];
 async function initAddTask() {
   await loadUsers();
   await loadAddedTasks();
+  loadCurrentUser();
+  loadUserBadge();
   getDateToday();
   changePrioColor("Medium");
   initUserSelectField("et_contact_overlay");
@@ -215,7 +217,7 @@ function renderAddedSubtasks() {
   subtaskContainer.innerHTML = "";
   for (let i = 0; i < addedSubtasks.length; i++) {
     let subtask = addedSubtasks[i].subtitle;
-    subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);    
+    subtaskContainer.innerHTML += createSubtaskHTML(subtask, i);
   }
   subtaskContainer.classList.remove("d-none");
   closeSubtaskIcons();

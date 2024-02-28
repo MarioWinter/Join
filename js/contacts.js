@@ -72,10 +72,6 @@ let contactCircleColors = [
   "#FFE62B",
 ];
 
-/**
- * this function loads current user data
- */
-loadCurrentUser();
 
 /**
  * this function initailizes the contacts and loads user data
@@ -83,7 +79,7 @@ loadCurrentUser();
 async function initContacts() {
   await loadUsers();
   loadCurrentUser();
-  includeHTML();
+  loadUserBadge();
   sortContactsAlphabetically(users);
   renderDifferentContacts();
 }
@@ -309,7 +305,11 @@ function getInitials(name) {
  * @param {number} index - index of the contact being edited
  */
 function updateContact(index) {
-  let contact = currentUser >= 0 ? users[index] : contactsData[index];
+  let contact = contactsData[index];
+  if (currentUser >= 0){
+    contact = users[index];
+  }
+  //let contact = currentUser >= 0 ? users[index] : contactsData[index];
   if (!contact) return;
   contact.name = document.getElementById("contact_Name").value;
   contact.email = document.getElementById("contact_Email").value;
