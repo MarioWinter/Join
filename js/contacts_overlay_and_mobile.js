@@ -54,11 +54,12 @@ function hideResponsiveEditMenu() {
 /**
  * this function shows the responsive edit menu
  */
-function showResponsiveEditMenu() {
+function showResponsiveEditMenu(index) {
   let responsiveContactsMenu = document.getElementById("handle_resp_menu_icon");
   let editOrDelete = document.getElementById("resp_edit_container");
   responsiveContactsMenu.classList.add("d-none");
-  editOrDelete.classList.remove("d-none");
+  editOrDelete.classList.remove("d-none");  
+  editOrDelete.innerHTML = generateEditMenuMobile(index);
 }
 
 /**
