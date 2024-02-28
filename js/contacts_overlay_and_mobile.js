@@ -135,7 +135,7 @@ function cancelOverlay() {
   } else {
     handleOverlay();
   };
-  renderDifferentContacts();
+  //renderDifferentContacts();
 }
 
 /**
@@ -155,7 +155,7 @@ function closeOverlay() {
     }, 300);
     clearEntrys();
   }, 300);
-  renderDifferentContacts();
+  //renderDifferentContacts();
 }
 
 /**
@@ -217,13 +217,16 @@ function updateContactInputs(contact) {
  */
 function setSaveButtonFunction(index) {
   let overlayCreateButton = document.getElementById("overlay_create_contact_button");
-  overlayCreateButton.innerHTML = "Save <img src='./assets/img/overlay-ok.svg'/>";
+  overlayCreateButton.innerHTML = "Speichern <img src='./assets/img/overlay-ok.svg'/>";
   overlayCreateButton.onclick = function () {
     updateContact(index);
     showSuccessMessage();
-    closeResponsiveDetails();
+    closeOverlay(); 
+    showContactDetails(index);
+    // Ändern Sie closeResponsiveDetails() in closeOverlay()
   }; 
 }
+
 
 /**
  * this function sets the functionality for edit buttons in the overlay

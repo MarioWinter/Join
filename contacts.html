@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join</title>
 
-    <link rel="icon" type="image/svg" href="./assets/img/LogoFavicon.svg"/>  
+    <link rel="icon" type="image/svg" href="./assets/img/LogoFavicon.svg"/>
+    <link rel="stylesheet" href="/Join/"/>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="./fonts.css"/>
     <link rel="stylesheet" href="./css/add_task.css"/>
@@ -60,7 +61,7 @@
           </div>
         </div>    
 
-        <form onsubmit="addNewContact(event)">
+        <form>
           <div id="add_new_contact" class="overlay-add-contact d-none">
             <div class="overlay-container-left"><img class="add-contact-overlay-icon" src="./assets/img/join-overlay-icon-white.svg"/>
               <div class="overlay-letter-add-contact">Add contact
@@ -96,7 +97,7 @@
                     </g>
                   </svg>
                 </div>
-                <button type="submit" id="overlay_create_contact_button" class="overlay-create-contact-button">Create contact
+                <button id="overlay_create_contact_button" onclick="addNewContact()" class="overlay-create-contact-button">Create contact
                   <img src="./assets/img/overlay-ok.svg" />
                 </button>
               </div>
@@ -108,7 +109,7 @@
           </div>
         </form>
 
-        <div id="handle_resp_contact_container" class="handle-resp-contact-container d-none">            
+        <div id="handle_resp_contact_container" class="handle-resp-contact-container">            
             <img id="handle_resp_contact_icon" class="resp-contact-icon" src="./assets/img/primary-contact-icon.svg" onclick="showOverlay()"/>          
         </div>       
 

@@ -343,8 +343,8 @@ function handleNewContact(index) {
   clearEntrys();
   cancelOverlay();
   showSuccessMessage();
-  renderDifferentContacts();
-  showContactDetails(index);
+  
+  
 }
 
 /**
