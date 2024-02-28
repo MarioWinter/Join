@@ -222,7 +222,5 @@ function getUserColor(assigneds, index) {
     let filteredUser = users.filter((t) => t["name"] === assignedName);
     if (filteredUser.length > 0) {
         return filteredUser[0]["bgcolor"];
-    } else {
-        return "#000000"; 
     }
 }

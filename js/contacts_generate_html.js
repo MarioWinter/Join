@@ -17,16 +17,18 @@ function createAlphabetHTML(firstLetter) {
  * @param {boolean} isEdit - indicates whether the overlay is for editing
  */
 function updateOverlayContent(isEdit) {
-  let overlayContainerLeft = document.querySelector(".overlay-container-left");
-  if (isEdit) {
-    overlayContainerLeft.innerHTML = `
-          <img class="add-contact-overlay-icon" src="./img/join-overlay-icon-white.svg" />
+
+    let overlayContainerLeft = document.querySelector(".overlay-container-left");
+    if (isEdit) {
+      overlayContainerLeft.innerHTML = `
+          <img class="add-contact-overlay-icon" src="./assets/img/join-overlay-icon-white.svg" />
           <div class="overlay-letter-add-contact">Edit contact</div>
           <div class="overlay-vectorline-horizontal"></div>
         `;
-  } else {
-    overlayContainerLeft.innerHTML = `
-          <img class="add-contact-overlay-icon" src="./img/join-overlay-icon-white.svg" />
+    } else {
+      overlayContainerLeft.innerHTML = `
+          <img class="add-contact-overlay-icon" src="./assets/img/join-overlay-icon-white.svg" />
+
           <div class="overlay-letter-add-contact">Add contact
             <div class="overlay-letters-better">Tasks are better with a team!</div>
             <div class="overlay-vectorline-horizontal"></div>
@@ -40,9 +42,11 @@ function updateOverlayContent(isEdit) {
  * @returns {string} html for the overlay contact circle
  */
 function getOverlayContactCircleHTML() {
-  return `<div id="overlay_contact_circle" class="overlay-contact-circle">
-        <img id="contact_gray" class="contact-gray" src="./img/contacts-circle-grey.svg" />
-        <img id="contact_person_white" class="contact-person-white" src="./img/person-white.svg"/>
+
+    return `<div id="overlay_contact_circle" class="overlay-contact-circle">
+        <img id="contact_gray" class="contact-gray" src="./assets/img/contacts-circle-grey.svg" />
+        <img id="contact_person_white" class="contact-person-white" src="./assets/img/person-white.svg"/>
+
       </div>`;
 }
 
