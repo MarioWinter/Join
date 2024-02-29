@@ -260,7 +260,8 @@
 }
 
 .added-subtask:hover {
-  background-color: white;
+  background-color: var(--light-grey-placeholder);
+	border-radius: 1rem;
 }
 
 .added-subtask:hover .invisible {
@@ -274,6 +275,8 @@
   font-size: 1.6rem;
   width: 100%;
 }
+
+
 
 .invisible {
   opacity: 0;
