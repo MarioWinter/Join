@@ -97,7 +97,7 @@ function sortContactsAlphabetically(contacts) {
  * if user is logged in, function renders contacts for the logged-in user, otherwise it renders all contacts
  */
 function renderDifferentContacts() {
-  document.getElementById('handle_resp_contact_container').classList.remove('d-none');
+  
   let contactsContainer = document.getElementById("contact_container");
   let contactsHTML;
   if (currentUser >= 0) {
@@ -305,9 +305,10 @@ function getInitials(name) {
  * @param {number} index - index of the contact being edited
  */
 function updateContact(index) {
-  let contact = contactsData[index];
   if (currentUser >= 0){
     contact = users[index];
+  }else {
+    contact = contactsData[index];
   }
   //let contact = currentUser >= 0 ? users[index] : contactsData[index];
   if (!contact) return;

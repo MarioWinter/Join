@@ -374,3 +374,7 @@ input {
 .overlay-create-contact-button {
   height: 100%;
 }
+
+.handle-resp-contact-container{
+  display: none;
+}

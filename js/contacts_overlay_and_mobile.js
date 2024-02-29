@@ -87,7 +87,7 @@ function showOverlay(isEdit) {
  * @param {event} event - event object
  */
 async function addNewContact(event) {
-  document.getElementById('handle_resp_contact_container').classList.add('d-none');
+  
   event.preventDefault();
   let newContact = {
     name: document.getElementById("contact_Name").value,
@@ -114,7 +114,9 @@ async function addNewContact(event) {
 function handleNewContact(index) {
   clearEntrys();
   cancelOverlay();
-  showSuccessMessage();  
+  showSuccessMessage();
+  renderDifferentContacts();
+  showContactDetails(index); 
 }
 
 /**

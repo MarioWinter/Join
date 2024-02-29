@@ -236,15 +236,18 @@ function indexOfUser(email) {
  * @returns {object|null} The user object if found, null otherwise.
  */
 function logInValidation(email, password) {
-  let user = users.find(u => u.email == email && u.password == password);
-  return user;
+  let user = users.find(u => u.email == email);
+  if (user && user.password == password) {
+    return user;
+  } else {
+    return null;
+  }
 }
 
 /**
  * Displays a message indicating successful login and redirects to the summary page after a short delay.
  */
 function logInSuccedMsg() {
-  document.getElementById('log_message').innerText = "Log in successful";
   setTimeout(() => {
     window.location.href = 'summary.html';
   }, 1000);
