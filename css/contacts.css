@@ -6,7 +6,7 @@ main {
   width: 100%;
   height: calc(100% - 9.6rem);
   display: flex;
-  padding-left: 23.2rem;  
+  padding-left: 23.2rem;
 }
 
 *::-webkit-scrollbar {
@@ -23,9 +23,9 @@ main {
   border: 5px solid #ffffff;
 }
 
-.add-new-contact-main {  
+.add-new-contact-main {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   overflow-y: auto;
   background: #fff;
   box-shadow: 0.4rem 0 0.6rem 0 rgba(0, 0, 0, 0.08);
@@ -96,10 +96,8 @@ main {
 }
 
 .contact-container:not(.active-contact):hover {
-  background: var(
-    --Boton-gradient,
-    linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%)
-  );
+  background: var(--Boton-gradient,
+      linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%));
 }
 
 .contact-circle {
@@ -155,7 +153,7 @@ text {
   color: #2a3647;
   font-size: 2.7rem;
   font-weight: 400;
-  line-height: 120%; 
+  line-height: 120%;
 }
 
 
@@ -375,6 +373,9 @@ input {
   height: 100%;
 }
 
-.handle-resp-contact-container{
-  display: none;
+@media(min-width: 780px) {
+
+  .handle-resp-contact-container {
+    display: none;
+  }
 }
