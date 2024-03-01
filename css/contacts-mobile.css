@@ -48,11 +48,7 @@
   
     .contacts-main {
       height: 92vh;
-    }
-  
-    /* .add-new-contact-main {
-      height: 94vh;
-    } */
+    }  
   
     #contact_container {
       width: 100%;
@@ -119,13 +115,12 @@
     .contacts-container-right {
       display: none;
       width: 100%;
-      height: 91vh;
+      height: 100vh;
     }
   
     .add-new-contact-main {
       width: 82.5vw;
-      padding-left: 0;
-      /* height: 95vh; */
+      padding-left: 0;      
     }
   
     .contact-list {
@@ -175,6 +170,10 @@
     html {
       font-size: 0.4715em;
     }
+
+    .overlay-add-contact {
+      top: 9%;
+    }
   
     .resp-position-fixed {
       position: fixed !important;
@@ -209,7 +208,7 @@
   
     .handle-resp-contact-container,
     .handle-resp-menu-container {
-      display: block !important;
+      display: block;
       padding-right: 1.6rem;
       height: 13rem;
       right: 16px;
@@ -225,13 +224,13 @@
       width: 8rem;
       height: 8rem;
       cursor: pointer;
-      background-color: #2a3647;
-      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+      background-color: #2a3647;      
     }
   
     .resp-contact-icon:hover,
     .resp-menu-icon:hover {
       background-color: #29abe2;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
     }
   
     .overlay-add-contact {    
@@ -261,7 +260,7 @@
     }
   
     .overlay-close {
-      content: url("../img/cancel-white.svg");
+      content: url("../assets/img/cancel-white.svg");
       position: absolute;
       top: 32px;
       right: 32px;
@@ -271,7 +270,7 @@
     }
   
     .overlay-close:hover {
-      content: url("../img/cancel-lightblue.svg");
+      content: url("../assets/img/cancel-lightblue.svg");
     }
   
     .overlay-contact-circle {
