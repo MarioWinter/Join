@@ -13,24 +13,14 @@
  *
  */
 function loadTaskEdit(TaskID) {
-	let tasks = addedTasks.filter((t) => t["id"] === TaskID);
-	document.getElementById("task_overlay_bg").innerHTML = "";
+    let tasks = addedTasks.filter((t) => t["id"] === TaskID);
+    document.getElementById("task_overlay_bg").innerHTML = "";
 
-	for (let index = 0; index < tasks.length; index++) {
-		let [
-			id,
-			bucket,
-			title,
-			description,
-			prio,
-			category,
-			subtasks,
-			assigneds,
-			duedate,
-			rawDuedate,
-		] = getTaskVariables(tasks, index);
-		initEditTask(id, title, description, prio, assigneds, rawDuedate);
-	}
+    for (let index = 0; index < tasks.length; index++) {
+        let [id, bucket, title, description, prio, category, subtasks, assigneds, duedate, rawDuedate] =
+            getTaskVariables(tasks, index);
+        initEditTask(id, title, description, prio, assigneds, rawDuedate);
+    }
 }
 
 /**
@@ -53,17 +43,12 @@ function loadTaskEdit(TaskID) {
  *
  */
 function initEditTask(id, title, description, prio, assigneds, duedate) {
-	document.getElementById("task_overlay_bg").innerHTML = generateEditTaskHTML(
-		id,
-		title,
-		description,
-		duedate
-	);
-	loadAllUsersForContactOnAssignedTo(assigneds, "et_contact_overlay", id);
-	loadAssignedOnEditTask(assigneds, "et_selected_contacts");
-	setTodayDateForCalendar("calendar_edit_task");
-	loadPrioOnEditTask(prio);
-	loadSubtasksEditTask("subtask_lists", id);
+    document.getElementById("task_overlay_bg").innerHTML = generateEditTaskHTML(id, title, description, duedate);
+    loadAllUsersForContactOnAssignedTo(assigneds, "et_contact_overlay", id);
+    loadAssignedOnEditTask(assigneds, "et_selected_contacts");
+    setTodayDateForCalendar("calendar_edit_task");
+    loadPrioOnEditTask(prio);
+    loadSubtasksEditTask("subtask_lists", id);
 }
 
 /**
@@ -79,11 +64,11 @@ function initEditTask(id, title, description, prio, assigneds, duedate) {
  * @returns {void}
  */
 function updateOpenTask(taskID) {
-	updateOpenTaskTitle(taskID);
-	updateOpenTaskDesc(taskID);
-	updateOpenTaskDueDate(taskID);
-	updateTaskPriority(taskID);
-	renderOpenTask(taskID);
+    updateOpenTaskTitle(taskID);
+    updateOpenTaskDesc(taskID);
+    updateOpenTaskDueDate(taskID);
+    updateTaskPriority(taskID);
+    renderOpenTask(taskID);
 }
 
 /**
@@ -95,8 +80,8 @@ function updateOpenTask(taskID) {
  * @returns {void}
  */
 function updateOpenTaskTitle(taskID) {
-	let titleValue = document.getElementById("title_input_ed_task").value;
-	addedTasks[taskID]["title"] = titleValue;
+    let titleValue = document.getElementById("title_input_ed_task").value;
+    addedTasks[taskID]["title"] = titleValue;
 }
 
 /**
@@ -110,8 +95,8 @@ function updateOpenTaskTitle(taskID) {
  *
  */
 function updateOpenTaskDesc(taskID) {
-	let descValue = document.getElementById("description_ed_task").value;
-	addedTasks[taskID]["description"] = descValue;
+    let descValue = document.getElementById("description_ed_task").value;
+    addedTasks[taskID]["description"] = descValue;
 }
 
 /**
@@ -125,8 +110,8 @@ function updateOpenTaskDesc(taskID) {
  *
  */
 function updateOpenTaskDueDate(taskID) {
-	let dueDateValue = document.getElementById("calendar_edit_task").value;
-	addedTasks[taskID]["duedate"] = dueDateValue;
+    let dueDateValue = document.getElementById("calendar_edit_task").value;
+    addedTasks[taskID]["duedate"] = dueDateValue;
 }
 
 /**
@@ -140,11 +125,11 @@ function updateOpenTaskDueDate(taskID) {
  * @returns {void} - No return value.
  */
 function updateTaskPriority(taskID) {
-	let prio = "";
-	if (globalPrioButtonID !== "") {
-		prio = document.getElementById(globalPrioButtonID).value;
-	}
-	addedTasks[taskID]["prio"] = prio;
+    let prio = "";
+    if (globalPrioButtonID !== "") {
+        prio = document.getElementById(globalPrioButtonID).value;
+    }
+    addedTasks[taskID]["prio"] = prio;
 }
 
 /**
@@ -159,16 +144,16 @@ function updateTaskPriority(taskID) {
  * @returns {void} - No return value.
  */
 function loadPrioOnEditTask(prio) {
-	if (prio === "Urgent") {
-		isActive = true;
-		changePrioBtnColor("urgent-btn", false);
-	} else if (prio === "Medium") {
-		isActive = true;
-		changePrioBtnColor("medium-btn", false);
-	} else if (prio === "Low") {
-		isActive = true;
-		changePrioBtnColor("low-btn", false);
-	}
+    if (prio === "Urgent") {
+        isActive = true;
+        changePrioBtnColor("urgent-btn", false);
+    } else if (prio === "Medium") {
+        isActive = true;
+        changePrioBtnColor("medium-btn", false);
+    } else if (prio === "Low") {
+        isActive = true;
+        changePrioBtnColor("low-btn", false);
+    }
 }
 
 /**
@@ -186,20 +171,20 @@ function loadPrioOnEditTask(prio) {
  */
 let isCantactOpen = true;
 function openContactOverlay(containerID, selectedContactsID) {
-	if (isCantactOpen) {
-		show(containerID);
-		hide(selectedContactsID);
-		hide("select-contacts_down");
-		show("select-contacts_up");
+    if (isCantactOpen) {
+        show(containerID);
+        hide(selectedContactsID);
+        hide("select-contacts_down");
+        show("select-contacts_up");
 
-		isCantactOpen = false;
-	} else {
-		hide(containerID);
-		show(selectedContactsID);
-		show("select-contacts_down");
-		hide("select-contacts_up");
-		isCantactOpen = true;
-	}
+        isCantactOpen = false;
+    } else {
+        hide(containerID);
+        show(selectedContactsID);
+        show("select-contacts_down");
+        hide("select-contacts_up");
+        isCantactOpen = true;
+    }
 }
 
 /**
@@ -219,31 +204,29 @@ function openContactOverlay(containerID, selectedContactsID) {
  * 5. If the user is not assigned to the task, generate and append the HTML for an unchecked badge.
  */
 function loadAllUsersForContactOnAssignedTo(assigneds, containerID, ID) {
-	let contactsContainer = document.getElementById(containerID);
-	for (let i = 0; i < users.length; i++) {
-		let userName = users[i]["name"];
-		let userBadge = generateUserBadge(userName);
-		let badgeColor = users[i]["bgcolor"];
-		if (assigneds.includes(userName)) {
-			contactsContainer.innerHTML +=
-				generateEditTaskAssigmentContactsCheckedHTML(
-					badgeColor,
-					userBadge,
-					userName,
-					i,
-					ID
-				);
-		} else {
-			contactsContainer.innerHTML +=
-				generateEditTaskAssigmentContactsHTML(
-					badgeColor,
-					userBadge,
-					userName,
-					i,
-					ID
-				);
-		}
-	}
+    let contactsContainer = document.getElementById(containerID);
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]["name"];
+        let userBadge = generateUserBadge(userName);
+        let badgeColor = users[i]["bgcolor"];
+        if (assigneds.includes(userName)) {
+            contactsContainer.innerHTML += generateEditTaskAssigmentContactsCheckedHTML(
+                badgeColor,
+                userBadge,
+                userName,
+                i,
+                ID
+            );
+        } else {
+            contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(
+                badgeColor,
+                userBadge,
+                userName,
+                i,
+                ID
+            );
+        }
+    }
 }
 
 /**
@@ -264,16 +247,16 @@ function loadAllUsersForContactOnAssignedTo(assigneds, containerID, ID) {
  * 6. Load the assigned users on the edit task interface using the loadAssignedOnEditTask function.
  */
 function addContactAsAssigned(id, i, j) {
-	let checkAssigned = document.getElementById(id);
-	let assigned = addedTasks[j]["assigned"];
-	let userName = users[i]["name"];
-	let deleteName = assigned.indexOf(userName);
-	if (checkAssigned.checked) {
-		assigned.push(userName);
-	} else if (!checkAssigned.checked) {
-		assigned.splice(deleteName, 1);
-	}
-	loadAssignedOnEditTask(assigned, "et_selected_contacts");
+    let checkAssigned = document.getElementById(id);
+    let assigned = addedTasks[j]["assigned"];
+    let userName = users[i]["name"];
+    let deleteName = assigned.indexOf(userName);
+    if (checkAssigned.checked) {
+        assigned.push(userName);
+    } else if (!checkAssigned.checked) {
+        assigned.splice(deleteName, 1);
+    }
+    loadAssignedOnEditTask(assigned, "et_selected_contacts");
 }
 
 /**
@@ -294,15 +277,14 @@ function addContactAsAssigned(id, i, j) {
  *    d. Append the generated assignment badge HTML to the container.
  */
 function loadAssignedOnEditTask(assigneds, containerID) {
-	let selectetContactsContainer = document.getElementById(containerID);
-	selectetContactsContainer.innerHTML = "";
-	for (let i = 0; i < assigneds.length; i++) {
-		let badgeColor = getUserColor(assigneds, i);
-		let assignedName = assigneds[i];
-		let userBadge = generateUserBadge(assignedName);
-		selectetContactsContainer.innerHTML +=
-			generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i);
-	}
+    let selectetContactsContainer = document.getElementById(containerID);
+    selectetContactsContainer.innerHTML = "";
+    for (let i = 0; i < assigneds.length; i++) {
+        let badgeColor = getUserColor(assigneds, i);
+        let assignedName = assigneds[i];
+        let userBadge = generateUserBadge(assignedName);
+        selectetContactsContainer.innerHTML += generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i);
+    }
 }
 
 /**
@@ -324,21 +306,16 @@ function loadAssignedOnEditTask(assigneds, containerID) {
  * 7. If the search term is not empty, filter and display contacts based on the search term using getContect.
  */
 function filterUserOnAssignedTo(inputID, searchContainerID, id) {
-	let searchTerm = document.getElementById(inputID).value;
-	let assigneds = addedTasks[id]["assigned"];
-	searchTerm = searchTerm.toLowerCase();
-	let contactsContainer = document.getElementById(searchContainerID);
-	contactsContainer.innerHTML = "";
-	if (searchTerm == "") {
-		loadAllUsersForContactOnAssignedTo(assigneds, searchContainerID, id);
-	} else {
-		renderFilterdUsersOnAssignedTo(
-			assigneds,
-			searchTerm,
-			id,
-			contactsContainer
-		);
-	}
+    let searchTerm = document.getElementById(inputID).value;
+    let assigneds = addedTasks[id]["assigned"];
+    searchTerm = searchTerm.toLowerCase();
+    let contactsContainer = document.getElementById(searchContainerID);
+    contactsContainer.innerHTML = "";
+    if (searchTerm == "") {
+        loadAllUsersForContactOnAssignedTo(assigneds, searchContainerID, id);
+    } else {
+        renderFilterdUsersOnAssignedTo(assigneds, searchTerm, id, contactsContainer);
+    }
 }
 
 /**
@@ -358,38 +335,31 @@ function filterUserOnAssignedTo(inputID, searchContainerID, id) {
  * 4. If the condition is met, generate the user badge, get the badge color, and update the container's inner HTML.
  * 5. If the user is already assigned, use generateEditTaskAssigmentContactsCheckedHTML; otherwise, use generateEditTaskAssigmentContactsHTML.
  */
-function renderFilterdUsersOnAssignedTo(
-	assigneds,
-	searchTerm,
-	id,
-	contactsContainer
-) {
-	for (let i = 0; i < users.length; i++) {
-		let userName = users[i]["name"];
-		if (userName.toLowerCase().includes(searchTerm)) {
-			let userBadge = generateUserBadge(userName);
-			let badgeColor = users[i]["bgcolor"];
-			if (assigneds.includes(userName)) {
-				contactsContainer.innerHTML +=
-					generateEditTaskAssigmentContactsCheckedHTML(
-						badgeColor,
-						userBadge,
-						userName,
-						i,
-						id
-					);
-			} else {
-				contactsContainer.innerHTML +=
-					generateEditTaskAssigmentContactsHTML(
-						badgeColor,
-						userBadge,
-						userName,
-						i,
-						id
-					);
-			}
-		}
-	}
+function renderFilterdUsersOnAssignedTo(assigneds, searchTerm, id, contactsContainer) {
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]["name"];
+        if (userName.toLowerCase().includes(searchTerm)) {
+            let userBadge = generateUserBadge(userName);
+            let badgeColor = users[i]["bgcolor"];
+            if (assigneds.includes(userName)) {
+                contactsContainer.innerHTML += generateEditTaskAssigmentContactsCheckedHTML(
+                    badgeColor,
+                    userBadge,
+                    userName,
+                    i,
+                    id
+                );
+            } else {
+                contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(
+                    badgeColor,
+                    userBadge,
+                    userName,
+                    i,
+                    id
+                );
+            }
+        }
+    }
 }
 
 /**
@@ -405,8 +375,8 @@ function renderFilterdUsersOnAssignedTo(
  * 2. Displays the subtask input or checkbox using the show function.
  */
 function showSubtaskInput(addSubtaskID, checkSubtaskID) {
-	hide(addSubtaskID);
-	show(checkSubtaskID);
+    hide(addSubtaskID);
+    show(checkSubtaskID);
 }
 
 /**
@@ -423,9 +393,9 @@ function showSubtaskInput(addSubtaskID, checkSubtaskID) {
  * 3. Resets the value of the subtask input to an empty string.
  */
 function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
-	show(addSubtaskID);
-	hide(checkSubtaskID);
-	document.getElementById("subtask_input").value = "";
+    show(addSubtaskID);
+    hide(checkSubtaskID);
+    document.getElementById("subtask_input").value = "";
 }
 
 /**
@@ -441,12 +411,12 @@ function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
  * 3. Returns the array of subtasks.
  */
 function loadSubtask(taskID) {
-	let tasks = addedTasks.filter((t) => t["id"] === taskID);
-	for (let index = 0; index < tasks.length; index++) {
-		let task = tasks[index];
-		let subtask = task["subtask"];
-		return subtask;
-	}
+    let tasks = addedTasks.filter((t) => t["id"] === taskID);
+    for (let index = 0; index < tasks.length; index++) {
+        let task = tasks[index];
+        let subtask = task["subtask"];
+        return subtask;
+    }
 }
 
 /**
@@ -464,21 +434,21 @@ function loadSubtask(taskID) {
  * 4. Appends the generated HTML to the subtask container.
  */
 function loadSubtasksEditTask(subtaskListID, ID) {
-	let subtaskContainer = document.getElementById(subtaskListID);
-	subtaskContainer.innerHTML = "";
-	let subtask = loadSubtask(ID);
-	for (let i = 0; i < subtask.length; i++) {
-		let subtitle = subtask[i]["subtitle"];
-		subtaskContainer.innerHTML += generateSubtaskListItemHTML(
-			subtitle,
-			i,
-			ID,
-			"subtask_listitem_",
-			"subtask_edit_container",
-			"subtask_edit_input",
-			"subtask_lists"
-		);
-	}
+    let subtaskContainer = document.getElementById(subtaskListID);
+    subtaskContainer.innerHTML = "";
+    let subtask = loadSubtask(ID);
+    for (let i = 0; i < subtask.length; i++) {
+        let subtitle = subtask[i]["subtitle"];
+        subtaskContainer.innerHTML += generateSubtaskListItemHTML(
+            subtitle,
+            i,
+            ID,
+            "subtask_listitem_",
+            "subtask_edit_container",
+            "subtask_edit_input",
+            "subtask_lists"
+        );
+    }
 }
 
 /**
@@ -497,16 +467,16 @@ function loadSubtasksEditTask(subtaskListID, ID) {
  * 5. Reloads and renders the updated subtasks on the edit task interface using the loadSubtasksEditTask function.
  */
 function addSubtask(taskID, subtaskListItemID) {
-	let subtask = loadSubtask(taskID);
-	if (subtask_input.value == "") {
-	} else {
-		subtask.push({
-			subdone: false,
-			subtitle: subtask_input.value,
-		});
-		cancelAddSubtask("add_subtask", "check_subtask_icons");
-		loadSubtasksEditTask(subtaskListItemID, taskID);
-	}
+    let subtask = loadSubtask(taskID);
+    if (subtask_input.value == "") {
+    } else {
+        subtask.push({
+            subdone: false,
+            subtitle: subtask_input.value,
+        });
+        cancelAddSubtask("add_subtask", "check_subtask_icons");
+        loadSubtasksEditTask(subtaskListItemID, taskID);
+    }
 }
 
 /**
@@ -524,9 +494,9 @@ function addSubtask(taskID, subtaskListItemID) {
  * 3. Reloads and renders the updated subtasks on the edit task interface using the loadSubtasksEditTask function.
  */
 function deleteSubtask(taskID, subTaskID, subtaskListItemID) {
-	let subTask = loadSubtask(taskID);
-	subTask.splice(subTaskID, 1);
-	loadSubtasksEditTask(subtaskListItemID, taskID);
+    let subTask = loadSubtask(taskID);
+    subTask.splice(subTaskID, 1);
+    loadSubtasksEditTask(subtaskListItemID, taskID);
 }
 
 /**
@@ -543,8 +513,8 @@ function deleteSubtask(taskID, subTaskID, subtaskListItemID) {
  */
 
 function showSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
-	hide(subtaskListItemID);
-	show(subtaskEditFrameID);
+    hide(subtaskListItemID);
+    show(subtaskEditFrameID);
 }
 
 /**
@@ -560,8 +530,8 @@ function showSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
  * 2. Shows the subtask list item using the show function.
  */
 function closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
-	hide(subtaskEditFrameID);
-	show(subtaskListItemID);
+    hide(subtaskEditFrameID);
+    show(subtaskListItemID);
 }
 
 /**
@@ -582,18 +552,13 @@ function closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID) {
  * 3. Closes the subtask edit input frame using the closeSubtaskEditInputFrame function.
  * 4. Reloads the subtasks for the task using the loadSubtasksEditTask function.
  */
-function updateSubtask(
-	taskID,
-	subtaskListItemID,
-	subtaskEditInputID,
-	subtaskID,
-	subtaskEditFrameID,
-	subtaskList
-) {
-	let subtask = loadSubtask(taskID);
-	let subtaskEditInput = document.getElementById(subtaskEditInputID).value;
-	subtask[subtaskID]["subtitle"] = subtaskEditInput;
-	subtask[subtaskID]["subdone"] = false;
-	closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID);
-	loadSubtasksEditTask(subtaskList, taskID);
+function updateSubtask(taskID, subtaskListItemID, subtaskEditInputID, subtaskID, subtaskEditFrameID, subtaskList) {
+    let subtask = loadSubtask(taskID);
+    let subtaskEditInput = document.getElementById(subtaskEditInputID).value;
+    if (subtaskEditInput.length !== 0) {
+        subtask[subtaskID]["subtitle"] = subtaskEditInput;
+        subtask[subtaskID]["subdone"] = false;
+        closeSubtaskEditInputFrame(subtaskListItemID, subtaskEditFrameID);
+        loadSubtasksEditTask(subtaskList, taskID);
+    }
 }
