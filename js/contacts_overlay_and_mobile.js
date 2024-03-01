@@ -145,8 +145,7 @@ function cancelOverlay() {
     closeOverlay();
   } else {
     handleOverlay();
-  };  
-  document.getElementById('handle_resp_menu_container').classList.remove('d-none');
+  };    
 }
 
 /**
