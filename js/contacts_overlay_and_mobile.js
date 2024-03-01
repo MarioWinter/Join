@@ -69,17 +69,16 @@ function showResponsiveEditMenu() {
  * this function shows the overlay view for editing or adding a new contact
  * @param {boolean} isEdit - indicates whether the overlay is for editing an existing contact
  */
-function showOverlay(isEdit) {
-  
+function showOverlay(isEdit) {    
   updateOverlayContent(isEdit);
-  updateOverlayButtons(isEdit);
+  updateOverlayButtons(isEdit);  
   let addNewContact = document.getElementById("add_new_contact");
   addNewContact.classList.remove("d-none");
   setTimeout(() => {
-    addNewContact.classList.add("show");
-  }, 2000);
+    addNewContact.classList.add("show");    
+  }, 10);
   cancelOverlay();
-  document.getElementById('handle_resp_contact_container').classList.add('d-none');
+  document.getElementById('handle_resp_contact_container').classList.add('d-none');     
 }
 
 /**
@@ -122,9 +121,9 @@ function handleNewContact(index) {
  * this function edits selected contact in case of changing name nummer etc
  * @param {number} index - index of the selected contact
  */
-function editContacts(index) {
+function editContacts(index) {   
   let contact = currentUser >= 0 ? users[index] : contactsData[index];
-  if (!contact) return;
+  if (!contact) return;  
   selectedContactIndex = index;
   let originalCircleColor = contact.bgcolor || contact.color;
   let initials = getInitials(contact.name);
@@ -134,6 +133,7 @@ function editContacts(index) {
   updateContactInputs(contact);
   setSaveButtonFunction(index);
   hideResponsiveEditMenu();  
+  document.getElementById('handle_resp_menu_container').classList.add('d-none');
 }
 
 /**
@@ -145,18 +145,17 @@ function cancelOverlay() {
     closeOverlay();
   } else {
     handleOverlay();
-  };
-  //renderDifferentContacts();
+  };  
+  document.getElementById('handle_resp_menu_container').classList.remove('d-none');
 }
 
 /**
- * this function is for closing the overlay
+ * this function is for closing the overlay and show responsivemenu again
  */
 function closeOverlay() {
   let overlay = document.getElementById("add_new_contact");
   overlay.classList.remove("show");
   overlay.classList.add("close");
-
   setTimeout(() => {    
     hideAddNewContact();
     resetOverlayContactCircle();
@@ -165,8 +164,8 @@ function closeOverlay() {
       hideAddNewContact();
     }, 300);
     clearEntrys();
-  }, 300);
-  //renderDifferentContacts();
+  }, 300); 
+  document.getElementById('handle_resp_contact_container').classList.remove('d-none'); 
 }
 
 /**
@@ -262,10 +261,8 @@ function setEditButtons(overlayCancelButton, overlayCreateButton) {
  * @param {html element} overlayCreateButton - overlay create button
  */
 function setCreateButtons(overlayCancelButton, overlayCreateButton) {
-
   overlayCancelButton.innerHTML = "Cancel <svg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 24 25' fill='none'><mask id='mask0_71720_5473' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='25'><rect y='0.96582' width='24' height='24' fill='#D9D9D9'/></mask><g mask='url(#mask0_71720_5473)'><path d='M11.9998 14.3659L7.0998 19.2659C6.91647 19.4492 6.68314 19.5409 6.3998 19.5409C6.11647 19.5409 5.88314 19.4492 5.6998 19.2659C5.51647 19.0825 5.4248 18.8492 5.4248 18.5659C5.4248 18.2825 5.51647 18.0492 5.6998 17.8659L10.5998 12.9659L5.6998 8.06587C5.51647 7.88254 5.4248 7.6492 5.4248 7.36587C5.4248 7.08254 5.51647 6.8492 5.6998 6.66587C5.88314 6.48254 6.11647 6.39087 6.3998 6.39087C6.68314 6.39087 6.91647 6.48254 7.0998 6.66587L11.9998 11.5659L16.8998 6.66587C17.0831 6.48254 17.3165 6.39087 17.5998 6.39087C17.8831 6.39087 18.1165 6.48254 18.2998 6.66587C18.4831 6.8492 18.5748 7.08254 18.5748 7.36587C18.5748 7.6492 18.4831 7.88254 18.2998 8.06587L13.3998 12.9659L18.2998 17.8659C18.4831 18.0492 18.5748 18.2825 18.5748 18.5659C18.5748 18.8492 18.4831 19.0825 18.2998 19.2659C18.1165 19.4492 17.8831 19.5409 17.5998 19.5409C17.3165 19.5409 17.0831 19.4492 16.8998 19.2659L11.9998 14.3659Z' fill='#2A3647'/></g></svg>";
   overlayCreateButton.innerHTML = "Create contact <img src='./assets/img/overlay-ok.svg'/>";
-
   overlayCancelButton.onclick = function () {
     cancelOverlay();
   };
