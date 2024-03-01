@@ -378,14 +378,12 @@ function addContactsData() {
  */
 async function deleteContact(index) {
     if (currentUser >= 0) {
-        let userName = users[index]["name"];
-        users.splice(index, 1);
-        currentUser = users.findIndex(userName);
-        userIndex = currentUser;
+        user = nameOfCurrentUser();
         deleteUserInAssignedTo(index);
-        localStorage.setItem("currentUserIndex", userIndex);
         await setItem("addedTasks", JSON.stringify(addedTasks));
         await setItem("users", JSON.stringify(users));
+        users.splice(index, 1);
+        updateCurrentUser(user);
     } else {
         contactsData.splice(index, 1);
     }
@@ -395,6 +393,23 @@ async function deleteContact(index) {
     }
     renderDifferentContacts();
     hideResponsiveEditMenu();
+    loadAddedTasksFromStorage();
+}
+
+function nameOfCurrentUser() {
+    let i = currentUser;
+    let user = users[i].name;
+    return user;
+}
+
+function updateCurrentUser(user) {
+    let userIndex = users.findIndex(u => u.name === user);
+    if (userIndex !== -1) {
+        localStorage.setItem("currentUserIndex", userIndex);
+        loadCurrentUser();
+    } else {
+        console.error("Benutzer nicht gefunden");
+    }
 }
 
 /**
@@ -406,9 +421,12 @@ async function deleteContact(index) {
  * This function removes a user from the "assigned" array in all tasks. It takes the index of the user in the users array and filters out the user's name from the "assigned" array of each task.
  */
 function deleteUserInAssignedTo(index) {
-    let userName = users[index]["name"];
-    addedTasks.forEach((task) => {
-        task["assigned"] = task["assigned"].filter((user) => user !== userName);
+    let deletedUser = users[index].name;
+    addedTasks.forEach(task => {
+        let assignedIndex = task.assigned.indexOf(deletedUser);
+        if (assignedIndex !== -1) {
+            task.assigned.splice(assignedIndex, 1);
+        }
     });
 }
 

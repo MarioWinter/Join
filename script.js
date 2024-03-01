@@ -245,7 +245,7 @@ function logInValidation(email, password) {
 }
 
 /**
- * Displays a message indicating successful login and redirects to the summary page after a short delay.
+ * redirects to the summary page after a short delay.
  */
 function logInSuccedMsg() {
   setTimeout(() => {
