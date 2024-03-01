@@ -43,6 +43,12 @@ async function init() {
   renderLogIn();
 }
 
+async function initSidePages() {
+  await loadUsers();
+  loadCurrentUser();
+  loadUserBadge();
+}
+
 /**
  * Renders the login window.
  */
