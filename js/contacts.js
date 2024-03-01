@@ -379,45 +379,19 @@ function addContactsData() {
  */
 async function deleteContact(index) {
     if (currentUser >= 0) {
-        let currentUserToDelete = nameOfCurrentUser();
-        let loggedInUserIndex = localStorage.getItem("currentUserIndex");
-        if (index < loggedInUserIndex) {
-            loggedInUserIndex--; 
-        }
+        let currentLoggedUser = nameOfCurrentUser();
         deleteUserInAssignedTo(index);
         await setItem("addedTasks", JSON.stringify(addedTasks));
+        users.splice(index, 1);
         await setItem("users", JSON.stringify(users));
-        users.splice(index, 1);
-        if (currentUserToDelete === nameOfCurrentUser()) {
-            updateCurrentUser(currentUserToDelete);
-        } else {
-            localStorage.setItem("currentUserIndex", loggedInUserIndex);
-        }
-    } else {
-        users.splice(index, 1);
+        updateCurrentUser(currentLoggedUser);
     }
-    
-    /**
-     * Hide contact details if displayed.
-     */
     let contactDetails = document.getElementById("show_contact_details");
     if (contactDetails.classList.contains("show")) {
         hideContactDetails();
     }
-    
-    /**
-     * Render different contacts.
-     */
     renderDifferentContacts();
-    
-    /**
-     * Hide the responsive edit menu.
-     */
     hideResponsiveEditMenu();
-    
-    /**
-     * Load tasks from storage.
-     */
     loadAddedTasksFromStorage();
 }
 
@@ -436,15 +410,20 @@ function nameOfCurrentUser() {
  * @param {string} user - The name of the user to set as the current user.
  */
 function updateCurrentUser(user) {
-    let userIndex = users.findIndex(u => u.name === user);
-    if (userIndex !== -1) {
-        localStorage.setItem("currentUserIndex", userIndex);
-        loadCurrentUser();
-    } else {
+    let found = false;
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].name === user) {
+            userIndex = i;
+            localStorage.setItem("currentUserIndex", userIndex);
+            loadCurrentUser();
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
         console.error("User not found");
     }
 }
-
 
 /**
  * Deletes a user from the "assigned" array in all tasks.
