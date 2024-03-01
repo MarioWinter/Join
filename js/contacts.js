@@ -373,44 +373,78 @@ function addContactsData() {
 }
 
 /**
- * this function deletes a contact based on the provided index
- * @param {number} index - the index of the contact to be deleted
+ * Deletes a contact based on the provided index.
+ * @param {number} index - The index of the contact to be deleted.
+ * @returns {Promise<void>} A Promise that resolves after the contact is deleted.
  */
 async function deleteContact(index) {
     if (currentUser >= 0) {
-        user = nameOfCurrentUser();
+        let currentUserToDelete = nameOfCurrentUser();
+        let loggedInUserIndex = localStorage.getItem("currentUserIndex");
+        if (index < loggedInUserIndex) {
+            loggedInUserIndex--; 
+        }
         deleteUserInAssignedTo(index);
         await setItem("addedTasks", JSON.stringify(addedTasks));
         await setItem("users", JSON.stringify(users));
         users.splice(index, 1);
-        updateCurrentUser(user);
+        if (currentUserToDelete === nameOfCurrentUser()) {
+            updateCurrentUser(currentUserToDelete);
+        } else {
+            localStorage.setItem("currentUserIndex", loggedInUserIndex);
+        }
     } else {
-        contactsData.splice(index, 1);
+        users.splice(index, 1);
     }
+    
+    /**
+     * Hide contact details if displayed.
+     */
     let contactDetails = document.getElementById("show_contact_details");
     if (contactDetails.classList.contains("show")) {
         hideContactDetails();
     }
+    
+    /**
+     * Render different contacts.
+     */
     renderDifferentContacts();
+    
+    /**
+     * Hide the responsive edit menu.
+     */
     hideResponsiveEditMenu();
+    
+    /**
+     * Load tasks from storage.
+     */
     loadAddedTasksFromStorage();
 }
 
+/**
+ * Retrieves the name of the current user.
+ * @returns {string} The name of the current user.
+ */
 function nameOfCurrentUser() {
     let i = currentUser;
     let user = users[i].name;
     return user;
 }
 
+/**
+ * Updates the current user based on the provided user name.
+ * @param {string} user - The name of the user to set as the current user.
+ */
 function updateCurrentUser(user) {
     let userIndex = users.findIndex(u => u.name === user);
     if (userIndex !== -1) {
         localStorage.setItem("currentUserIndex", userIndex);
         loadCurrentUser();
     } else {
-        console.error("Benutzer nicht gefunden");
+        console.error("User not found");
     }
 }
+
 
 /**
  * Deletes a user from the "assigned" array in all tasks.
