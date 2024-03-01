@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="./css/sidebar-header_template.css">
     <link rel="stylesheet" href="./css/mobile-header-footer.css">
     <link rel="stylesheet" href="./css/legal_notice.css">
+    <script src="./js/storage.js"></script>
     <script src="script.js"></script>
     <script src="./js/sidebar-header.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), initSidePages()">
     <div class="w3include-container">
         <div w3-include-html="assets/templates/sidebar_template.html"></div>
         <main class="legal-notice-content">

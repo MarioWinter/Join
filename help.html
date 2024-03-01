@@ -11,12 +11,14 @@
 	<link rel="stylesheet" href="./fonts.css" />
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="./css/help.css">
-	<script src="./js/sidebar-header.js"></script>
+	<script src="./js/storage.js"></script>
 	<script src="script.js"></script>
+	<script src="./js/sidebar-header.js"></script>
+
 
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), initSidePages()">
 	<div class="w3include-container">
 		<div w3-include-html="assets/templates/sidebar_template.html"></div>
 		<main class="main-content-help">
