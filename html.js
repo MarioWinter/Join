@@ -1,3 +1,9 @@
+
+/**
+ * Render HTML for login form.
+ * @returns {string} HTML string for login form.
+ */
+
 function renderHtmlLogIn() {
   return /*html*/ `
   <div id="log_in_conatiner" class="log-in-container">
@@ -38,6 +44,11 @@ function renderHtmlLogIn() {
 
 }
 
+
+/**
+ * Render HTML for sign up form.
+ * @returns {string} HTML string for sign up form.
+ */
 function renderSignUpHTML() {
   return /*html*/ `
    <div id="sing_up_container" class="sing-up-container">
