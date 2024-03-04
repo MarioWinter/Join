@@ -47,6 +47,7 @@
     100% {
         opacity: 0;
         display: none;
+        z-index: 0;
     }
 }
 
@@ -136,13 +137,14 @@
     }
 
     input[type="checkbox"]+label::before {
-        width: 4.2rem;
-        height: 3.9rem;
+        width: 3.2rem;
+        height: 2.9rem;
         font-size: 2rem;
     }
 
     input[type="checkbox"]+label {
         font-size: 2rem;
+        width: 22rem;
     }
 
     .footer-text-container {
@@ -165,4 +167,16 @@
         margin-top: 2.2rem;
     }
 
+}
+
+@media(max-width: 470px) {
+    html{
+        font-size: 0.350rem;
+    }
+}
+
+@media(max-width: 375px) {
+    html{
+        font-size: 0.330rem;
+    }
 }
