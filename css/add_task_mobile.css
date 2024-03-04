@@ -22,6 +22,10 @@
     padding-top: 2.4rem;
   }
 
+  .add-task-container-right {
+    padding-top: 10px;
+  }
+
   .assigned-main {
     width: 100%;
   }
