@@ -15,15 +15,15 @@ function checkPath() {
     let currentPath = window.location.pathname;
 
     if (
-        currentPath === "Join/summary.html" ||
-        currentPath === "Join/add_task.html" ||
-        currentPath === "Join/board.html" ||
-        currentPath === "Join/contacts.html"
+        currentPath === "/Join/summary.html" ||
+        currentPath === "/Join/add_task.html" ||
+        currentPath === "/Join/board.html" ||
+        currentPath === "/Join/contacts.html"
     ) {
         activeMenuLink();
         activeMenuLinkMobile();
     }
-    if (currentPath === "Join/privacy_policy.html" || currentPath === "Join/legal_notice.html") {
+    if (currentPath === "/Join/privacy_policy.html" || currentPath === "/Join/legal_notice.html") {
         activeInfoLink();
     }
 }
