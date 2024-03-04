@@ -439,7 +439,11 @@ async function clearRemoteStorage() {
 function searchTask() {
     let searchTerm = find_task.value;
     clearBoard();
-    filteredTasks = addedTasks.filter((t) => t["title"].toLowerCase().includes(searchTerm.toLowerCase()));
+    filteredTasks = addedTasks.filter(
+        (t) =>
+            t["title"].toLowerCase().includes(searchTerm.toLowerCase()) ||
+            t["description"].toLowerCase().includes(searchTerm.toLowerCase())
+    );
     loadBoard();
     errorNoteSearchTask("no_task_found");
 }
@@ -460,7 +464,11 @@ function searchTask() {
 function searchTaskMobile() {
     let searchTerm = find_task_mobile.value;
     clearBoard();
-    filteredTasks = addedTasks.filter((t) => t["title"].toLowerCase().includes(searchTerm.toLowerCase()));
+    filteredTasks = addedTasks.filter(
+        (t) =>
+            t["title"].toLowerCase().includes(searchTerm.toLowerCase()) ||
+            t["description"].toLowerCase().includes(searchTerm.toLowerCase())
+    );
     loadBoard();
     errorNoteSearchTask("no_task_found_mobile");
 }

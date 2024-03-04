@@ -108,6 +108,10 @@
   font-size: 2rem;
 }
 
+.selected-contacts {
+  padding-top: 5px;
+}
+
 .selected-contacts-field::placeholder {
   color: #000;
 }
@@ -397,4 +401,3 @@
     transform: translate(150%);
   }
 }
-

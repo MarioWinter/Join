@@ -220,24 +220,27 @@ function updateContactDetails(selectedContact, circleColor, contactInitials) {
     contactDetails.classList.add("show");
 }
 
+
+
 /**
  * this function shows or hides contact details based on selected/choosed index/contact
  * activates or deactivates the contact details and adjusts the responsive layout accordingly
  * @param {number} selectedIndex - index of the selected contact
  */
-function showContactDetails(selectedIndex) {
+function showContactDetails(selectedIndex) {         
     let contact = document.getElementById(`contact-${selectedIndex}`);
     let isActive = contact ? contact.classList.contains("active-contact") : false;
     let contactDetails = document.getElementById("show_contact_details");
+
     if (isActive) {
         deactivateContactDetails(contact);
     } else if (contact) {
-        activateDetailAndDisplay(selectedIndex, contact);
-        if (window.innerWidth < 851) {
+        activateDetailAndDisplay(selectedIndex, contact);        
+        if (window.innerWidth < 850) {
             showResponsiveContactDetails();
             showResponsiveArrowBack();
-            hideResponsiveEditMenu();
-        }
+            hideResponsiveEditMenu();                         
+            }
     }
 }
 
@@ -426,10 +429,8 @@ function updateCurrentUser(user) {
 }
 
 /**
- * Deletes a user from the "assigned" array in all tasks.
- *
- * @param {number} index - The index of the user in the users array to be deleted.
- *
+ * Deletes a user from the "assigned" array in all tasks
+ * @param {number} index - The index of the user in the users array to be deleted
  * @description
  * This function removes a user from the "assigned" array in all tasks. It takes the index of the user in the users array and filters out the user's name from the "assigned" array of each task.
  */
