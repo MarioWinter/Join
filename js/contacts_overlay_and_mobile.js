@@ -23,13 +23,15 @@ function showResponsiveArrowBack() {
 /**
  * this function closes contact details view and returns to main contact list
  */
-function closeResponsiveDetails() {
+function closeResponsiveDetails() { 
+  let contactDetails = document.getElementById('show_contact_details'); 
   let contactsContainerRight = document.getElementById("contacts_container_right");
   if (contactsContainerRight) {
     contactsContainerRight.style.display = "none";
   }
   helpForClosingResponsiveDetails();
-  deactivateAllContacts();
+  deactivateAllContacts();  
+  contactDetails.classList.remove('show'); 
 }
 
 /**
@@ -231,8 +233,7 @@ function setSaveButtonFunction(index) {
     updateContact(index);
     showSuccessMessage();
     closeOverlay(); 
-    showContactDetails(index);
-    // Ändern Sie closeResponsiveDetails() in closeOverlay()
+    showContactDetails(index);    
   }; 
 }
 
@@ -275,4 +276,3 @@ function hideAddNewContact() {
   addNewContact.classList.remove("show");
   addNewContact.classList.add("d-none");
 }
-
