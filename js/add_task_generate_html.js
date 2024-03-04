@@ -26,7 +26,7 @@ function generateSelectedContactHTML(userName, badgeColor, userBadge, i) {
  */
 function generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i) {
   return `
-      <label class="slider-contact-label" for="_check-contact${i}">
+      <label class="slider-contact-label">
         <div class="current-contact-slider">
           <div id="_contect_badge${i}" class="contact-badge" style="background-color: ${badgeColor};">
             <span>${userBadge}</span>
@@ -51,7 +51,7 @@ function generateTaskAssigmentContactsHTML(userName, badgeColor, userBadge, i) {
  */
 function generateTaskAssigmentContactsCheckedHTML(userName, badgeColor, userBadge, i) {
   return `
-      <label class="slider-contact-label" for="_check-contact${i}">
+      <label class="slider-contact-label">
         <div class="current-contact-slider">
           <div id="_contect_badge${i}" class="contact-badge" style="background-color: ${badgeColor};">
             <span>${userBadge}</span>
@@ -140,6 +140,7 @@ function initializeSlider() {
       closeSlider();
     }
   });
+  document.getElementById('et_selected_contacts').classList.remove('d-none');
 }
 
 /**
