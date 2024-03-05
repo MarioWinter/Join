@@ -132,6 +132,7 @@ function initializeSlider() {
     if (isSliderOpen) {
       contactOverlay.classList.add("d-none");
       isSliderOpen = false;
+      document.getElementById('et_selected_contacts').classList.remove('d-none');
     }
   }  
   document.getElementById('select-contacts_down').addEventListener("click", toggleSlider);  
