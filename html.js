@@ -35,8 +35,8 @@ function renderHtmlLogIn() {
       >
     </div>
     <div  class="btn-log-in-container">
-      <button  class="btn-log-in btn-log-mobile" onclick="logIn()">Log in</button>
-      <button class="btn-log-in-guest btn-log-mobile" onclick="logInGuest()">Guest Log in</button>
+      <button type="button" class="btn-log-in btn-log-mobile" onclick="logIn()">Log in</button>
+      <button type="button" class="btn-log-in-guest btn-log-mobile" onclick="logInGuest()">Guest Log in</button>
     </div>
 </form>
 </div>
