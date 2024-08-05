@@ -21,18 +21,18 @@ let globalPrioButtonID = "";
  *    - If false, sets the color and updates the global priority button ID.
  */
 function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
-	if (!isClicked) {
-		setButtonColor(prioButtonID);
-		globalPrioButtonID = prioButtonID;
-	} else {
-		setGlobalPrioButtonID(prioButtonID);
-		if (isActive && prioButtonID == globalPrioButtonID) {
-			resetButtonColor();
-		} else {
-			setButtonColor(prioButtonID);
-			globalPrioButtonID = prioButtonID;
-		}
-	}
+    if (!isClicked) {
+        setButtonColor(prioButtonID);
+        globalPrioButtonID = prioButtonID;
+    } else {
+        setGlobalPrioButtonID(prioButtonID);
+        if (isActive && prioButtonID == globalPrioButtonID) {
+            resetButtonColor();
+        } else {
+            setButtonColor(prioButtonID);
+            globalPrioButtonID = prioButtonID;
+        }
+    }
 }
 
 /**
@@ -48,10 +48,10 @@ function changePrioBtnColor(prioButtonID, isClicked, taskID, prio) {
  * 4. Sets the globalPrioButtonID to an empty string.
  */
 function resetButtonColor() {
-	clearPrioButtonColor();
-	isActive = false;
-	isClicked = false;
-	globalPrioButtonID = "";
+    clearPrioButtonColor();
+    isActive = false;
+    isClicked = false;
+    globalPrioButtonID = "";
 }
 
 /**
@@ -70,16 +70,16 @@ function resetButtonColor() {
  * 6. Changes the color classes of the priority button using the changeColorClasses function.
  */
 function setButtonColor(prioButtonID) {
-	clearPrioButtonColor();
-	let proSVG1 = prioButtonID + "-svg1";
-	let proSVG2 = prioButtonID + "-svg2";
-	let path1 = document.getElementById(proSVG1);
-	let path2 = document.getElementById(proSVG2);
-	fillColor = path1.getAttribute("fill");
-	let button = document.getElementById(prioButtonID);
-	changeSVGPathColor(path1);
-	changeSVGPathColor(path2);
-	changeColorClasses(button, prioButtonID);
+    clearPrioButtonColor();
+    let proSVG1 = prioButtonID + "-svg1";
+    let proSVG2 = prioButtonID + "-svg2";
+    let path1 = document.getElementById(proSVG1);
+    let path2 = document.getElementById(proSVG2);
+    fillColor = path1.getAttribute("fill");
+    let button = document.getElementById(prioButtonID);
+    changeSVGPathColor(path1);
+    changeSVGPathColor(path2);
+    changeColorClasses(button, prioButtonID);
 }
 
 /**
@@ -94,9 +94,9 @@ function setButtonColor(prioButtonID) {
  * 2. If empty, sets the global priority button ID to the provided prioButtonID.
  */
 function setGlobalPrioButtonID(prioButtonID) {
-	if (globalPrioButtonID == "") {
-		globalPrioButtonID = prioButtonID;
-	}
+    if (globalPrioButtonID == "") {
+        globalPrioButtonID = prioButtonID;
+    }
 }
 
 /**
@@ -112,13 +112,13 @@ function setGlobalPrioButtonID(prioButtonID) {
  * 3. If the fill color is not "white," sets the fill color to "white" and deactivates the element.
  */
 function changeSVGPathColor(path) {
-	if (fillColor == "white") {
-		path.setAttribute("fill", fillColor);
-		isActive = true;
-	} else {
-		path.setAttribute("fill", "white");
-		isActive = false;
-	}
+    if (fillColor == "white") {
+        path.setAttribute("fill", fillColor);
+        isActive = true;
+    } else {
+        path.setAttribute("fill", "white");
+        isActive = false;
+    }
 }
 
 /**
@@ -135,21 +135,21 @@ function changeSVGPathColor(path) {
  * 3. If false, resets the button background and text color to default values.
  */
 function changeColorClasses(button, prioButtonID) {
-	if (isClicked || fillColor !== "white") {
-		button.style.color = "#ffffff";
-		if (prioButtonID.includes("low")) {
-			button.style.backgroundColor = "#7AE229";
-		} else if (prioButtonID.includes("medium")) {
-			button.style.backgroundColor = "#FFA800";
-		} else if (prioButtonID.includes("urgent")) {
-			button.style.backgroundColor = "#FF3D00";
-		}
-		isActive = true;
-	} else {
-		button.style.backgroundColor = "#fffff";
-		button.style.color = "#000000";
-		isActive = false;
-	}
+    if (isClicked || fillColor !== "white") {
+        button.style.color = "#ffffff";
+        if (prioButtonID.includes("low")) {
+            button.style.backgroundColor = "#7AE229";
+        } else if (prioButtonID.includes("medium")) {
+            button.style.backgroundColor = "#FFA800";
+        } else if (prioButtonID.includes("urgent")) {
+            button.style.backgroundColor = "#FF3D00";
+        }
+        isActive = true;
+    } else {
+        button.style.backgroundColor = "#fffff";
+        button.style.color = "#000000";
+        isActive = false;
+    }
 }
 
 /**
@@ -163,8 +163,8 @@ function changeColorClasses(button, prioButtonID) {
  * 2. Resets the SVG colors for the "Add Task" priority buttons.
  */
 function clearPrioButtonColor() {
-	resetBgColorAddTask();
-	resetSVGColorAddTask();
+    resetBgColorAddTask();
+    resetSVGColorAddTask();
 }
 
 /**
@@ -173,12 +173,12 @@ function clearPrioButtonColor() {
  * @returns {void} - No return value.
  */
 function resetBgColorAddTask() {
-	document.getElementById("urgent-btn").style.backgroundColor = "#ffffff";
-	document.getElementById("urgent-btn").style.color = "#000000";
-	document.getElementById("medium-btn").style.backgroundColor = "#ffffff";
-	document.getElementById("medium-btn").style.color = "#000000";
-	document.getElementById("low-btn").style.backgroundColor = "#ffffff";
-	document.getElementById("low-btn").style.color = "#000000";
+    document.getElementById("urgent-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("urgent-btn").style.color = "#000000";
+    document.getElementById("medium-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("medium-btn").style.color = "#000000";
+    document.getElementById("low-btn").style.backgroundColor = "#ffffff";
+    document.getElementById("low-btn").style.color = "#000000";
 }
 
 /**
@@ -187,12 +187,12 @@ function resetBgColorAddTask() {
  * @returns {void} - No return value.
  */
 function resetSVGColorAddTask() {
-	document.getElementById("low-btn-svg1").setAttribute("fill", "#7AE229");
-	document.getElementById("low-btn-svg2").setAttribute("fill", "#7AE229");
-	document.getElementById("medium-btn-svg1").setAttribute("fill", "#FFA800");
-	document.getElementById("medium-btn-svg2").setAttribute("fill", "#FFA800");
-	document.getElementById("urgent-btn-svg1").setAttribute("fill", "#FF3D00");
-	document.getElementById("urgent-btn-svg2").setAttribute("fill", "#FF3D00");
+    document.getElementById("low-btn-svg1").setAttribute("fill", "#7AE229");
+    document.getElementById("low-btn-svg2").setAttribute("fill", "#7AE229");
+    document.getElementById("medium-btn-svg1").setAttribute("fill", "#FFA800");
+    document.getElementById("medium-btn-svg2").setAttribute("fill", "#FFA800");
+    document.getElementById("urgent-btn-svg1").setAttribute("fill", "#FF3D00");
+    document.getElementById("urgent-btn-svg2").setAttribute("fill", "#FF3D00");
 }
 
 /**
@@ -207,8 +207,8 @@ function resetSVGColorAddTask() {
  * 2. Set the "min" attribute of the calendar input with the provided ID to the current date.
  */
 function setTodayDateForCalendar(id) {
-	let today = new Date().toISOString().split("T")[0];
-	document.getElementById(id).setAttribute("min", today);
+    let today = new Date().toISOString().split("T")[0];
+    document.getElementById(id).setAttribute("min", today);
 }
 
 /**
@@ -231,6 +231,7 @@ function setTodayDateForCalendar(id) {
  * 10. Slide in the add task overlay frame.
  */
 function loadAddTaskSlider(boardColumnID) {
+<<<<<<< HEAD
 	let taskOverlay = document.getElementById("task_overlay_bg");
 	let taskID = createNewTaskID();
 	taskOverlay.innerHTML = "";
@@ -242,6 +243,18 @@ function loadAddTaskSlider(boardColumnID) {
 	//initAddTaskSlider(taskID);
 	loadPrioOnEditTask("Medium");
 	frameSlideIn("task_open_overlay_frame");
+=======
+    let taskOverlay = document.getElementById("task_overlay_bg");
+    let taskID = createNewTaskID();
+    taskOverlay.innerHTML = "";
+    createNewTask(boardColumnID, taskID);
+    showFrame("task_overlay_bg");
+    addOverlayBg("task_overlay_bg");
+    taskOverlay.innerHTML = generateAddTaskSliderHTML(taskID);
+    setTodayDateForCalendar("calendar_edit_task");
+    initAddTaskSlider(taskID);
+    frameSlideIn("add_task_overlay_frame");
+>>>>>>> parent of 4bdffcc (Add proteaction event bubbeling to task Card and edit task card)
 }
 
 /**
@@ -257,20 +270,9 @@ function loadAddTaskSlider(boardColumnID) {
  * 3. Load the default priority "Medium" using loadPrioOnEditTask.
  */
 function initAddTaskSlider(taskID) {
-	let assigneds = addedTasks[taskID]["assigned"];
-	//loadAllUsersForContactOnAssignedTo(assigneds, "et_contact_overlay", taskID);
-	loadAllUsersForContactOnAssignedTo(assigneds, "et_contact_overlay", taskID);
-}
-
-function loadAllUsersOnAssignedTo(assigneds, containerID, ID) {
-	let contactsContainer = document.getElementById("et_contact_overlay");
-	for (let i = 0; i < users.length; i++) {
-		let userName = users[i]["name"];
-		let userBadge = generateUserBadge(userName);
-		let badgeColor = users[i]["bgcolor"];
-
-		contactsContainer.innerHTML += generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, userName, i, ID);
-	}
+    let assigneds = addedTasks[taskID]["assigned"];
+    loadAllUsersForContactOnAssignedTo(assigneds, "et_contact_overlay", taskID);
+    loadPrioOnEditTask("Medium");
 }
 
 /**
@@ -286,13 +288,13 @@ function loadAllUsersOnAssignedTo(assigneds, containerID, ID) {
  * 4. Return the new task ID.
  */
 function createNewTaskID() {
-	let newTaskID;
-	if (addedTasks.length !== 0) {
-		newTaskID = addedTasks.length;
-	} else {
-		newTaskID = 0;
-	}
-	return newTaskID;
+    let newTaskID;
+    if (addedTasks.length !== 0) {
+        newTaskID = addedTasks.length;
+    } else {
+        newTaskID = 0;
+    }
+    return newTaskID;
 }
 
 /**
@@ -309,17 +311,17 @@ function createNewTaskID() {
  *    due date, priority, category, and an empty array for subtasks.
  */
 function createNewTask(boardColumnID, taskID) {
-	addedTasks.push({
-		id: taskID,
-		bucket: boardColumnID,
-		title: "",
-		description: "",
-		assigned: [],
-		duedate: "",
-		prio: "",
-		category: "",
-		subtask: [],
-	});
+    addedTasks.push({
+        id: taskID,
+        bucket: boardColumnID,
+        title: "",
+        description: "",
+        assigned: [],
+        duedate: "",
+        prio: "",
+        category: "",
+        subtask: [],
+    });
 }
 
 /**
@@ -333,7 +335,7 @@ function createNewTask(boardColumnID, taskID) {
  * 1. Removes the task with the specified ID from the addedTasks array.
  */
 function deleteNewTask(taskID) {
-	addedTasks.splice(taskID, 1);
+    addedTasks.splice(taskID, 1);
 }
 
 /**
@@ -347,7 +349,7 @@ function deleteNewTask(taskID) {
  * 1. Retrieves and processes the required fields for the specified task.
  */
 function submitForm(taskID) {
-	getRequiredFields(taskID);
+    getRequiredFields(taskID);
 }
 
 /**
@@ -362,10 +364,10 @@ function submitForm(taskID) {
  * 2. Calls the checkRequiredFields function with the retrieved inputs and the task ID.
  */
 function getRequiredFields(taskID) {
-	let titleInput = document.getElementById("title_input_ed_task").value;
-	let dueDateInput = document.getElementById("calendar_edit_task").value;
-	let categoryInput = document.getElementById("select_category").value;
-	checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID);
+    let titleInput = document.getElementById("title_input_ed_task").value;
+    let dueDateInput = document.getElementById("calendar_edit_task").value;
+    let categoryInput = document.getElementById("select_category").value;
+    checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID);
 }
 
 /**
@@ -384,22 +386,22 @@ function getRequiredFields(taskID) {
  * 3. If any required field is not filled, displays corresponding error messages and adds required-border class to the input elements.
  */
 function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
-	if (titleInput !== "" && dueDateInput !== "" && categoryInput !== "") {
-		updateNewTask(taskID);
-	} else {
-		if (titleInput === "") {
-			show("title_error_slider");
-			document.getElementById("title_input_ed_task").classList.add("required-border");
-		}
-		if (dueDateInput === "") {
-			show("date_error_slider");
-			document.getElementById("calendar_edit_task").classList.add("required-border");
-		}
-		if (categoryInput === "") {
-			show("category_error_slider");
-			document.getElementById("select_category").classList.add("required-border");
-		}
-	}
+    if (titleInput !== "" && dueDateInput !== "" && categoryInput !== "") {
+        updateNewTask(taskID);
+    } else {
+        if (titleInput === "") {
+            show("title_error_slider");
+            document.getElementById("title_input_ed_task").classList.add("required-border");
+        }
+        if (dueDateInput === "") {
+            show("date_error_slider");
+            document.getElementById("calendar_edit_task").classList.add("required-border");
+        }
+        if (categoryInput === "") {
+            show("category_error_slider");
+            document.getElementById("select_category").classList.add("required-border");
+        }
+    }
 }
 
 /**
@@ -416,16 +418,16 @@ function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
  * 4. Sets a timeout to hide the confirmation message after a delay.
  */
 function updateNewTask(taskID) {
-	show("task_added_to_board");
-	updateOpenTaskTitle(taskID);
-	updateOpenTaskDesc(taskID);
-	updateOpenTaskDueDate(taskID);
-	updateTaskPriority(taskID);
-	updateTaskCategory(taskID);
-	hideTaskOpen("task_open_overlay_frame");
-	setTimeout(function () {
-		hide("task_added_to_board");
-	}, 350);
+    show("task_added_to_board");
+    updateOpenTaskTitle(taskID);
+    updateOpenTaskDesc(taskID);
+    updateOpenTaskDueDate(taskID);
+    updateTaskPriority(taskID);
+    updateTaskCategory(taskID);
+    hideTaskOpen("add_task_overlay_frame");
+    setTimeout(function () {
+        hide("task_added_to_board");
+    }, 350);
 }
 
 /**
@@ -440,6 +442,6 @@ function updateNewTask(taskID) {
  * 2. Updates the category property of the task in the addedTasks array.
  */
 function updateTaskCategory(taskID) {
-	let categoryValue = document.getElementById("select_category").value;
-	addedTasks[taskID]["category"] = categoryValue;
+    let categoryValue = document.getElementById("select_category").value;
+    addedTasks[taskID]["category"] = categoryValue;
 }

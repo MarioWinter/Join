@@ -10,7 +10,7 @@ let buckets = ["to-do", "in-progress", "await-feedback", "done"];
  * @returns - returns the html text
  */
 function generateCardHTML(id, title, description, category, categoryColor) {
-	return `
+    return `
             <div class="task-card" id="task${id}" onclick="loadTaskOpen(${id})" ondragstart="startDragging(${id})"
             draggable="true">
             <div class="category-move-card-container">
@@ -22,12 +22,12 @@ function generateCardHTML(id, title, description, category, categoryColor) {
                         fill-rule="evenodd"></path>
                 </svg>
 				<div class="mbl-move-btn-container">
-					<button class="mbl-move-btn" onclick="doNotForward(event); showSubmenu('move_submenu${id}', 'd-none')" id="mbl_move${id}">Move</button>
+					<button class="mbl-move-btn" onclick="DoNotForward(event); showSubmenu('move_submenu${id}', 'd-none')" id="mbl_move${id}">Move</button>
 					<div id="move_submenu${id}" class="mbl-move-menu d-none">
-						<div class="mbl-move-item" onclick="doNotForward(event); startDragging(${id}); moveTo('to-do')">To Do</div>
-						<div class="mbl-move-item" onclick="doNotForward(event); startDragging(${id}); moveTo('in-progress')">In progress</div>
-						<div class="mbl-move-item" onclick="doNotForward(event); startDragging(${id}); moveTo('await-feedback')">Await feedback</div>
-						<div class="mbl-move-item" onclick="doNotForward(event); startDragging(${id}); moveTo('done')">Done</div>
+						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('to-do')">To Do</div>
+						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('in-progress')">In progress</div>
+						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('await-feedback')">Await feedback</div>
+						<div class="mbl-move-item" onclick="DoNotForward(event); startDragging(${id}); moveTo('done')">Done</div>
 					</div>
 				</div>
 
@@ -58,7 +58,7 @@ function generateCardHTML(id, title, description, category, categoryColor) {
  * @returns
  */
 function generateNoTaskHTML(bucket) {
-	return `<div class="no-tasks">No tasks ${bucket}</div>`;
+    return `<div class="no-tasks">No tasks ${bucket}</div>`;
 }
 
 /**
@@ -69,8 +69,8 @@ function generateNoTaskHTML(bucket) {
  * @returns {string} - The HTML for subtask progress display.
  */
 function generateSubtaskProgressHTML(allSubtask, done) {
-	let percentInWidth = generatePercentInWidth(allSubtask, done);
-	return `
+    let percentInWidth = generatePercentInWidth(allSubtask, done);
+    return `
         <div class="subtasks-progress-bar" title="${done}/${allSubtask} subtasks are done">
             <div class="progress" style="width: ${percentInWidth}%;"></div>
         </div>
@@ -86,7 +86,7 @@ function generateSubtaskProgressHTML(allSubtask, done) {
  * @returns {string} - The HTML for the assigned badge.
  */
 function generateAssignedBadgeHTML(userBadge, badgeColor) {
-	return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
+    return `<div style="background-color: ${badgeColor};" class="profile-badge">${userBadge}</div>`;
 }
 
 /**
@@ -98,7 +98,7 @@ function generateAssignedBadgeHTML(userBadge, badgeColor) {
  * @returns {string} - The HTML for the assignment badge.
  */
 function generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i) {
-	return `<div id="initials${i}" class="contact-badge" style="background-color: ${badgeColor};">${userBadge}</div>`;
+    return `<div id="initials${i}" class="contact-badge" style="background-color: ${badgeColor};">${userBadge}</div>`;
 }
 
 /**
@@ -107,7 +107,7 @@ function generateAssigmentBadgeEditTaskHTML(userBadge, badgeColor, i) {
  * @returns {string} - The HTML for the medium priority icon.
  */
 function generateMediumPrioIcon() {
-	return `
+    return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="0.8rem" viewBox="0 0 18 8" fill="none">
         <g clip-path="url(#clip0_99462_2583)">
             <path d="M16.5685 7.16658L1.43151 7.16658C1.18446 7.16658 0.947523 7.06773 0.772832 6.89177C0.598141 6.71581 0.5 6.47716 0.5 6.22831C0.5 5.97947 0.598141 5.74081 0.772832 5.56485C0.947523 5.38889 1.18446 5.29004 1.43151 5.29004L16.5685 5.29004C16.8155 5.29004 17.0525 5.38889 17.2272 5.56485C17.4019 5.74081 17.5 5.97947 17.5 6.22831C17.5 6.47716 17.4019 6.71581 17.2272 6.89177C17.0525 7.06773 16.8155 7.16658 16.5685 7.16658Z" fill="#FFA800"/>
@@ -129,7 +129,7 @@ function generateMediumPrioIcon() {
  * @returns {string} - The HTML for the low priority icon.
  */
 function generateLowPrioIcon() {
-	return `
+    return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.2rem" viewBox="0 0 18 12" fill="none">
         <g clip-path="url(#clip0_99462_2611)">
             <path d="M8.99974 7.24524C8.80031 7.24557 8.60603 7.18367 8.44549 7.06863L0.876998 1.63467C0.778524 1.56391 0.695351 1.47498 0.632227 1.37296C0.569103 1.27094 0.527264 1.15784 0.5091 1.0401C0.472414 0.802317 0.534386 0.560105 0.681381 0.366747C0.828377 0.17339 1.04835 0.0447247 1.29292 0.00905743C1.53749 -0.0266099 1.78661 0.0336422 1.98549 0.176559L8.99974 5.2075L16.014 0.17656C16.1125 0.105795 16.2243 0.0545799 16.3431 0.02584C16.462 -0.00289994 16.5855 -0.00860237 16.7066 0.00905829C16.8277 0.0267189 16.944 0.0673968 17.0489 0.128769C17.1538 0.190142 17.2453 0.271007 17.3181 0.366748C17.3909 0.462489 17.4436 0.571231 17.4731 0.686765C17.5027 0.802299 17.5085 0.922362 17.4904 1.0401C17.4722 1.15784 17.4304 1.27094 17.3672 1.37296C17.3041 1.47498 17.221 1.56391 17.1225 1.63467L9.55398 7.06863C9.39344 7.18367 9.19917 7.24557 8.99974 7.24524Z" fill="#7AE229"/>
@@ -150,7 +150,7 @@ function generateLowPrioIcon() {
  * @returns {string} - The HTML for the urgent priority icon.
  */
 function generateUrgentPrioIcon() {
-	return `
+    return `
     <svg xmlns="http://www.w3.org/2000/svg" width="1.8rem" height="1.2rem" viewBox="0 0 18 12" fill="none">
         <g clip-path="url(#clip0_99462_2667)">
             <path d="M9.00026 4.75476C9.19969 4.75443 9.39397 4.81633 9.55451 4.93137L17.123 10.3653C17.2215 10.4361 17.3046 10.525 17.3678 10.627C17.4309 10.7291 17.4727 10.8422 17.4909 10.9599C17.5276 11.1977 17.4656 11.4399 17.3186 11.6333C17.1716 11.8266 16.9516 11.9553 16.7071 11.9909C16.4625 12.0266 16.2134 11.9664 16.0145 11.8234L9.00026 6.7925L1.98602 11.8234C1.88754 11.8942 1.7757 11.9454 1.65687 11.9742C1.53803 12.0029 1.41455 12.0086 1.29345 11.9909C1.17235 11.9733 1.05602 11.9326 0.951088 11.8712C0.846159 11.8099 0.754691 11.729 0.681906 11.6333C0.609122 11.5375 0.556445 11.4288 0.526885 11.3132C0.497325 11.1977 0.491459 11.0776 0.509623 10.9599C0.527789 10.8422 0.569626 10.7291 0.632752 10.627C0.695876 10.525 0.779049 10.4361 0.877524 10.3653L8.44602 4.93137C8.60656 4.81633 8.80083 4.75443 9.00026 4.75476Z" fill="#FF3D00"/>
@@ -177,8 +177,8 @@ function generateUrgentPrioIcon() {
  * @returns {string} - The HTML for the open task frame.
  */
 function generateOpenTaskHTML(id, title, description, category, categoryColor, duedate) {
-	return `
-	<div id="task_open_overlay_frame" class="task-overlay-frame-open" onclick="doNotForward(event)" >
+    return `
+	<div id="task_open_overlay_frame" class="task-overlay-frame-open">
 			<!-- tesk overlay tag -->
 			<div class="category-container-task-open">
 				<div class="category-tag-task-open"style="background-color: ${categoryColor};">${category}</div>
@@ -283,7 +283,7 @@ function generateOpenTaskHTML(id, title, description, category, categoryColor, d
  * @returns {string} - The HTML for the assignment in the open task frame.
  */
 function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
-	return `
+    return `
         <div class="assigned-to-contact-task-open">
             <div id="contect_badge${id}" class="contact-badge-task-open"
                 style="background-color: ${badgeColor};">${userBadge}</div>
@@ -304,7 +304,7 @@ function generateAssigmentHTML(userBadge, badgeColor, assignedUserName, id) {
  * @returns {string} - The HTML for the assigned contacts in the edit task slider.
  */
 function generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, assignedUserName, i, ID) {
-	return `
+    return `
     <label class="slider-contact-label">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
@@ -332,7 +332,7 @@ function generateEditTaskAssigmentContactsHTML(badgeColor, userBadge, assignedUs
  * @returns {string} - The HTML for the assigned contacts with a checked state in the edit task slider.
  */
 function generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, assignedUserName, i, ID) {
-	return `
+    return `
     <label class="slider-contact-label">
         <div class="current-contact-slider">
             <div id="contect_badge${i}" class="contact-badge"
@@ -358,7 +358,7 @@ function generateEditTaskAssigmentContactsCheckedHTML(badgeColor, userBadge, ass
  * @returns {string} - The HTML for the subtask in the task frame.
  */
 function generateSubtasksHTML(subtitle, i, ID) {
-	return `
+    return `
     <div class="log-in-checkbox">
         <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" />
         <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
@@ -375,7 +375,7 @@ function generateSubtasksHTML(subtitle, i, ID) {
  * @returns {string} - The HTML for the checked subtask in the task frame.
  */
 function generateSubtasksCheckedHTML(subtitle, i, ID) {
-	return `
+    return `
     <div class="log-in-checkbox">
         <input onclick="changeSubtaskConfirmation('${ID}_confirm_subtask${i}', ${i}, ${ID})" id="${ID}_confirm_subtask${i}" type="checkbox" checked/>
         <label class="checkbox-hover" for="${ID}_confirm_subtask${i}">${subtitle}</label>
@@ -395,12 +395,20 @@ function generateSubtasksCheckedHTML(subtitle, i, ID) {
  * @param {string} subtaskList - The ID of the subtask list container.
  * @returns {string} - The HTML for the subtask list item in the task frame.
  */
-function generateSubtaskListItemHTML(subtitle, i, ID, subtaskListItemID, subtaskEditContainerID, subtaskEditInputID, subtaskList) {
-	let subtaskListItem = `${ID}${subtaskListItemID}${i}`;
-	let subtaskEditContainer = `${ID}${subtaskEditContainerID}${i}`;
-	let subtaskEditInput = `${ID}${subtaskEditInputID}${i}`;
+function generateSubtaskListItemHTML(
+    subtitle,
+    i,
+    ID,
+    subtaskListItemID,
+    subtaskEditContainerID,
+    subtaskEditInputID,
+    subtaskList
+) {
+    let subtaskListItem = `${ID}${subtaskListItemID}${i}`;
+    let subtaskEditContainer = `${ID}${subtaskEditContainerID}${i}`;
+    let subtaskEditInput = `${ID}${subtaskEditInputID}${i}`;
 
-	return `
+    return `
         <!-- Subtask List Item -->
         <div id="${subtaskListItem}" class="subtask-list-item-slider">
             <ul>
@@ -445,8 +453,8 @@ function generateSubtaskListItemHTML(subtitle, i, ID, subtaskListItemID, subtask
  * @returns {string} - The HTML for the task editing frame.
  */
 function generateEditTaskHTML(id, title, description, duedate) {
-	return `
-            <div id="task_open_overlay_frame" class="task-overlay-frame-open" onclick="doNotForward(event)">
+    return `
+            <div id="task_open_overlay_frame" class="task-overlay-frame-open">
                 <!-- tesk overlay close Button -->
                 <div class="close-btn-container-task-edit">
                     <div class="close-button" onclick="loadAddedTasksFromStorage(), hideTaskOpen('task_open_overlay_frame')">
