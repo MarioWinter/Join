@@ -375,23 +375,32 @@ function cancelAddSubtask(addSubtaskID, checkSubtaskID) {
 }
 
 /**
- * Loads the subtasks of a specific task.
+ * Loads the subtasks for a given task ID.
  *
- * @param {number} taskID - The ID of the task for which subtasks are to be loaded.
- * @returns {Array<string>} - An array containing the subtasks of the specified task.
+ * @param {number} taskID - The ID of the task to load subtasks for.
+ * @returns {Array} - An array of subtasks for the specified task.
  *
  * @description
  * This function performs the following steps:
- * 1. Filters the addedTasks array to retrieve tasks with the specified taskID.
- * 2. Retrieves the subtasks from the filtered task.
- * 3. Returns the array of subtasks.
+ * 1. Checks if the newTask object is empty using the isNewTaskEmpty function.
+ * 2. If newTask is empty:
+ *    a. Filters the addedTasks array to find the task with the matching taskID.
+ *    b. Iterates through the filtered tasks (should be only one).
+ *    c. Returns the subtask array of the matching task.
+ * 3. If newTask is not empty:
+ *    a. Returns the subtask array from the newTask object.
  */
 function loadSubtask(taskID) {
-	let tasks = addedTasks.filter((t) => t["id"] === taskID);
-	for (let index = 0; index < tasks.length; index++) {
-		let task = tasks[index];
-		let subtask = task["subtask"];
-		return subtask;
+	let tasks = [];
+	if (isNewTaskEmpty(newTask)) {
+		tasks = addedTasks.filter((t) => t["id"] === taskID);
+		for (let index = 0; index < tasks.length; index++) {
+			let task = tasks[index];
+			let subtask = task["subtask"];
+			return subtask;
+		}
+	} else {
+		return newTask["subtask"];
 	}
 }
 
