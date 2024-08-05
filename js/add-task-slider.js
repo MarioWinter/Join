@@ -232,7 +232,7 @@ function setTodayDateForCalendar(id) {
  */
 function loadAddTaskSlider(boardColumnID) {
 	let taskOverlay = document.getElementById("task_overlay_bg");
-	//let taskID = createNewTaskID();
+	let taskID = createNewTaskID();
 	taskOverlay.innerHTML = "";
 	//createNewTask(boardColumnID, taskID);
 	showFrame("task_overlay_bg");
