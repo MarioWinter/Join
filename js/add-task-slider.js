@@ -242,7 +242,7 @@ function loadAddTaskSlider(boardColumnID) {
 	taskOverlay.innerHTML = generateAddTaskSliderHTML(taskID);
 	setTodayDateForCalendar("calendar_edit_task");
 	initAddTaskSlider(taskID);
-	frameSlideIn("add_task_overlay_frame");
+	frameSlideIn("task_open_overlay_frame");
 	loadPrioOnEditTask("Medium");
 }
 
@@ -439,7 +439,7 @@ function updateNewTask(taskID) {
 	updateOpenTaskDueDate(taskID);
 	updateTaskPriority(taskID);
 	updateTaskCategory(taskID);
-	hideTaskOpen("add_task_overlay_frame");
+	hideTaskOpen("task_open_overlay_frame");
 	setTimeout(function () {
 		hide("task_added_to_board");
 	}, 350);
