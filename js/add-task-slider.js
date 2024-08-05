@@ -387,16 +387,21 @@ function getRequiredFields(taskID) {
  * @param {string} dueDateInput - The value of the due date input for the task.
  * @param {string} categoryInput - The value of the category input for the task.
  * @param {number} taskID - The ID of the task to check and update.
- * @returns {void} - No return value.
+ * @returns {void}
  *
  * @description
  * This function performs the following steps:
  * 1. Checks if the title, due date, and category inputs are filled.
- * 2. If all required fields are filled, calls the updateNewTask function with the task ID.
- * 3. If any required field is not filled, displays corresponding error messages and adds required-border class to the input elements.
+ * 2. If all required fields are filled:
+ *    a. Adds the newTask to the addedTasks array.
+ *    b. Calls the updateNewTask function with the task ID.
+ * 3. If any required field is not filled:
+ *    a. Displays corresponding error messages.
+ *    b. Adds 'required-border' class to the empty input elements.
  */
 function checkRequiredFields(titleInput, dueDateInput, categoryInput, taskID) {
 	if (titleInput !== "" && dueDateInput !== "" && categoryInput !== "") {
+		addedTasks.push(newTask);
 		updateNewTask(taskID);
 	} else {
 		if (titleInput === "") {
