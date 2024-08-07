@@ -32,7 +32,7 @@
 	<body onload="includeHTML(), initAddTask()">
 		<div class="w3include-container">
 			<div w3-include-html="assets/templates/sidebar_template.html"></div>
-			<main class="main-add-task-container">
+			<main class="main-add-task-container" onclick="closeContactOverlay('et_contact_overlay', 'et_selected_contacts')">
 				<div w3-include-html="assets/templates/header_template.html" class="w3-header"></div>
 				<div class="add-task-content">
 					<div class="add-task-main-container">
@@ -42,7 +42,7 @@
 								Task added to board <img class="confirmation-picture" src="./assets/img/added-task-to-board-icon.svg" />
 							</div>
 						</div>
-						<form id="add_task_validation" onsubmit="createTask(); return false" onclick="doNotForward(event)">
+						<form id="add_task_validation" onsubmit="createTask(); return false">
 							<div class="main-container-center">
 								<div class="add-task-container-left">
 									<div class="title-main">
@@ -76,7 +76,7 @@
 												class="select-contacts-dropdown d-none"
 												src="./assets/img/arrow_drop_up.svg"
 												alt="Select Contacts Button"
-												onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')"
+												onclick="closeContactOverlay('et_contact_overlay', 'et_selected_contacts')"
 											/>
 											<div class="p-relative">
 												<div class="contact-overlay d-none" id="et_contact_overlay"></div>

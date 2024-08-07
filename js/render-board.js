@@ -446,7 +446,7 @@ function generateSubtaskListItemHTML(subtitle, i, ID, subtaskListItemID, subtask
  */
 function generateEditTaskHTML(id, title, description, duedate) {
 	return `
-            <div id="task_open_overlay_frame" class="task-overlay-frame-open" onclick="doNotForward(event)">
+            <div id="task_open_overlay_frame" class="task-overlay-frame-open" onclick="doNotForward(event); closeContactOverlay('et_contact_overlay', 'et_selected_contacts')">
                 <!-- tesk overlay close Button -->
                 <div class="close-btn-container-task-edit">
                     <div class="close-button" onclick="loadAddedTasksFromStorage(), hideTaskOpen('task_open_overlay_frame')">
@@ -552,17 +552,17 @@ function generateEditTaskHTML(id, title, description, duedate) {
                     <!-- Assigned To Edit Task -->
                     <div class="subhead-container-ed-task">
                         <div class="subhead-ed-task">Assigned to</div>
-                        <div class="assigned-to-input-slider">
+                        <div class="assigned-to-input-slider" onclick="doNotForward(event)">
                             <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
                                 placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', ${id})">
                             <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
                             alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
                             <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
-                            alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
+                            alt="Select Contacts Button" onclick="closeContactOverlay('et_contact_overlay', 'et_selected_contacts')">
 
                         </div>
                         <div class="p-relative">
-                            <div class="contact-overlay d-none" id="et_contact_overlay">
+                            <div class="contact-overlay d-none" id="et_contact_overlay" onclick="doNotForward(event)">
                                 <!-- Contact for render -->
 
                             </div>

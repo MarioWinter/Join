@@ -1,6 +1,6 @@
 function generateAddTaskSliderHTML(id) {
 	return `
-<div id="task_open_overlay_frame" class="slider-frame" onclick="doNotForward(event)">
+<div id="task_open_overlay_frame" class="slider-frame" onclick="doNotForward(event); closeContactOverlay('et_contact_overlay', 'et_selected_contacts')">
     <div class="add-task-head">
         <h1>Add Task</h1>
         <div class="close-button" onclick="hideTaskOpen('task_open_overlay_frame')">
@@ -41,17 +41,17 @@ function generateAddTaskSliderHTML(id) {
             <!-- Assigned To Add Task -->
             <div class="subhead-container-ed-task">
                 <div class="subhead-ed-task">Assigned to</div>
-                <div class="assigned-to-input-slider">
+                <div class="assigned-to-input-slider" onclick="doNotForward(event)">
                     <input id="et_select_contacts_search" class="assigned-to-slider" type="text "
                         placeholder="Select contacts to assign" autocomplete="off" onkeyup="filterUserOnAssignedTo('et_select_contacts_search', 'et_contact_overlay', ${id})">
                     <img id="select-contacts_down" class="select-contacts-dropdown" src="./assets/img/arrow_drop_down.svg"
                     alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay','et_selected_contacts')">
                     <img id="select-contacts_up" class="select-contacts-dropdown d-none" src="./assets/img/arrow_drop_up.svg"
-                    alt="Select Contacts Button" onclick="openContactOverlay('et_contact_overlay', 'et_selected_contacts')">
+                    alt="Select Contacts Button" onclick="closeContactOverlay('et_contact_overlay', 'et_selected_contacts')">
 
                 </div>
                 <div class="p-relative">
-                    <div class="contact-overlay d-none" id="et_contact_overlay">
+                    <div class="contact-overlay d-none" id="et_contact_overlay" onclick="doNotForward(event)">
                         <!-- Contact for render -->
                         
                     </div>
@@ -154,7 +154,7 @@ function generateAddTaskSliderHTML(id) {
                 <div class="subhead-ed-task">Subtasks</div>
                 <div class="subtask-input-container">
                     <input id="subtask_input" class="subtask-input-slider" type="text" placeholder="Add new subtask"
-                        autocomplete="">
+                        autocomplete="off">
                     <img id="add_subtask" class="add-subtask-slider" src="./assets/img/add-plus-icon.svg"
                         alt="Add Subtasks" onclick="showSubtaskInput('add_subtask', 'check_subtask_icons')">
 

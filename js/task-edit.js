@@ -175,14 +175,18 @@ function openContactOverlay(containerID, selectedContactsID) {
 		hide(selectedContactsID);
 		hide("select-contacts_down");
 		show("select-contacts_up");
-
 		isCantactOpen = false;
-	} else {
+	}
+}
+
+function closeContactOverlay(containerID, selectedContactsID) {
+	if (!isCantactOpen) {
 		hide(containerID);
 		show(selectedContactsID);
 		show("select-contacts_down");
 		hide("select-contacts_up");
 		isCantactOpen = true;
+		console.log("close");
 	}
 }
 
