@@ -186,7 +186,6 @@ function closeContactOverlay(containerID, selectedContactsID) {
 		show("select-contacts_down");
 		hide("select-contacts_up");
 		isCantactOpen = true;
-		console.log("close");
 	}
 }
 
